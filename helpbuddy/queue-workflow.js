@@ -45,23 +45,15 @@
     };
   }
 
-  function record(work, event, actorId, metadata) {
-    const audit = api.getAudit;
-    // The foundation exposes append-only audit retrieval but intentionally keeps
-    // the writer private. Update the work through the public API so the existing
-    // audit trail remains authoritative for persisted changes.
-    return api.updateWork(work.id, { lastQueueAction: { event, actorId, metadata, at: new Date().toISOString() } }, actorId);
-  }
-
   function accept(id, actorId) {
     const work = api.getWork(id);
     if (!work) throw new Error('Work item was not found');
     if (work.available === false || (work.assigneeId && work.assigneeId !== actorId)) {
       throw new Error('Work item is not currently available');
     }
+    // Preserve the original requester/owner identity. Acceptance changes assignment, not ownership.
     return api.updateWork(id, {
       assigneeId: actorId,
-      userId: actorId,
       available: false,
       status: 'Assigned',
       setAsideBy: (work.setAsideBy || []).filter(x => x !== actorId),
