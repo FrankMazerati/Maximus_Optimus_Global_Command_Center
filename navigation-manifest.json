@@ -1,0 +1,73 @@
+{
+  "version": "2026-10-20.1",
+  "label": "Global Navigation",
+  "behavior": {
+    "independentlyScrollable": true,
+    "dragReorder": true,
+    "persistOrderPerProfile": true,
+    "searchable": true,
+    "allModulesRepresented": true
+  },
+  "fixedFirstSections": [
+    {
+      "id": "global-company-id",
+      "label": "Global Company ID",
+      "type": "dropdown",
+      "description": "Global company/tenant directory with company drill-down."
+    },
+    {
+      "id": "global-id-users",
+      "label": "Global ID User List",
+      "type": "dropdown",
+      "description": "Global User ID directory with person, role, company, contact and access drill-down."
+    },
+    {
+      "id": "active-directory",
+      "label": "New Active Directory",
+      "type": "dropdown",
+      "description": "Directory, organizational units, groups, provisioning and synchronization."
+    },
+    {
+      "id": "devices",
+      "label": "Devices",
+      "type": "dropdown",
+      "description": "Managed devices, endpoint posture, lifecycle and device actions."
+    }
+  ],
+  "modules": [
+    {"id":"intellisphere","label":"IntelliSphere","group":"INTELLIGENCE"},
+    {"id":"global-command-center","label":"Global Command Center","group":"COMMAND"},
+    {"id":"dashboard","label":"Dashboard","group":"COMMAND"},
+    {"id":"help-desk","label":"Help Desk / Service Desk","group":"SERVICE OPERATIONS"},
+    {"id":"tickets","label":"Tickets & Requests","group":"SERVICE OPERATIONS"},
+    {"id":"help-buddy","label":"HelpBuddy","group":"SERVICE OPERATIONS"},
+    {"id":"knowledge","label":"Knowledge Base","group":"SERVICE OPERATIONS"},
+    {"id":"intelli-chat","label":"IntelliChat","group":"COMMUNICATIONS"},
+    {"id":"intelli-calendar","label":"IntelliCalendar","group":"COMMUNICATIONS"},
+    {"id":"email","label":"Email / Communications","group":"COMMUNICATIONS"},
+    {"id":"war-room","label":"War Room","group":"COMMAND"},
+    {"id":"breakout-rooms","label":"Breakout Rooms","group":"COMMAND"},
+    {"id":"scenario-simulator","label":"Scenario Simulator","group":"COMMAND"},
+    {"id":"infrastructure","label":"Infrastructure","group":"OPERATIONS"},
+    {"id":"network-monitoring","label":"Network Monitoring","group":"OPERATIONS"},
+    {"id":"users","label":"Users","group":"IDENTITY & ACCESS"},
+    {"id":"security-center","label":"Security Center","group":"SECURITY"},
+    {"id":"threat-matrix","label":"Threat Matrix / Intelligence","group":"SECURITY"},
+    {"id":"soc","label":"SOC","group":"SECURITY"},
+    {"id":"noc","label":"NOC","group":"OPERATIONS"},
+    {"id":"governance","label":"Governance Center","group":"GOVERNANCE"},
+    {"id":"compliance","label":"Compliance","group":"GOVERNANCE"},
+    {"id":"audit","label":"Audit Log","group":"GOVERNANCE"},
+    {"id":"workflow-builder","label":"Workflow / Checklist Builder","group":"PLATFORM"},
+    {"id":"platform-builder","label":"Platform Builder","group":"PLATFORM"},
+    {"id":"integrations","label":"System Integrations","group":"PLATFORM"},
+    {"id":"system-status","label":"System Status","group":"PLATFORM"},
+    {"id":"maximus-ai","label":"Maximus AI","group":"AI"},
+    {"id":"optimus","label":"Optimus","group":"AI / COMMAND"},
+    {"id":"global-time","label":"Global Time","group":"WORKSPACE"},
+    {"id":"meetings","label":"Meetings","group":"WORKSPACE"},
+    {"id":"favorites","label":"Favorites","group":"WORKSPACE"},
+    {"id":"profile-settings","label":"Profile & Settings","group":"ACCOUNT"},
+    {"id":"logout","label":"Logout","group":"ACCOUNT"}
+  ]
+}
