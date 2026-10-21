@@ -71,6 +71,93 @@ html,body{font-size:14px}
 @media(max-width:900px){.header-slogan{max-width:100%;text-align:left}.header-metrics{justify-content:flex-start}}
 @media(max-width:600px){.global-motto{gap:5px}.header-slogan{font-size:9px}.header-metrics{gap:6px}.header-metrics span:last-child{font-size:8px}}
 
+
+/* Approved accessibility refresh: light aqua surfaces, readable contrast, existing content only. */
+:root{--bg:#edfaff;--panel:#ffffff;--panel2:#f4fcff;--line:#b7dce8;--text:#173847;--muted:#526f7b;--cyan:#087f9d;--blue:#2469c8;--green:#16764e;--amber:#8a5a00;--red:#b4233a}
+html,body{background:#edfaff;color:#173847}
+body{background:linear-gradient(180deg,#e6f8fd 0,#f6fcff 48%,#edfaff 100%);color:#173847}
+.top{background:#087f9d;border-bottom:1px solid #066b85;box-shadow:0 5px 18px #164e6330}
+.global-motto strong{color:#fff}
+.global-motto .motto-blue{color:#b7f2ff}
+.header-slogan{color:#fff}
+.trust-line{color:#fff}
+.trust-line i{color:#b7f2ff}
+.brand-identity .company-name{color:#d4f7ff}
+.brand-identity .product-name{color:#fff}
+.brand-identity small,.brand small{color:#e0f7fc}
+.global-search input{background:#f7fdff;color:#173847;border-color:#b7dce8}
+.global-search span{color:#526f7b}
+.avatar{color:#fff;background:linear-gradient(145deg,#0a91b2,#416bd5)}
+.status{color:#d8fff0}
+.layout{align-items:start}
+.panel,.sidebar{background:#fff;border-color:#c4e1e9;box-shadow:0 5px 18px #24556812}
+.side-top{border-color:#d5e9ef}
+.hamburger{background:#e4f8fc;border-color:#8fcbdc;color:#075b73}
+.side-title b{color:#173847}
+.side-title small,.group{color:#526f7b}
+.nav-search input{background:#f7fcfe;color:#173847;border-color:#c4e1e9}
+.navitem{color:#294c5a}
+.navitem:hover,.navitem.active{background:#e4f7fc;border-color:#a7d9e6;color:#075b73}
+.navitem.active{box-shadow:inset 3px 0 #087f9d}
+.drag{color:#668895}
+.sidebar-foot{border-color:#d5e9ef;color:#526f7b}
+.main{color:#173847}
+.crumb{color:#526f7b}
+.workspace{background:#fff;border-color:#c4e1e9;box-shadow:0 5px 20px #24556810}
+.block-title h2,.block-title h3,.profile h1,.card h3,.tile b,.quick-item b{color:#173847}
+.profile p,.muted{color:#526f7b}
+.profile-photo{border-color:#9fd9e7;box-shadow:0 3px 12px #24556814}
+.chip{border-color:#b7dce8;color:#345765}
+.chip.good,.good{color:#16764e}
+.manager{background:#f2fbfe;border-color:#c4e1e9;color:#294c5a}
+.helpbuddy{background:linear-gradient(150deg,#effbff,#fff 76%);border-color:#9acfdc;box-shadow:0 5px 18px #24556810}
+.hb-hero-copy p{color:#526f7b}
+.hb-kicker{color:#087f9d}
+.hb-badge{background:#e7f8ef;color:#16764e;border-color:#b5e3cb}
+.hb-prompt{background:#eaf9fd;border-color:#a7d9e6;color:#173847}
+.hb-prompt span,.hb-prompt b{color:#087f9d}
+.hb-activity-head{color:#526f7b}
+.hb-activity{border-color:#dcecf1}
+.hb-activity b{color:#173847}
+.hb-activity small{color:#526f7b}
+.activity-icon{background:#e8f7fb}
+.activity-icon.cyan{color:#087f9d}
+.activity-icon.amber{color:#8a5a00;background:#fff4d9}
+.activity-icon.violet{color:#6551ad;background:#f0edff}
+.activity-count{color:#075b73;background:#dff5fb}
+.hb-actions .btn.primary,.btn.primary{background:#087f9d;color:#fff;border-color:#087f9d;box-shadow:none}
+.btn,.mini{background:#f2fbfe;color:#214653;border-color:#b7dce8}
+.btn:hover,.mini:hover{filter:none;background:#e2f6fb;border-color:#67b8cc}
+.thinbar,.quick,.card,.tile{background:#f8fdff;border-color:#c4e1e9}
+.thinbar .label{color:#087f9d}
+.bar-content{color:#294c5a}
+.quick-item{background:#fff;border-color:#c4e1e9;color:#173847}
+.quick-item small,.tile small{color:#526f7b}
+.quick-item:hover{background:#eaf9fd;border-color:#73bfd0}
+.metric{border-color:#dcecf1;color:#294c5a}
+.warn{color:#8a5a00}.bad{color:#b4233a}
+.rail{background:#fff;border-color:#c4e1e9;color:#173847}
+.footer{border-color:#c4e1e9;color:#526f7b}
+.modal{background:rgba(13,48,61,.48)}
+.modalbox{background:#fff;border-color:#b7dce8;box-shadow:0 18px 60px #163e4d30;color:#173847}
+.modalbox textarea,.hb-compose input{background:#f7fcfe;color:#173847;border-color:#b7dce8}
+.hb-dialog-context{background:#f2fbfe;border-color:#c4e1e9;color:#526f7b}
+.hb-dialog-context b{color:#173847}
+.hb-message.assistant{background:#f0f9fc;border-color:#c4e1e9;color:#173847}
+.hb-message.user{background:#dff4fb;border-color:#a7d9e6;color:#173847}
+.hb-message b{color:#087f9d}
+.hb-suggestions button{background:#f2fbfe;color:#214653;border-color:#b7dce8}
+.hb-disclaimer{color:#526f7b}
+.profile-gear{background:#e8f8fc;color:#087f9d;border-color:#a7d9e6}
+.profile-inline-editor{background:#f3fbfe;border-color:#b7dce8}
+.profile-inline-editor p{color:#526f7b}
+input,textarea,select{color:#173847}
+@media(min-width:1181px){.layout{grid-template-columns:260px minmax(0,1fr) 275px;gap:14px;padding:14px}.sidebar{position:sticky;top:98px;max-height:calc(100vh - 112px)}.rail{position:sticky;top:98px;max-height:calc(100vh - 112px)}.main{overflow:visible}}
+@media(max-width:1180px) and (min-width:901px){.layout{grid-template-columns:230px minmax(0,1fr)}.sidebar{position:relative;top:auto;max-height:none}.rail{display:none}.main{overflow:visible}}
+@media(max-width:900px) and (min-width:601px){.top{height:auto;min-height:84px}.layout{grid-template-columns:200px minmax(0,1fr)}.sidebar{position:relative;top:auto;max-height:none}.main{overflow-x:hidden}.home-section{min-width:0}.thinbar{min-width:0}.quick-grid{grid-template-columns:repeat(2,minmax(0,1fr));overflow:visible}}
+@media(max-width:600px){.top{position:relative}.global-motto{align-items:flex-start;text-align:left}.header-right{align-items:flex-start}.trust-line{justify-content:flex-start}.layout{grid-template-columns:minmax(0,1fr)}.workspace{padding:13px}.home-top{grid-template-columns:minmax(0,1fr)}.profile{grid-template-columns:auto minmax(0,1fr)}.profile>div:last-child{grid-column:1/-1}.quick-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.thinbar{min-width:0}.bar-content{min-width:0}.rail,.sidebar{display:none}}
+@media(max-width:420px){.quick-grid{grid-template-columns:1fr}.profile{grid-template-columns:minmax(0,1fr)}.global-motto{font-size:12px}.trust-line{font-size:8px}}
+
 </style>
 </head>
 <body>
