@@ -1,0 +1,136 @@
+/* Command Center block layout layer
+   Each major screen region is an independently tunable block.
+   This layer intentionally targets existing semantic classes; it does not invent page/module names. */
+:root {
+  --block-surface: rgba(239, 250, 255, .92);
+  --block-surface-strong: rgba(250, 253, 255, .97);
+  --block-border: rgba(67, 151, 187, .32);
+  --block-ink: #163444;
+  --block-muted: #587887;
+  --block-blue: #168ac2;
+  --block-aqua: #53cce8;
+  --block-purple: #7953c7;
+  --block-shadow: 0 12px 34px rgba(7, 36, 52, .13);
+}
+/* BLOCK 01 — global identity/header */
+.top {
+  background: linear-gradient(115deg, rgba(12, 62, 87, .97), rgba(15, 104, 139, .94));
+  border-bottom: 1px solid rgba(146, 229, 248, .48);
+  box-shadow: 0 8px 26px rgba(4, 33, 48, .18);
+}
+.top .brand, .top .global-motto, .top .header-right { min-width: 0; }
+.top .global-motto { text-wrap: balance; }
+.top .global-search input {
+  background: rgba(255,255,255,.96);
+  color: #173746;
+  border: 1px solid rgba(165,224,241,.9);
+  min-height: 40px;
+}
+.top .global-search input::placeholder { color: #5d7885; }
+/* BLOCK 02 — navigation rail: independent vertical scroll */
+.sidebar {
+  background: var(--block-surface);
+  color: var(--block-ink);
+  border: 1px solid var(--block-border);
+  box-shadow: var(--block-shadow);
+  min-height: 0;
+}
+.sidebar .side-title, .sidebar .side-title b, .sidebar .side-title small,
+.sidebar .sidebar-foot { color: var(--block-ink); }
+.sidebar .sidebar-foot { border-top: 1px solid var(--block-border); }
+.sidebar .nav-search input {
+  background: #fff;
+  color: var(--block-ink);
+  border: 1px solid var(--block-border);
+}
+.sidebar .nav { min-height: 0; overscroll-behavior: contain; scrollbar-gutter: stable; }
+/* BLOCK 03 — central working canvas */
+.main {
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.main > * { min-width: 0; }
+.panel, .section, .card, .widget, .notice {
+  border-color: var(--block-border);
+}
+.panel {
+  background: var(--block-surface);
+  color: var(--block-ink);
+  box-shadow: var(--block-shadow);
+}
+.section, .card, .widget, .notice {
+  background: var(--block-surface-strong);
+  color: var(--block-ink);
+  border: 1px solid var(--block-border);
+  border-radius: 14px;
+}
+.main h1, .main h2, .main h3, .main h4 { color: #123f56; }
+.main p, .main small, .main .muted { color: var(--block-muted); }
+/* BLOCK 04 — right-side operational intelligence */
+.rail {
+  background: var(--block-surface);
+  color: var(--block-ink);
+  border: 1px solid var(--block-border);
+  box-shadow: var(--block-shadow);
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+.rail h3, .rail b { color: #123f56; }
+.rail .notice { padding: 13px; margin-bottom: 10px; }
+/* BLOCK 05 — action controls and form fields */
+button, .button, [role="button"] { transition: transform .16s ease, box-shadow .16s ease, filter .16s ease; }
+button:hover, .button:hover, [role="button"]:hover { filter: brightness(1.04); }
+button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
+  outline: 3px solid rgba(22, 138, 194, .45);
+  outline-offset: 2px;
+}
+input, textarea, select {
+  max-width: 100%;
+}
+.modalbox {
+  background: #f7fcff;
+  color: var(--block-ink);
+  border: 1px solid var(--block-border);
+  box-shadow: 0 24px 80px rgba(5, 29, 43, .3);
+}
+.footer {
+  background: rgba(10, 59, 82, .96);
+  color: #e9faff;
+  border-top: 1px solid rgba(146, 229, 248, .42);
+}
+/* BLOCK 06 — tablet portrait / phone: stack blocks without horizontal overflow */
+@media (max-width: 1024px) {
+  .top {
+    grid-template-columns: minmax(0,1fr) auto;
+    grid-template-rows: auto auto auto;
+    gap: 10px;
+  }
+  .top .brand { grid-column: 1; grid-row: 1; }
+  .top .header-right { grid-column: 2; grid-row: 1; }
+  .top .global-motto { grid-column: 1 / -1; grid-row: 2; }
+  .top .global-search { grid-column: 1 / -1; grid-row: 3; }
+  .layout { grid-template-columns: minmax(0,1fr); }
+  .sidebar, .rail { width: 100%; max-width: none; }
+  .sidebar { max-height: 38dvh; }
+  .sidebar .nav { max-height: 23dvh; overflow-y: auto; }
+  .rail { max-height: none; }
+}
+@media (max-width: 620px) {
+  .top { padding: 10px; }
+  .top .header-right .identity { display: none; }
+  .top .header-metrics { align-items: flex-end; }
+  .top .global-motto { font-size: 13px; }
+  .layout { padding: 10px; gap: 10px; }
+  .main { gap: 10px; }
+  .footer { flex-wrap: wrap; gap: 6px; }
+}
+/* Landscape tablets: use available width while preserving separate columns. */
+@media (min-width: 760px) and (max-width: 1180px) and (orientation: landscape) {
+  .layout { grid-template-columns: minmax(205px, 25%) minmax(0, 1fr); }
+  .rail { grid-column: 2; }
+  .sidebar { max-height: calc(100dvh - 140px); }
+}
