@@ -110,8 +110,17 @@
     if (step.step_status === 'completed') return step;
     const { data, error } = await db.from('ticket_steps').update({ step_status: 'completed', completed_by: global.MaximusIdentity.userId, completed_at: new Date().toISOString(), result }).eq('id', stepId).eq('ticket_id', ticketId).select().single();
     if (error) throw error;
-    await writeAudit('ticket.step_completed', 'ticket_step', stepId, { ticketId, stepNumber: step.step_number });
-    return data;
+    const stepsResult = await db.from('ticket_steps').select('step_number,step_status').eq('ticket_id', ticketId).order('step_number', { ascending: true });
+    if (stepsResult.error) throw stepsResult.error;
+    const steps = stepsResult.data || [];
+    const nextStep = steps.find(item => item.step_status !== 'completed');
+    const ticketPatch = nextStep
+      ? { current_step: nextStep.step_number, status: 'in_progress' }
+      : { current_step: steps.length + 1, status: 'resolved', resolved_at: new Date().toISOString() };
+    const ticketResult = await db.from('tickets').update(ticketPatch).eq('id', ticketId).eq('organization_id', scope.organization_id).select('id,status,current_step').single();
+    if (ticketResult.error) throw ticketResult.error;
+    await writeAudit('ticket.step_completed', 'ticket_step', stepId, { ticketId, stepNumber: step.step_number, ticketStatus: ticketResult.data.status });
+    return { step: data, ticket: ticketResult.data };
   }
   async function writeAudit(action, resourceType, resourceId, eventData = {}) {
     const db = client(), scope = identityScope();
