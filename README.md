@@ -13,7 +13,7 @@ This branch contains the responsive Command Center shell plus the first implemen
 - HelpBuddy service using the existing `tickets`, `ticket_steps`, `workflows`, `workflow_runs`, and `audit_events` tables.
 - Deterministic VPN and account-access workflow templates. This is workflow logic, not an LLM and not a live external-system connector.
 - Versioned SQL migrations for HelpBuddy work items, ticket numbering, and the first scoped access policies.
-- Repeatable synthetic seed data for one demo tenant, sample devices, 25 tickets, and two workflow definitions.
+- Repeatable synthetic seed data for one demo tenant, sample devices, 500 tickets, and two workflow definitions.
 - GitHub Actions validation for JavaScript syntax and required integration/security wiring.
 
 ## Important boundaries
