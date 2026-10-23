@@ -40,7 +40,7 @@ select ('20000000-0000-4000-8000-' || lpad(to_hex(n),12,'0'))::uuid, o.id, t.id,
        case n % 4 when 0 then 'critical' when 1 then 'high' when 2 then 'medium' else 'low' end::public.ticket_priority,
        case n % 4 when 0 then 'new' when 1 then 'in_progress' when 2 then 'waiting' else 'offered' end::public.ticket_status,
        'synthetic-seed', 1, 5
-from generate_series(1,25) as n
+from generate_series(1,500) as n
 cross join public.organizations o
 join public.tenants t on t.organization_id=o.id
 where o.slug='demo-intellistack-lab' and t.slug='demo-tenant-alpha'
