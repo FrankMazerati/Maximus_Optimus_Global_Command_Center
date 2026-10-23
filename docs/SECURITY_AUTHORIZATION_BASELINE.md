@@ -5,8 +5,8 @@ Project ref: `odgahlgnvhpluapfhlpt`
 
 ## Baseline
 
-- Row-level security is enabled on the 28 application tables in the public schema.
-- 69 RLS policies were verified across those tables after splitting read and write policies.
+- Row-level security is enabled on the 29 application tables in the public schema.
+- 70 RLS policies were verified across those tables.
 - Supabase security advisor returned no findings after policy setup and helper-function hardening.
 - Authorization helper functions live in the non-exposed `private` schema, not the public REST API schema.
 - Policies scope organization-owned records through the authenticated profile and active tenant memberships.
@@ -14,13 +14,14 @@ Project ref: `odgahlgnvhpluapfhlpt`
 - Audit events and ticket history have no client update/delete policies.
 - App settings have no client write policy.
 - Sensitive operations such as group changes, device management, cyber incident management, vulnerability remediation, approvals and change approvals require specific permissions.
+- MSP access is represented by 78 approved, time-bounded client assignments. Each assignment includes an explicit permission-scope array and a 30-day expiry. The authorization helper checks both the active assignment and the requested permission against that scope.
 - No broad anonymous access policy was created.
 
 ## Important limits
 
 The RLS policies are a baseline, not a claim that every workflow is production-ready. There are currently no Supabase Auth user accounts created by the synthetic seed; the profile rows are test data only. The policy model must be validated using real authenticated test users before the frontend relies on it.
 
-The MSP has its own organization and 200 synthetic staff profiles. The MSP is not automatically granted access to any customer tenant. Cross-client support must require an explicit, time-bounded client assignment, approved scope and audited access; a group label alone is not authorization.
+The MSP has its own organization and 200 synthetic staff profiles. MSP access is limited to assigned customer organizations and permission scopes while the assignment remains approved and unexpired. Assignment creation, approval, expiry and revocation still need to be exposed through an audited server-side workflow; clients cannot directly insert or update assignment rows.
 
 The performance advisor currently reports informational unused-index findings because the dataset has not yet been exercised by representative frontend queries. Reassess query plans after integration; this is not a claim of zero performance work remaining.
 
@@ -31,6 +32,7 @@ The performance advisor currently reports informational unused-index findings be
 3. Verify a user can read only their organization and explicitly authorized membership scopes.
 4. Test denied access directly against Supabase APIs, not only hidden/disabled UI controls.
 5. Test privilege escalation, profile updates, tenant ID tampering, group membership changes, exports, and approval bypass.
-6. Never use production credentials, real employee data, or real endpoint actions in the synthetic tenant tests.
-7. Keep the Supabase service-role key server-side only.
-8. Record the migration and deployed commit used for each acceptance test.
+6. Test MSP access for an allowed permission, an out-of-scope permission, an unassigned client, and an expired/revoked assignment.
+7. Never use production credentials, real employee data, or real endpoint actions in the synthetic tenant tests.
+8. Keep the Supabase service-role key server-side only.
+9. Record the migration and deployed commit used for each acceptance test.
