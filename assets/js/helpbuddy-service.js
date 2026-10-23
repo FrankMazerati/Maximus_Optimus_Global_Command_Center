@@ -116,7 +116,7 @@
     const nextStep = steps.find(item => item.step_status !== 'completed');
     const ticketPatch = nextStep
       ? { current_step: nextStep.step_number, status: 'in_progress' }
-      : { current_step: steps.length + 1, status: 'resolved', resolved_at: new Date().toISOString() };
+      : { current_step: steps.length + 1, status: 'resolved', resolution_summary: 'Required remediation steps completed and verified.', resolved_at: new Date().toISOString() };
     const ticketResult = await db.from('tickets').update(ticketPatch).eq('id', ticketId).eq('organization_id', scope.organization_id).select('id,status,current_step').single();
     if (ticketResult.error) throw ticketResult.error;
     await writeAudit('ticket.step_completed', 'ticket_step', stepId, { ticketId, stepNumber: step.step_number, ticketStatus: ticketResult.data.status });
