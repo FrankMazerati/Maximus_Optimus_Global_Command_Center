@@ -308,7 +308,12 @@ document.getElementById('navSearch').addEventListener('input',e=>renderNav(e.tar
     response.append(label,p); chat.appendChild(response);
     try {
       const result=await window.HelpBuddyService.handlePrompt(message);
-      if(result.type==='tickets'){
+      if(result.type==='ticket_context') {
+        const d=result.data, t=d.ticket;
+        p.textContent='Ticket #'+t.ticket_number+' — '+t.title+'. Status: '+t.status+'. Priority: '+t.priority+'. History events: '+d.history.length+'. Conversation messages: '+d.messages.length+'. Visible notes: '+d.notes.length+'. Workflow steps: '+d.steps.length+'. Assistant actions: '+d.assistantActions.length+'. '+(t.resolution_summary ? 'Resolution: '+t.resolution_summary : 'No resolution summary is recorded.');
+      } else if(result.type==='ticket_search') {
+        p.textContent=result.data.length ? 'Found '+result.data.length+' existing ticket(s)'+(result.query ? ' for '+result.query : '')+': '+result.data.slice(0,8).map(t=>'#'+t.ticket_number+' '+t.title+' ('+t.status+', '+t.priority+')').join('; ')+'. Ask for the history or status of a ticket number to inspect its authorized timeline.' : 'No matching existing tickets were found in your authorized company scope. I did not create a new ticket.';
+      } else if(result.type==='tickets'){
         p.textContent=result.data.length ? 'Found '+result.data.length+' ticket(s) in your authorized organization scope: '+result.data.slice(0,5).map(t=>'#'+t.ticket_number+' '+t.title+' ('+t.status+')').join('; ') : 'No tickets were found in your authorized organization scope.';
       } else if(result.type==='ticket') {
         p.textContent='Ticket #'+result.data.ticket_number+' was saved successfully: '+result.data.title+'.';
