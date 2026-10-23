@@ -408,3 +408,26 @@ Saved drafts must be access-controlled and scoped to the correct user, organizat
 - Touch, keyboard, accessibility, responsive layout, and error states are tested.
 - Reusable components are used across workflows where appropriate.
 - Implementation status remains explicit; this specification alone does not prove that any of these interactions are live.
+
+
+## 20. Information architecture decision: Transformation Studio lives inside Marketplace
+
+**Placement decision:** The Customer Transformation Studio is a guided experience within the Marketplace, not a separate top-level destination alongside Marketplace.
+
+The Marketplace is the customer-facing umbrella for discovery and purchasing. Its primary areas should include:
+- **Browse Marketplace:** explore products, services, modules, and available add-ons.
+- **Compare options:** compare supported products, plans, transition approaches, capabilities, exclusions, terms, and verified costs.
+- **Customer Transformation Studio:** guided assessment and planning experience embedded within Marketplace, helping a customer describe their current environment, goals, workloads, constraints, and preferred transition; explore options; build a proposed target state; and prepare a transparent plan.
+- **Purchase Studio:** review recent purchases, orders, subscription terms, renewals, order changes, applicable return/refund/cancellation policies, and executive financial reports.
+- **Migration planning and progress:** plan and track migration only where the relevant capabilities are implemented, authorized, and supported.
+- **Saved Work:** resume eligible Marketplace assessments, comparisons, configurations, draft orders, and migration plans.
+
+### Customer journey
+Marketplace → choose **Customer Transformation Studio** → complete or save the guided assessment → compare options and review details → prepare/save a proposal → review verified pricing and terms → proceed to purchase or an approved implementation/migration workflow.
+
+The user must be able to return to the Marketplace or parent step, view more details, save and exit, and resume later. Completing the Studio assessment does not itself purchase a product, approve a contract, connect production systems, or start migration.
+
+### Naming and navigation
+Use “Marketplace” as the main navigation destination. Present “Customer Transformation Studio” as a clearly labeled area/tool within it, alongside browsing, comparison, Purchase Studio, and Saved Work. Keep shared touch-first navigation and save/resume behavior consistent with section 19. Avoid duplicate or competing top-level entries that make the Studio appear to be a separate product.
+
+This is a documented information-architecture decision. It does not establish that the navigation has been implemented in the actual website.
