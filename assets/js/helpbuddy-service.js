@@ -96,8 +96,7 @@
       const taskRows = template.tasks.map((task, i) => ({ ticket_id: ticketId, step_number: i + 1, title: task.title, instructions: task.instructions, step_status: 'pending', result: { workflow_run_id: run.data.id } }));
       const stepResult = await db.from('ticket_steps').insert(taskRows);
       if (stepResult.error) throw stepResult.error;
-      const update = await db.from('tickets').update({ total_steps: taskRows.length, current_step: 1, status: 'in_progress' }).eq('id', ticketId).eq('organization_id', scope.organization_id);
-      if (update.error) throw update.error;
+      // Ticket status remains unchanged until assignment.
     }
     await writeAudit('workflow.started', 'workflow_run', run.data.id, { key, ticketId: ticketId || null, version: workflow.version || 1 });
     return { workflow, run: run.data, tasks: template.tasks };
