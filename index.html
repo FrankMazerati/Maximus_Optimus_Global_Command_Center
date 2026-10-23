@@ -239,6 +239,29 @@ body{background:linear-gradient(135deg,#f2f9ff 0%,#f8fcff 55%,#eef8ff 100%);colo
 .header.user-header-photo{background-size:cover;background-position:center}
 @media(max-width:560px){.settings-grid{grid-template-columns:1fr}}
 
+
+/* HelpBuddy workspace: conversations, attachments, private notes and internal comments */
+.hbtop .avatar{width:46px;height:46px;overflow:hidden;display:grid;place-items:center;flex-shrink:0}
+.hbtop .avatar img{width:100%;height:100%;object-fit:cover;border-radius:inherit}
+.mini-setting{display:block;margin-top:5px;border:1px solid var(--line);border-radius:7px;padding:4px 7px;background:#f2f9ff;color:var(--blue);font-size:10px}
+.hb-tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px;margin:12px 0 8px}
+.hb-tabs button,.hb-composer-tools button{border:1px solid var(--line);border-radius:8px;background:#fff;padding:8px 4px;font-size:10px;color:var(--ink)}
+.hb-tabs button.active,.hb-composer-tools button.active{background:#e6f3ff;border-color:#1977d2;color:#063a73;font-weight:800}
+.hb-workspace{border:1px solid var(--line);border-radius:10px;padding:10px;margin-bottom:12px;background:#fbfeff}
+.hb-workspace h3{margin:0 0 7px;font-size:13px}.hb-workspace p{font-size:11px;line-height:1.45}
+.hb-composer-tools{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:8px}
+.hb-message-list{display:flex;flex-direction:column;gap:8px;max-height:220px;overflow:auto;margin-bottom:8px}
+.hb-message{padding:9px;border-radius:9px;background:#edf6fd;font-size:11px}.hb-message p{margin:4px 0 0}.hb-message.user{background:#e8f6ef;align-self:flex-end;max-width:94%}
+.hb-composer{display:flex;gap:6px;align-items:stretch;margin-top:8px}.hb-composer textarea,.hb-composer input,.hb-workspace>textarea{min-width:0;flex:1;width:100%;border:1px solid var(--line);border-radius:8px;padding:9px;font:inherit;font-size:11px}
+.hb-composer select{max-width:48%;min-width:0;font-size:10px;border:1px solid var(--line);border-radius:8px}
+.hb-composer .primary{font-size:11px;padding:8px}
+.hb-pending-files,.hb-note-list{display:flex;flex-direction:column;gap:6px;margin:8px 0}
+.hb-file,.hb-note{padding:8px;border:1px solid var(--line);border-radius:8px;background:#fff;font-size:10px;overflow-wrap:anywhere}
+.hb-file button{margin-left:8px}.hb-attach-picker{padding:8px;background:#f2f9ff;border-radius:8px;font-size:10px}
+.hb-attach-picker label{display:block;font-weight:700;margin-bottom:6px}.hb-attach-picker input{max-width:100%}
+.hb-status{font-size:10px;color:var(--muted);margin-top:7px;line-height:1.4}
+@media(max-width:560px){.hb-tabs{grid-template-columns:repeat(2,minmax(0,1fr))}.hb-composer{flex-wrap:wrap}.hb-composer textarea{flex-basis:100%}}
+
 </style>
 </head>
 <body>
@@ -307,7 +330,12 @@ body{background:linear-gradient(135deg,#f2f9ff 0%,#f8fcff 55%,#eef8ff 100%);colo
 <section class="block"><h2>QUICK MENU</h2><div class="quick"><button><b>Create Ticket</b><small>New incident or request</small></button><button><b>Request Access</b><small>Security checkpoint</small></button><button><b>Schedule Meeting</b><small>IntelliCalendar</small></button><button><b>Open IntelliChat</b><small>Team communication</small></button><button><b>Start War Room</b><small>Critical response</small></button></div></section>
 <footer class="footer">IntelliStack Systems • Maximus Optimus Global Command Center • System Status • Security • Support</footer>
 </div></main>
-<section class="panel helppanel"><div class="help-inner"><div class="hbtop"><div class="avatar">HB</div><div><b>SECTION 6 — HelpBuddy</b><small>Workflow companion • role-aware assistance</small></div><span class="ready">● READY</span></div><div class="prompt"><b>Active ticket: INC-1048</b><br>HelpBuddy has organized the required authorization checkpoint first. You can continue authorized work while approval is pending.</div><a class="attachment" href="#">📎 Attach ticket / document / screenshot</a><div class="hbscroll">
+<section class="panel helppanel"><div class="help-inner"><div class="hbtop"><div class="avatar"><img id="helpBuddyAvatar" src="helpbuddy.png" alt="HelpBuddy assistant portrait" onerror="this.style.display='none';this.parentElement.textContent='HB'"></div><div><b>SECTION 6 — HelpBuddy</b><small>Workflow companion • role-aware assistance</small><button type="button" id="customizeHelpBuddy" class="mini-setting">⚙ Customize HelpBuddy</button></div><span class="ready">● READY</span></div>
+ <div class="hb-tabs" role="tablist" aria-label="HelpBuddy workspace"><button class="active" data-hbtab="conversation">Message</button><button data-hbtab="attachments">Attachments</button><button data-hbtab="notes">Notes</button><button data-hbtab="internal">Internal comments</button></div>
+ <section class="hb-workspace" id="hbConversation"><div class="hb-composer-tools"><button type="button" id="hbTextMode" class="active">▤ Text</button><button type="button" id="hbVoiceMode">🎙 Voice</button><button type="button" id="hbToggleAttachments">📎 Attachments</button></div><div class="hb-message-list" id="hbMessageList" aria-live="polite"><div class="hb-message assistant"><b>HelpBuddy</b><p>I can guide the workflow, keep notes, help coordinate approvals, and organize the next steps. Choose a communication mode below.</p></div></div><div id="hbPendingFiles" class="hb-pending-files"></div><div class="hb-attach-picker" id="hbAttachPicker" hidden><label for="hbFileInput">Attach files to this HelpBuddy conversation</label><input id="hbFileInput" type="file" multiple><small>Demo only: selected filenames are shown locally. Secure upload, malware scanning and shared storage are not connected.</small></div><div class="hb-composer"><textarea id="hbMessageDraft" rows="2" placeholder="Message HelpBuddy…"></textarea><button type="button" class="primary" id="hbSendMessage">Send</button></div><div id="hbVoiceStatus" class="hb-status" aria-live="polite">Voice input requires browser speech-recognition support and microphone permission.</div></section>
+ <section class="hb-workspace" id="hbAttachments" hidden><h3>Ticket & conversation attachments</h3><p>Keep screenshots, logs, documents and other evidence associated with the selected ticket and conversation.</p><input type="file" id="hbStandaloneFiles" multiple><div id="hbAttachmentList" class="hb-note-list"></div><small>Files remain in this browser demo; there is no server upload or scan service yet.</small></section>
+ <section class="hb-workspace" id="hbNotes" hidden><h3>HelpBuddy working notes</h3><p>Personal working notes and next steps for this ticket. These are not sent to the end user.</p><textarea id="hbNotesDraft" rows="4" placeholder="Add private working notes…"></textarea><div class="hb-composer"><input id="hbNoteTitle" placeholder="Note title"><button type="button" class="primary" id="hbSaveNote">Save note</button></div><div id="hbNotesList" class="hb-note-list"></div></section>
+ <section class="hb-workspace" id="hbInternal" hidden><h3>Internal team comments</h3><p><b>Internal only — not visible to the end user.</b> Use this for technician handoffs, troubleshooting details, security context, and team coordination. Do not place customer-facing replies here.</p><textarea id="hbInternalDraft" rows="3" placeholder="Add an internal ticket comment…"></textarea><div class="hb-composer"><select id="hbInternalAudience" aria-label="Internal comment audience"><option>Assigned team</option><option>Help Desk only</option><option>IT administrators</option><option>Security team</option><option>Managers</option></select><button type="button" class="primary" id="hbSaveInternal">Add internal comment</button></div><div id="hbInternalList" class="hb-note-list"></div></section><div class="prompt"><b>Active ticket: INC-1048</b><br>HelpBuddy has organized the required authorization checkpoint first. You can continue authorized work while approval is pending.</div><a class="attachment" href="#">📎 Attach ticket / document / screenshot</a><div class="hbscroll">
 <div class="hb-card"><h3>8-CHECKPOINT TICKET PLAN</h3>
 <div class="hbitem"><b>1. Security Access Approval</b><span class="stars">★★★★★</span><small>Required Active Directory permission. Manager approval is the first checkpoint.</small><div class="hbactions"><button class="primary">Request Approval</button><button>View Manager</button></div></div>
 <div class="hbitem"><b>2. Verify User Identity</b><span class="stars">★★★★☆</span><small>Confirm Global ID, Company ID and authorization scope.</small></div>
@@ -505,6 +533,35 @@ document.getElementById('newShortcut').addEventListener('keydown',e=>{if(e.key==
  });
 })();
 /* Touch-friendly move controls complement drag-and-drop for tablet users. */
+
+
+/* HelpBuddy local prototype interactions. Private/internal records are separated from user-facing messages. */
+(function(){
+ const $=id=>document.getElementById(id);
+ const storage={messages:'hbDemoMessages',notes:'hbDemoNotes',internal:'hbDemoInternal',files:'hbDemoFileNames'};
+ function read(key){try{return JSON.parse(localStorage.getItem(key)||'[]')}catch(e){return []}}
+ function write(key,val){localStorage.setItem(key,JSON.stringify(val))}
+ function esc(v){return String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+ function setTab(name){document.querySelectorAll('[data-hbtab]').forEach(b=>b.classList.toggle('active',b.dataset.hbtab===name));[['conversation','hbConversation'],['attachments','hbAttachments'],['notes','hbNotes'],['internal','hbInternal']].forEach(([k,id])=>$(id).hidden=k!==name)}
+ document.querySelectorAll('[data-hbtab]').forEach(b=>b.addEventListener('click',()=>setTab(b.dataset.hbtab)));
+ const profileSettings=$('profileSettingsModal');
+ $('customizeHelpBuddy')?.addEventListener('click',()=>{if(profileSettings){profileSettings.classList.add('open');const title=$('profileSettingsTitle');if(title)title.textContent='Customize HelpBuddy';const note=profileSettings.querySelector('p');if(note)note.textContent='HelpBuddy appearance can be customized in AI Assistant Studio. Use the Studio for avatar, outfit, background, voice, language and expression settings. This panel is a shortcut to the current profile settings; the dedicated AI Assistant Studio is the full customization experience.';}});
+ let files=[];
+ $('hbToggleAttachments')?.addEventListener('click',()=>{$('hbAttachPicker').hidden=!$('hbAttachPicker').hidden;});
+ $('hbFileInput')?.addEventListener('change',e=>{files=[...files,...[...e.target.files].map(f=>({name:f.name,size:f.size,type:f.type}))];paintFiles();});
+ function paintFiles(){ $('hbPendingFiles').innerHTML=files.map((f,i)=>'<div class="hb-file">📎 '+esc(f.name)+' · '+Math.max(1,Math.round(f.size/1024))+' KB <button type="button" data-remove-file="'+i+'">Remove</button></div>').join('');$('hbPendingFiles').querySelectorAll('[data-remove-file]').forEach(b=>b.onclick=()=>{files.splice(+b.dataset.removeFile,1);paintFiles()})}
+ function paintMessages(){const host=$('hbMessageList'),arr=read(storage.messages);host.innerHTML='<div class="hb-message assistant"><b>HelpBuddy</b><p>Guided workflow companion. Current messages are saved locally in this browser demo.</p></div>'+arr.map(m=>'<div class="hb-message '+(m.from==='You'?'user':'assistant')+'"><b>'+esc(m.from)+' · '+esc(m.time)+'</b><p>'+esc(m.text)+'</p>'+(m.files?.length?'<small>Attachments: '+m.files.map(f=>esc(f.name)).join(', ')+'</small>':'')+'</div>').join('');host.scrollTop=host.scrollHeight}
+ $('hbSendMessage')?.addEventListener('click',()=>{const text=$('hbMessageDraft').value.trim();if(!text&&!files.length)return;const arr=read(storage.messages);arr.push({from:'You',text:text||'Shared attachment(s)',time:new Date().toLocaleString(),files:files.map(f=>({name:f.name,type:f.type,size:f.size}))});write(storage.messages,arr);$('hbMessageDraft').value='';files=[];paintFiles();$('hbFileInput').value='';paintMessages();$('hbVoiceStatus').textContent='Message saved in this browser demo. It has not been delivered to another user.'});
+ $('hbTextMode')?.addEventListener('click',()=>{$('hbTextMode').classList.add('active');$('hbVoiceMode').classList.remove('active');$('hbMessageDraft').placeholder='Message HelpBuddy…';$('hbVoiceStatus').textContent='Text mode selected.'});
+ $('hbVoiceMode')?.addEventListener('click',()=>{ $('hbVoiceMode').classList.add('active');$('hbTextMode').classList.remove('active');const SR=window.SpeechRecognition||window.webkitSpeechRecognition;if(!SR){$('hbVoiceStatus').textContent='Voice input is not supported by this browser. You can still type a message.';return}try{const rec=new SR();rec.lang='en-US';rec.interimResults=false;rec.onresult=e=>{$('hbMessageDraft').value=($('hbMessageDraft').value+' '+e.results[0][0].transcript).trim();$('hbVoiceStatus').textContent='Voice input captured. Review the text before sending.'};rec.onerror=()=>{$('hbVoiceStatus').textContent='Microphone unavailable or permission denied. You can type instead.'};rec.start();$('hbVoiceStatus').textContent='Listening for speech…'}catch(e){$('hbVoiceStatus').textContent='Could not start voice input in this browser. Type your message instead.'}});
+ function paintNotes(){ $('hbNotesList').innerHTML=read(storage.notes).map(n=>'<article class="hb-note"><b>'+esc(n.title||'Working note')+'</b><small> · '+esc(n.time)+'</small><p>'+esc(n.text)+'</p><button data-delete-note="'+n.id+'">Archive</button></article>').join('');$('hbNotesList').querySelectorAll('[data-delete-note]').forEach(b=>b.onclick=()=>{write(storage.notes,read(storage.notes).filter(n=>n.id!==b.dataset.deleteNote));paintNotes()})}
+ $('hbSaveNote')?.addEventListener('click',()=>{const text=$('hbNotesDraft').value.trim();if(!text)return;const arr=read(storage.notes);arr.unshift({id:String(Date.now()),title:$('hbNoteTitle').value.trim()||'Working note',text,time:new Date().toLocaleString()});write(storage.notes,arr);$('hbNotesDraft').value='';$('hbNoteTitle').value='';paintNotes()});
+ function paintInternal(){ $('hbInternalList').innerHTML=read(storage.internal).map(n=>'<article class="hb-note"><b>INTERNAL ONLY · '+esc(n.audience)+'</b><small> · '+esc(n.time)+'</small><p>'+esc(n.text)+'</p></article>').join('')}
+ $('hbSaveInternal')?.addEventListener('click',()=>{const text=$('hbInternalDraft').value.trim();if(!text)return;const arr=read(storage.internal);arr.unshift({text,audience:$('hbInternalAudience').value,time:new Date().toLocaleString()});write(storage.internal,arr);$('hbInternalDraft').value='';paintInternal()});
+ function paintAttachments(){const arr=read(storage.files);$('hbAttachmentList').innerHTML=arr.map((f,i)=>'<div class="hb-file">📎 '+esc(f.name)+' <small>· '+esc(f.time)+'</small> <button data-remove-attachment="'+i+'">Remove</button></div>').join('');$('hbAttachmentList').querySelectorAll('[data-remove-attachment]').forEach(b=>b.onclick=()=>{const list=read(storage.files);list.splice(+b.dataset.removeAttachment,1);write(storage.files,list);paintAttachments()})}
+ $('hbStandaloneFiles')?.addEventListener('change',e=>{const arr=read(storage.files);[...e.target.files].forEach(f=>arr.push({name:f.name,time:new Date().toLocaleString(),size:f.size,type:f.type}));write(storage.files,arr);paintAttachments();e.target.value=''});
+ paintMessages();paintNotes();paintInternal();paintAttachments();
+})();
 
 </script><script>
 (function(){
