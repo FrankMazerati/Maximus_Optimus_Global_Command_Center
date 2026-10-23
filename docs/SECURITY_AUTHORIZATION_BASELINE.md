@@ -9,19 +9,18 @@ Project ref: `odgahlgnvhpluapfhlpt`
 - 70 RLS policies were verified across those tables.
 - Supabase security advisor returned no findings after policy setup and helper-function hardening.
 - Authorization helper functions live in the non-exposed `private` schema, not the public REST API schema.
-- Policies scope organization-owned records through the authenticated profile and active tenant memberships.
-- Role permissions are checked separately from organization membership.
+- Organization-scoped reads require both membership and the appropriate permission; write paths use separate permission-gated policies.
+- MSP client access is allowed only for an active, approved, unexpired client assignment, and `private.has_permission` checks the requested permission against that assignment's explicit scope array.
+- MSP users do not gain general access to customer profiles, departments, work items, workflows, change requests or approvals merely because they have a client assignment.
 - Audit events and ticket history have no client update/delete policies.
 - App settings have no client write policy.
 - Sensitive operations such as group changes, device management, cyber incident management, vulnerability remediation, approvals and change approvals require specific permissions.
-- MSP access is represented by 78 approved, time-bounded client assignments. Each assignment includes an explicit permission-scope array and a 30-day expiry. The authorization helper checks both the active assignment and the requested permission against that scope.
+- 78 MSP assignments are approved and time-bounded for synthetic testing. Assignment creation, approval, expiry and revocation still require an audited server-side workflow; clients cannot directly insert or update assignment rows.
 - No broad anonymous access policy was created.
 
 ## Important limits
 
 The RLS policies are a baseline, not a claim that every workflow is production-ready. There are currently no Supabase Auth user accounts created by the synthetic seed; the profile rows are test data only. The policy model must be validated using real authenticated test users before the frontend relies on it.
-
-The MSP has its own organization and 200 synthetic staff profiles. MSP access is limited to assigned customer organizations and permission scopes while the assignment remains approved and unexpired. Assignment creation, approval, expiry and revocation still need to be exposed through an audited server-side workflow; clients cannot directly insert or update assignment rows.
 
 The performance advisor currently reports informational unused-index findings because the dataset has not yet been exercised by representative frontend queries. Reassess query plans after integration; this is not a claim of zero performance work remaining.
 
