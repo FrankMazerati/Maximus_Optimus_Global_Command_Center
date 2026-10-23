@@ -11,15 +11,10 @@ This is a synthetic development/test environment. Company names Microsoft, Amazo
 ## Target organizations
 
 - IntelliStack Systems, Incorporated — 500 employee profiles plus 6 pre-existing contractor profiles in the IntelliStack organization.
-- Microsoft (Synthetic Test Tenant) — 200 profiles.
-- Amazon (Synthetic Test Tenant) — 200 profiles.
-- Google (Synthetic Test Tenant) — 200 profiles.
-- Facebook (Synthetic Test Tenant) — 200 profiles.
-- Tesla (Synthetic Test Tenant) — 200 profiles.
-- Harborstone Manufacturing (Synthetic Test Tenant) — 200 profiles.
-- Northbridge Managed Services (Synthetic MSP) — 200 profiles.
+- Microsoft, Amazon, Google, Facebook, Tesla and Harborstone Manufacturing — 200 profiles each as six synthetic customer tenants.
+- Northbridge Managed Services — 200 synthetic MSP profiles.
 
-The six customer tenants are Microsoft, Amazon, Google, Facebook, Tesla, and Harborstone Manufacturing. Northbridge is a separate MSP service-provider organization. Three older small demo tenants (Northstar Property Group, BluePeak Logistics, Cedarstone Advisory) remain intact for backward compatibility; they were not deleted.
+Three older small demo tenants (Northstar Property Group, BluePeak Logistics, Cedarstone Advisory) remain intact for backward compatibility; they were not deleted.
 
 ## Verified record counts
 
@@ -76,12 +71,13 @@ The core eight target organizations were individually checked: IntelliStack has 
 - `20261023055524_optimize_enterprise_rls_and_indexes`
 - `20261023055630_complete_asset_hierarchy_and_msp_scope`
 - `20261023055653_enforce_explicit_msp_permission_scopes`
+- `20261023055758_tighten_msp_cross_tenant_rls_scopes`
 
 ## Still required before the environment is application-ready
 
 - Link selected synthetic profiles to dedicated Supabase Auth test users or implement a server-side-only Explorer preview. Synthetic profiles are not login accounts.
 - Test actual authenticated queries and cross-tenant denial using controlled test identities.
-- Test the MSP scope array enforcement and assignment expiry/revocation through authenticated API tests.
+- Test MSP access for allowed permissions, out-of-scope permissions, unassigned clients, and expired/revoked assignments.
 - Implement and test approval state transitions, ticket dispatch atomicity, immutable audit writes, and workflow lifecycle logic.
 - Verify the frontend's Supabase project URL and publishable key; never put service-role secrets in client code.
 - Verify the current Vercel project, deployment branch and deployed commit.
