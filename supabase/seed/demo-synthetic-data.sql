@@ -4,13 +4,13 @@
 -- Requires the ticket-number sequence migration first. No real people or credentials.
 
 insert into public.organizations (name, legal_name, organization_type, slug, status, settings)
-values ('DEMO — IntelliStack Systems Lab', 'DEMO — IntelliStack Systems Lab', 'demo', 'demo-intellistack-lab', 'active', '{"synthetic":true,"environment":"demo"}'::jsonb)
+values ('DEMO — IntelliStack Systems Lab', 'DEMO — IntelliStack Systems Lab', 'company', 'demo-intellistack-lab', 'active', '{"synthetic":true,"environment":"demo"}'::jsonb)
 on conflict (slug) do update set name=excluded.name, legal_name=excluded.legal_name, settings=excluded.settings;
 
 insert into public.tenants (organization_id, name, slug, status, settings)
 select o.id, 'DEMO Tenant Alpha', 'demo-tenant-alpha', 'active', '{"synthetic":true}'::jsonb
 from public.organizations o where o.slug='demo-intellistack-lab'
-on conflict (slug) do update set name=excluded.name, organization_id=excluded.organization_id, settings=excluded.settings;
+on conflict (organization_id, slug) do update set name=excluded.name, settings=excluded.settings;
 
 insert into public.devices (id, organization_id, tenant_id, device_name, device_type, manufacturer, model, operating_system, os_version, management_source, inventory)
 select ('10000000-0000-4000-8000-' || lpad(to_hex(n),12,'0'))::uuid, o.id, t.id,
