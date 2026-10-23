@@ -260,3 +260,10 @@ Track: assessment completion and abandonment; percentage of facts with source ev
 ---
 
 **Decision requested:** Approve this as the product design baseline for the Customer Transformation Studio and Migration Center. Implementation, production connectors, live mailbox migration, final pricing, and commercial tiers require separate technical validation and authorization.
+
+
+---
+
+## 17. Continuous idea-to-artifact updates
+
+The Transformation Studio is governed by the project-wide [Continuous Idea-to-Artifact Update Protocol](../idea-management/CONTINUOUS_IDEA_TO_ARTIFACT_PROTOCOL.md). New substantive ideas must be captured in the Idea Ledger and reflected across relevant founder/personal knowledge, business knowledge, financial assumptions, product/technical knowledge, talking points, and the relevant interface/design artifact. Track status honestly; a written spec does not mean the interface implementation has changed. Link records and verify updates. Do not merge or deploy without explicit approval.
