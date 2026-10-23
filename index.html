@@ -276,6 +276,10 @@ document.getElementById('navSearch').addEventListener('input',e=>renderNav(e.tar
         p.textContent=result.data.length ? 'Found '+result.data.length+' ticket(s) in your authorized organization scope: '+result.data.slice(0,5).map(t=>'#'+t.ticket_number+' '+t.title+' ('+t.status+')').join('; ') : 'No tickets were found in your authorized organization scope.';
       } else if(result.type==='ticket') {
         p.textContent='Ticket #'+result.data.ticket_number+' was saved successfully: '+result.data.title+'.';
+      } else if(result.type==='ticket_workflow') {
+        p.textContent='Ticket #'+result.ticket.ticket_number+' and workflow run saved: '+result.data.workflow.name+'. '+result.data.tasks.length+' remediation steps are ready. Approval-requiring steps remain pending until an authorized approver acts.';
+      } else if(result.type==='ticket_workflow_partial') {
+        p.textContent='Ticket #'+result.ticket.ticket_number+' was saved, but the workflow could not be started: '+result.error+'. The ticket remains in the queue for follow-up.';
       } else if(result.type==='workflow') {
         p.textContent='Workflow run saved: '+result.data.workflow.name+'. '+result.data.tasks.length+' remediation steps are ready. Approval-requiring steps must remain pending until an authorized approver acts.';
       } else p.textContent=result.message || 'Request processed.';
