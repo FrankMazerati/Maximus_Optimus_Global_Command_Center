@@ -125,10 +125,10 @@
     async function getMyAuditEvents(limit = 50) {
       const { data: { user }, error: authError } = await client.auth.getUser();
       if (authError || !user) throw new Error('Sign in to view the HelpBuddy audit ledger.');
-      const { data: profile, error: profileError } = await client.from('profiles').select('id').eq('auth_user_id', user.id).maybeSingle();
+      const { data: profile, error: profileError } = await client.from('profiles').select('id,organization_id').eq('auth_user_id', user.id).maybeSingle();
       if (profileError) throw profileError;
       if (!profile) throw new Error('No employee profile is linked to this account.');
-      const { data, error } = await client.from('audit_events').select('action,target_type,target_id,outcome,source,details,occurred_at').eq('actor_profile_id', profile.id).order('occurred_at', { ascending: false }).limit(Math.max(1, Math.min(Number(limit) || 50, 100)));
+      const { data, error } = await client.from('audit_events').select('action,target_type,target_id,outcome,source,details,occurred_at,actor_profile_id').eq('organization_id', profile.organization_id).order('occurred_at', { ascending: false }).limit(Math.max(1, Math.min(Number(limit) || 50, 100)));
       if (error) throw error;
       return data || [];
     }
