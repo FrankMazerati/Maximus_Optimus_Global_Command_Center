@@ -1,5 +1,5 @@
 {
-  "version": "2026-10-20.2",
+  "version": "2026-10-23.1",
   "label": "Global Navigation",
   "behavior": {
     "hamburgerAtTop": true,
@@ -14,6 +14,7 @@
     "calendar-meeting",
     "join-meeting",
     "favorites",
+    "marketplace",
     "tickets",
     "ticket-situation-simulator",
     "follow-ups-sla-compliance",
@@ -30,12 +31,37 @@
     "intellisphere",
     "global-command-center",
     "dashboard",
+    "marketplace",
     "help-desk",
     "help-buddy",
     "ticket-situation-simulator",
     "war-room",
     "breakout-rooms",
     "intelli-chat"
+  ],
+  "marketplace": [
+    "marketplace-home",
+    "all-products",
+    "services",
+    "security",
+    "network",
+    "help-desk",
+    "business-operations",
+    "workforce",
+    "ai-automation",
+    "data-intelligence",
+    "productivity",
+    "infrastructure",
+    "packages",
+    "deals",
+    "compare-products",
+    "cost-calculator",
+    "my-stack",
+    "my-subscriptions",
+    "my-orders",
+    "saved-items",
+    "marketplace-help",
+    "marketplace-pricing-admin"
   ],
   "securityOperations": [
     "threat-matrix",
@@ -67,7 +93,8 @@
     "maximus-ai",
     "optimus-ai",
     "intelli-search",
-    "ai-workbench"
+    "ai-workbench",
+    "intellistack-ai-studio"
   ],
   "platform": [
     "system-integrations",
@@ -146,6 +173,7 @@
     "returnNavigation": "Record detail provides a back action to return to the originating list.",
     "sla": "Live SLA countdowns must be calculated from actual policy and timestamps when backend data is connected.",
     "permissions": "Record fields and actions must respect role and tenant authorization.",
-    "quickPicks": "Right rail shortcuts are user-customizable and may grow and scroll independently."
+    "quickPicks": "Right rail shortcuts are user-customizable and may grow and scroll independently.",
+    "marketplace": "Marketplace navigation is driven by this manifest. Catalog and price data come from Supabase. Checkout, subscriptions, and provisioning must remain unavailable until their server-side workflows and payment provider are configured."
   }
 }
