@@ -127,8 +127,24 @@
     const text = String(prompt || '').trim();
     if (!text) throw new Error('Enter a request for HelpBuddy.');
     if (/list|show|open|my tickets|ticket queue/i.test(text)) return { type: 'tickets', data: await listTickets({}) };
-    if (/vpn|network connection/i.test(text)) return { type: 'workflow', data: await createWorkflowRun('vpn_failure') };
-    if (/access request|account access|onboard user/i.test(text)) return { type: 'workflow', data: await createWorkflowRun('account_access') };
+    if (/vpn|network connection/i.test(text)) {
+      const ticket = await createTicket({ title: 'VPN connectivity failure', description: text, category: 'Network', priority: 'high', tasks: WORKFLOWS.vpn_failure.tasks });
+      try {
+        const workflow = await createWorkflowRun('vpn_failure', ticket.id);
+        return { type: 'ticket_workflow', ticket, data: workflow };
+      } catch (error) {
+        return { type: 'ticket_workflow_partial', ticket, error: error && error.message ? error.message : 'Workflow creation failed.' };
+      }
+    }
+    if (/access request|account access|onboard user/i.test(text)) {
+      const ticket = await createTicket({ title: 'Account access request', description: text, category: 'Identity', priority: 'medium', tasks: WORKFLOWS.account_access.tasks });
+      try {
+        const workflow = await createWorkflowRun('account_access', ticket.id);
+        return { type: 'ticket_workflow', ticket, data: workflow };
+      } catch (error) {
+        return { type: 'ticket_workflow_partial', ticket, error: error && error.message ? error.message : 'Workflow creation failed.' };
+      }
+    }
     if (/create ticket|new ticket/i.test(text)) {
       const title = text.replace(/^(please\s+)?(create|open|new)\s+(a\s+)?ticket\s*(for|about|:)?\s*/i, '').trim();
       if (title.length < 4) throw new Error('Tell me what the ticket is about, for example: “Create ticket for VPN failure”.');
