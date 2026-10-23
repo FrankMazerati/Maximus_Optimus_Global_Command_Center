@@ -115,6 +115,7 @@
     await loadOrgResources();
     await refreshCounts();
     await searchTickets('');
+    await loadAccessRequests();
   }
 
   async function loadOrgResources() {
