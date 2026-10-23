@@ -1,0 +1,18 @@
+name: Ticket lifecycle acceptance contract
+on:
+  push:
+    branches: [rebuild/full-command-center-experience]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  static-contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: node scripts/validate-ticket-lifecycle.mjs
+      - run: node scripts/acceptance/authenticated-ticket-lifecycle.mjs
