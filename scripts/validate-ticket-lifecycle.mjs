@@ -1,5 +1,6 @@
 import { strict as assert } from 'node:assert';
 import { readFileSync, existsSync } from 'node:fs';
+import vm from 'node:vm';
 const read=p=>{assert.ok(existsSync(p),`Missing required file: ${p}`);return readFileSync(p,'utf8');};
 const lifecycle=read('supabase/migrations/20261023200000_authenticated_test_lab_ticket_lifecycle.sql');
 const permissions=read('supabase/migrations/20261023200500_ticket_role_permissions_escalations.sql');
@@ -7,6 +8,7 @@ const suite=read('scripts/acceptance/authenticated-ticket-lifecycle.mjs');
 const approval=read('supabase/migrations/20261023201000_ticket_approval_gate_and_resolution_guard.sql');
 const service=read('assets/js/ticket-lifecycle-service.js');
 const html=read('index.html');
+for (const match of html.matchAll(/<script(?![^>]*\\bsrc=)[^>]*>([\\s\\S]*?)<\\/script>/gi)) new vm.Script(match[1], { filename: 'index.html:inline-script' });
 for(const token of ['ticket_lifecycle_events','ticket_escalations','acceptance_test_runs','enable row level security','organization_id','tenant_id']) assert.ok(lifecycle.toLowerCase().includes(token.toLowerCase()),`Lifecycle migration missing ${token}`);
 for(const token of ['tickets_update_assignee_or_manager','profile_roles','ticket_steps_update_assignee','ticket_notes_insert_self']) assert.ok(permissions.includes(token),`Permission migration missing ${token}`);
 for(const token of ['ticket_approval_requests','guard_ticket_resolution','decision_reason']) assert.ok(approval.includes(token),`Approval migration missing ${token}`);
