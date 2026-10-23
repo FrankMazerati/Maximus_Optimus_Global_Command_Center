@@ -14,6 +14,7 @@ const ticketSequence = read('supabase/migrations/20261023190500_ticket_number_se
 const accessMigration = read('supabase/migrations/20261023191000_command_center_first_path_rls.sql');
 const workflowMigration = read('supabase/migrations/20261023192000_workflow_scope_policies.sql');
 const stepMigration = read('supabase/migrations/20261023192500_ticket_step_insert_policy.sql');
+const seed = read('supabase/seed/demo-synthetic-data.sql');
 
 assert.match(html, /assets\/js\/supabase-client\.js/, 'Dashboard must load Supabase client');
 assert.match(html, /assets\/js\/auth-gateway\.js/, 'Dashboard must load auth gateway');
@@ -32,4 +33,7 @@ assert.match(ticketSequence, /ticket_number_seq/, 'Ticket creation must have saf
 assert.match(accessMigration, /tickets_insert_requester/, 'Ticket insert must be scoped to requester');
 assert.match(workflowMigration, /workflow_runs_insert_scope/, 'Workflow run insert must be scoped');
 assert.match(stepMigration, /ticket_steps_insert_ticket_scope/, 'Remediation step inserts must be scoped');
+assert.match(seed, /synthetic training record/i, 'Synthetic seed records must be labelled');
+assert.match(seed, /generate_series\(1,25\)/, 'Seed dataset must include repeatable ticket samples');
+assert.match(seed, /on conflict \(organization_id, slug\)/, 'Tenant seed must use the real uniqueness constraint');
 console.log('Command Center static validation passed.');
