@@ -15,14 +15,134 @@
     "join-meeting",
     "favorites",
     "tickets",
+    "follow-ups-sla-compliance",
     "chat-email",
     "global-time"
   ],
-  "identity": ["global-company-id","global-user-id","active-directory","devices"],
-  "coreModules": ["intellisphere","global-command-center","dashboard","help-desk","help-buddy","war-room","breakout-rooms","intelli-chat"],
-  "securityOperations": ["threat-matrix","threat-intelligence","security-center","soc","noc","network-monitoring","infrastructure","endpoint-security","vulnerability-center","identity-security","access-control"],
-  "governance": ["governance-center","compliance","policy-center","checklist-center","workflow-builder","approval-center","audit-log","evidence-vault","sla-governance","risk-register"],
-  "intelligence": ["maximus-ai","optimus-ai","intelli-search","ai-workbench"],
-  "platform": ["system-integrations","api-center","platform-builder","navigation-builder","page-builder","system-status","health-dashboard","analytics","reports","administration"],
-  "account": ["profile-settings","notification-center"]
+  "identity": [
+    "global-company-id",
+    "global-user-id",
+    "active-directory",
+    "devices"
+  ],
+  "coreModules": [
+    "intellisphere",
+    "global-command-center",
+    "dashboard",
+    "help-desk",
+    "help-buddy",
+    "war-room",
+    "breakout-rooms",
+    "intelli-chat"
+  ],
+  "securityOperations": [
+    "threat-matrix",
+    "threat-intelligence",
+    "security-center",
+    "soc",
+    "noc",
+    "network-monitoring",
+    "infrastructure",
+    "endpoint-security",
+    "vulnerability-center",
+    "identity-security",
+    "access-control"
+  ],
+  "governance": [
+    "governance-center",
+    "compliance",
+    "policy-center",
+    "checklist-center",
+    "workflow-builder",
+    "approval-center",
+    "audit-log",
+    "evidence-vault",
+    "sla-governance",
+    "risk-register",
+    "follow-ups-sla-compliance"
+  ],
+  "intelligence": [
+    "maximus-ai",
+    "optimus-ai",
+    "intelli-search",
+    "ai-workbench"
+  ],
+  "platform": [
+    "system-integrations",
+    "api-center",
+    "platform-builder",
+    "navigation-builder",
+    "page-builder",
+    "system-status",
+    "health-dashboard",
+    "analytics",
+    "reports",
+    "administration"
+  ],
+  "account": [
+    "profile-settings",
+    "notification-center"
+  ],
+  "work2uSections": [
+    {
+      "id": "critical",
+      "order": 1,
+      "label": "Critical & time-sensitive",
+      "interaction": "tap-to-list-then-record-detail"
+    },
+    {
+      "id": "history",
+      "order": 2,
+      "label": "My primary work",
+      "interaction": "searchable-ticket-history-and-record-detail"
+    },
+    {
+      "id": "today",
+      "order": 3,
+      "label": "Bring the Work to You",
+      "limit": 30,
+      "interaction": "prioritized-list-and-record-detail"
+    },
+    {
+      "id": "followups",
+      "order": 4,
+      "label": "Follow-Ups & SLA Compliance",
+      "fields": [
+        "ticket",
+        "end-user",
+        "global-id",
+        "company",
+        "department",
+        "device",
+        "application",
+        "owner",
+        "status",
+        "priority",
+        "sla-deadline",
+        "last-contact",
+        "next-action",
+        "history"
+      ],
+      "interaction": "tap-to-list-then-record-detail"
+    },
+    {
+      "id": "schedule",
+      "order": 5,
+      "label": "Next up & scheduled",
+      "interaction": "tap-to-list-then-record-detail"
+    },
+    {
+      "id": "more",
+      "order": 6,
+      "label": "Additional workspaces",
+      "interaction": "authorized-module-entry"
+    }
+  ],
+  "interactionRules": {
+    "sectionNavigation": "Each Work2U section opens its full list; tapping a record opens a detailed view.",
+    "returnNavigation": "Record detail provides a back action to return to the originating list.",
+    "sla": "Live SLA countdowns must be calculated from actual policy and timestamps when backend data is connected.",
+    "permissions": "Record fields and actions must respect role and tenant authorization.",
+    "quickPicks": "Right rail shortcuts are user-customizable and may grow and scroll independently."
+  }
 }
