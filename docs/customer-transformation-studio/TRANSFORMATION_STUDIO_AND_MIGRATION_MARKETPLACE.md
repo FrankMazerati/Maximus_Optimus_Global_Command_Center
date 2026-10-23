@@ -348,3 +348,63 @@ Allow authorized users to filter by date range, business unit, cost center, prod
 The Purchase Studio is ready for a limited pilot only when recent orders and terms match the source of record; month-to-month status is contract-verified; change actions enforce permissions and show the full financial impact before confirmation; return/refund guidance links to the applicable verified policy; report totals distinguish actuals from commitments and estimates; exports are permission-controlled; audit history is complete; tenant isolation is tested; and failures or unavailable integrations are clearly disclosed.
 
 **Related artifacts:** This section must be cross-linked in the Idea Ledger and the continuous idea-to-artifact protocol, reflected in finance/commercial guidance and executive talking points, and eventually implemented in the actual Marketplace Purchase Studio interface. This document is a specification only; it does not establish that the UI or commerce actions are implemented.
+
+
+## 19. Foundational touch-first navigation, save-and-resume, and reusable workflow patterns
+
+**Purpose:** Establish a consistent interaction model across the foundational website so users can explore, drill down, compare, configure, purchase, pause, and return without getting lost or losing work. This is a shared platform pattern, not a requirement to design a unique navigation system for every page.
+
+### 19.1 Touch-first progressive navigation
+- Design primary interactions for touch as well as mouse and keyboard, with accessible target sizes, clear labels, readable contrast, and responsive layouts.
+- Let users drill down from a high-level overview into categories, products, services, order details, policies, and supporting evidence without overwhelming the first screen.
+- Keep a clear path back to the prior view, a way to exit or close the current task, and a clearly labeled next/continue action when a next step exists.
+- Use breadcrumbs or equivalent location context for deeper paths. Preserve the user's filters, selections, and scroll/context where practical when navigating back.
+- Make actions distinct: **Back** returns to the previous step; **Exit** leaves the workflow; **Save and exit** preserves the draft before leaving; **Continue** moves forward; **View details** opens supporting information; **Purchase/Submit** identifies a consequential action and requires a clear review/confirmation step.
+- Do not make browser back the only way to navigate, and do not create dead ends. A user should be able to return to the parent level or dashboard.
+- Keep help, policy, cost, and capability-status details available in context without forcing the user to abandon their current task.
+
+### 19.2 Save and exit / resume later
+Any meaningful multi-step workflow should support saving a draft when the workflow or data type allows it, including Studio intake, proposed architecture, Marketplace comparison, order change, migration plan, knowledge onboarding, and other substantial configurations.
+
+The shared pattern should include:
+1. **Save and continue** where the user wants to preserve progress without leaving.
+2. **Save and exit / Save for later** with a clear explanation that the current work is saved as a draft and has not necessarily been submitted, purchased, approved, or executed.
+3. **Resume later** from a dashboard or a clearly labeled Saved work / Drafts area.
+4. **Reopen and modify** the saved configuration before final submission or approval.
+5. **Last saved** timestamp and save state (saving, saved, or save failed).
+6. Recovery guidance if saving fails, the session expires, connectivity is lost, or a conflicting version is edited elsewhere.
+7. A clear distinction between draft data and committed system-of-record changes.
+
+Use autosave only where technically appropriate and reliable. For consequential actions, require an explicit review and confirmation even if the draft itself autosaves. Never say the work is saved unless the persistence layer confirms it. If saving is unavailable for a specific step, explain that limitation before the user leaves and offer a safe alternative where possible.
+
+### 19.3 Shared components to reduce design and implementation burden
+Build and maintain a small shared workflow design system instead of separately reinventing every page. Candidate reusable patterns:
+- Page shell and consistent header/navigation.
+- Breadcrumbs and back/exit/continue action bar.
+- Save-status indicator and Save & Exit control.
+- Draft list, resume card, and discard-draft confirmation.
+- Stepper/progress indicator for multi-step workflows.
+- Detail drawer or drill-down page with return-to-context behavior.
+- Compare/select panel and itemized price summary.
+- Review-before-submit/purchase confirmation.
+- Inline help, policy/source links, status labels, and empty/error/loading states.
+- Responsive touch controls, accessible form fields, validation, and unsaved-change warnings.
+
+Use these components across the Transformation Studio, Marketplace Purchase Studio, product catalog, onboarding, configuration, migration planning, and other multi-step flows. The goal is a consistent foundation that supports many ideas with fewer unique UI elements and less repeated documentation.
+
+### 19.4 User journeys and financial/operational safety
+A user exploring more information must not accidentally purchase, activate a connector, change access, modify an order, or start a migration. Separate exploration from commitment. Before any consequential action, show a concise review of scope, price/financial effect, data impact, timing, and reversibility where applicable, then require the appropriate authorization.
+
+Saved drafts must be access-controlled and scoped to the correct user, organization/tenant, and role. Do not expose one customer's saved configurations to another. Define retention and cleanup rules for abandoned drafts, and provide appropriate deletion controls. For shared work, show ownership and handle concurrent edits without silently overwriting another user's changes.
+
+### 19.5 Acceptance criteria
+- Every major view has a clear route back and a clear way to exit.
+- Forward actions are explicit and match the current workflow state.
+- Users can inspect details and return without losing their place or configuration where practical.
+- Eligible multi-step workflows can save, exit, resume, and modify a draft.
+- Save success/failure and last-saved state are truthful and visible.
+- Drafts are not mistaken for submitted orders, approvals, purchases, or executed changes.
+- Interrupted sessions and conflicting edits have tested recovery behavior.
+- Touch, keyboard, accessibility, responsive layout, and error states are tested.
+- Reusable components are used across workflows where appropriate.
+- Implementation status remains explicit; this specification alone does not prove that any of these interactions are live.
