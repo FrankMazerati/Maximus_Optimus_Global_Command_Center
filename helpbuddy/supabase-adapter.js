@@ -75,7 +75,39 @@
       return data || [];
     }
 
-    return Object.freeze({ createWork, listWork, updateWork, addEvent, getEvents });
+    async function getMyProgress() {
+      const { data: { user }, error: authError } = await client.auth.getUser();
+      if (authError || !user) throw new Error('Sign in to view HelpBuddy progress.');
+      const { data: profile, error: profileError } = await client.from('profiles').select('id, organization_id, display_name, job_title').eq('auth_user_id', user.id).maybeSingle();
+      if (profileError) throw profileError;
+      if (!profile) throw new Error('No employee profile is linked to this account.');
+      const { data: balance, error: balanceError } = await client.from('helpbuddy_star_balances').select('total_stars,current_level,updated_at').eq('profile_id', profile.id).maybeSingle();
+      if (balanceError) throw balanceError;
+      const { data: events, error: eventsError } = await client.from('helpbuddy_star_events').select('event_code,source_type,source_id,stars_awarded,details,occurred_at').eq('profile_id', profile.id).order('occurred_at', { ascending: false }).limit(25);
+      if (eventsError) throw eventsError;
+      return { profile, totalStars: balance?.total_stars || 0, level: balance?.current_level || 1, starsToNextLevel: 5 - ((balance?.total_stars || 0) % 5), events: events || [] };
+    }
+
+    async function handoffTicketToPeer(ticketId, targetProfileId, reason, carryoverNotes = '') {
+      if (!ticketId || !targetProfileId || !reason || reason.trim().length < 8) throw new Error('Choose a peer and provide a handoff reason of at least 8 characters.');
+      const { data, error } = await client.rpc('handoff_ticket_to_peer', {
+        p_ticket_id: ticketId,
+        p_target_profile_id: targetProfileId,
+        p_reason: reason.trim(),
+        p_carryover_notes: carryoverNotes.trim()
+      });
+      if (error) throw error;
+      return data;
+    }
+
+    async function getTicketAudit(ticketId) {
+      if (!ticketId) throw new Error('A ticket ID is required.');
+      const { data, error } = await client.from('ticket_history').select('event_type,old_value,new_value,note,occurred_at,actor_profile_id').eq('ticket_id', ticketId).order('occurred_at', { ascending: true });
+      if (error) throw error;
+      return data || [];
+    }
+
+    return Object.freeze({ createWork, listWork, updateWork, addEvent, getEvents, getMyProgress, handoffTicketToPeer, getTicketAudit });
   }
 
   global.HelpBuddySupabase = Object.freeze({ create });
