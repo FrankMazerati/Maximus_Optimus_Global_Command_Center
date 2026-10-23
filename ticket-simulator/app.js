@@ -265,6 +265,66 @@
     }catch(e){globalMessage('Could not add the note: '+(e.message||'Permission or network error'),'error');}
   }
 
+  async function loadAccessRequests() {
+    const [permissionsResult,requestsResult]=await Promise.all([
+      db.from('permissions').select('id,code,name,sensitivity').order('name'),
+      db.from('access_requests').select('id,request_number,organization_id,requester_profile_id,requester_department_id,requested_permission_id,scope_type,justification,business_need,duration_hours,status,approver_profile_id,approval_note,starts_at,ends_at,created_at').eq('organization_id',state.orgId).order('created_at',{ascending:false}).limit(100)
+    ]);
+    const permissionRows=permissionsResult.error?[]:(permissionsResult.data||[]);
+    $('permissionSelect').innerHTML='<option value="">Choose a permission…</option>'+permissionRows.map(p=>'<option value="'+safe(p.code)+'">'+safe(p.name)+' · '+safe(p.sensitivity)+'</option>').join('');
+    const requests=requestsResult.error?[]:(requestsResult.data||[]);
+    if(requestsResult.error){$('accessRequestList').innerHTML='<div class="message error">'+safe(requestsResult.error.message)+'</div>';return;}
+    if(!requests.length){$('accessRequestList').innerHTML='<div class="hint">No access requests are visible in this organization yet.</div>';return;}
+    const permissionById=new Map(permissionRows.map(p=>[p.id,p]));
+    const profileIds=[...new Set(requests.flatMap(r=>[r.requester_profile_id,r.approver_profile_id]).filter(Boolean))];
+    const profilesResult=profileIds.length?await db.from('profiles').select('id,display_name,first_name,last_name,job_title,department_id,manager_profile_id').in('id',profileIds):{data:[]};
+    const profileById=new Map((profilesResult.data||[]).map(p=>[p.id,p]));
+    const canAttemptApproval=['SUPER_ADMIN','IT_ADMIN','TENANT_ADMIN','DEPARTMENT_MANAGER','HELP_DESK_MANAGER','MSP_MANAGER','HR_MANAGER','CISO'].includes(state.role?.code);
+    $('accessRequestList').innerHTML=requests.map(r=>{
+      const p=permissionById.get(r.requested_permission_id);
+      const requester=profileById.get(r.requester_profile_id);
+      const approver=profileById.get(r.approver_profile_id);
+      const own=r.requester_profile_id===state.profile.id;
+      const canAct=canAttemptApproval&&!own&&r.status==='pending';
+      const statusTone=r.status==='approved'?'done':r.status==='denied'||r.status==='expired'?'high':'';
+      return '<article class="ticket"><strong>AR-'+safe(r.request_number)+' · '+safe(p?.name||'Permission')+'</strong><div class="sub">'+safe(requester?.display_name||[requester?.first_name,requester?.last_name].filter(Boolean).join(' ')||'Authorized requester')+' · '+safe(requester?.job_title||'Role title unavailable')+'</div><div class="sub">'+safe(r.scope_type)+' scope · '+safe(r.duration_hours)+' hour(s) · '+safe(shortDate(r.created_at))+'</div><p style="font-size:12px;margin:8px 0">'+safe(r.justification)+'</p>'+(r.business_need?'<div class="sub">Reference: '+safe(r.business_need)+'</div>':'')+'<div class="meta"><span class="pill '+statusTone+'">'+safe(r.status)+'</span><span class="pill">'+safe(p?.sensitivity||'standard')+'</span></div>'+(r.status==='approved'?'<div class="sub">Access expires: '+safe(shortDate(r.ends_at))+'</div>':'')+(approver?'<div class="sub">Decision by: '+safe(approver.display_name||[approver.first_name,approver.last_name].filter(Boolean).join(' '))+'</div>':'')+(r.approval_note?'<div class="sub">Decision note: '+safe(r.approval_note)+'</div>':'')+(canAct?'<div class="actions"><button class="btn primary" data-access-decision="approved" data-request="'+safe(r.id)+'">Approve</button><button class="btn" data-access-decision="denied" data-request="'+safe(r.id)+'">Deny</button></div>':'')+'</article>';
+    }).join('');
+    $('accessRequestList').querySelectorAll('[data-access-decision]').forEach(btn=>btn.addEventListener('click',async()=>{
+      const decision=btn.dataset.accessDecision;
+      const note=window.prompt(decision==='approved'?'Approval note (include any restrictions):':'Reason for denial:');
+      if(note===null)return;
+      btn.disabled=true;
+      try{
+        const {data,error}=await db.rpc('decide_access_request',{p_request_id:btn.dataset.request,p_decision:decision,p_note:note});
+        if(error)throw error;
+        message($('accessRequestMessage'),'Request '+(data.status==='approved'?'approved. Temporary access expires '+shortDate(data.ends_at)+'.':'denied.')+' The decision was recorded in audit history.','ok');
+        await loadAccessRequests();
+      }catch(e){message($('accessRequestMessage'),e.message||'The request could not be decided. The server enforces manager, scope, and privileged-approval rules.','error');btn.disabled=false;}
+    }));
+  }
+
+  async function submitAccessRequest(ev) {
+    ev.preventDefault();
+    const permissionCode=$('permissionSelect').value;
+    const justification=$('accessJustification').value.trim();
+    if(!permissionCode){message($('accessRequestMessage'),'Choose a permission first.','error');return;}
+    if(justification.length<15){message($('accessRequestMessage'),'Add a business justification of at least 15 characters.','error');return;}
+    const submit=$('accessRequestForm').querySelector('button[type="submit"]');
+    submit.disabled=true;
+    try{
+      const {data,error}=await db.rpc('request_access',{
+        p_permission_code:permissionCode,p_scope_type:$('accessScope').value,p_justification:justification,
+        p_business_need:$('accessBusinessNeed').value.trim()||null,p_duration_hours:Number($('accessDuration').value)
+      });
+      if(error)throw error;
+      message($('accessRequestMessage'),'Request AR-'+data.request_id+' submitted for approval. No access is granted until an authorized approver approves it.','ok');
+      $('accessRequestForm').reset();
+      $('accessDuration').value='8';
+      await loadAccessRequests();
+    }catch(e){message($('accessRequestMessage'),e.message||'Could not submit the request.','error');}
+    finally{submit.disabled=false;}
+  }
+
   async function signIn(ev) {
     ev.preventDefault();globalMessage('Signing in…');
     const {error}=await db.auth.signInWithPassword({email:$('email').value.trim(),password:$('password').value});
@@ -280,11 +340,13 @@
   }
 
   $('signInForm').addEventListener('submit',signIn);
+  $('accessRequestForm').addEventListener('submit',submitAccessRequest);
+  $('refreshAccessRequests').addEventListener('click',loadAccessRequests);
   $('signOut').addEventListener('click',async()=>{await db.auth.signOut();state.user=null;state.profile=null;$('app').classList.add('hidden');$('signInPanel').classList.remove('hidden');$('connectionStatus').textContent='Signed out';globalMessage('Signed out securely.');});
   $('previewSteps').addEventListener('click',preview);
   $('scenarioForm').addEventListener('submit',createScenario);
   $('searchForm').addEventListener('submit',ev=>{ev.preventDefault();searchTickets($('ticketSearch').value);});
-  $('orgSelect').addEventListener('change',async()=>{state.orgId=$('orgSelect').value;state.activeTicket=null;state.activeScenario=null;state.activeSession=null;$('activeScenario').classList.add('hidden');await loadOrgResources();await refreshCounts();await searchTickets('');});
+  $('orgSelect').addEventListener('change',async()=>{state.orgId=$('orgSelect').value;state.activeTicket=null;state.activeScenario=null;state.activeSession=null;$('activeScenario').classList.add('hidden');await loadOrgResources();await refreshCounts();await searchTickets('');await loadAccessRequests();});
   $('saveProgress').addEventListener('click',saveProgress);
   $('resolveTicket').addEventListener('click',resolveTicket);
   $('noteForm').addEventListener('submit',addNote);
