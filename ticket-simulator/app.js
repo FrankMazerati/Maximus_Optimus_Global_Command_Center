@@ -163,7 +163,7 @@
     const steps=buildChecklist(problem,$('supportLevel').value);
     const title=$('scenarioTitle').value.trim()||titleFrom(problem);
     const priority=$('priority').value;
-    const environment={category:classify(problem,$('supportLevel').value),impact:priority==='critical'||priority==='high'?'high':'medium',urgency:priority==='critical'||priority==='high'?'high':'medium',affected_service:$('articleSelect').selectedOptions[0]?.textContent||'',submitted_from:'ticket_situation_simulator'};
+    const environment={category:classify(problem,$('supportLevel').value),impact:priority==='critical'||priority==='high'?'high':'medium',urgency:priority==='critical'||priority==='high'?'high':'medium',affected_service:classify(problem,$('supportLevel').value).replace(/_/g,' '),submitted_from:'ticket_situation_simulator'};
     $('createScenario').disabled=true;
     message($('scenarioMessage'),'Creating the ticket, workflow, HelpBuddy checklist, and audit-linked records…');
     try{
@@ -229,43 +229,27 @@
   }
 
   async function saveProgress() {
-    if(!state.activeTicket||!state.activeSession) return;
+    if(!state.activeTicket||!state.activeSession||!state.activeScenario)return;
     const checkboxes=[...$('activeChecklist').querySelectorAll('[data-step]')];
-    state.steps=state.steps.map((s,i)=>({...s,completed:!!checkboxes[i]?.checked,completedAt:checkboxes[i]?.checked?(s.completedAt||new Date().toISOString()):null}));
-    const next=state.steps.findIndex(s=>!s.completed);
-    const currentStep=next<0?state.steps.length:next;
-    const now=new Date().toISOString();
-    const conversation=state.conversation.concat([{actor:'HelpBuddy',text:'Checklist progress saved. '+state.steps.filter(s=>s.completed).length+' of '+state.steps.length+' steps completed.',createdAt:now}]);
+    state.steps=state.steps.map((step,i)=>({...step,completed:!!checkboxes[i]?.checked,completedAt:checkboxes[i]?.checked?(step.completedAt||new Date().toISOString()):null}));
     try{
-      const results=await Promise.all([
-        db.from('helpbuddy_sessions').update({checklist:state.steps,current_step:currentStep,status:'in_progress',conversation}).eq('id',state.activeSession.id).select().single(),
-        db.from('ticket_scenarios').update({generated_steps:state.steps,current_step:currentStep,status:'in_progress'}).eq('id',state.activeScenario.id).select().single(),
-        db.from('workflow_runs').update({status:'in_progress',context:{...(state.workflow?.context||{}),last_saved_at:now,completed_steps:state.steps.filter(s=>s.completed).length,total_steps:state.steps.length}}).eq('id',state.activeScenario.workflow_run_id).select().single()
-      ]);
-      const failure=results.find(r=>r.error); if(failure)throw failure.error;
-      state.activeSession=results[0].data; state.activeScenario=results[1].data; state.workflow=results[2].data; state.conversation=conversation;
-      const {error:ticketErr}=await db.from('tickets').update({status:'in_progress'}).eq('id',state.activeTicket.id).eq('organization_id',state.orgId);
-      if(ticketErr)throw ticketErr;
-      globalMessage('Progress saved to HelpBuddy, scenario workflow, ticket, and audit history.','ok');
-      await openTicket(state.activeTicket.id); await refreshCounts();
+      const {data,error}=await db.rpc('update_ticket_scenario_progress',{p_ticket_id:state.activeTicket.id,p_steps:state.steps});
+      if(error)throw error;
+      globalMessage('Progress saved atomically to the ticket, HelpBuddy session, workflow, and audit history. '+data.completed_steps+' of '+data.total_steps+' steps complete.','ok');
+      await openTicket(state.activeTicket.id);await refreshCounts();
     }catch(e){globalMessage('Could not save progress: '+(e.message||'Permission or network error'),'error');}
   }
 
   async function resolveTicket() {
     if(!state.activeTicket||!state.activeSession||!state.activeScenario)return;
-    const checked=[...$('activeChecklist').querySelectorAll('[data-step]')].every(x=>x.checked);
-    if(!checked){globalMessage('Complete every checklist step before resolving the ticket.','error');return;}
-    const now=new Date().toISOString();
+    const checkboxes=[...$('activeChecklist').querySelectorAll('[data-step]')];
+    state.steps=state.steps.map((step,i)=>({...step,completed:!!checkboxes[i]?.checked,completedAt:checkboxes[i]?.checked?(step.completedAt||new Date().toISOString()):null}));
+    if(state.steps.some(step=>!step.completed)){globalMessage('Complete every checklist step before resolving the ticket.','error');return;}
     try{
-      const [session,scenario,workflow,ticket]=await Promise.all([
-        db.from('helpbuddy_sessions').update({status:'resolved',current_step:state.steps.length}).eq('id',state.activeSession.id).select().single(),
-        db.from('ticket_scenarios').update({status:'resolved',current_step:state.steps.length,completed_at:now,outcome:{resolution:'Checklist completed and recovery verified',resolved_at:now}}).eq('id',state.activeScenario.id).select().single(),
-        db.from('workflow_runs').update({status:'completed',completed_at:now,context:{...(state.workflow?.context||{}),completed_at:now,resolution_verified:true}}).eq('id',state.activeScenario.workflow_run_id).select().single(),
-        db.from('tickets').update({status:'resolved',resolved_at:now,resolution_summary:'HelpBuddy checklist completed and recovery verified.'}).eq('id',state.activeTicket.id).eq('organization_id',state.orgId).select().single()
-      ]);
-      const failure=[session,scenario,workflow,ticket].find(r=>r.error);if(failure)throw failure.error;
-      globalMessage('Ticket #'+ticket.data.ticket_number+' is resolved. Workflow completion and audit events were recorded.','ok');
-      await openTicket(state.activeTicket.id);await refreshCounts();await searchTickets(String(ticket.data.ticket_number));
+      const {data,error}=await db.rpc('resolve_ticket_scenario',{p_ticket_id:state.activeTicket.id,p_steps:state.steps});
+      if(error)throw error;
+      globalMessage('Ticket #'+data.ticket_number+' is resolved. HelpBuddy, scenario, workflow, and audit records were updated together.','ok');
+      await openTicket(state.activeTicket.id);await refreshCounts();await searchTickets(String(data.ticket_number));
     }catch(e){globalMessage('Resolution failed: '+(e.message||'Permission or network error'),'error');}
   }
 
@@ -273,15 +257,11 @@
     ev.preventDefault();
     if(!state.activeSession||!state.activeTicket){globalMessage('Open a ticket with a HelpBuddy workflow before adding a workflow note.','error');return;}
     const text=$('noteText').value.trim();if(!text)return;
-    const now=new Date().toISOString();
-    const conversation=state.conversation.concat([{actor:state.profile.display_name||state.profile.first_name||'Authorized user',text,createdAt:now}]);
     try{
-      const {data,error}=await db.from('helpbuddy_sessions').update({conversation}).eq('id',state.activeSession.id).select().single();
+      const {data,error}=await db.rpc('add_helpbuddy_ticket_note',{p_ticket_id:state.activeTicket.id,p_note:text});
       if(error)throw error;
-      const {error:commentError}=await db.from('ticket_comments').insert({ticket_id:state.activeTicket.id,author_profile_id:state.profile.id,comment_body:text,is_internal:true,source_status:'sample'});
-      if(commentError)throw commentError;
-      state.activeSession=data;state.conversation=conversation;$('noteText').value='';
-      await openTicket(state.activeTicket.id);globalMessage('Note added to HelpBuddy and the ticket activity.','ok');
+      $('noteText').value='';
+      await openTicket(state.activeTicket.id);globalMessage('Note added to HelpBuddy and the ticket activity. Ticket #'+data.ticket_number+'.','ok');
     }catch(e){globalMessage('Could not add the note: '+(e.message||'Permission or network error'),'error');}
   }
 
