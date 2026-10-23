@@ -27,3 +27,12 @@ The repository is intentionally being used as a clean starting point. Real authe
 Approved login image assets can be added later using the agreed filenames:
 - `globaladminloginphoto.png`
 - `globaladminloginphoto2.png`
+
+
+## Work2U prioritized workspace (2026-10-22)
+- Permanent center-section order: Critical & time-sensitive; My primary work; Bring the Work to You; Follow-Ups & SLA Compliance; Next up & scheduled; Additional workspaces.
+- Each list supports a tap/click to open a record detail view and return to the originating list.
+- Follow-Up records display ticket ID, end user and Global ID, tenant/company, department, device, application, owner, status, priority, SLA deadline, last contact, next action, and history.
+- The Follow-Ups & SLA Compliance module is also included in global navigation.
+- The right HelpBuddy rail includes user-customizable Quick Picks for app shortcuts.
+- Current records and SLA values in the static HTML are illustrative seed data. Live ticket mutations, real SLA calculation, and external integrations require backend authorization and connection wiring.
