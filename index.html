@@ -288,5 +288,18 @@ document.getElementById('navSearch').addEventListener('input',e=>renderNav(e.tar
     }
     chat.scrollTop=chat.scrollHeight;
   };
+  window.addEventListener('maximus:authenticated', function(event){
+    const identity=event.detail || {};
+    const profile=identity.profile || {};
+    const roles=(identity.roles || []).map(role=>role.name).filter(Boolean);
+    const setText=(id,value)=>{const node=document.getElementById(id);if(node)node.textContent=value || '—';};
+    setText('profileName',profile.display_name || [profile.first_name,profile.last_name].filter(Boolean).join(' ') || identity.email);
+    setText('profileRole',roles.join(' • ') || 'No active role');
+    setText('profileUserId',profile.employee_global_id || identity.userId);
+    setText('profileCompanyId',profile.company_global_id || profile.organization_id);
+    setText('profileEmail',profile.work_email || identity.email);
+    setText('profileStatus',profile.member_status || 'Authenticated');
+    const banner=document.getElementById('maximus-auth-status-banner');if(banner)banner.remove();
+  });
 })();
 </script></body></html>
