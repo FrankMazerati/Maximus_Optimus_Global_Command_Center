@@ -34,6 +34,6 @@ assert.match(accessMigration, /tickets_insert_requester/, 'Ticket insert must be
 assert.match(workflowMigration, /workflow_runs_insert_scope/, 'Workflow run insert must be scoped');
 assert.match(stepMigration, /ticket_steps_insert_ticket_scope/, 'Remediation step inserts must be scoped');
 assert.match(seed, /synthetic training record/i, 'Synthetic seed records must be labelled');
-assert.match(seed, /generate_series\(1,25\)/, 'Seed dataset must include repeatable ticket samples');
+assert.match(seed, /generate_series\(1,500\)/, 'Seed dataset must include 500 repeatable ticket samples');
 assert.match(seed, /on conflict \(organization_id, slug\)/, 'Tenant seed must use the real uniqueness constraint');
 console.log('Command Center static validation passed.');
