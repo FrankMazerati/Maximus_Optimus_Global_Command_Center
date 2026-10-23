@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "description": "IntelliStack Systems / Maximus Optimus Global Command Center",
   "scripts": {
-    "check:js": "node --check assets/js/supabase-client.js && node --check assets/js/auth-gateway.js && node --check assets/js/helpbuddy-service.js",
+    "check:js": "node --check assets/js/supabase-client.js && node --check assets/js/auth-gateway.js && node --check assets/js/helpbuddy-service.js && node --check assets/js/ticket-lifecycle-service.js",
     "test": "npm run check:js && node scripts/validate-command-center.mjs && node scripts/validate-ticket-lifecycle.mjs && node scripts/acceptance/authenticated-ticket-lifecycle.mjs"
   }
 }
