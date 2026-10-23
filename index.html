@@ -176,19 +176,69 @@ body{background:linear-gradient(135deg,#f2f9ff 0%,#f8fcff 55%,#eef8ff 100%);colo
  .greeting-bar{flex-direction:column}
 }
 
+
+/* Compact tablet controls and configurable world-clock strip */
+.header-inner{grid-template-columns:minmax(0,1.05fr) minmax(0,1.15fr) minmax(125px,.42fr);gap:8px;padding:6px 10px}
+.right{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px;align-content:start}
+.ctrl>button{padding:4px 6px!important;min-height:0!important;border-radius:7px;font-size:9px!important;line-height:1.15}
+.ctrl strong{font-size:10px!important;line-height:1.15}
+.ctrl small{font-size:7px!important;line-height:1.15;margin-top:2px}
+.right .ctrl:last-child>button{min-height:0!important}
+.menu{z-index:90;min-width:155px;max-height:55vh;overflow:auto}
+.menu button{font-size:10px;padding:7px}
+.profile{padding:7px;gap:8px}
+.profile-name{font-size:16px}
+.role,.ids,.contact{font-size:9px;line-height:1.2}
+.brand .motto{font-size:9px;line-height:1.3;margin-top:4px}
+.global-time{grid-template-columns:repeat(5,minmax(0,1fr));gap:5px}
+.clock{position:relative;padding:6px 18px 6px 7px;min-width:0;border-radius:7px}
+.clock b{display:block;font-size:8px;line-height:1.2;white-space:normal}
+.clock span{font-size:12px;margin-top:2px;line-height:1.15}
+.remove-clock{position:absolute;right:3px;top:2px;border:0;background:transparent;color:#617d8d;font-size:12px;padding:0 2px;cursor:pointer}
+.clock-controls{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-top:7px}
+.clock-controls label,.clock-controls span{font-size:8px;color:var(--muted)}
+.clock-controls select{max-width:190px;font-size:9px;padding:4px 6px;border:1px solid var(--line);border-radius:6px;background:#fff;color:var(--ink)}
+.extra-clocks{display:flex;gap:5px;flex-wrap:wrap;margin-top:5px}
+.extra-clock{display:inline-flex;align-items:center;gap:6px;background:#f4faff;border:1px solid #c9e1ed;border-radius:6px;padding:4px 7px;font-size:8px;color:var(--ink)}
+.extra-clock button{border:0;background:transparent;cursor:pointer;color:#617d8d;padding:0 2px}
+.workspace{height:calc(100vh - 165px)}
+@media(max-width:1100px) and (min-width:801px){
+ .header-inner{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:6px;padding:6px}
+ .brand{grid-column:1/-1;grid-row:1}
+ .profile{grid-row:2;grid-column:1}
+ .right{grid-row:2;grid-column:2;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px}
+ .workspace{height:calc(100vh - 195px);grid-template-columns:minmax(155px,190px) minmax(0,1fr) minmax(185px,220px);gap:6px;padding:6px}
+ .global-time{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(max-width:800px){
+ .header-inner{gap:6px;padding:7px}
+ .right{grid-template-columns:repeat(4,minmax(0,1fr));gap:4px}
+ .ctrl>button{padding:5px 4px!important;font-size:8px!important}
+ .ctrl strong{font-size:9px!important}
+ .ctrl small{font-size:6px!important}
+ .global-time{grid-template-columns:repeat(2,minmax(0,1fr));gap:5px}
+ .clock-controls{gap:5px}
+ .workspace{height:auto}
+}
+@media(max-width:420px){
+ .right{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .global-time{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .clock-controls select{max-width:100%;flex:1}
+}
+
 </style>
 </head>
 <body>
 <header class="header"><div class="header-inner"><button class="mobile-nav-toggle" id="mobileNavToggle" aria-controls="nav" aria-expanded="false">☰ Menu</button>
 <section class="profile"><button class="profile-gear" title="Profile settings">⚙</button><img src="homepagephoto.png" alt="Frank Mazerati"><div><div class="profile-name">Frank Mazerati</div><div class="role"><span>Chief Systems Architect and Principal Engineer</span><span>Founder of IntelliStack Systems</span><span>Maximus Optimus Global Command Center</span></div><div class="ids"><span>Company ID: <b>INT-001</b></span><span>User ID: <b>001</b></span></div><div class="contact"><span>Email: <b>frank@intellistack.systems</b></span><span>Phone: <b>(312) 555-0100</b></span><span>Work Address: <b>Chicago, IL</b></span><span>Work Location: <b>North Lake • Chicago</b></span></div><div class="manager"><button id="managerBtn">Manager / Escalation Information ▾</button><div class="manager-info" id="managerInfo">No assigned manager. Global Administrator has direct organizational authority.</div></div></div></section>
 <section class="brand"><div class="present">IntelliStack Systems presents</div><div class="product"><span class="max">MAXIMUS</span> <span class="opt">OPTIMUS</span></div><div class="command">GLOBAL COMMAND CENTER</div><div class="motto"><span class="white">ONE</span> <span class="blue">WORLD</span>, <span class="white">ONE</span> <span class="blue">SYSTEM</span>, <span class="white">ONE INTELLIGENT</span> <span class="blue">NETWORK</span></div></section>
-<section class="right"><div class="ctrl"><button id="statusBtn"><strong id="statusText" class="status">● ONLINE</strong><small>Status ▾</small></button><div class="menu" id="statusMenu"><button data-s="ONLINE">● Online</button><button data-s="AWAY">◐ Away</button><button data-s="BUSY">● Busy</button><button data-s="DO NOT DISTURB">⊘ Do Not Disturb</button><button data-s="OFFLINE">○ Offline</button></div></div><div class="ctrl"><button id="timeBtn"><strong id="clock">--:--</strong><small>Chicago time ▾</small></button><div class="menu" id="timeMenu"><button data-z="America/Chicago">Chicago</button><button data-z="America/New_York">New York</button><button data-z="Europe/London">London</button><button data-z="Australia/Sydney">Sydney</button></div></div><div class="ctrl"><button id="weatherBtn"><strong id="temp">--°F</strong><small>North Lake • Chicago ▾</small></button><div class="menu" id="weatherMenu"><button data-city="Chicago">North Lake • Chicago</button><button data-city="New York">New York</button><button data-city="London">London</button><button data-city="Sydney">Sydney</button></div></div><div class="ctrl"><button title="Design Studio">⚙ Design Studio</button></div></section>
+<section class="right"><div class="ctrl"><button id="statusBtn"><strong id="statusText" class="status">● ONLINE</strong><small>Status ▾</small></button><div class="menu" id="statusMenu"><button data-s="Online">● Online</button><button data-s="Away">◐ Away</button><button data-s="Working from home">⌂ Working from home</button><button data-s="On lunch">☕ On lunch</button><button data-s="On break">Ⅱ On break</button><button data-s="In a meeting">▣ In a meeting</button><button data-s="Busy">● Busy</button><button data-s="Do not disturb">⊘ Do not disturb</button><button data-s="Offline">○ Offline</button></div></div><div class="ctrl"><button id="timeBtn"><strong id="clock">--:--</strong><small>Chicago time ▾</small></button><div class="menu" id="timeMenu"><button data-z="America/Chicago">Chicago</button><button data-z="America/New_York">New York</button><button data-z="Europe/London">London</button><button data-z="Australia/Sydney">Sydney</button></div></div><div class="ctrl"><button id="weatherBtn"><strong id="temp">--°F</strong><small>North Lake • Chicago ▾</small></button><div class="menu" id="weatherMenu"><button data-city="Chicago">North Lake • Chicago</button><button data-city="New York">New York</button><button data-city="London">London</button><button data-city="Sydney">Sydney</button></div></div><div class="ctrl"><button title="Design Studio">⚙ Design Studio</button></div></section>
 </div></header>
 <section class="greeting-bar" aria-live="polite"><div><strong id="greetingTitle">Welcome back, Frank.</strong><span id="greetingText">Your Command Center is ready. Here is what needs your attention today.</span></div><button class="mobile-help-toggle" id="mobileHelpToggle" aria-expanded="false">✦ Open HelpBuddy</button></section>
 <div class="workspace">
 <section class="panel navpanel"><div class="panel-head"><button class="hamb" aria-label="Navigation menu">☰</button><div><b>SECTION 4 — NAVIGATION MENU</b><small>Full Command Center navigation • drag to reorder</small></div></div><div class="nav-search"><input id="navSearch" placeholder="Search navigation..."></div><nav class="nav" id="nav"></nav><div class="side-foot">Hold/drag any item to change its position.</div></section>
 <main class="panel mainpanel"><div class="main">
-<section class="block"><div class="subhead"><h2>SECTION 2 — GLOBAL TIME</h2><span class="tag">LIVE</span></div><div class="global-time" id="clocks"></div></section>
+<section class="block"><div class="subhead"><h2>SECTION 2 — GLOBAL TIME</h2><span class="tag">LIVE</span></div><div class="global-time" id="clocks"></div><div class="clock-controls"><label for="addClockCity">Add a world clock</label><select id="addClockCity"><option value="">Choose a city…</option><option value="America/Chicago">Chicago, Illinois</option><option value="America/New_York">New York</option><option value="America/Los_Angeles">Los Angeles</option><option value="Europe/London">London</option><option value="Australia/Sydney">Sydney, Australia</option><option value="Asia/Tokyo">Tokyo</option><option value="Asia/Singapore">Singapore</option><option value="Europe/Paris">Paris</option><option value="Asia/Dubai">Dubai</option><option value="Asia/Kolkata">Mumbai</option></select><span id="clockCount">5 of 5 visible</span></div><div id="extraClocks" class="extra-clocks" aria-live="polite"></div></section>
 <section class="block"><div class="subhead"><h2>SECTION 3 — NEWS FEED</h2><span class="tag">SECURITY • NETWORK • GLOBAL NEWS</span></div><div class="news-tabs"><button class="active" data-feed="Security">Security</button><button data-feed="Network">Network</button><button data-feed="Global News">Global News</button></div><div class="news-grid" id="news"></div></section>
 <section class="block"><div class="subhead"><h2>QUICK PICKS</h2><span class="tag">5 + 5</span></div><div class="quick" id="quick"></div></section>
 
@@ -278,7 +328,21 @@ renderNav();document.getElementById('navSearch').addEventListener('input',e=>ren
 const quick=['My Tickets','Active Work','Request Access','IntelliCalendar','IntelliChat','Knowledge Base','Network','Security','War Room','Design Studio'];document.getElementById('quick').innerHTML=quick.map(x=>'<button><b>'+x+'</b><small>Open workspace</small></button>').join('');
 const feeds={Security:['Endpoint alert review','Privileged access activity','Threat intelligence update','Identity anomaly watch','Security policy bulletin','Vulnerability review','SOC queue update','Audit checkpoint','Incident response note','Global security posture'],Network:['Chicago core switch health','WAN latency review','NOC queue update','Network maintenance window','DNS service health','Firewall telemetry','Routing change review','Wireless status','Data center link status','Network capacity'], 'Global News':['Global operations briefing','Technology sector update','Infrastructure outlook','International business update','Cybersecurity market news','Cloud services update','AI systems briefing','Enterprise IT news','Global risk watch','Industry operations']};
 function renderNews(feed='Security'){document.getElementById('news').innerHTML=feeds[feed].map((x,i)=>'<article class="news"><b>'+x+'</b><small>'+feed+' • '+(i+2)+' min ago</small><p>Relevant operational intelligence for the command center.</p></article>').join('')};renderNews();document.querySelectorAll('.news-tabs button').forEach(b=>b.onclick=()=>{document.querySelectorAll('.news-tabs button').forEach(x=>x.classList.remove('active'));b.classList.add('active');renderNews(b.dataset.feed)});
-const zones=[['Chicago','America/Chicago'],['New York','America/New_York'],['London','Europe/London'],['Sydney','Australia/Sydney'],['Tokyo','Asia/Tokyo']];function tick(){document.getElementById('clocks').innerHTML=zones.map(([n,z])=>'<div class="clock"><b>'+n+'</b><span>'+new Intl.DateTimeFormat('en-US',{timeZone:z,hour:'numeric',minute:'2-digit',second:'2-digit'}).format(new Date())+'</span></div>').join('');document.getElementById('clock').textContent=new Intl.DateTimeFormat('en-US',{timeZone:window.timeZone||'America/Chicago',hour:'numeric',minute:'2-digit'}).format(new Date())};tick();setInterval(tick,1000);
+const cityNames={'America/Chicago':'Chicago, Illinois','America/New_York':'New York','America/Los_Angeles':'Los Angeles','Europe/London':'London','Australia/Sydney':'Sydney, Australia','Asia/Tokyo':'Tokyo','Asia/Singapore':'Singapore','Europe/Paris':'Paris','Asia/Dubai':'Dubai','Asia/Kolkata':'Mumbai'};
+let zones;try{zones=JSON.parse(localStorage.getItem('intellistack-world-clocks')||'null')}catch(e){zones=null}
+if(!Array.isArray(zones)||!zones.length)zones=['America/Chicago','America/New_York','Europe/London','Australia/Sydney','Asia/Tokyo'];
+zones=[...new Set(zones.filter(z=>cityNames[z]))];
+function tick(){
+ const fmt=z=>new Intl.DateTimeFormat('en-US',{timeZone:z,hour:'numeric',minute:'2-digit'}).format(new Date());
+ const visible=zones.slice(0,5);
+ document.getElementById('clocks').innerHTML=visible.map(z=>'<div class="clock"><b>'+cityNames[z]+'</b><span>'+fmt(z)+'</span><button type="button" class="remove-clock" data-remove-clock="'+z+'" aria-label="Remove '+cityNames[z]+'">×</button></div>').join('');
+ document.getElementById('extraClocks').innerHTML=zones.slice(5).map(z=>'<span class="extra-clock">'+cityNames[z]+' <b>'+fmt(z)+'</b><button type="button" data-remove-clock="'+z+'" aria-label="Remove '+cityNames[z]+'">×</button></span>').join('');
+ document.getElementById('clockCount').textContent=Math.min(5,zones.length)+' of 5 visible'+(zones.length>5?' · '+(zones.length-5)+' in overflow bar':'');
+ document.getElementById('clock').textContent=fmt(window.timeZone||'America/Chicago');
+ document.querySelectorAll('[data-remove-clock]').forEach(b=>b.onclick=()=>{zones=zones.filter(z=>z!==b.dataset.removeClock);if(!zones.length)zones=['America/Chicago'];localStorage.setItem('intellistack-world-clocks',JSON.stringify(zones));tick()});
+}
+document.getElementById('addClockCity').addEventListener('change',e=>{const z=e.target.value;if(!z)return;if(!zones.includes(z)){zones.push(z);localStorage.setItem('intellistack-world-clocks',JSON.stringify(zones));tick()}e.target.value='';});
+tick();setInterval(tick,1000);
 async function weather(city='Chicago'){const coords={Chicago:[41.88,-87.63],'New York':[40.71,-74.01],London:[51.51,-.13],Sydney:[-33.87,151.21]};const c=coords[city]||coords.Chicago;try{const r=await fetch('https://api.open-meteo.com/v1/forecast?latitude='+c[0]+'&longitude='+c[1]+'&current=temperature_2m&temperature_unit=fahrenheit');const d=await r.json();document.getElementById('temp').textContent=Math.round(d.current.temperature_2m)+'°F'}catch(e){document.getElementById('temp').textContent='Weather unavailable'}}weather();
 function menu(btn,id){document.getElementById(btn).onclick=()=>document.getElementById(id).classList.toggle('open')};menu('statusBtn','statusMenu');menu('timeBtn','timeMenu');menu('weatherBtn','weatherMenu');document.querySelectorAll('#statusMenu button').forEach(b=>b.onclick=()=>{document.getElementById('statusText').textContent='● '+b.dataset.s;document.getElementById('statusMenu').classList.remove('open')});document.querySelectorAll('#timeMenu button').forEach(b=>b.onclick=()=>{window.timeZone=b.dataset.z;tick();document.getElementById('timeMenu').classList.remove('open')});document.querySelectorAll('#weatherMenu button').forEach(b=>b.onclick=()=>{weather(b.dataset.city);document.getElementById('weatherMenu').classList.remove('open')});document.getElementById('managerBtn').onclick=()=>document.getElementById('managerInfo').classList.toggle('open');
 
