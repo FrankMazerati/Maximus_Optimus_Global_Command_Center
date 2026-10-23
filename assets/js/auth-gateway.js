@@ -19,6 +19,8 @@
       id:x.role_id, key:x.roles && x.roles.role_key || '', name:x.roles && x.roles.name || '',
       organizationId:x.organization_id, tenantId:x.tenant_id
     }));
+    if (!roles.length) throw new Error('Your account has no active Command Center role assignment. Ask an administrator to provision access.');
+    if (!p.data.organization_id) throw new Error('Your profile has no organization assignment. Ask an administrator to complete provisioning.');
     return { userId:user.id, email:user.email || p.data.work_email || '', profile:p.data, roles };
   }
   function banner(message) {
