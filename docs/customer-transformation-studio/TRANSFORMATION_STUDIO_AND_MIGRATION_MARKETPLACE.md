@@ -267,3 +267,84 @@ Track: assessment completion and abandonment; percentage of facts with source ev
 ## 17. Continuous idea-to-artifact updates
 
 The Transformation Studio is governed by the project-wide [Continuous Idea-to-Artifact Update Protocol](../idea-management/CONTINUOUS_IDEA_TO_ARTIFACT_PROTOCOL.md). New substantive ideas must be captured in the Idea Ledger and reflected across relevant founder/personal knowledge, business knowledge, financial assumptions, product/technical knowledge, talking points, and the relevant interface/design artifact. Track status honestly; a written spec does not mean the interface implementation has changed. Link records and verify updates. Do not merge or deploy without explicit approval.
+
+
+## 18. Marketplace Purchase Studio — purchase history, subscriptions, changes, and returns
+
+**Purpose:** Give customers a single, understandable place to manage what they have purchased through the Marketplace. The experience and its exportable report must be understandable to a CFO, CEO, procurement lead, finance team, and other authorized stakeholders without requiring them to interpret raw billing or engineering records.
+
+**Status:** Proposed product requirement. Do not imply that purchase history, order editing, returns, or subscription management are live until each workflow is implemented, connected to the authoritative commerce/billing system, and tested.
+
+### 18.1 Executive purchase overview
+Show a clear summary of:
+- Recent purchases and orders, with order number, purchase date, customer/business unit, product or package, quantity/seats, status, and total.
+- Purchase owner/requester, approver, cost center or department where configured, and invoice/receipt references.
+- Current subscriptions and service plans, clearly labeling **month-to-month**, annual, multi-year, trial, one-time purchase, or other confirmed term.
+- Renewal date, billing cadence, next expected charge, term end date, cancellation/notice deadline when applicable, and auto-renewal status only when confirmed by the billing source.
+- Current recurring commitment, one-time spend, upcoming renewals, pending orders, refunds/credits, and past-due or disputed items where the system has reliable data.
+- The source and last-updated time for each financial fact; clearly distinguish posted actuals, pending transactions, quotes, estimates, and projections.
+
+### 18.2 Order details and authorized changes
+Customers should be able to open an order and see the purchased items, quantities, seats, plan/term, price components, taxes/fees if applicable, discounts, currency, billing entity, fulfillment or activation status, contract/order documents, and applicable terms.
+
+Offer actions only when supported by the commerce system and the user's permission, such as:
+- Request or perform a quantity/seat adjustment.
+- Change eligible plan options or subscription term.
+- Add or remove eligible items.
+- Change billing or purchase-order details where permitted.
+- Cancel an eligible order or subscription, with effective date and financial consequences explained.
+- Download order confirmation, invoice/receipt, credit memo, or contract.
+- Track a change request and its approval/status.
+
+Before committing a change, show a confirmation summary of what changes, when it takes effect, prorations or credits if applicable, any price change, remaining commitment, and whether the action can be reversed. If the platform cannot safely execute the change, present a request/workflow or support handoff rather than a false success message. Preserve an audit trail of requester, approver, time, old value, new value, and system result.
+
+### 18.3 Returns, refunds, cancellations, and disputes
+Provide a plain-language policy center for each purchased product or order. Display the actual applicable seller/vendor policy and contract terms, not a universal invented policy. Explain:
+- Whether the item or service is returnable, refundable, cancellable, or non-refundable.
+- Eligibility window, deadline, required condition/evidence, and any exclusions.
+- Difference between returning a physical item, canceling a digital service, ending a subscription, and requesting a refund or credit.
+- How to initiate a return/refund/cancellation, what information is required, expected next steps and timing only when confirmed, and how to track status.
+- Whether charges continue during review, whether cancellation stops renewal or ends service immediately, and any data-export/offboarding steps before access ends.
+- How disputes or exceptions are escalated and which party is responsible: IntelliStack Marketplace, the named third-party seller, or another billing provider.
+
+The purchase/order page must link the policy and terms that applied at the time of purchase when records are available. If the applicable policy cannot be verified, label it **Needs review** and route the customer to the authorized seller/support owner; do not guess or promise a refund.
+
+### 18.4 CFO / CEO / stakeholder report
+Provide a concise executive dashboard plus a downloadable, printable report. The report should be scannable and include:
+1. **Executive summary:** total one-time purchases in the selected period, current recurring commitment, upcoming renewals, pending purchases/changes, and open return/refund/cancellation requests.
+2. **Recent purchase register:** order/date, product/vendor, business purpose or department, amount/currency, term, owner, approver, and status.
+3. **Subscription and commitment register:** monthly equivalent only when calculation basis is shown, billing cadence, start/end/renewal dates, notice deadline, auto-renewal, and cancellation terms.
+4. **Upcoming financial events:** expected charges and renewal decisions, separating confirmed amounts from estimates and excluding unverified projections from actual totals.
+5. **Order-change register:** requested/approved/completed changes and their before/after financial effect.
+6. **Returns/refunds/disputes register:** amount requested, policy/eligibility status, owner, next action, and resolution status.
+7. **Exceptions and decisions needed:** unknown terms, missing invoice/policy, renewal requiring approval, price discrepancy, pending approval, or seller follow-up.
+8. **Evidence and definitions:** source system, last refreshed time, currency, date range, whether figures are tax-inclusive, and definitions for recurring commitment, actual spend, forecast, credit, and refund.
+
+Allow authorized users to filter by date range, business unit, cost center, product/vendor, requester, approver, plan term, and status. Export to PDF and spreadsheet only when the corresponding export is implemented and access-controlled. Respect role permissions and tenant boundaries; individual purchase details must not be exposed to unauthorized stakeholders.
+
+### 18.5 Financial accuracy and controls
+- Use the authoritative order, contract, subscription, invoice, and payment records; do not treat draft catalog prices or draft price records as actual customer charges.
+- Separate **actual spend**, **committed recurring spend**, **pending/quoted spend**, **credits/refunds**, and **forecast**. Never add estimates to actuals without labeling them.
+- Show currency and reporting period; explain any annualized or monthly-equivalent calculation and the assumptions used.
+- Do not infer that a subscription is month-to-month from a monthly invoice alone; verify the contractual term and renewal/cancellation rules.
+- Reconcile purchase totals with invoices/payment records where the integration supports it; expose discrepancies instead of silently adjusting figures.
+- Restrict order modifications, refunds, cancellations, and billing changes by role and approval policy. Require confirmation before consequential actions.
+- Log access to sensitive financial records and all state-changing actions.
+- Never promise a return, refund, cancellation, price, renewal date, or completion without a verified policy/contract and authoritative system response.
+
+### 18.6 Core Purchase Studio screens
+1. Purchase Studio overview / recent activity.
+2. Order list and order detail.
+3. Subscription and plan-term management.
+4. Renewal calendar and decision queue.
+5. Modify-order workflow and confirmation.
+6. Return/refund/cancellation policy and request tracker.
+7. Invoice, receipt, credit memo, and contract documents.
+8. CFO/CEO report builder and export.
+9. Approval and audit history.
+10. Exceptions, seller contacts, and support escalation.
+
+### 18.7 Acceptance criteria
+The Purchase Studio is ready for a limited pilot only when recent orders and terms match the source of record; month-to-month status is contract-verified; change actions enforce permissions and show the full financial impact before confirmation; return/refund guidance links to the applicable verified policy; report totals distinguish actuals from commitments and estimates; exports are permission-controlled; audit history is complete; tenant isolation is tested; and failures or unavailable integrations are clearly disclosed.
+
+**Related artifacts:** This section must be cross-linked in the Idea Ledger and the continuous idea-to-artifact protocol, reflected in finance/commercial guidance and executive talking points, and eventually implemented in the actual Marketplace Purchase Studio interface. This document is a specification only; it does not establish that the UI or commerce actions are implemented.
