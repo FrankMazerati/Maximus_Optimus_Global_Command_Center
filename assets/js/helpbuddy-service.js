@@ -48,6 +48,37 @@
     if (error) throw error;
     return data || [];
   }
+  async function searchTickets(query = '') {
+    const text = String(query || '').trim();
+    if (!text) return listTickets({});
+    const db = client(), scope = identityScope();
+    const cleaned = text.replace(/[%_]/g, '').slice(0, 100);
+    let q = db.from('tickets').select('id,ticket_number,title,description,category,priority,status,current_step,total_steps,requester_profile_id,assigned_profile_id,opened_at,updated_at,resolution_summary').eq('organization_id', scope.organization_id).or('title.ilike.%' + cleaned + '%,description.ilike.%' + cleaned + '%').order('updated_at', { ascending: false }).limit(25);
+    if (scope.tenant_id) q = q.eq('tenant_id', scope.tenant_id);
+    const { data, error } = await q;
+    if (error) throw error;
+    return data || [];
+  }
+  async function getTicketContext(ticketId) {
+    const db = client(), scope = identityScope();
+    let q = db.from('tickets').select('id,ticket_number,organization_id,tenant_id,title,description,category,priority,status,current_step,total_steps,requester_profile_id,assigned_profile_id,opened_at,updated_at,resolution_summary,resolved_at,closed_at').eq('organization_id', scope.organization_id);
+    if (scope.tenant_id) q = q.eq('tenant_id', scope.tenant_id);
+    if (/^\\d+$/.test(String(ticketId))) q = q.eq('ticket_number', Number(ticketId));
+    else q = q.eq('id', String(ticketId));
+    const ticketResult = await q.maybeSingle();
+    if (ticketResult.error) throw ticketResult.error;
+    if (!ticketResult.data) throw new Error('I could not find that ticket in your authorized company scope.');
+    const ticket = ticketResult.data;
+    const [events, messages, notes, steps, actions] = await Promise.all([
+      db.from('ticket_lifecycle_events').select('event_key,from_status,to_status,reason,metadata,actor_profile_id,created_at').eq('ticket_id', ticket.id).order('created_at', { ascending: true }).limit(100),
+      db.from('ticket_conversation_messages').select('channel,body,visibility,author_profile_id,created_at').eq('ticket_id', ticket.id).order('created_at', { ascending: true }).limit(100),
+      db.from('ticket_notes').select('note_type,body,restricted,author_profile_id,created_at').eq('ticket_id', ticket.id).order('created_at', { ascending: true }).limit(100),
+      db.from('ticket_steps').select('step_number,title,instructions,step_status,completed_by,completed_at,result').eq('ticket_id', ticket.id).order('step_number', { ascending: true }).limit(100),
+      db.from('assistant_ticket_actions').select('action_type,action_status,summary,approval_required,executed_at,verified_at,created_at').eq('ticket_id', ticket.id).eq('organization_id', scope.organization_id).order('created_at', { ascending: true }).limit(100)
+    ]);
+    for (const result of [events, messages, notes, steps, actions]) if (result.error) throw result.error;
+    return { ticket, history: events.data || [], messages: messages.data || [], notes: (notes.data || []).filter(n => !n.restricted), steps: steps.data || [], assistantActions: actions.data || [] };
+  }
   async function createTicket(input = {}) {
     const db = client(), scope = identityScope();
     const title = String(input.title || '').trim();
@@ -134,32 +165,35 @@
   async function handlePrompt(prompt) {
     const text = String(prompt || '').trim();
     if (!text) throw new Error('Enter a request for HelpBuddy.');
-    if (/list|show|open|my tickets|ticket queue/i.test(text)) return { type: 'tickets', data: await listTickets({}) };
-    if (/vpn|network connection/i.test(text)) {
-      const ticket = await createTicket({ title: 'VPN connectivity failure', description: text, category: 'Network', priority: 'high', tasks: WORKFLOWS.vpn_failure.tasks });
-      try {
-        const workflow = await createWorkflowRun('vpn_failure', ticket.id);
-        return { type: 'ticket_workflow', ticket, data: workflow };
-      } catch (error) {
-        return { type: 'ticket_workflow_partial', ticket, error: error && error.message ? error.message : 'Workflow creation failed.' };
-      }
+
+    // Existing-ticket context always takes precedence over creating new records.
+    const ticketRef = text.match(/(?:ticket|case)\\s*(?:#|number\\s*)?(\\d{4,})/i);
+    if (ticketRef && /history|status|update|details|what happened|who|assigned|progress|summary|show|open|check|review/i.test(text)) {
+      return { type: 'ticket_context', data: await getTicketContext(ticketRef[1]) };
     }
-    if (/access request|account access|onboard user/i.test(text)) {
-      const ticket = await createTicket({ title: 'Account access request', description: text, category: 'Identity', priority: 'medium', tasks: WORKFLOWS.account_access.tasks });
-      try {
-        const workflow = await createWorkflowRun('account_access', ticket.id);
-        return { type: 'ticket_workflow', ticket, data: workflow };
-      } catch (error) {
-        return { type: 'ticket_workflow_partial', ticket, error: error && error.message ? error.message : 'Workflow creation failed.' };
-      }
+    if (/list|show|open|my tickets|ticket queue/i.test(text) && !/create|new ticket/i.test(text)) return { type: 'tickets', data: await listTickets({}) };
+    if (/search|find|look up|check|review/i.test(text) && /ticket|case|vpn|network|access|outage|incident/i.test(text) && !/create|new ticket/i.test(text)) {
+      const terms = text.replace(/\\b(search|find|look up|check|review|ticket|case|for|about|the|my|please|helpbuddy)\\b/ig, '').trim();
+      const matches = await searchTickets(terms);
+      return { type: 'ticket_search', data: matches, query: terms };
     }
-    if (/create ticket|new ticket/i.test(text)) {
-      const title = text.replace(/^(please\s+)?(create|open|new)\s+(a\s+)?ticket\s*(for|about|:)?\s*/i, '').trim();
-      if (title.length < 4) throw new Error('Tell me what the ticket is about, for example: “Create ticket for VPN failure”.');
+    if (/^(please\\s+)?(create|open|new)\\s+(a\\s+)?ticket\\b/i.test(text)) {
+      const title = text.replace(/^(please\\s+)?(create|open|new)\\s+(a\\s+)?ticket\\s*(for|about|:)?\\s*/i, '').trim();
+      if (title.length < 4) throw new Error('Tell me what the new ticket is about before I create it.');
       return { type: 'ticket', data: await createTicket({ title, category: /vpn|network/i.test(title) ? 'Network' : 'General', priority: /outage|critical|security breach/i.test(title) ? 'high' : 'medium' }) };
     }
-    return { type: 'help', message: 'I can list tickets, create a ticket, start a VPN remediation workflow, or start an account-access workflow. For changes requiring approval, I will stop at the authorization checkpoint.' };
+    if (/vpn|network connection/i.test(text)) {
+      const matches = await searchTickets(/vpn/i.test(text) ? 'VPN' : 'network');
+      if (matches.length) return { type: 'ticket_search', data: matches, query: 'related existing tickets', message: 'I found existing tickets first. Choose one before starting a workflow so I do not create a duplicate.' };
+      return { type: 'help', message: 'I could not find a matching existing ticket in your authorized scope. If you want, explicitly ask me to create a new ticket; I will not create one automatically.' };
+    }
+    if (/access request|account access|onboard user/i.test(text)) {
+      const matches = await searchTickets('access');
+      if (matches.length) return { type: 'ticket_search', data: matches, query: 'access', message: 'I found existing access-related tickets first. Choose one before starting a workflow.' };
+      return { type: 'help', message: 'I could not find an existing access ticket. Explicitly ask me to create a new ticket if that is what you intend.' };
+    }
+    return { type: 'help', message: 'I can search existing tickets, show authorized ticket history, create a ticket when explicitly requested, and start approved workflows. I will not create duplicate tickets just because you mention an issue.' };
   }
 
-  global.HelpBuddyService = Object.freeze({ CHECKPOINTS, WORKFLOWS, listTickets, createTicket, createWorkflowRun, completeStep, writeAudit, handlePrompt, can });
+  global.HelpBuddyService = Object.freeze({ CHECKPOINTS, WORKFLOWS, listTickets, searchTickets, getTicketContext, createTicket, createWorkflowRun, completeStep, writeAudit, handlePrompt, can });
 })(window);
