@@ -1,0 +1,181 @@
+{
+  "schemaVersion": 1,
+  "title": "AI Design Studio",
+  "sourcePolicy": "Use only the user's supplied HelpBuddy and AI-team reference artwork. Do not substitute generic or generated character art.",
+  "characters": {
+    "helpbuddy": {
+      "label": "HelpBuddy",
+      "role": "Your Intelligent Assistant",
+      "customization": [
+        "avatar",
+        "outfit",
+        "background",
+        "header",
+        "expression",
+        "mood",
+        "status",
+        "message"
+      ],
+      "expressions": [
+        {
+          "id": "happy",
+          "label": "Happy",
+          "message": "Great! I'm ready to help."
+        },
+        {
+          "id": "thinking",
+          "label": "Thinking",
+          "message": "I'm thinking through your request."
+        },
+        {
+          "id": "listening",
+          "label": "Listening",
+          "message": "I'm listening. Tell me what you need."
+        },
+        {
+          "id": "excited",
+          "label": "Excited",
+          "message": "Let's get this moving!"
+        },
+        {
+          "id": "speaking",
+          "label": "Speaking",
+          "message": "I'm explaining the next step."
+        },
+        {
+          "id": "helpful",
+          "label": "Helpful",
+          "message": "I'll help you work through this."
+        },
+        {
+          "id": "focused",
+          "label": "Focused",
+          "message": "I'm focused on the details."
+        },
+        {
+          "id": "alert",
+          "label": "Alert",
+          "message": "I've noticed something that needs attention."
+        },
+        {
+          "id": "friendly",
+          "label": "Friendly",
+          "message": "I'm here with you."
+        },
+        {
+          "id": "encouraging",
+          "label": "Encouraging",
+          "message": "You're making progress. Let's continue."
+        },
+        {
+          "id": "supportive",
+          "label": "Supportive",
+          "message": "I'll stay with you through the next step."
+        },
+        {
+          "id": "celebrating",
+          "label": "Celebrating",
+          "message": "The task is complete and verified!"
+        }
+      ],
+      "assetRoot": "assets/images/ai-design-studio/helpbuddy"
+    },
+    "maximus": {
+      "label": "Maximus",
+      "role": "Strategic Intelligence",
+      "identityRule": "Keep the supplied blue robot design; expression and background may change, not the core character design.",
+      "customization": [
+        "expression",
+        "background"
+      ],
+      "assetRoot": "assets/images/ai-design-studio/maximus"
+    },
+    "optimus": {
+      "label": "Optimus",
+      "role": "Technical Intelligence",
+      "identityRule": "Keep the supplied white robot design; expression and background may change, not the core character design.",
+      "customization": [
+        "expression",
+        "background"
+      ],
+      "assetRoot": "assets/images/ai-design-studio/optimus"
+    },
+    "trinity": {
+      "label": "Trinity",
+      "role": "Governance & Coordination",
+      "identityRule": "Use the supplied Trinity artwork; outfit and supported appearance options may change.",
+      "customization": [
+        "avatar",
+        "outfit",
+        "background",
+        "expression"
+      ],
+      "assetRoot": "assets/images/ai-design-studio/trinity"
+    }
+  },
+  "helpbuddyStatus": {
+    "listening": "I'm listening to your request.",
+    "thinking": "I'm working through the details.",
+    "processing": "I'm processing the next step and will keep you updated.",
+    "ticket": "I'm checking the ticket and its current status.",
+    "blocked": "I've hit a blocker. I'll explain what needs attention.",
+    "waiting": "I'm waiting for the next system response.",
+    "success": "That action has completed and the result is verified.",
+    "error": "I couldn't complete that action. I won't report it as successful."
+  },
+  "backgroundOptions": [
+    {
+      "id": "command-center-blue",
+      "label": "Blue Command Center",
+      "asset": "backgrounds/command-center-blue.jpg"
+    },
+    {
+      "id": "global-globe",
+      "label": "Global Globe",
+      "asset": "backgrounds/global-globe.jpg"
+    },
+    {
+      "id": "blue-technology",
+      "label": "Blue Technology",
+      "asset": "backgrounds/blue-technology.jpg"
+    },
+    {
+      "id": "nature-mountain",
+      "label": "Mountain Landscape",
+      "asset": "backgrounds/nature-mountain.jpg"
+    },
+    {
+      "id": "nature-tropical",
+      "label": "Tropical Landscape",
+      "asset": "backgrounds/nature-tropical.jpg"
+    },
+    {
+      "id": "aurora",
+      "label": "Aurora",
+      "asset": "backgrounds/aurora.jpg"
+    }
+  ],
+  "headerOptions": [
+    {
+      "id": "blue-tech-banner",
+      "label": "Blue Technology Banner",
+      "asset": "headers/blue-tech-banner.jpg"
+    },
+    {
+      "id": "global-command-banner",
+      "label": "Global Command Banner",
+      "asset": "headers/global-command-banner.jpg"
+    },
+    {
+      "id": "city-banner",
+      "label": "City Skyline Banner",
+      "asset": "headers/city-banner.jpg"
+    },
+    {
+      "id": "green-tech-banner",
+      "label": "Green Technology Banner",
+      "asset": "headers/green-tech-banner.jpg"
+    }
+  ],
+  "assetStatus": "Image crops from the supplied reference photos must be placed at the paths above before image previews can render. No generic replacement artwork is permitted."
+}
