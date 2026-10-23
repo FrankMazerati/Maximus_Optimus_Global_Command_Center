@@ -190,7 +190,7 @@ function closeModal(){document.getElementById('modal').classList.add('hidden')}
 
 function openHelpBuddy(){
  const box=document.getElementById('modalbox');
- box.innerHTML='<div class="hb-dialog-head"><div class="hb-avatar">HB<span>✦</span></div><div class="hb-dialog-title"><div class="hb-kicker">INTELLISTACK SYSTEMS • ASSISTANT</div><h2>HelpBuddy</h2><p>Context-aware guidance for your command center</p></div><button class="mini" id="hbClose">Close ✕</button></div><div class="hb-dialog-context"><span class="live-dot"></span><b>Demo workspace connected</b><span>Global Admin • OM-GLOBAL-0001</span></div><div class="hb-chat" id="hbChat"><div class="hb-message assistant"><b>HelpBuddy</b><p>Hello. I can help you review priorities, find a module, understand an alert, or walk through a governance checklist. What would you like to work on?</p></div></div><div class="hb-suggestions"><button data-prompt="Show me my priorities">My priorities</button><button data-prompt="Summarize recent activity">Recent activity</button><button data-prompt="Help me with a governance checklist">Governance checklist</button><button data-prompt="Find the right security module">Find a module</button><button data-prompt="Open Design Studio">Design Studio</button><button data-prompt="Open Security Operations">Security Operations</button><button data-prompt="Create a ticket draft">Ticket draft</button></div><form class="hb-compose" id="hbForm"><input id="hbInput" aria-label="Message HelpBuddy" placeholder="Ask HelpBuddy about your workspace…" autocomplete="off"><button class="btn primary" type="submit">Send ↗</button></form><p class="hb-disclaimer">Visual prototype • responses use demo guidance; no live security systems are connected.</p>';
+ box.innerHTML='<div class="hb-dialog-head"><div class="hb-avatar">HB<span>✦</span></div><div class="hb-dialog-title"><div class="hb-kicker">INTELLISTACK SYSTEMS • ASSISTANT</div><h2>HelpBuddy</h2><p>Context-aware guidance for your command center</p></div><button class="mini" id="hbClose">Close ✕</button></div><div class="hb-dialog-context"><span class="live-dot"></span><b>Local demo workspace (not live)</b><span>Global Admin • OM-GLOBAL-0001</span></div><div class="hb-chat" id="hbChat"><div class="hb-message assistant"><b>HelpBuddy</b><p>Hello. I can help you review priorities, find a module, understand an alert, or walk through a governance checklist. What would you like to work on?</p></div></div><div class="hb-suggestions"><button data-prompt="Show me my priorities">My priorities</button><button data-prompt="Summarize recent activity">Recent activity</button><button data-prompt="Help me with a governance checklist">Governance checklist</button><button data-prompt="Find the right security module">Find a module</button><button data-prompt="Open Design Studio">Design Studio</button><button data-prompt="Open Security Operations">Security Operations</button><button data-prompt="Create a ticket draft">Ticket draft</button></div><form class="hb-compose" id="hbForm"><input id="hbInput" aria-label="Message HelpBuddy" placeholder="Ask HelpBuddy about your workspace…" autocomplete="off"><button class="btn primary" type="submit">Send ↗</button></form><p class="hb-disclaimer">Local demo responses unless authenticated backend services are configureddance; no live security systems are connected.</p>';
  document.getElementById('modal').classList.remove('hidden');
  document.getElementById('hbClose').onclick=closeModal;
  document.querySelectorAll('[data-prompt]').forEach(b=>b.onclick=()=>sendHelpBuddyMessage(b.dataset.prompt));
@@ -247,4 +247,42 @@ function renderActivityWorkspace(){openPageGeneric('recent-activity','Recent Act
 function openPageGeneric(id,title,description){const x=item(id);document.getElementById('main').innerHTML='<div class="crumb"><span>COMMAND CENTER / '+escapeHtml(x?x[2]:'WORKSPACE')+'</span></div><section class="workspace"><div class="block-title"><h2>'+escapeHtml(title)+'</h2><button class="btn primary" onclick="renderDashboard()">Return to Dashboard</button></div><p class="muted">'+escapeHtml(description)+'</p><div class="grid"><div class="card wide"><h3>Workspace actions</h3><p class="muted">This workspace is ready for a dedicated workflow implementation. Demo actions are not live integrations.</p><button class="btn" onclick="openHelpBuddy()">Ask HelpBuddy for guidance</button></div><div class="card"><h3>Connection status</h3><div class="metric"><span>Live provider</span><b class="warn">Not connected</b></div></div></div></section>'}
 function toggleNav(){document.querySelector('.sidebar').classList.toggle('collapsed')}
 document.getElementById('navSearch').addEventListener('input',e=>renderNav(e.target.value));document.getElementById('globalSearch').addEventListener('input',e=>{const q=e.target.value.toLowerCase();if(!q)return;const hit=all.find(x=>x[1].toLowerCase().includes(q));if(hit)openPage(hit[0])});renderNav();renderDashboard();startHeaderClock();renderWorldClocks();setInterval(startHeaderClock,1000);setInterval(renderWorldClocks,30000);
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="assets/js/supabase-client.js"></script>
+<script src="assets/js/auth-gateway.js"></script>
+<script src="assets/js/helpbuddy-service.js"></script>
+<script>
+/* Replace the demo-only response path with persistent operations after successful sign-in.
+   If no authenticated backend is configured, the original UI remains clearly demo-only. */
+(function(){
+  const demoSend = window.sendHelpBuddyMessage;
+  window.sendHelpBuddyMessage = async function(text){
+    if (!window.MaximusIdentity || !window.HelpBuddyService) return demoSend(text);
+    const input=document.getElementById('hbInput');
+    const chat=document.getElementById('hbChat');
+    const message=String(text || (input && input.value) || '').trim();
+    if(!message || !chat) return;
+    const user=document.createElement('div'); user.className='hb-message user';
+    const userP=document.createElement('p'); userP.textContent=message; user.appendChild(userP); chat.appendChild(user);
+    if(input) input.value='';
+    const response=document.createElement('div'); response.className='hb-message assistant';
+    const label=document.createElement('b'); label.textContent='HelpBuddy';
+    const p=document.createElement('p'); p.textContent='Checking your permissions and saving the requested work…';
+    response.append(label,p); chat.appendChild(response);
+    try {
+      const result=await window.HelpBuddyService.handlePrompt(message);
+      if(result.type==='tickets'){
+        p.textContent=result.data.length ? 'Found '+result.data.length+' ticket(s) in your authorized organization scope: '+result.data.slice(0,5).map(t=>'#'+t.ticket_number+' '+t.title+' ('+t.status+')').join('; ') : 'No tickets were found in your authorized organization scope.';
+      } else if(result.type==='ticket') {
+        p.textContent='Ticket #'+result.data.ticket_number+' was saved successfully: '+result.data.title+'.';
+      } else if(result.type==='workflow') {
+        p.textContent='Workflow run saved: '+result.data.workflow.name+'. '+result.data.tasks.length+' remediation steps are ready. Approval-requiring steps must remain pending until an authorized approver acts.';
+      } else p.textContent=result.message || 'Request processed.';
+    } catch(error) {
+      p.textContent='I could not complete that operation. Nothing is reported as successful. '+(error && error.message ? error.message : 'Check permissions and backend configuration.');
+    }
+    chat.scrollTop=chat.scrollHeight;
+  };
+})();
 </script></body></html>
