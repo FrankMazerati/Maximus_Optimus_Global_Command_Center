@@ -88,6 +88,28 @@
       return { profile, totalStars: balance?.total_stars || 0, level: balance?.current_level || 1, starsToNextLevel: 5 - ((balance?.total_stars || 0) % 5), events: events || [] };
     }
 
+    async function listPeerHandoffTargets() {
+      const { data: { user }, error: authError } = await client.auth.getUser();
+      if (authError || !user) throw new Error('Sign in before selecting a handoff recipient.');
+      const { data: actor, error: actorError } = await client.from('profiles').select('id,organization_id,role_id,roles:role_id(code)').eq('auth_user_id', user.id).maybeSingle();
+      if (actorError) throw actorError;
+      if (!actor) throw new Error('No employee profile is linked to this account.');
+      const actorRole = actor.roles && actor.roles.code;
+      if (!['HELP_DESK_L1','HELP_DESK_L2'].includes(actorRole)) throw new Error('Peer handoff is only available to Help Desk L1 and L2.');
+      const { data: profiles, error } = await client.from('profiles').select('id,display_name,job_title,role_id,roles:role_id(code)').eq('organization_id', actor.organization_id).eq('access_status','active').neq('id', actor.id);
+      if (error) throw error;
+      return (profiles || []).filter(p => p.roles && p.roles.code === actorRole).map(p => ({ id:p.id, displayName:p.display_name, jobTitle:p.job_title, roleCode:actorRole }));
+    }
+
+    async function handoffTicketByNumber(ticketNumber, targetProfileId, reason, carryoverNotes = '') {
+      const digits = String(ticketNumber || '').match(/\\d+/);
+      if (!digits) throw new Error('The ticket number is missing or invalid.');
+      const { data: ticket, error: ticketError } = await client.from('tickets').select('id,ticket_number').eq('ticket_number', Number(digits[0])).maybeSingle();
+      if (ticketError) throw ticketError;
+      if (!ticket) throw new Error('That ticket number was not found in the connected database. No ticket was changed.');
+      return handoffTicketToPeer(ticket.id, targetProfileId, reason, carryoverNotes);
+    }
+
     async function handoffTicketToPeer(ticketId, targetProfileId, reason, carryoverNotes = '') {
       if (!ticketId || !targetProfileId || !reason || reason.trim().length < 8) throw new Error('Choose a peer and provide a handoff reason of at least 8 characters.');
       const { data, error } = await client.rpc('handoff_ticket_to_peer', {
@@ -107,7 +129,7 @@
       return data || [];
     }
 
-    return Object.freeze({ createWork, listWork, updateWork, addEvent, getEvents, getMyProgress, handoffTicketToPeer, getTicketAudit });
+    return Object.freeze({ createWork, listWork, updateWork, addEvent, getEvents, getMyProgress, listPeerHandoffTargets, handoffTicketToPeer, handoffTicketByNumber, getTicketAudit });
   }
 
   global.HelpBuddySupabase = Object.freeze({ create });
