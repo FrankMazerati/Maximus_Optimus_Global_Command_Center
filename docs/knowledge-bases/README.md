@@ -23,6 +23,15 @@ Provide an operator walkthrough for people granted access to the Maximus Optimus
 15. [Integration & Migration](15-integration-migration.md)
 16. [Premium HelpBuddy Knowledge](16-premium-helpbuddy.md)
 17. [IntelliSphere Product & Service Catalog](17-intellisphere-products-services.md)
+18. [Company-Owned Knowledge & Customer Onboarding](18-company-owned-knowledge-onboarding.md)
+
+## Knowledge ownership layers
+- **IntelliStack shared knowledge:** standard platform, product, service, connector, and HelpBuddy documentation, governed by the platform owner.
+- **Company knowledge:** each customer’s private policies, procedures, handbooks, service information, escalation rules, and internal documents.
+- **Department/team knowledge:** collections restricted to approved teams such as Security Operations, Network Operations, Service Desk, HR, Finance, executives, or the War Room.
+- **Case/project knowledge:** optional restricted collections for specific incidents, migrations, or projects.
+
+These layers can be searched together only after authorization filters are applied. Customer content must not become shared content merely because it is uploaded. The company knowledge onboarding guide defines import, review, permission mapping, validation, and maintenance.
 
 ## Standard walkthrough for every knowledge base
 - **Purpose:** explain what this knowledge base covers and who should use it.
