@@ -49,3 +49,7 @@ The Studio must use company-size bands, current environment, primary migration r
 - Do not expose confidential founder notes in customer-facing materials.
 - Keep customer/company knowledge tenant-isolated and separately permissioned.
 - Do not let a sales or upsell goal override transparency, consent, security, or customer choice.
+
+## Shared foundational UX rule: don't create a bespoke workflow for every idea
+
+Across the website, prefer reusable touch-first navigation and workflow patterns: drill down progressively, clear Back/Exit/Continue actions, contextual details, review-before-purchase/submit, and Save & Exit / Resume Later for eligible multi-step work. Saved drafts need visible save status, last-saved time, access control, and tested interrupted-session/conflict recovery. A draft must not be confused with a purchase, approval, or executed change. Record this rule in relevant interface specs and use shared components to reduce duplicated design, implementation, and documentation effort. See section 19 of the [Customer Transformation Studio specification](../customer-transformation-studio/TRANSFORMATION_STUDIO_AND_MIGRATION_MARKETPLACE.md#19-foundational-touch-first-navigation-save-and-resume-and-reusable-workflow-patterns). This is a design requirement until implemented and tested.
