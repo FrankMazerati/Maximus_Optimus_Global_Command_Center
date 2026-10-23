@@ -32,9 +32,12 @@ The six customer tenants are Microsoft, Amazon, Google, Facebook, Tesla, and Har
 | Role-permission mappings | 1,190 |
 | Departments | 90 |
 | Tenant memberships | 1,421 |
-| Directory groups | 80 |
-| Directory group memberships | 5,308 |
+| Profiles with a manager relationship | 1,918 |
+| Directory groups | 86 |
+| Directory group memberships | 5,314 |
 | Device inventory records | 1,900 |
+| Asset registry records | 2,000 |
+| Devices linked to an asset record | 1,900 |
 | Device software inventory records | 765 |
 | Service desk tickets | 713 |
 | Synthetic cyber incidents | 280 |
@@ -43,24 +46,26 @@ The six customer tenants are Microsoft, Amazon, Google, Facebook, Tesla, and Har
 | Ticket history entries | 713 |
 | Change requests | 24 |
 | Approval records | 16 |
+| Explicit MSP client assignments | 78 active, approved, time-bounded |
 | Knowledge articles | 7 initial draft/sample articles |
 | Integration registry entries | 11 |
-| RLS policies across public application tables | 69 |
+| RLS policies across public application tables | 70 across 29 tables |
 
-The core eight target organizations were individually checked: IntelliStack has 506 profiles (500 employee profiles plus 6 existing contractors), 500 device records, 188 tickets, 35 cyber incidents and 80 vulnerability findings. Each of the six customer tenants and the MSP has 200 profiles, 200 devices, 75 tickets, 35 cyber incidents and 80 vulnerability findings.
+The core eight target organizations were individually checked: IntelliStack has 506 profiles (500 employee profiles plus 6 existing contractors), 500 device records, 600 asset records (including the original 100 pilot assets), 188 tickets, 35 cyber incidents and 80 vulnerability findings. Each of the six customer tenants and the MSP has 200 profiles, 200 devices, 200 asset records, 75 tickets, 35 cyber incidents and 80 vulnerability findings.
 
 ## Core data areas
 
-- Organizations, departments, profiles, Global User IDs, tenant memberships
+- Organizations, departments, profiles, Global User IDs, manager relationships, tenant memberships
 - Roles, permissions, role-permission mapping
 - Directory groups and group membership
-- Device inventory and synthetic software inventory
+- Device inventory, asset registry and synthetic software inventory
 - Service desk tickets, comments and ticket history
 - Cyber incidents and vulnerability findings
 - Change requests and approval records
 - Work items, workflow templates/runs/steps
 - Knowledge articles, notifications, audit events
 - Integration registry and app settings
+- MSP client assignment records with explicit permission scopes and expiry
 
 ## Supabase migrations applied
 
@@ -69,12 +74,14 @@ The core eight target organizations were individually checked: IntelliStack has 
 - `20261023055338_tenant_scoped_authorization_policies`
 - `20261023055421_harden_policy_helpers_and_role_coverage`
 - `20261023055524_optimize_enterprise_rls_and_indexes`
+- `20261023055630_complete_asset_hierarchy_and_msp_scope`
+- `20261023055653_enforce_explicit_msp_permission_scopes`
 
 ## Still required before the environment is application-ready
 
 - Link selected synthetic profiles to dedicated Supabase Auth test users or implement a server-side-only Explorer preview. Synthetic profiles are not login accounts.
 - Test actual authenticated queries and cross-tenant denial using controlled test identities.
-- Review permissions and MSP client-scope rules with explicit assignment records before allowing any MSP cross-customer access.
+- Test the MSP scope array enforcement and assignment expiry/revocation through authenticated API tests.
 - Implement and test approval state transitions, ticket dispatch atomicity, immutable audit writes, and workflow lifecycle logic.
 - Verify the frontend's Supabase project URL and publishable key; never put service-role secrets in client code.
 - Verify the current Vercel project, deployment branch and deployed commit.
