@@ -1,5 +1,0 @@
-GitHub read/write access diagnostic
-Purpose: verify ChatGPT GitHub connector can create, read, and clean up a test file.
-Repository: FrankMazerati/Maximus_Optimus_Global_Command_Center
-Branch: main
-Test token: MAXIMUS-OPTIMUS-ACCESS-CHECK-2026-10-22
