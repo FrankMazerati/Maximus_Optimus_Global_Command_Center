@@ -15,6 +15,7 @@
     "join-meeting",
     "favorites",
     "tickets",
+    "ticket-situation-simulator",
     "follow-ups-sla-compliance",
     "chat-email",
     "global-time"
@@ -31,6 +32,7 @@
     "dashboard",
     "help-desk",
     "help-buddy",
+    "ticket-situation-simulator",
     "war-room",
     "breakout-rooms",
     "intelli-chat"
@@ -140,6 +142,7 @@
   ],
   "interactionRules": {
     "sectionNavigation": "Each Work2U section opens its full list; tapping a record opens a detailed view.",
+    "ticketSituationSimulator": "The simulator creates a numbered ticket, workflow run, HelpBuddy checklist, optional asset and knowledge links, and audit events in one permission-checked database operation. It requires an authenticated profile and tickets.manage plus workflows.run permissions.",
     "returnNavigation": "Record detail provides a back action to return to the originating list.",
     "sla": "Live SLA countdowns must be calculated from actual policy and timestamps when backend data is connected.",
     "permissions": "Record fields and actions must respect role and tenant authorization.",
