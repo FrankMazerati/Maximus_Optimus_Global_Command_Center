@@ -36,3 +36,15 @@ Approved login image assets can be added later using the agreed filenames:
 - The Follow-Ups & SLA Compliance module is also included in global navigation.
 - The right HelpBuddy rail includes user-customizable Quick Picks for app shortcuts.
 - Current records and SLA values in the static HTML are illustrative seed data. Live ticket mutations, real SLA calculation, and external integrations require backend authorization and connection wiring.
+
+
+## Build 006 — Company Communications & Messaging Studio
+
+- Added a dedicated Company Announcements panel to the authenticated homepage, directly below the personal header/greeting and above Global Clock and News Feed.
+- Added homepage quick access and hamburger navigation entries for Company Communications and Messaging Studio.
+- Added Avatar AI Studio to the hamburger navigation as a planned module entry.
+- Messaging Studio scope is separated into daily motivational greetings (21-day morning/noon/night rotation), Chat Buddy greetings/welcomes, and work-focused Chat Buddy message templates. These are distinct content types, not separate assistants.
+- Company Communications is a separate destination for company-wide and department-specific official announcements and approved hyperlinks; it is not part of the motivational greeting or Chat Buddy's operational guidance.
+- This build is still a front-end preview. Announcement and messaging content-management screens, persistence, tenant isolation, role enforcement, approvals, audit logging, and live global-clock/news integrations must be connected and verified before production use. The homepage announcement shown is explicitly sample content.
+- No image-upload panel was added to Company Communications to keep this build stable; descriptive hyperlinks are the intended first version.
+- Responsive marketing and layout must be verified at phone, tablet, and laptop breakpoints before the build is considered complete.
