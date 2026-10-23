@@ -5,6 +5,59 @@
 <title>Maximus Optimus Global Command Center</title>
 <style>
 :root{--blue:#063a73;--bright:#1977d2;--accent:#087f9d;--ink:#173746;--muted:#647c86;--line:#b9dce7;--green:#168052;--panel:#fff;--soft:#f3fbfd}*{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:Inter,Arial,sans-serif;color:var(--ink);background:linear-gradient(180deg,#e8f9fd,#f8fdff)}body{overflow:auto}.header{background:#fff;border-bottom:2px solid var(--line);position:sticky;top:0;z-index:30}.header-inner{display:grid;grid-template-columns:1.2fr 1.25fr .36fr;gap:20px;align-items:center;padding:16px 22px}.profile{display:grid;grid-template-columns:92px 1fr;gap:14px;align-items:center;position:relative}.profile img{width:88px;height:88px;border-radius:50%;object-fit:cover;border:3px solid var(--line)}.profile-name{font-size:20px;font-weight:950}.role{font-size:11px;color:#58727d;line-height:1.5}.ids,.contact{display:grid;grid-template-columns:1fr 1fr;gap:5px 16px;margin-top:7px;font-size:9px}.manager{margin-top:9px}.manager button,.ctrl button{border:1px solid var(--line);background:#f7fdff;border-radius:8px;padding:7px 9px;cursor:pointer;font-size:9px}.manager-info{display:none;margin-top:5px;padding:8px;border:1px solid var(--line);border-radius:8px;font-size:9px;background:#fbfeff}.manager-info.open{display:block}.profile-gear{position:absolute;left:64px;top:65px;width:28px;height:28px;border-radius:50%;border:1px solid var(--line);background:#fff;cursor:pointer}.brand{text-align:center}.present{font-size:13px;font-weight:900;letter-spacing:.09em;color:var(--blue)}.product{font-size:31px;font-weight:950}.max{color:var(--blue)}.opt{color:#fff;text-shadow:0 1px 2px #173746}.command{font-size:14px;font-weight:900;color:var(--blue);letter-spacing:.13em}.motto{font-size:12px;font-weight:950;text-transform:uppercase;white-space:nowrap;margin-top:8px}.white{color:#fff;text-shadow:0 1px 2px #173746}.blue{color:var(--bright)}.right{display:flex;flex-direction:column;gap:6px}.ctrl{position:relative}.ctrl>button{width:100%;text-align:left}.ctrl strong{display:block;font-size:11px;color:var(--accent)}.ctrl small{display:block;font-size:7px;color:var(--muted)}.status{color:var(--green)!important}.menu{display:none;position:absolute;right:0;top:100%;min-width:170px;background:#fff;border:1px solid var(--line);border-radius:9px;padding:4px;box-shadow:0 10px 25px #164d6030}.menu.open{display:block}.menu button{display:block;width:100%;text-align:left;border:0;background:#fff;padding:8px}.workspace{display:grid;grid-template-columns:330px minmax(0,1fr) 330px;gap:14px;padding:14px;min-height:1100px}.panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;min-height:0}.panel-head{display:flex;align-items:center;gap:8px;padding:12px;border-bottom:1px solid #d9edf2;background:#fbfeff}.panel-head b{font-size:11px}.panel-head small{display:block;color:var(--muted);font-size:7px}.hamb{width:38px;height:38px;border:1px solid var(--line);border-radius:8px;background:#e9f8fc;color:var(--blue);font-size:18px}.nav-search{padding:8px;border-bottom:1px solid #e5f1f4}.nav-search input{width:100%;padding:9px;border:1px solid var(--line);border-radius:8px}.nav{overflow:auto;flex:1;padding:5px 8px 12px;min-height:1000px}.navitem{width:100%;display:flex;gap:8px;align-items:center;border:1px solid transparent;background:transparent;border-radius:8px;padding:10px;margin:2px 0;color:#294d5b;text-align:left;font-size:9px;cursor:grab}.navitem:hover{background:#e8f8fc;border-color:#a9d8e5}.drag{margin-left:auto;color:#79939d}.side-foot{border-top:1px solid #d9edf2;padding:9px;font-size:8px;color:var(--muted)}.mainpanel{min-height:1600px}.main{overflow:auto;flex:1;padding:0 3px 60px}.block{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:14px}.subhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}.block h2{font-size:13px;letter-spacing:.06em;margin:0}.tag{font-size:7px;color:var(--accent);background:#e9f8fc;border:1px solid #b6dce8;border-radius:999px;padding:4px 7px}.global-time{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}.clock{border:1px solid #d4e8ed;border-radius:8px;padding:11px}.clock b{font-size:8px}.clock span{display:block;font-size:14px;font-weight:900;color:var(--accent);margin-top:3px}.news-tabs{display:flex;gap:6px;margin:11px 0}.news-tabs button{border:1px solid var(--line);background:#fff;border-radius:7px;padding:8px 10px;font-size:8px}.news-tabs .active{background:#e8f8fc;color:var(--blue)}.news-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;max-height:520px;overflow:auto}.news{font-size:8px;padding:11px;border:1px solid #dceef2;border-radius:7px;min-height:90px}.news small{display:block;color:var(--muted);font-size:7px;margin-top:5px}.quick{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}.quick button{min-height:68px;border:1px solid #c8e3eb;background:#f9fdff;border-radius:9px;text-align:left;padding:10px}.quick b{display:block;font-size:9px}.quick small{font-size:7px;color:var(--muted)}.workflow{display:grid;grid-template-columns:1.7fr .75fr .75fr;gap:10px}.work,.metric{border:1px solid #c8e3eb;border-radius:10px;padding:13px;background:#f9fdff}.work h3,.metric h3{font-size:11px;margin:0 0 7px}.work p{font-size:8px;color:var(--muted)}.workgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.workitem{background:#fff;border:1px solid #d0e7ed;border-radius:7px;padding:10px}.workitem b{font-size:9px}.workitem span{display:block;font-size:7px;color:var(--muted);margin-top:3px}.num{font-size:23px;font-weight:950;color:var(--accent)}.row{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid #dceef2;font-size:8px}.footer{text-align:center;color:#718791;font-size:8px;padding:14px 2px 30px}.helppanel{min-height:1600px}.help-inner{height:100%;display:flex;flex-direction:column;padding:16px;background:linear-gradient(145deg,#e9faff,#fff)}.hbtop{display:flex;align-items:center;gap:9px}.avatar{width:50px;height:50px;border-radius:13px;background:linear-gradient(145deg,#5ee5f6,#5878df 60%,#8a65cf);display:grid;place-items:center;color:#fff;font-weight:1000}.hbtop b{font-size:16px}.hbtop small{display:block;color:var(--accent);font-size:7px}.ready{margin-left:auto;color:var(--green);font-size:7px;font-weight:900}.prompt{margin-top:11px;padding:12px;border:1px solid #9fd5e2;border-radius:8px;background:#f4fcff;font-size:8px}.attachment{display:block;margin-top:8px;border:1px dashed #8fc9d8;border-radius:8px;padding:9px;text-decoration:none;color:var(--accent);font-size:8px}.hbscroll{overflow:auto;flex:1;margin-top:7px;padding-right:3px}.hbitem{padding:11px 0;border-bottom:1px solid #dbeef3}.hbitem b{font-size:9px}.hbitem small{display:block;color:var(--muted);font-size:7px;margin-top:3px}.stars{letter-spacing:1px;font-size:10px;color:#e6a400}.hbactions{display:flex;gap:5px;margin-top:8px}.hbactions button{font-size:7px;padding:7px 8px;border-radius:7px;border:1px solid var(--line);cursor:pointer}.primary{background:var(--accent)!important;color:#fff}.hb-card{border:1px solid #c8e3eb;border-radius:9px;padding:10px;margin:8px 0;background:#fff}.hb-card h3{font-size:9px;margin:0 0 6px}.kb{display:grid;grid-template-columns:1fr 1fr;gap:6px}.kb button{font-size:7px;padding:8px;border:1px solid var(--line);background:#f7fdff;border-radius:7px}.attach-list{font-size:7px;color:var(--muted);line-height:1.7}
+
+/* Work2U interaction and independent workspace scrolling */
+html,body{height:100%}
+.workspace{height:calc(100vh - 190px);min-height:560px;align-items:stretch}
+.workspace>.panel{height:100%;min-height:0}
+.nav{min-height:0}
+.mainpanel,.helppanel{min-height:0}
+.main{min-height:0}
+.section-intro{font-size:9px;color:var(--muted);line-height:1.5;margin:8px 0 12px}
+.section-list{display:grid;gap:7px}
+.drill-item{display:flex;align-items:center;gap:10px;width:100%;text-align:left;padding:11px;border:1px solid #d0e7ed;border-radius:9px;background:#f9fdff;color:var(--ink);cursor:pointer;touch-action:manipulation}
+.drill-item:hover,.drill-item:focus-visible{background:#eaf8fc;border-color:#7bbfd2;outline:2px solid #9ed5e4;outline-offset:1px}
+.drill-copy{flex:1;min-width:0}
+.drill-copy b{display:block;font-size:10px}
+.drill-copy small{display:block;font-size:8px;color:var(--muted);margin-top:4px;line-height:1.45}
+.drill-meta{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:6px}
+.pill{display:inline-block;font-size:7px;border-radius:999px;padding:4px 7px;background:#e8f8fc;color:#155b77;border:1px solid #c1e2eb}
+.pill.danger{background:#fff0ef;color:#a52c25;border-color:#f3c2bd}
+.pill.warn{background:#fff7e6;color:#86530a;border-color:#f0d7a1}
+.drill-icon{font-size:18px;flex:0 0 24px;text-align:center}
+.section-open{border:1px solid var(--line);background:#fff;border-radius:8px;padding:7px 10px;font-size:8px;cursor:pointer}
+.followup-detail{display:none;margin-top:9px;border:1px solid #9fd5e2;border-radius:10px;padding:12px;background:#f4fcff}
+.followup-detail.open{display:block}
+.detail-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:9px 0}
+.detail-field{border:1px solid #d4e8ed;border-radius:7px;padding:8px;background:#fff;min-width:0}
+.detail-field small{display:block;font-size:7px;color:var(--muted);margin-bottom:4px}
+.detail-field b{font-size:9px;overflow-wrap:anywhere}
+.detail-actions{display:flex;gap:6px;flex-wrap:wrap;margin-top:9px}
+.detail-actions button{border:1px solid var(--line);border-radius:7px;background:#fff;padding:8px 10px;font-size:8px;cursor:pointer}
+.detail-actions .primary{background:var(--accent)!important;color:#fff}
+.rail-quick{margin-top:12px;border-top:1px solid #d9edf2;padding-top:12px}
+.rail-quick .quick{grid-template-columns:1fr 1fr}
+.rail-quick .quick button{min-height:54px;cursor:pointer;touch-action:manipulation}
+.app-shortcuts{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:8px}
+.app-shortcut{display:flex;align-items:center;gap:7px;border:1px solid #c8e3eb;background:#fff;border-radius:8px;padding:9px;text-align:left;font-size:8px;cursor:pointer;touch-action:manipulation;min-width:0}
+.app-shortcut span{overflow-wrap:anywhere}
+.module-modal{position:fixed;inset:0;background:#10394d88;z-index:100;display:none;align-items:center;justify-content:center;padding:16px}
+.module-modal.open{display:flex}
+.module-dialog{width:min(720px,100%);max-height:88vh;overflow:auto;background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:0 24px 80px #123b4b55}
+.module-dialog h2{font-size:16px;margin:0}
+.module-dialog p{font-size:10px;line-height:1.55;color:var(--muted)}
+.module-dialog .close{float:right;border:1px solid var(--line);background:#f5fcff;border-radius:8px;padding:7px 10px;cursor:pointer}
+@media(max-width:800px){
+ .workspace{height:auto;min-height:0;display:flex;flex-direction:column}
+ .workspace>.panel{height:auto;min-height:0}
+ .navpanel{height:68vh;min-height:420px;flex:0 0 auto}
+ .mainpanel{height:74vh;min-height:520px;flex:0 0 auto}
+ .helppanel{height:72vh;min-height:500px;flex:0 0 auto}
+ .main{overflow:auto}
+ .nav{min-height:0}
+ .detail-grid{grid-template-columns:1fr}
+}
+
 @media(max-width:1200px){.workspace{grid-template-columns:290px minmax(0,1fr) 290px}.global-time{grid-template-columns:repeat(3,1fr)}.news-grid{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:800px){.header{position:relative}.header-inner{display:flex;flex-direction:column;align-items:stretch;padding:10px}.brand{order:0}.profile{order:1}.right{order:2;display:flex;flex-direction:column}.workspace{display:flex;flex-direction:column;min-height:0;padding:8px}.navpanel{height:900px;min-height:900px;flex:0 0 900px}.mainpanel{height:2200px;min-height:2200px;flex:0 0 2200px}.helppanel{height:1800px;min-height:1800px;flex:0 0 1800px}.global-time{grid-template-columns:repeat(2,1fr)}.news-grid{grid-template-columns:repeat(2,1fr);max-height:none}.quick{grid-template-columns:repeat(2,1fr)}.workflow{grid-template-columns:1fr}.workgrid{grid-template-columns:1fr 1fr}.contact,.ids{grid-template-columns:1fr}.motto{white-space:normal}.product{font-size:24px}}
 </style>
@@ -16,14 +69,61 @@
 <section class="right"><div class="ctrl"><button id="statusBtn"><strong id="statusText" class="status">● ONLINE</strong><small>Status ▾</small></button><div class="menu" id="statusMenu"><button data-s="ONLINE">● Online</button><button data-s="AWAY">◐ Away</button><button data-s="BUSY">● Busy</button><button data-s="DO NOT DISTURB">⊘ Do Not Disturb</button><button data-s="OFFLINE">○ Offline</button></div></div><div class="ctrl"><button id="timeBtn"><strong id="clock">--:--</strong><small>Chicago time ▾</small></button><div class="menu" id="timeMenu"><button data-z="America/Chicago">Chicago</button><button data-z="America/New_York">New York</button><button data-z="Europe/London">London</button><button data-z="Australia/Sydney">Sydney</button></div></div><div class="ctrl"><button id="weatherBtn"><strong id="temp">--°F</strong><small>North Lake • Chicago ▾</small></button><div class="menu" id="weatherMenu"><button data-city="Chicago">North Lake • Chicago</button><button data-city="New York">New York</button><button data-city="London">London</button><button data-city="Sydney">Sydney</button></div></div><div class="ctrl"><button title="Design Studio">⚙ Design Studio</button></div></section>
 </div></header>
 <div class="workspace">
-<section class="panel navpanel"><div class="panel-head"><button class="hamb">☰</button><div><b>SECTION 4 — NAVIGATION MENU</b><small>Full Command Center navigation • drag to reorder</small></div></div><div class="nav-search"><input id="navSearch" placeholder="Search navigation..."></div><nav class="nav" id="nav"></nav><div class="side-foot">Hold/drag any item to change its position.</div></section>
+<section class="panel navpanel"><div class="panel-head"><button class="hamb" aria-label="Navigation menu">☰</button><div><b>SECTION 4 — NAVIGATION MENU</b><small>Full Command Center navigation • drag to reorder</small></div></div><div class="nav-search"><input id="navSearch" placeholder="Search navigation..."></div><nav class="nav" id="nav"></nav><div class="side-foot">Hold/drag any item to change its position.</div></section>
 <main class="panel mainpanel"><div class="main">
 <section class="block"><div class="subhead"><h2>SECTION 2 — GLOBAL TIME</h2><span class="tag">LIVE</span></div><div class="global-time" id="clocks"></div></section>
 <section class="block"><div class="subhead"><h2>SECTION 3 — NEWS FEED</h2><span class="tag">SECURITY • NETWORK • GLOBAL NEWS</span></div><div class="news-tabs"><button class="active" data-feed="Security">Security</button><button data-feed="Network">Network</button><button data-feed="Global News">Global News</button></div><div class="news-grid" id="news"></div></section>
 <section class="block"><div class="subhead"><h2>QUICK PICKS</h2><span class="tag">5 + 5</span></div><div class="quick" id="quick"></div></section>
-<section class="block"><div class="subhead"><h2>SECTION 5 — BRING THE WORK TO YOU</h2><span class="tag">ACTIVE WORK</span></div><div class="workflow"><div class="work"><h3>Active Work</h3><p>Authorization checkpoints are prioritized first while authorized work continues.</p><div class="workgrid"><div class="workitem"><b>Access Request</b><span>Active Directory permission approval</span></div><div class="workitem"><b>Network Incident</b><span>Chicago core switch review</span></div><div class="workitem"><b>Security Ticket</b><span>Endpoint alert investigation</span></div><div class="workitem"><b>Service Request</b><span>New employee workstation</span></div><div class="workitem"><b>Manager Approval</b><span>Privileged access checkpoint</span></div><div class="workitem"><b>Calendar</b><span>Architecture review</span></div></div></div><div class="metric"><h3>My Queue</h3><div class="num">12</div><div class="row"><span>Critical</span><b>2</b></div><div class="row"><span>High</span><b>4</b></div><div class="row"><span>Normal</span><b>6</b></div></div><div class="metric"><h3>Workflow</h3><div class="row"><span>Checkpoints</span><b>8</b></div><div class="row"><span>Waiting approval</span><b>2</b></div><div class="row"><span>Escalated</span><b>1</b></div><div class="row"><span>Completed</span><b>37</b></div></div></div></section>
+
+<section class="block" id="criticalSection">
+ <div class="subhead"><h2>1 — CRITICAL & TIME-SENSITIVE</h2><span class="tag">PRIORITY</span></div>
+ <p class="section-intro">Urgent incidents, escalations, and approvals. Tap a section to review the queue, then tap any record for full details.</p>
+ <div class="section-list" id="criticalList"></div>
+ <div class="followup-detail" id="criticalDetail" aria-live="polite"></div>
+ <div style="display:flex;justify-content:flex-end;margin-top:9px"><button class="section-open" data-open-list="critical">Open full critical queue →</button></div>
+</section>
+<section class="block" id="primaryWorkSection">
+ <div class="subhead"><h2>2 — MY PRIMARY WORK</h2><span class="tag">TICKET HISTORY</span></div>
+ <p class="section-intro">Searchable history of work you handled, including closed tickets and follow-ups, so you can quickly find prior troubleshooting and outcomes.</p>
+ <div class="nav-search" style="padding:0;border:0;margin-bottom:8px"><input id="ticketHistorySearch" placeholder="Search ticket number, user, device, or application..." aria-label="Search ticket history"></div>
+ <div class="section-list" id="historyList"></div>
+ <div class="followup-detail" id="historyDetail" aria-live="polite"></div>
+ <div style="display:flex;justify-content:flex-end;margin-top:9px"><button class="section-open" data-open-list="history">Open complete work history →</button></div>
+</section>
+<section class="block" id="todayWorkSection">
+ <div class="subhead"><h2>3 — BRING THE WORK TO YOU</h2><span class="tag">TODAY'S WORK</span></div>
+ <p class="section-intro">Your prioritized daily work list, capped at 30 visible items at a time. Completing or deferring items makes room for the next eligible task; critical alerts remain visible separately.</p>
+ <div class="section-list" id="todayList"></div>
+ <div class="followup-detail" id="todayDetail" aria-live="polite"></div>
+ <div style="display:flex;justify-content:flex-end;margin-top:9px"><button class="section-open" data-open-list="today">Open today's work →</button></div>
+</section>
+<section class="block" id="followupSection">
+ <div class="subhead"><h2>4 — FOLLOW-UPS & SLA COMPLIANCE</h2><span class="tag">NEXT ACTION</span></div>
+ <p class="section-intro">Every follow-up shows the ticket, end user, assigned device, affected applications, owner, next action, and SLA timing. Timers must use actual policy and timestamps when connected to live data.</p>
+ <div class="workflow" style="grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;margin-bottom:10px">
+  <div class="metric"><h3>Due soon</h3><div class="num">8</div></div>
+  <div class="metric"><h3>Overdue</h3><div class="num" style="color:#b8322a">3</div></div>
+  <div class="metric"><h3>Awaiting user</h3><div class="num">12</div></div>
+  <div class="metric"><h3>SLA at risk</h3><div class="num" style="color:#b7791f">5</div></div>
+ </div>
+ <div class="section-list" id="followupList"></div>
+ <div class="followup-detail" id="followupDetail" aria-live="polite"></div>
+ <div style="display:flex;justify-content:flex-end;margin-top:9px"><button class="section-open" data-open-list="followups">Open follow-up queue →</button></div>
+</section>
+<section class="block" id="scheduleSection">
+ <div class="subhead"><h2>5 — NEXT UP & SCHEDULED</h2><span class="tag">CALENDAR • REMINDERS</span></div>
+ <p class="section-intro">Meetings, reminders, notes, and scheduled work. Select any item to open its details.</p>
+ <div class="section-list" id="scheduleList"></div>
+ <div class="followup-detail" id="scheduleDetail" aria-live="polite"></div>
+ <div style="display:flex;justify-content:flex-end;margin-top:9px"><button class="section-open" data-open-list="schedule">Open calendar & reminders →</button></div>
+</section>
+<section class="block" id="additionalSections">
+ <div class="subhead"><h2>6 — ADDITIONAL WORKSPACES</h2><span class="tag">ROLE-AWARE</span></div>
+ <p class="section-intro">Open additional modules without overcrowding the prioritized work lists.</p>
+ <div class="quick" id="additionalWorkspaces"></div>
+</section>
 <section class="block"><h2>RECENT ACTIVITY</h2><div class="row"><span>Access approval checkpoint created</span><b>2m</b></div><div class="row"><span>Network incident assigned</span><b>18m</b></div><div class="row"><span>Architecture meeting accepted</span><b>42m</b></div></section>
-<section class="block"><h2>GLOBAL THREAT STATUS</h2><div class="row"><span>Global security posture</span><b>GUARDED</b></div><div class="row"><span>Network posture</span><b>NORMAL</b></div><div class="row"><span>Critical alerts</span><b>2</b></div></section>
+
 <section class="block"><h2>QUICK MENU</h2><div class="quick"><button><b>Create Ticket</b><small>New incident or request</small></button><button><b>Request Access</b><small>Security checkpoint</small></button><button><b>Schedule Meeting</b><small>IntelliCalendar</small></button><button><b>Open IntelliChat</b><small>Team communication</small></button><button><b>Start War Room</b><small>Critical response</small></button></div></section>
 <footer class="footer">IntelliStack Systems • Maximus Optimus Global Command Center • System Status • Security • Support</footer>
 </div></main>
@@ -41,7 +141,17 @@
 <div class="hb-card"><h3>WORK TOOLS</h3><div class="row"><span>IntelliCalendar</span><b>Open</b></div><div class="row"><span>IntelliChat</span><b>Open</b></div><div class="row"><span>Tickets & Tasks</span><b>Open</b></div><div class="row"><span>War Rooms</span><b>Open</b></div></div>
 <div class="hb-card"><h3>ATTACHMENTS & LEDGER</h3><div class="attach-list">📎 INC-1048-notes.pdf<br>📎 endpoint-screenshot.png<br>Ledger retained by current technician • Handoff history preserved</div></div>
 <div class="hb-card"><h3>TECHNICIAN EXPERIENCE</h3><div class="row"><span>Current level</span><b>Level 8</b></div><div class="row"><span>Stars earned</span><b>184 ★</b></div><div class="row"><span>Similar tickets completed</span><b>47</b></div></div>
+<div class="rail-quick"><div class="subhead"><h2>MY QUICK PICKS</h2><span class="tag">CUSTOMIZE</span></div>
+<p class="section-intro">Add shortcuts to any authorized application. The rail scrolls independently as your list grows.</p>
+<div class="app-shortcuts" id="appShortcuts"></div>
+<div class="detail-actions"><input id="newShortcut" placeholder="Application name" aria-label="New quick pick" style="min-width:0;flex:1;padding:8px;border:1px solid var(--line);border-radius:7px;font-size:8px"><button id="addShortcut" class="primary">＋ Add</button></div>
+<div class="attach-list" id="shortcutMessage" aria-live="polite">Shortcuts added here are saved in this browser for this demo; real integrations require administrator authorization.</div>
+</div>
 </div></div></section>
+</div>
+
+<div class="module-modal" id="moduleModal" role="dialog" aria-modal="true" aria-labelledby="moduleModalTitle">
+ <div class="module-dialog"><button class="close" id="closeModuleModal" aria-label="Close details">✕ Close</button><h2 id="moduleModalTitle">Workspace</h2><p id="moduleModalIntro"></p><div id="moduleModalBody"></div></div>
 </div>
 <script>
 const navItems=['Global ID','Active Directory','IntelliChat','IntelliCalendar','Intella Notes','Intella Sheets','Knowledge Base','Help Desk','Service Desk','Incident Management','Problem Management','Service Catalog','Change Management','Asset Management','Configuration Management','Workflows','Workflow Companion','Ticket Queue','Escalations','Approvals','Security Operations','SOC','Threat Intelligence','NOC','Network Operations','Network Monitoring','Vulnerability Management','Risk Management','Compliance','Governance','Audit','War Room','Breakout Rooms','Emergency Response','Identity & Access','Privileged Access','Endpoint Management','Device Management','Cloud Operations','Infrastructure','Servers','Applications','Databases','Data Center','Global Map','Global News','Security News','Network News','Calendar','Meetings','Documents','Files','Teams','IntelliChat Rooms','Notifications','Reports','Analytics','Dashboards','Stars & Recognition','Technician Levels','Training','Onboarding','Offboarding','Tenant Management','Tenant Companies','Tenant People','Contractors','Employees','Managers','Global Administration','Design Studio','System Settings'];
@@ -54,4 +164,69 @@ function renderNews(feed='Security'){document.getElementById('news').innerHTML=f
 const zones=[['Chicago','America/Chicago'],['New York','America/New_York'],['London','Europe/London'],['Sydney','Australia/Sydney'],['Tokyo','Asia/Tokyo']];function tick(){document.getElementById('clocks').innerHTML=zones.map(([n,z])=>'<div class="clock"><b>'+n+'</b><span>'+new Intl.DateTimeFormat('en-US',{timeZone:z,hour:'numeric',minute:'2-digit',second:'2-digit'}).format(new Date())+'</span></div>').join('');document.getElementById('clock').textContent=new Intl.DateTimeFormat('en-US',{timeZone:window.timeZone||'America/Chicago',hour:'numeric',minute:'2-digit'}).format(new Date())};tick();setInterval(tick,1000);
 async function weather(city='Chicago'){const coords={Chicago:[41.88,-87.63],'New York':[40.71,-74.01],London:[51.51,-.13],Sydney:[-33.87,151.21]};const c=coords[city]||coords.Chicago;try{const r=await fetch('https://api.open-meteo.com/v1/forecast?latitude='+c[0]+'&longitude='+c[1]+'&current=temperature_2m&temperature_unit=fahrenheit');const d=await r.json();document.getElementById('temp').textContent=Math.round(d.current.temperature_2m)+'°F'}catch(e){document.getElementById('temp').textContent='Weather unavailable'}}weather();
 function menu(btn,id){document.getElementById(btn).onclick=()=>document.getElementById(id).classList.toggle('open')};menu('statusBtn','statusMenu');menu('timeBtn','timeMenu');menu('weatherBtn','weatherMenu');document.querySelectorAll('#statusMenu button').forEach(b=>b.onclick=()=>{document.getElementById('statusText').textContent='● '+b.dataset.s;document.getElementById('statusMenu').classList.remove('open')});document.querySelectorAll('#timeMenu button').forEach(b=>b.onclick=()=>{window.timeZone=b.dataset.z;tick();document.getElementById('timeMenu').classList.remove('open')});document.querySelectorAll('#weatherMenu button').forEach(b=>b.onclick=()=>{weather(b.dataset.city);document.getElementById('weatherMenu').classList.remove('open')});document.getElementById('managerBtn').onclick=()=>document.getElementById('managerInfo').classList.toggle('open');
+
+const demoRecords = {
+ critical: [
+  {id:'SEC-1042',title:'Firewall alert review',user:'Jordan Lee',globalId:'IS-2048',company:'IntelliStack Systems',department:'Network Operations',device:'Laptop LT-208',application:'VPN / Firewall Console',status:'Investigating',priority:'Critical',owner:'Network Operations',sla:'18 min to response target',next:'Review source, validate event, document disposition',detail:'Repeated blocked connection attempts require authorized review. Do not change firewall policy without the required approval.'},
+  {id:'INC-2081',title:'Application availability degraded',user:'Morgan Chen',globalId:'IS-1176',company:'IntelliStack Systems',department:'IT Operations',device:'Desktop DT-114',application:'Internal business application',status:'Open',priority:'High',owner:'Service Desk',sla:'42 min to response target',next:'Check connector health and confirm user impact',detail:'Confirm whether the issue affects other users and attach evidence before escalation.'},
+  {id:'IAM-0317',title:'Privileged access approval',user:'Taylor Brooks',globalId:'IS-0981',company:'IntelliStack Systems',department:'Security',device:'Managed workstation WS-033',application:'Active Directory',status:'Awaiting approval',priority:'High',owner:'Authorized manager',sla:'Approval deadline approaching',next:'Review scope and record decision',detail:'Access remains pending until an authorized approver records a decision.'}
+ ],
+ history: [
+  {id:'HD-1042',title:'Network connectivity issue',user:'Jordan Lee',globalId:'IS-2048',company:'IntelliStack Systems',department:'Network Operations',device:'Laptop LT-208',application:'VPN client',status:'Resolved',priority:'Normal',owner:'Help Desk L2',sla:'Closed within target',next:'Follow up if symptoms recur',detail:'Resolution notes, prior actions, handoff history, and closure evidence belong in the full ticket record.'},
+  {id:'HD-1038',title:'Device setup assistance',user:'Morgan Chen',globalId:'IS-1176',company:'IntelliStack Systems',department:'IT Support',device:'Desktop DT-114',application:'Company portal',status:'Follow-up required',priority:'Normal',owner:'Help Desk L1',sla:'Follow-up commitment pending',next:'Verify the user can sign in',detail:'Review the previous technician notes and contact the user through an approved channel.'},
+  {id:'HD-1021',title:'IntelliChat access',user:'Taylor Brooks',globalId:'IS-0981',company:'IntelliStack Systems',department:'Customer Success',device:'Phone PH-033',application:'IntelliChat',status:'Closed',priority:'Low',owner:'Help Desk L1',sla:'Closed',next:'Reopen only if the issue returns',detail:'Historical record retained for reference, subject to retention and access policies.'}
+ ],
+ today: [
+  {id:'TASK-001',title:'Complete assigned ticket',user:'Jordan Lee',globalId:'IS-2048',company:'IntelliStack Systems',department:'Network Operations',device:'Laptop LT-208',application:'VPN client',status:'In progress',priority:'High',owner:'Current user',sla:'Today',next:'Confirm resolution with the end user',detail:'Continue from the last verified troubleshooting checkpoint.'},
+  {id:'TASK-002',title:'Review knowledge article',user:'Current user',globalId:'Current profile',company:'IntelliStack Systems',department:'Assigned department',device:'Not applicable',application:'Knowledge Base',status:'Not started',priority:'Normal',owner:'Current user',sla:'Today',next:'Review and submit suggested edits',detail:'Submit improvements through the approved knowledge review workflow.'},
+  {id:'TASK-003',title:'Prepare architecture review',user:'Current user',globalId:'Current profile',company:'IntelliStack Systems',department:'Architecture',device:'Not applicable',application:'IntelliCalendar / Documents',status:'Scheduled',priority:'Normal',owner:'Current user',sla:'Before meeting',next:'Gather notes and agenda',detail:'Open the linked meeting and its associated documents.'}
+ ],
+ followups: [
+  {id:'HD-1042',title:'Verify network issue remains resolved',user:'Jordan Lee',globalId:'IS-2048',company:'IntelliStack Systems',department:'Network Operations',device:'Laptop LT-208',application:'VPN client',status:'Awaiting user',priority:'High',owner:'Help Desk L2',sla:'18 min to next response target',next:'Contact user and record outcome',detail:'Check symptoms, network location, device last-seen status, and the original resolution notes.'},
+  {id:'HD-1038',title:'Confirm device setup',user:'Morgan Chen',globalId:'IS-1176',company:'IntelliStack Systems',department:'IT Support',device:'Desktop DT-114',application:'Company portal',status:'Follow-up due',priority:'Normal',owner:'Help Desk L1',sla:'95 min to follow-up target',next:'Confirm sign-in and application access',detail:'Verify setup completion and update the ticket with the user response.'},
+  {id:'INC-1051',title:'Investigate phone portal issue',user:'Taylor Brooks',globalId:'IS-0981',company:'IntelliStack Systems',department:'Customer Success',device:'Company phone PH-033',application:'Company portal',status:'SLA at risk',priority:'Critical',owner:'Service Desk Lead',sla:'7 min to response target',next:'Contact user, investigate, escalate if needed',detail:'Review device assignment and app status. Escalate according to the actual SLA policy.'}
+ ],
+ schedule: [
+  {id:'CAL-001',title:'Team operations meeting',user:'Current user',globalId:'Current profile',company:'IntelliStack Systems',department:'Assigned department',device:'Not applicable',application:'IntelliCalendar',status:'Upcoming',priority:'Normal',owner:'Current user',sla:'Scheduled',next:'Review agenda',detail:'Meeting time and attendee details should come from the connected calendar when authorized.'},
+  {id:'REM-002',title:'Follow up on outstanding ticket',user:'Jordan Lee',globalId:'IS-2048',company:'IntelliStack Systems',department:'Network Operations',device:'Laptop LT-208',application:'Ticket Queue',status:'Reminder',priority:'High',owner:'Current user',sla:'Scheduled reminder',next:'Open ticket HD-1042',detail:'Review the latest ticket update and record the follow-up result.'},
+  {id:'NOTE-003',title:'Architecture review notes',user:'Current user',globalId:'Current profile',company:'IntelliStack Systems',department:'Architecture',device:'Not applicable',application:'Intella Notes',status:'Draft',priority:'Normal',owner:'Current user',sla:'Before meeting',next:'Open and update notes',detail:'Personal notes remain private unless explicitly shared.'}
+ ]
+};
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function showRecord(record,heading){
+ const modal=document.getElementById('moduleModal');
+ document.getElementById('moduleModalTitle').textContent=record.id+' — '+record.title;
+ document.getElementById('moduleModalIntro').textContent=heading+' · Demonstration record; live ticket and SLA integrations are not connected in this static build.';
+ document.getElementById('moduleModalBody').innerHTML='<div class="detail-grid">'+[
+  ['End user',record.user],['Global ID',record.globalId],['Company / tenant',record.company],['Department',record.department],['Assigned device',record.device],['Application(s)',record.application],['Status',record.status],['Priority',record.priority],['Owner',record.owner],['SLA / deadline',record.sla],['Next action',record.next]
+ ].map(([k,v])=>'<div class="detail-field"><small>'+esc(k)+'</small><b>'+esc(v)+'</b></div>').join('')+'</div><div class="detail-field"><small>Record details</small><div style="font-size:10px;line-height:1.6">'+esc(record.detail)+'</div></div><div class="detail-actions"><button class="primary" data-demo-action="Acknowledge">Acknowledge</button><button data-demo-action="Assign">Assign / hand off</button><button data-demo-action="Follow-up">Record follow-up</button><button data-demo-action="Escalate">Escalate</button></div><p id="modalActionNote" aria-live="polite">Actions are demonstration-only and do not change a real ticket.</p>';
+ modal.classList.add('open');
+ document.getElementById('moduleModalBody').querySelectorAll('[data-demo-action]').forEach(b=>b.addEventListener('click',()=>{document.getElementById('modalActionNote').textContent=b.dataset.demoAction+' selected for '+record.id+'. Live action wiring and permission checks are required before this can modify records.';}));
+}
+function renderRecords(kind,targetId,detailId,filter=''){
+ const list=document.getElementById(targetId), detail=document.getElementById(detailId);
+ const records=demoRecords[kind].filter(r=>!filter||[r.id,r.title,r.user,r.device,r.application,r.status].join(' ').toLowerCase().includes(filter.toLowerCase()));
+ list.innerHTML=records.map(r=>'<button class="drill-item" type="button" data-record="'+esc(r.id)+'"><span class="drill-icon">'+(r.priority==='Critical'?'⚠':kind==='history'?'▤':kind==='schedule'?'◷':kind==='today'?'☑':'↻')+'</span><span class="drill-copy"><b>'+esc(r.id)+' · '+esc(r.title)+'</b><small>'+esc(r.user)+' · '+esc(r.device)+' · '+esc(r.application)+'</small><span class="drill-meta"><span class="pill '+(r.priority==='Critical'?'danger':r.priority==='High'?'warn':'')+'">'+esc(r.priority)+'</span><span class="pill">'+esc(r.status)+'</span><span class="pill">'+esc(r.sla)+'</span></span></span><span class="drill-icon">›</span></button>').join('')||'<p class="section-intro">No matching items in this demonstration list.</p>';
+ list.querySelectorAll('[data-record]').forEach(b=>b.addEventListener('click',()=>{const record=demoRecords[kind].find(r=>r.id===b.dataset.record);showRecord(record,kind==='followups'?'Follow-ups & SLA Compliance':kind==='history'?'My Primary Work':kind==='critical'?'Critical & Time-Sensitive':kind==='today'?'Bring the Work to You':'Next Up & Scheduled')}));
+ if(detail){detail.classList.remove('open');detail.innerHTML=''}
+}
+renderRecords('critical','criticalList','criticalDetail');
+renderRecords('history','historyList','historyDetail');
+renderRecords('today','todayList','todayDetail');
+renderRecords('followups','followupList','followupDetail');
+renderRecords('schedule','scheduleList','scheduleDetail');
+document.getElementById('ticketHistorySearch').addEventListener('input',e=>renderRecords('history','historyList','historyDetail',e.target.value));
+document.querySelectorAll('[data-open-list]').forEach(b=>b.addEventListener('click',()=>{const kind=b.dataset.openList;const title={critical:'Critical & Time-Sensitive Queue',history:'Complete Primary Work History',today:'Today's Work',followups:'Follow-Ups & SLA Compliance',schedule:'Calendar, Meetings & Reminders'}[kind];const records=demoRecords[kind]||[];document.getElementById('moduleModalTitle').textContent=title;document.getElementById('moduleModalIntro').textContent='Full-list drill-down preview. In the connected system this view will query authorized records, support search and filtering, and preserve scroll position.';document.getElementById('moduleModalBody').innerHTML='<div class="section-list">'+records.map(r=>'<button class="drill-item" data-modal-record="'+esc(r.id)+'"><span class="drill-copy"><b>'+esc(r.id)+' · '+esc(r.title)+'</b><small>'+esc(r.user)+' · '+esc(r.device)+' · '+esc(r.application)+'</small><span class="drill-meta"><span class="pill">'+esc(r.status)+'</span><span class="pill">'+esc(r.sla)+'</span></span></span><span class="drill-icon">›</span></button>').join('')+'</div>';document.getElementById('moduleModal').classList.add('open');document.getElementById('moduleModalBody').querySelectorAll('[data-modal-record]').forEach(row=>row.addEventListener('click',()=>{const record=records.find(r=>r.id===row.dataset.modalRecord);showRecord(record,title)}))}));
+document.getElementById('closeModuleModal').addEventListener('click',()=>document.getElementById('moduleModal').classList.remove('open'));
+document.getElementById('moduleModal').addEventListener('click',e=>{if(e.target.id==='moduleModal')e.currentTarget.classList.remove('open')});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')document.getElementById('moduleModal').classList.remove('open')});
+document.getElementById('additionalWorkspaces').innerHTML=['Knowledge Base','Device Inventory','Applications','Department Tools','Reports','War Room'].map(x=>'<button type="button" data-workspace="'+esc(x)+'"><b>'+esc(x)+'</b><small>Open workspace →</small></button>').join('');
+document.querySelectorAll('[data-workspace]').forEach(b=>b.addEventListener('click',()=>{document.getElementById('moduleModalTitle').textContent=b.dataset.workspace;document.getElementById('moduleModalIntro').textContent='Workspace entry point for '+b.dataset.workspace+'.';document.getElementById('moduleModalBody').innerHTML='<p>This module will open its full role-authorized workspace when wired to the application router.</p>';document.getElementById('moduleModal').classList.add('open')}));
+const defaultShortcuts=['IntelliCalendar','IntelliChat','My Tickets','Knowledge Base'];
+function loadShortcuts(){try{return JSON.parse(localStorage.getItem('work2uShortcuts')||'null')||defaultShortcuts.slice()}catch(e){return defaultShortcuts.slice()}}
+function renderShortcuts(){const host=document.getElementById('appShortcuts');const names=loadShortcuts();host.innerHTML=names.map((n,i)=>'<button class="app-shortcut" data-shortcut="'+esc(n)+'" title="Open '+esc(n)+'"><span>▣</span><span>'+esc(n)+'</span><span style="margin-left:auto;color:#718791">›</span></button>').join('');host.querySelectorAll('[data-shortcut]').forEach(b=>b.addEventListener('click',()=>{document.getElementById('moduleModalTitle').textContent=b.dataset.shortcut;document.getElementById('moduleModalIntro').textContent='Quick Pick selected. A real integration must be connected and authorized before live data or actions are available.';document.getElementById('moduleModalBody').innerHTML='<p>'+esc(b.dataset.shortcut)+' will open here or launch its approved destination after integration setup.</p>';document.getElementById('moduleModal').classList.add('open')}))}
+renderShortcuts();
+document.getElementById('addShortcut').addEventListener('click',()=>{const input=document.getElementById('newShortcut'),name=input.value.trim();if(!name)return;const names=loadShortcuts();if(names.some(n=>n.toLowerCase()===name.toLowerCase())){document.getElementById('shortcutMessage').textContent='That Quick Pick is already on your rail.';return}names.push(name);localStorage.setItem('work2uShortcuts',JSON.stringify(names));input.value='';document.getElementById('shortcutMessage').textContent='Added '+name+' to this browser’s demo Quick Picks. Real connection requires authorization.';renderShortcuts()});
+document.getElementById('newShortcut').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();document.getElementById('addShortcut').click()}});
+
 </script></body></html>
