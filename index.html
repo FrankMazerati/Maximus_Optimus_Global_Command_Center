@@ -226,6 +226,19 @@ body{background:linear-gradient(135deg,#f2f9ff 0%,#f8fcff 55%,#eef8ff 100%);colo
  .clock-controls select{max-width:100%;flex:1}
 }
 
+
+/* Personalization + launcher additions */
+.profile-gear{position:absolute;right:0;top:0;border:1px solid var(--line);border-radius:9px;background:#fff;color:var(--blue);font-size:18px;padding:5px 8px;cursor:pointer}
+.settings-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:14px 0}
+.settings-grid label{display:flex;flex-direction:column;gap:5px;font-size:12px;font-weight:700}
+.settings-grid input{width:100%;min-width:0;padding:9px;border:1px solid var(--line);border-radius:8px;font:inherit;font-weight:400}
+.locked-ids{padding:10px;background:#eef7fc;border-radius:8px}
+#helpBuddyModuleChoice{min-width:0;flex:1;padding:8px;border:1px solid var(--line);border-radius:7px}
+#quick [data-quick]{touch-action:pan-y;cursor:grab}
+#quick [data-quick]:active{cursor:grabbing}
+.header.user-header-photo{background-size:cover;background-position:center}
+@media(max-width:560px){.settings-grid{grid-template-columns:1fr}}
+
 </style>
 </head>
 <body>
@@ -310,18 +323,38 @@ body{background:linear-gradient(135deg,#f2f9ff 0%,#f8fcff 55%,#eef8ff 100%);colo
 <div class="hb-card"><h3>TECHNICIAN EXPERIENCE</h3><div class="row"><span>Current level</span><b>Level 8</b></div><div class="row"><span>Stars earned</span><b>184 ★</b></div><div class="row"><span>Similar tickets completed</span><b>47</b></div></div>
 <div class="rail-quick"><div class="subhead"><h2>MY QUICK PICKS</h2><span class="tag">CUSTOMIZE</span></div>
 <p class="section-intro">Add shortcuts to any authorized application. The rail scrolls independently as your list grows.</p>
-<div class="app-shortcuts" id="appShortcuts"></div>
+<div class="app-shortcuts" id="appShortcuts"></div><div class="detail-actions"><select id="helpBuddyModuleChoice" aria-label="Choose module to add under HelpBuddy"><option value="">Add module or connector…</option><option>IntelliChat</option><option>IntelliCalendar</option><option>Marketplace</option><option>IntelliSphere Business Suite</option><option>IntelliPay</option><option>IntelliTax</option><option>IntelliWord</option><option>IntelliNotes</option><option>IntelliSheets</option><option>IntelliSlides</option><option>IntelliText</option><option>IntelliDrive</option><option>IntelliForms</option><option>IntelliStudio</option><option>Connector Hub</option><option>Knowledge Base</option><option>War Room</option><option>Design Studio</option></select><button class="primary" id="addHelpBuddyModule">＋ Add</button></div>
 <div class="detail-actions"><input id="newShortcut" placeholder="Application name" aria-label="New quick pick" style="min-width:0;flex:1;padding:8px;border:1px solid var(--line);border-radius:7px;font-size:8px"><button id="addShortcut" class="primary">＋ Add</button></div>
 <div class="attach-list" id="shortcutMessage" aria-live="polite">Shortcuts added here are saved in this browser for this demo; real integrations require administrator authorization.</div>
 </div>
 </div></div></section>
 </div>
 
-<div class="module-modal" id="moduleModal" role="dialog" aria-modal="true" aria-labelledby="moduleModalTitle">
+
+ <div class="module-modal" id="profileSettingsModal" role="dialog" aria-modal="true" aria-labelledby="profileSettingsTitle">
+  <div class="module-dialog"><button class="close" id="closeProfileSettings">✕ Close</button><h2 id="profileSettingsTitle">Personalize your workspace</h2>
+   <p>Update your profile, contact details, profile photo, and header background. Global ID and Company ID are locked identifiers.</p>
+   <div class="settings-grid">
+    <label>Display name<input id="editProfileName" value="Frank Mazerati"></label>
+    <label>Role / title<input id="editProfileRole" value="Chief Systems Architect and Principal Engineer"></label>
+    <label>Company / workspace<input id="editProfileCompany" value="Founder of IntelliStack Systems"></label>
+    <label>Email<input id="editProfileEmail" value="frank@intellistack.systems"></label>
+    <label>Phone<input id="editProfilePhone" value="(312) 555-0100"></label>
+    <label>Work address<input id="editProfileAddress" value="Chicago, IL"></label>
+    <label>Work location<input id="editProfileLocation" value="North Lake • Chicago"></label>
+    <label>Profile photo URL<input id="editProfilePhoto" placeholder="Paste an image URL or leave blank"></label>
+    <label>Header background photo URL<input id="editHeaderPhoto" placeholder="Paste an image URL or leave blank"></label>
+   </div>
+   <p class="locked-ids"><b>Locked:</b> Company Global ID: INT-001 · User Global ID: 001</p>
+   <div class="detail-actions"><button class="primary" id="saveProfileSettings">Save in this browser</button><button id="resetProfileSettings">Reset demo profile</button></div>
+   <small>Demo profile preferences are stored in this browser only. A production profile service is not connected yet.</small>
+  </div>
+ </div>
+ <div class="module-modal" id="moduleModal" role="dialog" aria-modal="true" aria-labelledby="moduleModalTitle">
  <div class="module-dialog"><button class="close" id="closeModuleModal" aria-label="Close details">✕ Close</button><h2 id="moduleModalTitle">Workspace</h2><p id="moduleModalIntro"></p><div id="moduleModalBody"></div></div>
 </div>
 <script>
-const navItems=['Global ID','Active Directory','IntelliChat','IntelliCalendar','Intella Notes','Intella Sheets','Knowledge Base','Help Desk','Service Desk','Incident Management','Problem Management','Service Catalog','Change Management','Asset Management','Configuration Management','Workflows','Workflow Companion','Ticket Queue','Follow-Ups & SLA Compliance','Escalations','Approvals','Security Operations','SOC','Threat Intelligence','NOC','Network Operations','Network Monitoring','Vulnerability Management','Risk Management','Compliance','Governance','Audit','War Room','Breakout Rooms','Emergency Response','Identity & Access','Privileged Access','Endpoint Management','Device Management','Cloud Operations','Infrastructure','Servers','Applications','Databases','Data Center','Global Map','Global News','Security News','Network News','Calendar','Meetings','Documents','Files','Teams','IntelliChat Rooms','Notifications','Reports','Analytics','Dashboards','Stars & Recognition','Technician Levels','Training','Onboarding','Offboarding','Tenant Management','Tenant Companies','Tenant People','Contractors','Employees','Managers','Global Administration','Design Studio','System Settings','Ticket Situation Simulator'];
+const navItems=['Marketplace','IntelliSphere Business Suite','IntelliPay','IntelliTax','IntelliWord','IntelliNotes','IntelliSheets','IntelliSlides','IntelliText','IntelliDrive','IntelliForms','IntelliStudio','IntelliStack AI Studio','IntelliChat','IntelliCalendar','HelpBuddy','Design Studio','Connector Hub','Migration Center','Automation Suite','Investigation Center','IntelliHire','IntelliStaff','Global ID','Active Directory','IntelliChat','IntelliCalendar','Intella Notes','Intella Sheets','Knowledge Base','Help Desk','Service Desk','Incident Management','Problem Management','Service Catalog','Change Management','Asset Management','Configuration Management','Workflows','Workflow Companion','Ticket Queue','Follow-Ups & SLA Compliance','Escalations','Approvals','Security Operations','SOC','Threat Intelligence','NOC','Network Operations','Network Monitoring','Vulnerability Management','Risk Management','Compliance','Governance','Audit','War Room','Breakout Rooms','Emergency Response','Identity & Access','Privileged Access','Endpoint Management','Device Management','Cloud Operations','Infrastructure','Servers','Applications','Databases','Data Center','Global Map','Global News','Security News','Network News','Calendar','Meetings','Documents','Files','Teams','IntelliChat Rooms','Notifications','Reports','Analytics','Dashboards','Stars & Recognition','Technician Levels','Training','Onboarding','Offboarding','Tenant Management','Tenant Companies','Tenant People','Contractors','Employees','Managers','Global Administration','Design Studio','System Settings','Ticket Situation Simulator'];
 let order=JSON.parse(localStorage.getItem('navOrder')||'null')||navItems.slice();order=[...order,...navItems.filter(x=>!order.includes(x))];let dragged=null;
 function renderNav(filter=''){const nav=document.getElementById('nav');nav.innerHTML='';order.filter(x=>x.toLowerCase().includes(filter.toLowerCase())).forEach((x)=>{const b=document.createElement('button');b.className='navitem';b.draggable=true;b.innerHTML='<span>▸</span><span>'+x+'</span><span class="drag">⋮⋮</span>';b.addEventListener('click',()=>{const n=x.toLowerCase();if(n==='ticket situation simulator'){window.location.href='./ticket-simulator/';return}let key=null;if(n.includes('follow-up')||n.includes('sla compliance'))key='followups';else if(n.includes('ticket queue')||n.includes('my primary work')||n.includes('work history'))key='history';else if(n.includes('critical')||n.includes('time-sensitive')||n.includes('escalation'))key='critical';else if(n.includes("today's work")||n.includes('bring the work to you')||n==='active work')key='today';else if(n.includes('calendar')||n.includes('meeting')||n.includes('reminder')||n.includes('schedule'))key='schedule';if(key){const target=document.querySelector('[data-open-list="'+key+'"]');if(target)target.click();else{const section=document.getElementById(({critical:'criticalSection',history:'primaryWorkSection',today:'todayWorkSection',followups:'followupSection',schedule:'scheduleSection'})[key]);if(section)section.scrollIntoView({behavior:'smooth',block:'start'})}}else{const modal=document.getElementById('moduleModal');document.getElementById('moduleModalTitle').textContent=x;document.getElementById('moduleModalIntro').textContent='Module entry point. Access and available actions depend on your assigned role and tenant permissions.';document.getElementById('moduleModalBody').innerHTML='<p>This navigation item is ready to be connected to its dedicated workspace.</p>';modal.classList.add('open')}});b.addEventListener('dragstart',()=>dragged=x);b.addEventListener('dragover',e=>e.preventDefault());b.addEventListener('drop',()=>{if(!dragged||dragged===x)return;const a=order.indexOf(dragged),z=order.indexOf(x);order.splice(a,1);order.splice(z,0,dragged);localStorage.setItem('navOrder',JSON.stringify(order));renderNav(document.getElementById('navSearch').value)});nav.appendChild(b)})}
 renderNav();document.getElementById('navSearch').addEventListener('input',e=>renderNav(e.target.value));
@@ -431,6 +464,48 @@ document.getElementById('newShortcut').addEventListener('keydown',e=>{if(e.key==
  // Explicitly label demo feed instead of implying live external intelligence.
  document.querySelectorAll('.news-grid .news small').forEach(el=>{if(!el.textContent.includes('DEMO'))el.textContent+=' · DEMO FEED'});
 })();
+
+/* Workspace profile settings: only mutable profile fields are editable; identifiers remain fixed. */
+(function(){
+ const modal=document.getElementById('profileSettingsModal'); if(!modal)return;
+ const profile=document.querySelector('.profile'), photo=profile?.querySelector('img');
+ const fields={name:'editProfileName',role:'editProfileRole',company:'editProfileCompany',email:'editProfileEmail',phone:'editProfilePhone',address:'editProfileAddress',location:'editProfileLocation',photo:'editProfilePhoto',header:'editHeaderPhoto'};
+ const defaults={name:'Frank Mazerati',role:'Chief Systems Architect and Principal Engineer',company:'Founder of IntelliStack Systems',email:'frank@intellistack.systems',phone:'(312) 555-0100',address:'Chicago, IL',location:'North Lake • Chicago',photo:'',header:''};
+ function load(){try{return {...defaults,...JSON.parse(localStorage.getItem('commandCenterProfile')||'{}')}}catch(e){return {...defaults}}}
+ function apply(d){
+  profile.querySelector('.profile-name').textContent=d.name;
+  const spans=profile.querySelectorAll('.role span'); if(spans[0])spans[0].textContent=d.role;if(spans[1])spans[1].textContent=d.company;
+  const contacts=profile.querySelectorAll('.contact b');['email','phone','address','location'].forEach((k,i)=>{if(contacts[i])contacts[i].textContent=d[k]});
+  document.getElementById('greetingTitle').textContent='Welcome back, '+d.name.split(' ')[0]+'.';
+  if(d.photo&&photo)photo.src=d.photo;else if(photo)photo.src='homepagephoto.png';
+  const header=document.querySelector('.header');if(d.header){header.style.backgroundImage='linear-gradient(90deg,rgba(255,255,255,.9),rgba(255,255,255,.78)),url("'+d.header.replace(/"/g,'')+'")';header.style.backgroundSize='cover';header.style.backgroundPosition='center'}else{header.style.backgroundImage='';header.style.backgroundSize='';}
+ }
+ function fill(){const d=load();Object.keys(fields).forEach(k=>{const el=document.getElementById(fields[k]);if(el)el.value=d[k]||''});}
+ document.querySelector('.profile-gear')?.addEventListener('click',()=>{fill();modal.classList.add('open')});
+ document.getElementById('closeProfileSettings').onclick=()=>modal.classList.remove('open');
+ document.getElementById('saveProfileSettings').onclick=()=>{const d={};Object.keys(fields).forEach(k=>d[k]=document.getElementById(fields[k]).value.trim());localStorage.setItem('commandCenterProfile',JSON.stringify(d));apply(d);modal.classList.remove('open')};
+ document.getElementById('resetProfileSettings').onclick=()=>{localStorage.removeItem('commandCenterProfile');apply(defaults);fill()};
+ modal.addEventListener('click',e=>{if(e.target===modal)modal.classList.remove('open')});
+ apply(load());
+})();
+/* HelpBuddy can hold an extensible collection of app/module/connector shortcuts. */
+(function(){
+ const choice=document.getElementById('helpBuddyModuleChoice'),add=document.getElementById('addHelpBuddyModule');
+ if(!choice||!add)return;
+ add.addEventListener('click',()=>{
+  const name=choice.value;if(!name)return;
+  const names=(()=>{try{return JSON.parse(localStorage.getItem('work2uShortcuts')||'null')||['IntelliCalendar','IntelliChat','My Tickets','Knowledge Base']}catch(e){return ['IntelliCalendar','IntelliChat','My Tickets','Knowledge Base']}})();
+  if(!names.some(n=>n.toLowerCase()===name.toLowerCase()))names.push(name);
+  localStorage.setItem('work2uShortcuts',JSON.stringify(names));choice.value='';
+  const host=document.getElementById('appShortcuts');if(host){
+   host.innerHTML=names.map(n=>'<button class="app-shortcut" data-shortcut="'+String(n).replace(/&/g,'&amp;').replace(/"/g,'&quot;')+'"><span>▣</span><span>'+String(n).replace(/&/g,'&amp;').replace(/</g,'&lt;')+'</span><span style="margin-left:auto;color:#718791">›</span></button>').join('');
+   host.querySelectorAll('[data-shortcut]').forEach(b=>b.onclick=()=>{const modal=document.getElementById('moduleModal');document.getElementById('moduleModalTitle').textContent=b.dataset.shortcut;document.getElementById('moduleModalIntro').textContent='HelpBuddy workspace module · demo mode';document.getElementById('moduleModalBody').innerHTML='<p>This is a dedicated module entry point. Live data and actions require an approved service integration and permission checks.</p>';modal.classList.add('open')});
+  }
+  document.getElementById('shortcutMessage').textContent=name+' added under HelpBuddy. Saved in this browser; connector authorization is still required for live functionality.';
+ });
+})();
+/* Touch-friendly move controls complement drag-and-drop for tablet users. */
+
 </script><script>
 (function(){
  const title=document.getElementById('greetingTitle');
