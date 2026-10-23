@@ -1,0 +1,10 @@
+import { strict as assert } from 'node:assert';
+import { readFileSync, existsSync } from 'node:fs';
+const read=p=>{assert.ok(existsSync(p),`Missing required file: ${p}`);return readFileSync(p,'utf8');};
+const lifecycle=read('supabase/migrations/20261023200000_authenticated_test_lab_ticket_lifecycle.sql');
+const permissions=read('supabase/migrations/20261023200500_ticket_role_permissions_escalations.sql');
+const suite=read('scripts/acceptance/authenticated-ticket-lifecycle.mjs');
+for(const token of ['ticket_lifecycle_events','ticket_escalations','acceptance_test_runs','enable row level security','organization_id','tenant_id']) assert.ok(lifecycle.toLowerCase().includes(token.toLowerCase()),`Lifecycle migration missing ${token}`);
+for(const token of ['tickets_update_assignee_or_manager','profile_roles','ticket_steps_update_assignee','ticket_notes_insert_self']) assert.ok(permissions.includes(token),`Permission migration missing ${token}`);
+for(const key of ['unauthenticated','cross-tenant','requester','assigned technician','approval','escalation','audit','resolution','reopen']) assert.ok(suite.includes(key),`Missing acceptance scenario ${key}`);
+console.log('Ticket lifecycle static validation passed.');
