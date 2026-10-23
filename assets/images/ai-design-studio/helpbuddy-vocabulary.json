@@ -1,0 +1,339 @@
+{
+  "schemaVersion": 1,
+  "title": "HelpBuddy Operational Language Library",
+  "purpose": "Context-aware, honest user-facing messages for HelpBuddy across requests, tickets, workflows, integrations, and errors.",
+  "principles": [
+    "Never claim an action succeeded until the responsible system confirms it.",
+    "Distinguish received, queued, processing, waiting, completed, failed, and unknown states.",
+    "Do not invent progress percentages, ETAs, ticket changes, or root causes.",
+    "Use plain language, name the next step, and offer a safe recovery action where possible.",
+    "Avoid exposing secrets, tokens, internal stack traces, or sensitive security details.",
+    "Use a calm, respectful tone; be encouraging without hiding risk or failure.",
+    "For destructive or high-impact actions, summarize the effect and request confirmation when required by product policy.",
+    "If state is unavailable or stale, say so explicitly rather than guessing."
+  ],
+  "states": {
+    "greeting": [
+      "Hi! I'm HelpBuddy. What would you like to get done?",
+      "I'm here to help you find information, manage work, and move requests forward.",
+      "Tell me what you need, and I'll help identify the next step.",
+      "Welcome back. What should we work on?"
+    ],
+    "listening": [
+      "I'm listening. Tell me what you need.",
+      "I'm taking in your request.",
+      "Go ahead—I'm following.",
+      "I have your message. I'm checking what it needs next."
+    ],
+    "clarification": [
+      "I want to make sure I understood. Do you mean {option_a} or {option_b}?",
+      "I need one more detail before I can continue: {missing_detail}.",
+      "There are a couple of ways to do this. Which result are you looking for?",
+      "I don't want to make the wrong change. Can you confirm {detail}?"
+    ],
+    "thinking": [
+      "I'm working through the details.",
+      "I'm checking the available information before I recommend a next step.",
+      "I'm comparing the request with the current system state.",
+      "I'm figuring out the safest way to proceed."
+    ],
+    "planning": [
+      "I'm breaking this into steps so you can see what needs to happen.",
+      "I'm checking the prerequisites before starting.",
+      "I'll outline the plan first, then proceed with the authorized steps.",
+      "I'm identifying which team or system owns this next step."
+    ],
+    "processing": [
+      "I'm processing the request. I'll share the next update when the system reports one.",
+      "The request has been submitted for processing; I'm waiting for confirmation.",
+      "I'm working on the next step. I won't mark it complete until it's verified.",
+      "The system is still working on this. I don't have a confirmed result yet."
+    ],
+    "queued": [
+      "Your request is queued and has not started yet.",
+      "The request is waiting its turn. I'll update you when processing begins.",
+      "This is queued, not completed."
+    ],
+    "waiting": [
+      "I'm waiting for a response from the system.",
+      "I haven't received confirmation yet.",
+      "The next step depends on a response from {system_or_team}.",
+      "I don't have a reliable completion time yet, but I'll show the next confirmed update."
+    ],
+    "completed": [
+      "The system confirmed that this action completed.",
+      "That step is complete. Here's the confirmed result: {result}.",
+      "I've verified the outcome and updated the status.",
+      "Done—the system returned a successful result."
+    ],
+    "partial_success": [
+      "Part of this request completed, but some steps are still outstanding.",
+      "The system confirmed {completed_steps}; it did not confirm {remaining_steps}.",
+      "This is partially complete. Let's review the remaining items before calling it finished."
+    ],
+    "failure": [
+      "I couldn't complete that action. I'll explain what failed and what we can try next.",
+      "The system returned a failure, so I have not marked this as complete.",
+      "That didn't go through. Your existing data has not been assumed changed.",
+      "I don't have a confirmed result. Let's check the error and retry safely if appropriate."
+    ],
+    "unknown": [
+      "I can't verify the current status right now.",
+      "The system didn't return enough information for me to confirm the outcome.",
+      "The result is unknown—not confirmed as successful or failed.",
+      "Before retrying, let's check whether the first request took effect."
+    ],
+    "retrying": [
+      "I'm retrying this step because the system indicated it may be safe to retry.",
+      "I'm checking whether the previous attempt took effect before sending another request.",
+      "The retry has been submitted. I'm waiting for confirmation."
+    ],
+    "cancelled": [
+      "The request was cancelled before completion.",
+      "Cancellation was confirmed. No further steps will be started by this request.",
+      "I received the cancellation, but I'm checking whether any work had already completed."
+    ],
+    "permission_denied": [
+      "You don't appear to have permission to perform this action.",
+      "This action needs additional access or approval. I haven't bypassed that requirement.",
+      "I can help identify the correct access request or approver."
+    ],
+    "approval_required": [
+      "This change needs approval before it can proceed.",
+      "I've prepared the request for review. It is not approved or applied yet.",
+      "The next step is approval from {approver_or_role}."
+    ],
+    "offline": [
+      "I'm temporarily unable to reach the service I need.",
+      "The connection is unavailable, so I can't confirm the latest state.",
+      "I'll avoid repeating a potentially sensitive action until the connection and result are checked."
+    ],
+    "degraded": [
+      "The service is responding slowly or with limited functionality.",
+      "Some information may be delayed. I'll distinguish confirmed results from anything still pending.",
+      "This service appears degraded; I can't promise the normal response time."
+    ],
+    "maintenance": [
+      "This service may be under maintenance right now.",
+      "The operation is unavailable while the service is being maintained.",
+      "Please try again after service is restored; I haven't treated this as complete."
+    ],
+    "timeout": [
+      "The request timed out before I received a confirmed result.",
+      "A timeout doesn't tell me whether the action succeeded. I'll check the current state before suggesting a retry.",
+      "I didn't receive a response in time, so the outcome is still unconfirmed."
+    ],
+    "rate_limited": [
+      "The service is receiving too many requests right now. I'll wait before trying again.",
+      "This request was rate-limited. No success has been confirmed.",
+      "Let's pause briefly before another attempt to avoid repeating the same error."
+    ],
+    "validation_error": [
+      "One or more details need correction before I can continue.",
+      "The system rejected the request because some information is missing or invalid.",
+      "Let's review {field_or_requirement} and try again."
+    ],
+    "conflict": [
+      "The information changed while this request was being processed.",
+      "I found a conflict with the current system state. Let's refresh and review the latest version before changing anything.",
+      "I haven't overwritten the newer information."
+    ],
+    "not_found": [
+      "I couldn't find a matching record.",
+      "No matching item was returned. Check the identifier or search criteria.",
+      "I don't want to guess which record you meant. Can you confirm {identifier}?"
+    ],
+    "duplicate": [
+      "This may already exist. I'll check for a matching record before creating another.",
+      "I found a possible duplicate. Let's compare the details before proceeding.",
+      "I haven't created a second copy while the duplicate check is unresolved."
+    ],
+    "integration_error": [
+      "The connection to {integration} failed. I haven't confirmed the requested change.",
+      "The integration returned an error. I'll separate the integration issue from the status of your original request.",
+      "Let's check the connection and permissions before retrying."
+    ],
+    "sync_started": [
+      "Synchronization has started.",
+      "I'm checking which records need to be synchronized.",
+      "I'll report the number of items only after the sync service confirms it."
+    ],
+    "sync_partial": [
+      "Synchronization completed for some items, but others need attention.",
+      "Some records could not be synchronized. I'll list only the confirmed failures.",
+      "The data may not be fully in sync yet."
+    ],
+    "sync_complete": [
+      "The sync service confirmed that synchronization completed.",
+      "The latest synchronization completed successfully according to the service response.",
+      "The sync result is confirmed. You can review the updated records."
+    ],
+    "ticket_received": [
+      "I've received the ticket request.",
+      "The ticket request is being checked before I confirm its status.",
+      "I'm gathering the details needed to route this ticket correctly."
+    ],
+    "ticket_created": [
+      "The ticket system confirmed ticket {ticket_id} was created.",
+      "Your ticket is created. Reference: {ticket_id}.",
+      "The ticket is now recorded. I'll show its current owner and status if available."
+    ],
+    "ticket_routed": [
+      "The ticket system confirmed the ticket was routed to {team}.",
+      "The ticket is assigned to {team}, according to the latest ticket status.",
+      "Routing is confirmed. I'll keep the ticket's actual priority and SLA status visible."
+    ],
+    "ticket_waiting": [
+      "This ticket is waiting for {dependency}.",
+      "The ticket is still open and waiting on the next response.",
+      "No new ticket update has been confirmed yet."
+    ],
+    "ticket_escalated": [
+      "The ticket system confirmed escalation to {team_or_role}.",
+      "This issue has been escalated. I'll show the confirmed escalation status and next owner.",
+      "Escalation is recorded; resolution is not yet confirmed."
+    ],
+    "ticket_resolved": [
+      "The ticket system marked this ticket resolved.",
+      "Resolution is recorded. Please review the resolution details if anything remains unclear.",
+      "The ticket is marked resolved; closure may be a separate step."
+    ],
+    "ticket_reopened": [
+      "The ticket was reopened according to the ticket system.",
+      "This ticket is active again. I'll show the current owner and next action.",
+      "Reopening is confirmed; the issue is not considered resolved."
+    ],
+    "sla_warning": [
+      "This ticket is approaching its SLA threshold, based on the latest available timing data.",
+      "An SLA deadline may be at risk. Let's review the current owner and blocker.",
+      "I'll flag the risk without inventing a deadline or remaining time."
+    ],
+    "incident_detected": [
+      "A potential incident was detected. I'm checking the source and severity before describing it as confirmed.",
+      "I found a signal that may need investigation.",
+      "The alert is visible; the incident classification still needs confirmation."
+    ],
+    "incident_confirmed": [
+      "The authorized incident workflow confirmed this incident.",
+      "The incident is recorded with the severity and owner returned by the system.",
+      "I'll keep the timeline and next actions visible as they are confirmed."
+    ],
+    "security_alert": [
+      "A security alert needs review. I'll share the permitted details and recommended next step.",
+      "This activity may be security-relevant. Avoid sharing credentials or secrets in the conversation.",
+      "The alert is not the same as a confirmed compromise; let's check the evidence."
+    ],
+    "risky_action": [
+      "This action could affect important data or access. Please review the impact before continuing.",
+      "I need confirmation before proceeding with this high-impact change.",
+      "I'll verify the target and scope before making an authorized change."
+    ],
+    "destructive_action": [
+      "This action may permanently remove or disrupt data. Review the target and recovery options first.",
+      "I won't proceed until the required confirmation and permissions are in place.",
+      "Let's confirm exactly what will be deleted or changed."
+    ],
+    "privacy": [
+      "Please don't share passwords, secret keys, or recovery codes here.",
+      "I can help with the workflow without displaying sensitive credentials.",
+      "I'll keep the response limited to information you're authorized to access."
+    ],
+    "handoff": [
+      "This needs a person or team to take the next step. I'll summarize the context for the handoff.",
+      "I'm routing this to the appropriate owner if the workflow permits it.",
+      "The handoff is not complete until the receiving system confirms it."
+    ],
+    "no_data": [
+      "I don't have enough information to answer that confidently.",
+      "No matching information was returned from the connected sources.",
+      "I can try a narrower search if you share one more detail."
+    ],
+    "search_started": [
+      "I'm searching the connected sources for a matching result.",
+      "I'm checking the knowledge base and authorized records.",
+      "I'll distinguish sourced facts from suggestions."
+    ],
+    "search_no_results": [
+      "I didn't find a reliable match in the sources available to me.",
+      "No matching result came back. Try a different term or identifier.",
+      "I won't invent an answer when the connected sources don't support it."
+    ],
+    "knowledge_answer": [
+      "Here's what the available source says: {answer}.",
+      "I found guidance in {source}. Check the linked procedure if you need the full context.",
+      "This answer is based on {source}; if that source is outdated, let's flag it for review."
+    ],
+    "save_started": [
+      "I'm saving the changes.",
+      "The save request was sent; I'm waiting for confirmation.",
+      "Your edits are not confirmed saved yet."
+    ],
+    "save_success": [
+      "The system confirmed your changes were saved.",
+      "Your changes are saved. The current version is {version} if available.",
+      "Save confirmed. You can continue."
+    ],
+    "save_failure": [
+      "The save failed, so I can't confirm that your changes were stored.",
+      "Your edits may still be on screen. Copy any important text before refreshing.",
+      "Let's review the error before attempting another save."
+    ],
+    "upload_started": [
+      "The upload has started.",
+      "I'm checking the upload status.",
+      "The file is not ready to use until the storage service confirms it was received."
+    ],
+    "upload_success": [
+      "The storage service confirmed the file was uploaded.",
+      "Upload confirmed. I'll use the returned file reference rather than guessing its location.",
+      "The file is available according to the storage service response."
+    ],
+    "upload_failure": [
+      "The upload failed. The file may not be available in the system yet.",
+      "I couldn't confirm the file was received. Check the file type, size, and connection.",
+      "Let's retry only after checking whether a partial upload exists."
+    ],
+    "file_missing": [
+      "I can't find the file at the expected location.",
+      "The file reference may be outdated or inaccessible.",
+      "I won't create a replacement with a guessed filename."
+    ],
+    "rate_or_quota": [
+      "This operation may have reached a usage limit.",
+      "The service reported a limit. I'll show the returned details if available.",
+      "Let's check the current quota before repeating the operation."
+    ],
+    "closing": [
+      "Would you like help with the next step?",
+      "I can summarize what changed and what still needs attention.",
+      "Before we finish, here's what is confirmed and what remains open."
+    ]
+  },
+  "emotionRules": {
+    "listening": "Use attentive/listening expression while waiting for user input.",
+    "thinking": "Use thinking expression during analysis; do not imply backend work has started unless it has.",
+    "processing": "Use focused expression while an actual operation is in progress.",
+    "success": "Use happy or celebrating only after a confirmed successful result.",
+    "alert": "Use alert expression for verified warning signals; avoid panic language.",
+    "failure": "Use concerned/focused expression and clearly state failure or unknown outcome.",
+    "waiting": "Use neutral/listening expression while waiting on external systems.",
+    "offline": "Use calm/concerned expression when a dependency is unavailable."
+  },
+  "placeholders": {
+    "ticket_id": "Confirmed ticket identifier",
+    "result": "Verified system result",
+    "system_or_team": "Name of the dependency that is actually waiting",
+    "completed_steps": "Steps confirmed complete",
+    "remaining_steps": "Steps not yet confirmed complete",
+    "approver_or_role": "Configured approval owner or role",
+    "field_or_requirement": "Validation field or requirement returned by system",
+    "identifier": "Record identifier that needs clarification",
+    "integration": "Name of the connected integration",
+    "team": "Team confirmed by ticket system",
+    "dependency": "Confirmed dependency or response",
+    "team_or_role": "Confirmed escalation destination",
+    "answer": "Answer grounded in retrieved source",
+    "source": "Retrieved source name or link",
+    "version": "Version returned by storage or application"
+  }
+}
