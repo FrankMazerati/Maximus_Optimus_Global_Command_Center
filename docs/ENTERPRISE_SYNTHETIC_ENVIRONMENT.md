@@ -19,7 +19,7 @@ This is a synthetic development/test environment. Company names Microsoft, Amazo
 - Harborstone Manufacturing (Synthetic Test Tenant) — 200 profiles.
 - Northbridge Managed Services (Synthetic MSP) — 200 profiles.
 
-The requested six customer tenants are Microsoft, Amazon, Google, Facebook, Tesla, and Harborstone Manufacturing. Northbridge is a separate MSP service-provider organization. Three older small demo tenants (Northstar Property Group, BluePeak Logistics, Cedarstone Advisory) remain intact for backward compatibility; they were not deleted.
+The six customer tenants are Microsoft, Amazon, Google, Facebook, Tesla, and Harborstone Manufacturing. Northbridge is a separate MSP service-provider organization. Three older small demo tenants (Northstar Property Group, BluePeak Logistics, Cedarstone Advisory) remain intact for backward compatibility; they were not deleted.
 
 ## Verified record counts
 
@@ -45,6 +45,7 @@ The requested six customer tenants are Microsoft, Amazon, Google, Facebook, Tesl
 | Approval records | 16 |
 | Knowledge articles | 7 initial draft/sample articles |
 | Integration registry entries | 11 |
+| RLS policies across public application tables | 69 |
 
 The core eight target organizations were individually checked: IntelliStack has 506 profiles (500 employee profiles plus 6 existing contractors), 500 device records, 188 tickets, 35 cyber incidents and 80 vulnerability findings. Each of the six customer tenants and the MSP has 200 profiles, 200 devices, 75 tickets, 35 cyber incidents and 80 vulnerability findings.
 
@@ -67,6 +68,7 @@ The core eight target organizations were individually checked: IntelliStack has 
 - `20261023055251_expand_synthetic_enterprise_ecosystem`
 - `20261023055338_tenant_scoped_authorization_policies`
 - `20261023055421_harden_policy_helpers_and_role_coverage`
+- `20261023055524_optimize_enterprise_rls_and_indexes`
 
 ## Still required before the environment is application-ready
 
@@ -77,3 +79,4 @@ The core eight target organizations were individually checked: IntelliStack has 
 - Verify the frontend's Supabase project URL and publishable key; never put service-role secrets in client code.
 - Verify the current Vercel project, deployment branch and deployed commit.
 - Keep integrations marked sample/unavailable/not configured until each is genuinely connected and verified.
+- Performance advisor currently reports informational unused indexes on a new, not-yet-queried dataset; re-evaluate after real application query patterns exist.
