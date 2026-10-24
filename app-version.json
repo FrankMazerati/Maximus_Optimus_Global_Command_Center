@@ -1,0 +1,22 @@
+{
+  "application": "Maximus Optimus Global Command Center",
+  "product": "IntelliStack Systems",
+  "applicationVersion": "0.11.0",
+  "productBuild": "011",
+  "releaseLabel": "Build 011 — Login & Command Center visual refresh",
+  "status": "implementation-branch",
+  "canonical": true,
+  "sourceOfTruth": "app-version.json",
+  "branding": {
+    "primarySlogan": "One World. One System. One Intelligent Network.",
+    "footerSlogan": "Secure, Trusted & Compliant."
+  },
+  "verification": {
+    "inlineJavaScriptSyntax": "passed",
+    "responsiveStylesAdded": true,
+    "loginPreviewBypass": "preview-only; does not authenticate",
+    "deployment": "not yet deployed",
+    "browserVerification": "not yet performed"
+  },
+  "notes": "Build metadata records the product implementation version only. It does not imply that the branch has been merged, deployed, or verified in a browser."
+}
