@@ -12,13 +12,13 @@
     "footerSlogan": "Secure, Trusted & Compliant."
   },
   "verification": {
-    "inlineJavaScriptSyntax": "pending validation",
-    "versionMetadata": "updated",
+    "inlineJavaScriptSyntax": "passed using JavaScript parser (new Function)",
+    "versionMetadata": "passed",
     "personalMessagingCenter": "63 pre-populated messages; 21 each for morning, midday, nighttime; date-based rotation",
     "messageStudio": "editable message sets; browser-local persistence; role gate is prototype-only",
     "companyNewsFeed": "top-of-workspace announcements with quick links and editable announcement studio",
     "securityBoundary": "real Global Admin authorization and cross-user sync require backend integration",
-    "deployment": "pending Vercel status check",
+    "deployment": "Build 016 app commit READY; metadata-only follow-up deployment pending",
     "browserVerification": "not yet performed"
   },
   "notes": "Build 016 adds a personal encouragement card, three independent 21-message rotations, Message Studio editing and reset, plus a Company News & Announcements feed with hyperlink support. Changes currently persist in localStorage and do not synchronize across users/devices."
