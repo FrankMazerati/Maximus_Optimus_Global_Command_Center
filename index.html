@@ -62,6 +62,55 @@ body.login-gate .login-submit,body.login-gate .login-preview{background:var(--lo
 .availability-control{display:flex;align-items:center;gap:8px;font-size:11px;font-weight:800;color:#37566b}
 .availability-control select{max-width:180px;padding:8px;border:1px solid #b8d9eb;border-radius:9px;background:#fff;color:#18364a}
 @media(max-width:760px){.profile-strip-v2{grid-template-columns:44px minmax(0,1fr);padding:10px;gap:9px}.profile-strip-v2 .profile-avatar{width:44px;height:44px;font-size:16px}.profile-greeting{font-size:19px}.profile-role{font-size:12px}.profile-details{gap:5px}.profile-details span{font-size:10px;padding:5px 6px}.availability-control{width:100%;justify-content:space-between}.availability-control select{max-width:none;flex:1}}
+
+/* Build 014: compact identity metadata and landscape workspace layout */
+.profile-strip-v2{grid-template-columns:44px minmax(0,1fr);gap:10px;padding:11px 13px;align-items:start}
+.profile-greeting{font-size:clamp(17px,1.5vw,22px);line-height:1.15}
+.profile-role{font-size:12px;margin-top:3px}
+.profile-details{display:flex;flex-direction:column;align-items:flex-start;gap:2px;margin-top:6px}
+.profile-details span{display:block;width:auto;max-width:100%;padding:0;border:0;border-radius:0;background:transparent;font-size:10px;line-height:1.35;color:#34536a;overflow-wrap:anywhere}
+.profile-details b{font-weight:800;color:#183f5a;margin-right:4px}
+.profile-actions{justify-content:flex-end;gap:7px;margin-top:6px}
+.availability-control{display:flex;gap:5px;align-items:center;font-size:10px;font-weight:700;color:#37566b}
+.availability-control select{width:auto;max-width:125px;min-width:0;padding:4px 22px 4px 7px;font-size:10px;line-height:1.2;border-radius:7px}
+.home-context-row{display:flex;flex-direction:column;gap:8px;margin:0 0 10px}
+.home-context-row .card-head{padding:7px 10px}
+.home-context-row .card-head h2{font-size:12px}
+.home-context-row .card-head p{font-size:9px;margin-top:2px}
+.clock-card .card-body{padding:7px 10px}
+.clock-card .clock-time{font-size:22px;line-height:1.1}
+.clock-card .world-clock-row{gap:10px;margin-top:4px;font-size:9px}
+.news-card .card-body{display:flex;flex-direction:column;gap:6px;padding:7px 10px}
+.news-item{align-items:center;gap:6px;padding:4px 0;border-bottom:1px solid #e5eef5}
+.news-item:last-child{border-bottom:0}
+.news-icon{font-size:14px}
+.news-item b{font-size:10px}
+.news-item .muted{font-size:9px;line-height:1.25}
+.news-item small{font-size:8px}
+@media(min-width:900px) and (orientation:landscape){
+ .profile-strip-v2{grid-template-columns:44px minmax(0,1fr);padding:9px 12px}
+ .profile-details{gap:1px}
+ .profile-details span{font-size:10px;line-height:1.25}
+ .profile-actions{margin-top:5px}
+ .home-context-row{max-width:100%;gap:6px}
+ .home-context-row .clock-card,.home-context-row .news-card{width:100%;min-width:0}
+ .news-card .card-body{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+ .news-item{border-bottom:0;align-items:flex-start}
+}
+@media(max-width:899px){
+ .profile-strip-v2{grid-template-columns:36px minmax(0,1fr);padding:8px;gap:8px}
+ .profile-strip-v2 .profile-avatar{width:36px;height:36px;font-size:14px}
+ .profile-greeting{font-size:17px}
+ .profile-role{font-size:11px}
+ .profile-details span{font-size:9px}
+ .profile-actions{margin-top:5px}
+ .availability-control{font-size:9px}
+ .availability-control select{max-width:112px;padding:4px 18px 4px 6px;font-size:9px}
+ .home-context-row{gap:6px}
+ .clock-card .clock-time{font-size:20px}
+ .news-card .card-body{display:flex;flex-direction:row;overflow-x:auto;gap:12px;scroll-snap-type:x proximity}
+ .news-item{flex:0 0 78%;min-width:0;scroll-snap-align:start;border-bottom:0}
+}
 </style>
 </head>
 <body>\n<section id="loginScreen" class="login-screen" aria-label="IntelliStack secure sign in"><div class="login-banner"><div class="login-brand-row"><div class="login-shield">IS</div><div><b>INTELLISTACK SYSTEMS</b><small>SECURE, TRUSTED &amp; COMPLIANT</small></div><span class="login-brand-divider"></span><strong>See Everything. Connect Everything. <em>Work Smarter.</em></strong></div><div class="login-hero"><div class="login-copy"><div class="login-eyebrow">MAXIMUS OPTIMUS</div><h1>GLOBAL OPERATIONS CENTER</h1><p>One World. One System. One Intelligent Network.</p></div><div class="login-globe" aria-hidden="true">🌐</div></div></div><div class="login-content"><section class="login-panel"><h2>Select Your Login Environment</h2><p>Choose your access type to continue to IntelliStack Systems.</p><div class="environment-options"><button type="button" class="environment active" data-environment="employee"><span>●</span><b>IntelliStack Employee / Contractor</b><small>Blue · Corporate access</small></button><button type="button" class="environment" data-environment="business"><span>▦</span><b>Business / Employer</b><small>Purple · Organization access</small></button><button type="button" class="environment" data-environment="tenant"><span>♧</span><b>Tenant</b><small>Green · Tenant-specific access</small></button></div><div class="login-columns"><form id="loginForm" class="login-form"><h3>Sign In With Your Verified Provider</h3><p>Use your organization's identity provider for secure access.</p><label for="loginEmail">Email address</label><input id="loginEmail" type="email" autocomplete="username" placeholder="you@company.com"><label for="loginPassword">Password</label><input id="loginPassword" type="password" autocomplete="current-password" placeholder="Enter your password"><div class="login-form-options"><label class="remember-label"><input type="checkbox" id="rememberLogin"> Remember this device</label><button type="button" class="text-button" id="forgotLogin">Forgot password?</button></div><button class="login-submit" type="submit">Sign In Securely</button><p class="login-message" id="loginMessage" aria-live="polite"></p><button class="login-preview" type="button" id="quickPreviewBtn">Quick Access — Preview Command Center</button><small class="preview-warning">Preview only. Quick Access does not authenticate or grant real system access.</small></form><div class="provider-panel"><h3>Verified Identity Providers</h3><p>Provider buttons are visual placeholders until configured.</p><div class="provider-grid"><button type="button" data-provider="Google Workspace">Google Workspace</button><button type="button" data-provider="Microsoft 365">Microsoft 365</button><button type="button" data-provider="Microsoft Entra ID">Microsoft Entra ID</button><button type="button" data-provider="AWS">AWS</button><button type="button" data-provider="GitHub">GitHub</button><button type="button" data-provider="Apple">Apple</button></div><button class="provider-other" type="button" id="otherProviders">Other identity providers · Setup required⌄</button><div class="login-security"><span>🛡</span><div><b>Secure Access</b><small>Your data, your organization, your priority.</small></div></div></div></div></section><aside class="login-benefits"><div>🛡<b>Enterprise Security</b><small>Identity-aware protection</small></div><div>🌐<b>Global Infrastructure</b><small>Worldwide operational visibility</small></div><div>▤<b>Compliance Ready</b><small>Governance and audit workflows</small></div><div>◷<b>24/7 Support</b><small>Help when you need it</small></div><div class="login-powered">Think Beyond Locally.<br><b>Connect Everything Globally.</b><small>Powered by IntelliStack.</small></div></aside></div><footer class="login-footer"><div><b>INTELLISTACK SYSTEMS</b><small>SECURE, TRUSTED &amp; COMPLIANT.</small></div><div>About Us<br>Platform Overview<br>Careers · Partners</div><div>Help Center<br>Documentation<br>System Status</div><div>Privacy Policy<br>Terms of Service<br>Cookie Policy</div><div class="login-footer-status">● Global Operations · Preview</div><div class="login-footer-bottom">© 2026 IntelliStack Systems. All rights reserved. <span>Build 011 · Login preview</span></div></footer></section>
