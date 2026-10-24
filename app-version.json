@@ -15,8 +15,8 @@
     "inlineJavaScriptSyntax": "passed",
     "marketplaceCatalog": "interactive local demo",
     "cartAndCheckout": "simulated only; no payment processing",
-    "deployment": "pending merge and deployment confirmation",
-    "browserVerification": "not yet performed"
+    "deployment": "Vercel production deployment confirmed READY for merge commit 8fd8eccc2a9b90beeb7b37c8f34f410c092fc747",
+    "browserVerification": "not yet performed; protected deployment denied automated fetch access"
   },
   "notes": "Product build 012 includes the prior login/Command Center refresh plus the IntelliStack Marketplace visual workflow. Product build metadata does not imply deployment or browser verification."
 }
