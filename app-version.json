@@ -1,9 +1,9 @@
 {
   "application": "Maximus Optimus Global Command Center",
   "product": "IntelliStack Systems",
-  "applicationVersion": "0.14.0",
-  "productBuild": "014",
-  "releaseLabel": "Build 014 — Compact Profile & Responsive Workspace Layout",
+  "applicationVersion": "0.15.0",
+  "productBuild": "015",
+  "releaseLabel": "Build 015 — Header Weather, Compact Profile & Movable Quick Picks",
   "status": "merged",
   "canonical": true,
   "sourceOfTruth": "app-version.json",
@@ -14,11 +14,14 @@
   "verification": {
     "inlineJavaScriptSyntax": "passed",
     "versionMetadata": "passed",
-    "profileMetadata": "compact unboxed text; IDs pinned",
-    "availabilityControl": "compact selector",
-    "clockAndNews": "stacked compact cards; responsive news strip",
-    "deployment": "pending production check",
+    "profileMetadata": "compact plain text stacked vertically; Company ID and User ID pinned",
+    "profileEditing": "editable metadata rows open profile editor; pinned IDs remain non-editable",
+    "greetings": "morning, midday, afternoon, evening",
+    "headerLocalTime": "local browser time in far-right header",
+    "headerWeather": "Open-Meteo current conditions for Chicago; browser/network verification pending",
+    "quickPicksDragDrop": "individual Quick Picks draggable with saved local ordering; browser interaction verification pending",
+    "deployment": "pending Vercel status check",
     "browserVerification": "not yet performed"
   },
-  "notes": "Build 014 refines visual spacing only: profile fields are small unboxed text, availability selector is compact, and clock/news cards use a compact responsive stacked layout. Profile/availability remain local-browser preview state."
+  "notes": "Build 015 places local time and Chicago weather in the top-right header, makes profile metadata compact plain text with click-to-edit behavior, moves availability to the lower-right of the profile area, adds time-of-day greetings, and enables individual Quick Picks drag-and-drop with local order persistence. Profile and availability data remain local browser preview state."
 }
