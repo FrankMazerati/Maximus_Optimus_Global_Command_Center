@@ -1,9 +1,9 @@
 {
   "application": "Maximus Optimus Global Command Center",
   "product": "IntelliStack Systems",
-  "applicationVersion": "0.15.0",
-  "productBuild": "015",
-  "releaseLabel": "Build 015 — Header Weather, Compact Profile & Movable Quick Picks",
+  "applicationVersion": "0.16.0",
+  "productBuild": "016",
+  "releaseLabel": "Build 016 — Personal Messaging Center & Company News Feed",
   "status": "merged",
   "canonical": true,
   "sourceOfTruth": "app-version.json",
@@ -12,16 +12,14 @@
     "footerSlogan": "Secure, Trusted & Compliant."
   },
   "verification": {
-    "inlineJavaScriptSyntax": "passed",
-    "versionMetadata": "passed",
-    "profileMetadata": "compact plain text stacked vertically; Company ID and User ID pinned",
-    "profileEditing": "editable metadata rows open profile editor; pinned IDs remain non-editable",
-    "greetings": "morning, midday, afternoon, evening",
-    "headerLocalTime": "local browser time in far-right header",
-    "headerWeather": "Open-Meteo current conditions for Chicago; browser/network verification pending",
-    "quickPicksDragDrop": "individual Quick Picks draggable with saved local ordering; browser interaction verification pending",
+    "inlineJavaScriptSyntax": "pending validation",
+    "versionMetadata": "updated",
+    "personalMessagingCenter": "63 pre-populated messages; 21 each for morning, midday, nighttime; date-based rotation",
+    "messageStudio": "editable message sets; browser-local persistence; role gate is prototype-only",
+    "companyNewsFeed": "top-of-workspace announcements with quick links and editable announcement studio",
+    "securityBoundary": "real Global Admin authorization and cross-user sync require backend integration",
     "deployment": "pending Vercel status check",
     "browserVerification": "not yet performed"
   },
-  "notes": "Build 015 places local time and Chicago weather in the top-right header, makes profile metadata compact plain text with click-to-edit behavior, moves availability to the lower-right of the profile area, adds time-of-day greetings, and enables individual Quick Picks drag-and-drop with local order persistence. Profile and availability data remain local browser preview state."
+  "notes": "Build 016 adds a personal encouragement card, three independent 21-message rotations, Message Studio editing and reset, plus a Company News & Announcements feed with hyperlink support. Changes currently persist in localStorage and do not synchronize across users/devices."
 }
