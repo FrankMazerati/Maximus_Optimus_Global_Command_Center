@@ -10,6 +10,14 @@
 - Status continues to be stored in browser-local preview storage only; this is not a shared coworker status.
 - Build metadata identifies Build 018 and marks browser/deployment verification as pending.
 
+## Global Search Center
+- [x] Add one unified search area between the fixed header and workspace, above Quick Picks.
+- [x] Search available browser-preview records across users, tickets, devices when present, applications/products, documents, tasks, workflows, meetings/events, and conversations.
+- [x] Show typed results with available identifiers/status metadata and open a record preview.
+- [ ] Connect search to authorized server-side indexes so results span users/tenants only where permissions allow.
+- [ ] Add real device inventory search once the device source is implemented/connected.
+- [ ] Verify keyboard navigation, no-results behavior, narrow phone widths, tablet portrait/landscape, and permissions.
+
 ## Employee workspace acceptance checklist
 - [ ] Preserve existing employee workflow and the “Bring the Work to You” experience.
 - [ ] Provide distinct Priority Work, Today’s Tasks, My Workspace, Follow-Ups & Reminders, Past & Closed Work, Notes & Saved Items, and Recent Activity sections.
