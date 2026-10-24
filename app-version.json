@@ -1,9 +1,9 @@
 {
   "application": "Maximus Optimus Global Command Center",
   "product": "IntelliStack Systems",
-  "applicationVersion": "0.11.0",
-  "productBuild": "011",
-  "releaseLabel": "Build 011 — Login & Command Center visual refresh",
+  "applicationVersion": "0.12.0",
+  "productBuild": "012",
+  "releaseLabel": "Build 012 — Login, Command Center & Marketplace",
   "status": "implementation-branch",
   "canonical": true,
   "sourceOfTruth": "app-version.json",
@@ -13,10 +13,10 @@
   },
   "verification": {
     "inlineJavaScriptSyntax": "passed",
-    "responsiveStylesAdded": true,
-    "loginPreviewBypass": "preview-only; does not authenticate",
-    "deployment": "not yet deployed",
+    "marketplaceCatalog": "interactive local demo",
+    "cartAndCheckout": "simulated only; no payment processing",
+    "deployment": "pending merge and deployment confirmation",
     "browserVerification": "not yet performed"
   },
-  "notes": "Build metadata records the product implementation version only. It does not imply that the branch has been merged, deployed, or verified in a browser."
+  "notes": "Product build 012 includes the prior login/Command Center refresh plus the IntelliStack Marketplace visual workflow. Product build metadata does not imply deployment or browser verification."
 }
