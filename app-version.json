@@ -1,0 +1,15 @@
+{
+  "application": "Maximus Optimus Global Command Center",
+  "product": "IntelliStack Systems",
+  "applicationVersion": "0.10.0",
+  "productBuild": "010",
+  "releaseLabel": "Build 010",
+  "status": "implementation-branch",
+  "canonical": true,
+  "branding": {
+    "primarySlogan": "One World. One System. One Intelligent Network.",
+    "footerSlogan": "Secure, Trusted & Compliant."
+  },
+  "sourceOfTruth": "app-version.json",
+  "notes": "Build metadata identifies the committed product build. Deployment and browser verification are tracked separately and are not implied by this file."
+}
