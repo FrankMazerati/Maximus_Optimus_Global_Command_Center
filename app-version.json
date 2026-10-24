@@ -1,10 +1,10 @@
 {
   "application": "Maximus Optimus Global Command Center",
   "product": "IntelliStack Systems",
-  "applicationVersion": "0.14.0",
-  "productBuild": "014",
-  "releaseLabel": "Build 014 — Compact Profile & Responsive Workspace Layout",
-  "status": "merged",
+  "applicationVersion": "0.15.0",
+  "productBuild": "015",
+  "releaseLabel": "Build 015 — Header Weather, Compact Profile & Movable Quick Picks",
+  "status": "implementation-branch",
   "canonical": true,
   "sourceOfTruth": "app-version.json",
   "branding": {
@@ -13,12 +13,15 @@
   },
   "verification": {
     "inlineJavaScriptSyntax": "passed",
-    "versionMetadata": "passed",
+    "versionMetadata": "pending final write",
     "profileMetadata": "compact unboxed text; IDs pinned",
-    "availabilityControl": "compact selector",
-    "clockAndNews": "stacked compact cards; responsive news strip",
-    "deployment": "pending production check",
+    "profileEditing": "click editable profile field opens profile editor; IDs remain pinned",
+    "greetings": "morning, midday, afternoon, evening",
+    "headerLocalTime": "added",
+    "headerWeather": "Open-Meteo current conditions for Chicago; network/browser verification pending",
+    "quickPicksDragDrop": "individual quick-pick cards draggable; browser interaction test pending",
+    "deployment": "not yet checked",
     "browserVerification": "not yet performed"
   },
-  "notes": "Build 014 refines visual spacing only: profile fields are small unboxed text, availability selector is compact, and clock/news cards use a compact responsive stacked layout. Profile/availability remain local-browser preview state."
+  "notes": "Build 015 places local time and weather in the top-right header, makes profile metadata compact plain text with click-to-edit behavior, moves availability to the profile card's lower-right, adds time-of-day greetings, and enables individual Quick Picks drag-and-drop with local order persistence."
 }
