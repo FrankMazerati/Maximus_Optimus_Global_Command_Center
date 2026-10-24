@@ -4,7 +4,7 @@
   "applicationVersion": "0.13.0",
   "productBuild": "013",
   "releaseLabel": "Build 013 — Login Environments & Editable Work Profile",
-  "status": "implementation-branch",
+  "status": "merged",
   "canonical": true,
   "sourceOfTruth": "app-version.json",
   "branding": {
@@ -12,11 +12,11 @@
     "footerSlogan": "Secure, Trusted & Compliant."
   },
   "verification": {
-    "inlineJavaScriptSyntax": "pending validation",
-    "environmentThemes": "implemented in source; browser verification pending",
-    "editableProfile": "local-device preview; IDs pinned",
-    "availabilityStatus": "local-device preview; no presence integration",
-    "deployment": "not yet confirmed",
+    "inlineJavaScriptSyntax": "passed",
+    "environmentThemes": "merged; default employee theme initializes on load; browser verification pending",
+    "editableProfile": "merged; local-device preview; Company ID and User ID pinned",
+    "availabilityStatus": "merged; local-device preview; no live presence integration",
+    "deployment": "Build 013 production deployment READY before default-theme initialization fix",
     "browserVerification": "not yet performed"
   },
   "notes": "Build 013 changes login environment themes and the editable work-profile header. Profile edits and availability are stored locally in this browser; no live identity provider or presence service is connected."
