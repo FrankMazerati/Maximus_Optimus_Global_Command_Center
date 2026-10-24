@@ -1,25 +1,27 @@
 {
   "application": "Maximus Optimus Global Command Center",
   "product": "IntelliStack Systems",
-  "applicationVersion": "0.16.0",
-  "productBuild": "016",
-  "releaseLabel": "Build 016 — Personal Messaging Center & Company News Feed",
+  "applicationVersion": "0.17.0",
+  "productBuild": "017",
+  "releaseLabel": "Build 017 — Unified Command Header, Workspace Controls & Department Intelligence",
   "status": "merged",
   "canonical": true,
   "sourceOfTruth": "app-version.json",
   "branding": {
     "primarySlogan": "One World. One System. One Intelligent Network.",
-    "footerSlogan": "Secure, Trusted & Compliant."
+    "tagline": "Bring the Work to You.",
+    "footerSlogan": "Secured, Trusted & Compliant."
   },
   "verification": {
     "inlineJavaScriptSyntax": "passed using JavaScript parser (new Function)",
     "versionMetadata": "passed",
-    "personalMessagingCenter": "63 pre-populated messages; 21 each for morning, midday, nighttime; date-based rotation",
-    "messageStudio": "editable message sets; browser-local persistence; role gate is prototype-only",
-    "companyNewsFeed": "top-of-workspace announcements with quick links and editable announcement studio",
-    "securityBoundary": "real Global Admin authorization and cross-user sync require backend integration",
-    "deployment": "Build 016 app commit READY; metadata-only follow-up deployment pending",
+    "header": "unified Section 1 header with branding, profile, manager context, availability, local time, weather and intelligence shortcut",
+    "globalClock": "compact configurable locations saved in browser localStorage using IANA time zones",
+    "departmentIntelligence": "personal feed selection/add/remove/reorder with explicitly labeled sample items; live external news sources not connected",
+    "footer": "compact grouped company/support/privacy/legal/trust footer; policy pages are placeholders pending reviewed policy content",
+    "workspacePersonalization": "existing drag-and-drop modules retained; time-zone and department-feed preferences saved locally",
+    "securityBoundary": "front-end preview only; authentication, role enforcement, shared persistence and live data require backend/services",
     "browserVerification": "not yet performed"
   },
-  "notes": "Build 016 adds a personal encouragement card, three independent 21-message rotations, Message Studio editing and reset, plus a Company News & Announcements feed with hyperlink support. Changes currently persist in localStorage and do not synchronize across users/devices."
+  "notes": "Build 017 consolidates the requested visual and interaction changes. Personal preferences persist only in this browser preview. Department news is sample content, not live intelligence."
 }
