@@ -36,3 +36,20 @@ Approved login image assets can be added later using the agreed filenames:
 - The Follow-Ups & SLA Compliance module is also included in global navigation.
 - The right HelpBuddy rail includes user-customizable Quick Picks for app shortcuts.
 - Current records and SLA values in the static HTML are illustrative seed data. Live ticket mutations, real SLA calculation, and external integrations require backend authorization and connection wiring.
+
+
+## Build 011 — login and command center visual refresh
+- Added a dark blue enterprise login gateway aligned with the supplied reference: employee/contractor, business/employer, and tenant environments; email/password fields; provider placeholders; and a clearly labeled Quick Access preview.
+- Quick Access enters the local visual preview only. It does not authenticate users or grant backend access; the login form remains a non-production placeholder until Supabase Auth or another identity provider is configured.
+- Reworked the home screen around a pinned profile identity area, Company Global ID and User Global ID, global clock, sample news feed, My Quick Picks, Bring the Work to You, and a persistent HelpBuddy rail.
+- Added draggable home modules with local ordering persistence. Pinned identity identifiers remain outside the draggable modules.
+- Added HelpBuddy module selection controls and a logout navigation action after each major hamburger-menu section. The hamburger navigation remains independently scrollable.
+- Inline JavaScript syntax was checked. Deployment and real-browser visual verification have not yet been performed.
+
+
+## Build 012 — IntelliStack Marketplace
+- Added a hamburger-menu entry for **IntelliStack Marketplace** and **Build Your Environment**.
+- Added an interactive product catalog with search and category filtering, product details, estimated monthly and annual stack costs, starter package selection, a build review step, cart management, simulated checkout, and local demo order history.
+- Marketplace cart, environment selections, and demo orders are stored in browser local storage only. Payment processing, live pricing, subscriptions, entitlements, and service provisioning are not connected.
+- The Marketplace is responsive for narrow/mobile layouts and uses the existing Command Center page shell.
+- Inline JavaScript syntax and required Marketplace implementation markers were checked. Real-browser visual verification and deployment confirmation remain pending.
