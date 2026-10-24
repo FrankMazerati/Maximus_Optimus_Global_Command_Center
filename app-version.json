@@ -14,17 +14,19 @@
   },
   "changes": [
     "Fixed availability selector behavior so the status chip label and color update immediately when an employee changes availability.",
-    "Added a build-specific implementation and verification checklist for employee work management, follow-ups, professional documents, LinkedIn, progression, intelligent ticket offers, HelpBuddy approvals/signatures, knowledge bases, manager controls, and backend security."
+    "Added a build-specific implementation and verification checklist for employee work management, follow-ups, professional documents, LinkedIn, progression, intelligent ticket offers, HelpBuddy approvals/signatures, knowledge bases, manager controls, and backend security.",
+    "Added a unified Global Search Center above the workspace and Quick Picks, with live filtering of available preview records across users, tickets, devices when present, applications/products, documents, tasks, workflows, meetings/events, and conversations."
   ],
   "verification": {
-    "inlineJavaScriptSyntax": "pending automated validation after branch update",
+    "inlineJavaScriptSyntax": "pending automated validation after global search addition",
     "availabilityStateSync": "implemented in preview branch; browser verification pending",
     "versionMetadata": "updated for Build 018 preview",
     "employeeWorkflow": "existing preview workflow retained; new expanded requirements are documented, not all implemented in this build",
     "backendPersistence": "not implemented by this change; existing preview data remains browser-local",
     "securityBoundary": "front-end preview only; authentication, role enforcement, shared persistence and live data require backend/services",
     "deployment": "pending Vercel preview deployment check",
-    "browserVerification": "not yet performed"
+    "browserVerification": "not yet performed",
+    "globalSearch": "implemented against browser-local preview state; browser verification pending; not a live shared database search"
   },
   "notes": "Build 018 is a preview branch, not yet merged to main. It corrects the immediate availability label/color mismatch and records the full employee workflow acceptance checklist. Do not treat the planned workflows or backend controls as implemented until separately built and tested."
 }
