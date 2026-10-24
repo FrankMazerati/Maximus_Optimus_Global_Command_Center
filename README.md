@@ -36,3 +36,8 @@ Approved login image assets can be added later using the agreed filenames:
 - The Follow-Ups & SLA Compliance module is also included in global navigation.
 - The right HelpBuddy rail includes user-customizable Quick Picks for app shortcuts.
 - Current records and SLA values in the static HTML are illustrative seed data. Live ticket mutations, real SLA calculation, and external integrations require backend authorization and connection wiring.
+
+
+## Canonical application build metadata
+
+`app-version.json` is the source of truth for the application version and product build. The current implementation branch records **Build 010** (`0.10.0`). A metadata entry does not imply that the build has been merged, deployed, or browser-verified. The dashboard masthead uses the approved primary slogan, and the site footer uses the approved security tagline.
