@@ -1,9 +1,9 @@
 {
   "application": "Maximus Optimus Global Command Center",
   "product": "IntelliStack Systems",
-  "applicationVersion": "0.12.0",
-  "productBuild": "012",
-  "releaseLabel": "Build 012 — Login, Command Center & Marketplace",
+  "applicationVersion": "0.13.0",
+  "productBuild": "013",
+  "releaseLabel": "Build 013 — Login Environments & Editable Work Profile",
   "status": "implementation-branch",
   "canonical": true,
   "sourceOfTruth": "app-version.json",
@@ -12,11 +12,12 @@
     "footerSlogan": "Secure, Trusted & Compliant."
   },
   "verification": {
-    "inlineJavaScriptSyntax": "passed",
-    "marketplaceCatalog": "interactive local demo",
-    "cartAndCheckout": "simulated only; no payment processing",
-    "deployment": "Vercel production deployment confirmed READY for merge commit 8fd8eccc2a9b90beeb7b37c8f34f410c092fc747",
-    "browserVerification": "not yet performed; protected deployment denied automated fetch access"
+    "inlineJavaScriptSyntax": "pending validation",
+    "environmentThemes": "implemented in source; browser verification pending",
+    "editableProfile": "local-device preview; IDs pinned",
+    "availabilityStatus": "local-device preview; no presence integration",
+    "deployment": "not yet confirmed",
+    "browserVerification": "not yet performed"
   },
-  "notes": "Product build 012 includes the prior login/Command Center refresh plus the IntelliStack Marketplace visual workflow. Product build metadata does not imply deployment or browser verification."
+  "notes": "Build 013 changes login environment themes and the editable work-profile header. Profile edits and availability are stored locally in this browser; no live identity provider or presence service is connected."
 }
