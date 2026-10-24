@@ -1,9 +1,9 @@
 {
   "application": "Maximus Optimus Global Command Center",
   "product": "IntelliStack Systems",
-  "applicationVersion": "0.13.0",
-  "productBuild": "013",
-  "releaseLabel": "Build 013 — Login Environments & Editable Work Profile",
+  "applicationVersion": "0.14.0",
+  "productBuild": "014",
+  "releaseLabel": "Build 014 — Compact Profile & Responsive Workspace Layout",
   "status": "merged",
   "canonical": true,
   "sourceOfTruth": "app-version.json",
@@ -13,11 +13,12 @@
   },
   "verification": {
     "inlineJavaScriptSyntax": "passed",
-    "environmentThemes": "merged; default employee theme initializes on load; browser verification pending",
-    "editableProfile": "merged; local-device preview; Company ID and User ID pinned",
-    "availabilityStatus": "merged; local-device preview; no live presence integration",
-    "deployment": "Build 013 production deployment READY before default-theme initialization fix",
+    "versionMetadata": "passed",
+    "profileMetadata": "compact unboxed text; IDs pinned",
+    "availabilityControl": "compact selector",
+    "clockAndNews": "stacked compact cards; responsive news strip",
+    "deployment": "pending production check",
     "browserVerification": "not yet performed"
   },
-  "notes": "Build 013 changes login environment themes and the editable work-profile header. Profile edits and availability are stored locally in this browser; no live identity provider or presence service is connected."
+  "notes": "Build 014 refines visual spacing only: profile fields are small unboxed text, availability selector is compact, and clock/news cards use a compact responsive stacked layout. Profile/availability remain local-browser preview state."
 }
