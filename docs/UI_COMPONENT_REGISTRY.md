@@ -1,6 +1,6 @@
-# IntelliStack Systems — QuickFind Screen & Component Registry
+# IntelliStack QuickFind — Modifications for Each Screen
 
-> **Purpose:** Canonical, repository-based map of the product UI. QuickFind is the easy-to-remember way to identify a screen or component you want changed. Every screen and component has a stable QuickFind ID so requests, code changes, QA results, and build notes can point to the exact location.
+> **Purpose:** IntelliStack QuickFind — Modifications for Each Screen is the canonical, repository-based map of the product UI. QuickFind is the easy-to-remember way to identify a screen or component you want changed. Every screen and component has a stable QuickFind ID so requests, code changes, QA results, and build notes can point to the exact location.
 >
 > **Tracking label:** Build 020 — UI Component Registry
 > **Status:** Documentation added on a working branch; feature implementation has not been performed by this document.
