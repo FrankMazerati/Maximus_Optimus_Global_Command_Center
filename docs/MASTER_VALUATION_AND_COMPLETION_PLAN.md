@@ -317,3 +317,7 @@ A feature is complete only when applicable checks pass:
 - Build 019 branch: https://github.com/FrankMazerati/Maximus_Optimus_Global_Command_Center/tree/build-019-master-valuation-completion-plan
 
 Check Actions and deployment pages directly for current status. The existence of a branch or preview URL does not prove that a build is deployed to production.
+
+## UI Component Registry — Build 020
+
+The canonical numbered screen/checkpoint registry is maintained in [`docs/UI_COMPONENT_REGISTRY.md`](./UI_COMPONENT_REGISTRY.md) on the Build 020 working branch. Use it to locate login, Tenant, Marketplace, Global Command Center Home Screen, and Corporate components by stable IDs. Section numbers identify product areas; lettered checkpoints identify components; build numbers identify revisions. The registry is a planning artifact and does not assert that listed features are implemented. Update the registry and this master plan when scope, status, acceptance criteria, or completion evidence changes.
