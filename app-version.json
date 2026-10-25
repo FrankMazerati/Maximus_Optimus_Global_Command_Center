@@ -15,7 +15,8 @@
   "changes": [
     "Fixed availability selector behavior so the status chip label and color update immediately when an employee changes availability.",
     "Added a build-specific implementation and verification checklist for employee work management, follow-ups, professional documents, LinkedIn, progression, intelligent ticket offers, HelpBuddy approvals/signatures, knowledge bases, manager controls, and backend security.",
-    "Added a unified Global Search Center above the workspace and Quick Picks, with live filtering of available preview records across users, tickets, devices when present, applications/products, documents, tasks, workflows, meetings/events, and conversations."
+    "Added a unified Global Search Center above the workspace and Quick Picks, with live filtering of available preview records across users, tickets, devices when present, applications/products, documents, tasks, workflows, meetings/events, and conversations.",
+    "Added the Project Control Register, release ledger, QA/release checklist, and architecture/production-readiness baseline for Build 018."
   ],
   "verification": {
     "inlineJavaScriptSyntax": "pending automated validation after global search addition",
@@ -24,9 +25,12 @@
     "employeeWorkflow": "existing preview workflow retained; new expanded requirements are documented, not all implemented in this build",
     "backendPersistence": "not implemented by this change; existing preview data remains browser-local",
     "securityBoundary": "front-end preview only; authentication, role enforcement, shared persistence and live data require backend/services",
-    "deployment": "pending Vercel preview deployment check",
+    "deployment": "Build 018 documentation commits are triggering Vercel deployments; final commit deployment and live URL must be verified",
     "browserVerification": "not yet performed",
-    "globalSearch": "implemented against browser-local preview state; browser verification pending; not a live shared database search"
+    "globalSearch": "implemented against browser-local preview state; browser verification pending; not a live shared database search",
+    "projectControlRegister": "created in docs/PROJECT_CONTROL_REGISTER.md; initial statuses reflect evidence available on 2026-10-25",
+    "qualityChecklist": "created in docs/BUILD_018_QA_RELEASE_CHECKLIST.md; checks remain pending until run with evidence",
+    "architectureBaseline": "created in docs/ARCHITECTURE_PRODUCTION_READINESS.md; current-state implementation review remains pending"
   },
-  "notes": "Build 018 is a preview branch, not yet merged to main. It corrects the immediate availability label/color mismatch and records the full employee workflow acceptance checklist. Do not treat the planned workflows or backend controls as implemented until separately built and tested."
+  "notes": "Build 018 remains a branch, not confirmed merged to main. The project register and QA/architecture baselines are documentation deliverables, not proof that the application is production-ready. Do not claim all employee workflows, backend security, or browser tests are complete."
 }
