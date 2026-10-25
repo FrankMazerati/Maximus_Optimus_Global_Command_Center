@@ -1,27 +1,36 @@
 {
   "application": "Maximus Optimus Global Command Center",
   "product": "IntelliStack Systems",
-  "applicationVersion": "0.17.0",
-  "productBuild": "017",
-  "releaseLabel": "Build 017 — Unified Command Header, Workspace Controls & Department Intelligence",
-  "status": "merged",
-  "canonical": true,
+  "applicationVersion": "0.18.0",
+  "productBuild": "018",
+  "releaseLabel": "Build 018 — Availability State Sync & Employee Workflow Specification",
+  "status": "preview",
+  "canonical": false,
   "sourceOfTruth": "app-version.json",
   "branding": {
     "primarySlogan": "One World. One System. One Intelligent Network.",
     "tagline": "Bring the Work to You.",
     "footerSlogan": "Secured, Trusted & Compliant."
   },
+  "changes": [
+    "Fixed availability selector behavior so the status chip label and color update immediately when an employee changes availability.",
+    "Added a build-specific implementation and verification checklist for employee work management, follow-ups, professional documents, LinkedIn, progression, intelligent ticket offers, HelpBuddy approvals/signatures, knowledge bases, manager controls, and backend security.",
+    "Added a unified Global Search Center above the workspace and Quick Picks, with live filtering of available preview records across users, tickets, devices when present, applications/products, documents, tasks, workflows, meetings/events, and conversations.",
+    "Added the Project Control Register, release ledger, QA/release checklist, and architecture/production-readiness baseline for Build 018."
+  ],
   "verification": {
-    "inlineJavaScriptSyntax": "passed using JavaScript parser (new Function)",
-    "versionMetadata": "passed",
-    "header": "unified Section 1 header with branding, profile, manager context, availability, local time, weather and intelligence shortcut",
-    "globalClock": "compact configurable locations saved in browser localStorage using IANA time zones",
-    "departmentIntelligence": "personal feed selection/add/remove/reorder with explicitly labeled sample items; live external news sources not connected",
-    "footer": "compact grouped company/support/privacy/legal/trust footer; policy pages are placeholders pending reviewed policy content",
-    "workspacePersonalization": "existing drag-and-drop modules retained; time-zone and department-feed preferences saved locally",
+    "inlineJavaScriptSyntax": "pending automated validation after global search addition",
+    "availabilityStateSync": "implemented in preview branch; browser verification pending",
+    "versionMetadata": "updated for Build 018 preview",
+    "employeeWorkflow": "existing preview workflow retained; new expanded requirements are documented, not all implemented in this build",
+    "backendPersistence": "not implemented by this change; existing preview data remains browser-local",
     "securityBoundary": "front-end preview only; authentication, role enforcement, shared persistence and live data require backend/services",
-    "browserVerification": "not yet performed"
+    "deployment": "Build 018 documentation commits are triggering Vercel deployments; final commit deployment and live URL must be verified",
+    "browserVerification": "not yet performed",
+    "globalSearch": "implemented against browser-local preview state; browser verification pending; not a live shared database search",
+    "projectControlRegister": "created in docs/PROJECT_CONTROL_REGISTER.md; initial statuses reflect evidence available on 2026-10-25",
+    "qualityChecklist": "created in docs/BUILD_018_QA_RELEASE_CHECKLIST.md; checks remain pending until run with evidence",
+    "architectureBaseline": "created in docs/ARCHITECTURE_PRODUCTION_READINESS.md; current-state implementation review remains pending"
   },
-  "notes": "Build 017 consolidates the requested visual and interaction changes. Personal preferences persist only in this browser preview. Department news is sample content, not live intelligence."
+  "notes": "Build 018 remains a branch, not confirmed merged to main. The project register and QA/architecture baselines are documentation deliverables, not proof that the application is production-ready. Do not claim all employee workflows, backend security, or browser tests are complete."
 }
