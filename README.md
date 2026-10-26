@@ -85,3 +85,9 @@ Approved login image assets can be added later using the agreed filenames:
 - Added [docs/INTELLISTACK_NEW_ACTIVE_DIRECTORY_ARCHITECTURE.md](docs/INTELLISTACK_NEW_ACTIVE_DIRECTORY_ARCHITECTURE.md), establishing the native IntelliStack directory direction and covering Identity Center, Organization Directory, Groups & Access Manager, Device Directory, Identity Security Center, directory synchronization, bulk imports, automated provisioning, enterprise integrations, tenant security, scale testing and phased delivery.
 - Defines 100,000 employees as a design target requiring measured load tests—not a current capacity claim.
 - This is an architecture and planning milestone. No application code, Supabase schema/data, authentication, provisioning, or external connector was changed or activated. Next step is a Phase 0 audit of the current app and database schema before implementation.
+
+
+## Build 028 — Initial read-only database security audit
+- Added [docs/BUILD_028_DATABASE_SECURITY_AUDIT.md](docs/BUILD_028_DATABASE_SECURITY_AUDIT.md) documenting the first read-only Supabase audit pass and prioritized remediation plan.
+- Initial verified inventory: 91/91 public tables have RLS enabled; 24 tables have no RLS policies; 4 SECURITY DEFINER functions are executable by authenticated users; leaked-password protection is disabled; performance advisor reports 23 foreign-key indexes to review. Initial cross-organization/tenant consistency checks returned zero mismatches for profiles, groups, devices, and profile-role records in the tested joins.
+- No Supabase schema/data, policy, or function changes were made. Next step is deeper pathway/relationship review and then narrowly scoped, tested remediations.
