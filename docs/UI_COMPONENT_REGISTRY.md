@@ -47,6 +47,34 @@ For every requested modification, record: (1) screen/component name, (2) QuickFi
 | QF-1-M | Login legal/footer wording | Copyright 2026 IntelliStack Systems; footer phrase “Secure, Trusted & Compliant.” | Planned |
 | QF-1-N | Login loading, failure, and empty states | Network/auth failures are visible and recoverable; no misleading success state. | Planned |
 
+## 2.1 QuickFind code map — initial login inspection
+
+**Inspection basis:** `main/index.html`, commit `d6322e017c7b67448e7ddd54d29b799ed4513386` (403 source lines; monolithic HTML/CSS/JavaScript file). This is a source inspection only; no application code was changed and no browser/device test was performed. Line numbers below refer to that exact commit and may change after edits.
+
+| QuickFind ID | Existing code location in inspected snapshot | Initial finding |
+|---|---|---|
+| QF-1-A — Login screen shell | `index.html:126`, `#loginScreen.login-screen`; visibility styles at `index.html:20–21` | Login screen exists and is shown by the startup gate. Responsive behavior still needs browser/device testing. |
+| QF-1-B — IntelliStack branding and shield/logo | `index.html:126`, `.login-brand-row`, `.login-shield` | Branding exists, but the login brand row includes the extra line “See Everything. Connect Everything. Work Smarter.” This conflicts with the currently specified slogan-only branding and needs review/removal in the login implementation task. |
+| QF-1-C — Login background / visual composition | `index.html:21`, `.login-screen`; `index.html:126`, `.login-hero`, `.login-globe` | Current background is CSS gradients with a globe emoji; the requested staff-at-computers scene is not present in this markup. |
+| QF-1-D — Environment chooser | `index.html:126`, `.environment-options` and `[data-environment]`; behavior at `index.html:399` | Three choices are present and update the selected state and accent/theme class. This is front-end theme selection, not authorization. |
+| QF-1-E — Corporate environment choice | `index.html:126`, `data-environment="employee"`; styling at `index.html:25–35` | Blue/light corporate styling exists under the internal name `employee`. Confirm final visible wording and complete visual behavior during implementation. |
+| QF-1-F — Marketplace environment choice | `index.html:126`, `data-environment="business"`; styling at `index.html:36–44` | Purple styling exists under the internal name `business`. The visible choice currently says “Business / Employer.” |
+| QF-1-G — Tenant environment choice | `index.html:126`, `data-environment="tenant"`; styling at `index.html:45–53` | Green styling exists. |
+| QF-1-H — Sign-in form and validation | `index.html:126`, `#loginForm`, `#loginEmail`, `#loginPassword`; handler at `index.html:399` | Basic required-field checks exist. Submitting non-empty credentials explicitly reports that no authentication provider is connected; no real sign-in is implemented by this handler. |
+| QF-1-I — Remember-device/session convenience | `index.html:126`, `#rememberLogin` | Checkbox exists in markup. The inspected login handler does not implement remembered-device behavior. Do not promise that it persists sessions. |
+| QF-1-J — Password recovery | `index.html:126`, `#forgotLogin`; handler at `index.html:399` | The button reports that recovery is not connected. |
+| QF-1-K — Quick Access / preview mode | `index.html:126`, `#quickPreviewBtn`; handler at `index.html:399` | A preview action exists and enters the home workspace without authentication; the UI warns that it is preview only. Treat it as demo navigation, not secure access. |
+| QF-1-L — Login footer links | `index.html:126`, `.login-footer` | Footer shows only abbreviated groups of plain text; several requested links are absent and the visible labels are not implemented as individual anchors in this markup. |
+| QF-1-M — Login legal/footer wording | `index.html:126`, `.login-footer` | Copyright is present. Footer currently says “SECURE, TRUSTED & COMPLIANT.” The required exact slogan “Secure, Trusted & Compliant.” should be checked for punctuation/case consistency in the final UI. |
+| QF-1-N — Login loading/failure states | `index.html:126`, `#loginMessage`, provider placeholders; handler at `index.html:399` | Text feedback exists for incomplete fields and unavailable integrations. Identity-provider buttons are explicitly visual placeholders. |
+
+### Initial inspection conclusions
+
+1. The existing application is a single large `index.html` with inline CSS and JavaScript; the login screen is already present, so the next task should be a targeted correction, not a blind replacement of the entire app.
+2. The environment selector and three color-theme classes exist, but they do not authenticate users or establish access scope.
+3. The current login screen does not yet match every approved design requirement: it has an extra tagline, a globe emoji/gradient rather than the specified staff-and-globe background, abbreviated footer links, and placeholder authentication/recovery/provider behavior.
+4. This mapping is **Needs code mapping / initial source review**, not a verified implementation. After code changes, update the affected IDs with new locations and run the available checks.
+
 ## 3. Section 2 — Tenant Environment (Green and White)
 
 **Section purpose:** Tenant-scoped workspace and its navigation. Green-and-white styling applies consistently to tenant pages and drill-downs. Company-specific branding may appear in company information, but the IntelliStack shell remains consistent.
