@@ -1,9 +1,9 @@
 {
   "application": "Maximus Optimus Global Command Center",
   "product": "IntelliStack Systems",
-  "applicationVersion": "0.17.0",
-  "productBuild": "017",
-  "releaseLabel": "Build 017 — Unified Command Header, Workspace Controls & Department Intelligence",
+  "applicationVersion": "0.37.0",
+  "productBuild": "037",
+  "releaseLabel": "Build 037 — Approved Branding, Compact Footer & Repository Validation",
   "status": "merged",
   "canonical": true,
   "sourceOfTruth": "app-version.json",
@@ -13,15 +13,16 @@
     "footerSlogan": "Secured, Trusted & Compliant."
   },
   "verification": {
-    "inlineJavaScriptSyntax": "passed using JavaScript parser (new Function)",
-    "versionMetadata": "passed",
+    "inlineJavaScriptSyntax": "checked by GitHub Actions workflow",
+    "versionMetadata": "passed by GitHub Actions workflow",
     "header": "unified Section 1 header with branding, profile, manager context, availability, local time, weather and intelligence shortcut",
     "globalClock": "compact configurable locations saved in browser localStorage using IANA time zones",
     "departmentIntelligence": "personal feed selection/add/remove/reorder with explicitly labeled sample items; live external news sources not connected",
     "footer": "compact grouped company/support/privacy/legal/trust footer; policy pages are placeholders pending reviewed policy content",
     "workspacePersonalization": "existing drag-and-drop modules retained; time-zone and department-feed preferences saved locally",
     "securityBoundary": "front-end preview only; authentication, role enforcement, shared persistence and live data require backend/services",
-    "browserVerification": "not yet performed"
+    "browserVerification": "not yet performed",
+    "repositoryWorkflow": "Command Center Build & Visual QA"
   },
-  "notes": "Build 017 consolidates the requested visual and interaction changes. Personal preferences persist only in this browser preview. Department news is sample content, not live intelligence."
+  "notes": "Build 037 preserves the approved slogan and compact footer. GitHub Actions validates version metadata, approved branding/footer strings, and inline JavaScript syntax. Browser verification and live service/backend verification remain outstanding."
 }
