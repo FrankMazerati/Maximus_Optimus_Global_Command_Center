@@ -68,3 +68,9 @@ Approved login image assets can be added later using the agreed filenames:
 - Selected customer-facing tiers: **IntelliStack Starter, IntelliStack Business, IntelliStack Professional, IntelliStack Workforce, IntelliStack Enterprise, and IntelliStack Full Stack**.
 - Updated [docs/MARKETPLACE_PACKAGE_ENTITLEMENT_MATRIX.md](docs/MARKETPLACE_PACKAGE_ENTITLEMENT_MATRIX.md) to record the naming decision and distinguish selected names from unapproved proposed prices and draft database records.
 - This was documentation-only. No app code, Supabase data/schema, checkout, subscriptions, or entitlements changed. Deployment and live-browser verification are not claimed.
+
+## Build 025 — Marketplace customer buying guide
+- Updated the Marketplace with six IntelliStack package cards, intended customer fit, proposed inclusions and caveats, an internal side-by-side tier comparison, and a category-level comparison with Microsoft 365, Jira Service Management, Freshservice, and ManageEngine ServiceDesk Plus.
+- Added [docs/MARKETPLACE_CUSTOMER_BUYING_GUIDE.md](docs/MARKETPLACE_CUSTOMER_BUYING_GUIDE.md) with the full customer-facing copy, competitor comparison rationale, pricing caveats, and launch gates.
+- Paid package prices remain proposed, package purchase buttons are disabled, and existing standalone product estimates remain explicitly illustrative. No Supabase data/schema, live pricing, payments, subscriptions, or entitlements changed.
+- Browser rendering, JavaScript syntax, and mobile/tablet verification remain to be completed before calling the UI release verified.
