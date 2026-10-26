@@ -13,8 +13,8 @@
     "footerSlogan": "Secured, Trusted & Compliant."
   },
   "verification": {
-    "inlineJavaScriptSyntax": "checked by GitHub Actions workflow",
-    "versionMetadata": "passed by GitHub Actions workflow",
+    "inlineJavaScriptSyntax": "validation is defined in GitHub Actions; first run not yet confirmed",
+    "versionMetadata": "validation is defined in GitHub Actions; first run not yet confirmed",
     "header": "unified Section 1 header with branding, profile, manager context, availability, local time, weather and intelligence shortcut",
     "globalClock": "compact configurable locations saved in browser localStorage using IANA time zones",
     "departmentIntelligence": "personal feed selection/add/remove/reorder with explicitly labeled sample items; live external news sources not connected",
