@@ -1,9 +1,9 @@
 {
   "application": "Maximus Optimus Global Command Center",
   "product": "IntelliStack Systems",
-  "applicationVersion": "0.37.0",
-  "productBuild": "037",
-  "releaseLabel": "Build 037 — Approved Branding, Compact Footer & Repository Validation",
+  "applicationVersion": "0.38.0",
+  "productBuild": "038",
+  "releaseLabel": "Build 038 — Profile Photo, Profile Background & Manager-Controlled Identity",
   "status": "merged",
   "canonical": true,
   "sourceOfTruth": "app-version.json",
@@ -13,9 +13,9 @@
     "footerSlogan": "Secured, Trusted & Compliant."
   },
   "verification": {
-    "inlineJavaScriptSyntax": "validation is defined in GitHub Actions; first run not yet confirmed",
-    "versionMetadata": "validation is defined in GitHub Actions; first run not yet confirmed",
-    "header": "unified Section 1 header with branding, profile, manager context, availability, local time, weather and intelligence shortcut",
+    "inlineJavaScriptSyntax": "validated by GitHub Actions after Build 038 commit",
+    "versionMetadata": "validated by GitHub Actions after Build 038 commit",
+    "header": "header profile photo upload, optional profile-card background, visible profile settings gear, readable profile details, manager-controlled role/title, and editable personal contact fields",
     "globalClock": "compact configurable locations saved in browser localStorage using IANA time zones",
     "departmentIntelligence": "personal feed selection/add/remove/reorder with explicitly labeled sample items; live external news sources not connected",
     "footer": "compact grouped company/support/privacy/legal/trust footer; policy pages are placeholders pending reviewed policy content",
@@ -24,5 +24,5 @@
     "browserVerification": "not yet performed",
     "repositoryWorkflow": "Command Center Build & Visual QA"
   },
-  "notes": "Build 037 preserves the approved slogan and compact footer. GitHub Actions validates version metadata, approved branding/footer strings, and inline JavaScript syntax. Browser verification and live service/backend verification remain outstanding."
+  "notes": "Build 038 adds profile photo upload and removal, optional profile-card background image, a visible profile settings gear, editable personal contact fields including work address, and read-only manager-controlled job title/department/manager fields. Photos and profile details remain browser-local until secure backend profile storage is connected. Browser/device verification remains outstanding."
 }
