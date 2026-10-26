@@ -33,18 +33,18 @@ For every requested modification, record: (1) screen/component name, (2) QuickFi
 | Checkpoint ID | Component / responsibility | Acceptance criteria | Initial status |
 |---|---|---|---|
 | QF-1-A | Login screen shell and responsive layout | Loads on phone/tablet portrait and landscape; no clipped primary controls; accessible labels and focus order. | Planned |
-| QF-1-B | IntelliStack Systems branding and shield/logo area | Correct brand spelling; logo area is distinct from navigation controls. | Planned |
+| QF-1-B | IntelliStack Systems branding and shield/logo area | Correct brand spelling; logo area is distinct from navigation controls. | Implemented in Build 021 branch; visual verification pending |
 | QF-1-C | Login background / visual composition | Staff-at-computers and centered globe concept; composition stays readable on small screens. | Planned |
 | QF-1-D | “Select Your Login Environment” chooser | Presents clear environment choices without implying that selecting a theme grants access. | Planned |
-| QF-1-E | Corporate environment choice | Blue-and-white identity; label clearly communicates employee/contractor/corporate access. | Planned |
-| QF-1-F | Marketplace environment choice | Purple-and-white identity; label clearly communicates business/employer/marketplace access. | Planned |
-| QF-1-G | Tenant environment choice | Green-and-white identity; label clearly communicates tenant-specific access. | Planned |
+| QF-1-E | Corporate environment choice | Blue-and-white identity; label clearly communicates employee/contractor/corporate access. | CSS retained; visual verification pending |
+| QF-1-F | Marketplace environment choice | Purple-and-white identity; label clearly communicates business/employer/marketplace access. | White/purple login theme added in Build 021 branch; visual verification pending |
+| QF-1-G | Tenant environment choice | Green-and-white identity; label clearly communicates tenant-specific access. | White/green login theme added in Build 021 branch; visual verification pending |
 | QF-1-H | Sign-in form and validation | Validates required fields and shows safe, understandable errors; no secrets written to logs. | Planned |
 | QF-1-I | Remember-device / session convenience | Uses secure, supported authentication/session behavior; never stores a raw password in local storage or source code. | Planned |
 | QF-1-J | Password recovery and account-help entry | Provides a clear recovery path when supported; does not falsely claim a live backend if unavailable. | Planned |
 | QF-1-K | Quick Access / preview mode | Clearly marked preview/demo; never bypasses real authorization or exposes protected tenant/company data. | Planned |
-| QF-1-L | Login footer links | Home, About Us, Platform Overview, Contact Us, Sales, Careers, Partners, Help Center, Documentation, System Status, Privacy Policy, Terms, Cookie Policy. | Planned |
-| QF-1-M | Login legal/footer wording | Copyright 2026 IntelliStack Systems; footer phrase “Secure, Trusted & Compliant.” | Planned |
+| QF-1-L | Login footer links | Home, About Us, Platform Overview, Contact Us, Sales, Careers, Partners, Help Center, Documentation, System Status, Privacy Policy, Terms, Cookie Policy. | Individual links added in Build 021 branch; destinations need route verification |
+| QF-1-M | Login legal/footer wording | Copyright 2026 IntelliStack Systems; footer phrase “Secure, Trusted & Compliant.” | Updated in Build 021 branch; visual verification pending |
 | QF-1-N | Login loading, failure, and empty states | Network/auth failures are visible and recoverable; no misleading success state. | Planned |
 
 ## 2.1 QuickFind code map — initial login inspection
@@ -74,6 +74,28 @@ For every requested modification, record: (1) screen/component name, (2) QuickFi
 2. The environment selector and three color-theme classes exist, but they do not authenticate users or establish access scope.
 3. The current login screen does not yet match every approved design requirement: it has an extra tagline, a globe emoji/gradient rather than the specified staff-and-globe background, abbreviated footer links, and placeholder authentication/recovery/provider behavior.
 4. This mapping is **Needs code mapping / initial source review**, not a verified implementation. After code changes, update the affected IDs with new locations and run the available checks.
+
+## 2.2 Build 021 — Login correction record
+
+**Branch:** `build-021-login-screen-corrections`  
+**Application source inspected:** `main/index.html` at commit `d6322e017c7b67448e7ddd54d29b799ed4513386`.  
+**Implementation commit:** `fa53331f0a879351d9629b25f4182a148d075230` (`index.html`).  
+**Scope:** Targeted login screen corrections only; Tenant and Marketplace application environments are not yet built by this change.
+
+Changes committed on the working branch:
+- Replaced the “IS” text in the login shield area with a shield symbol.
+- Removed the unwanted “See Everything. Connect Everything. Work Smarter.” line.
+- Set the login hero title to “GLOBAL COMMAND CENTER” and retained the exact slogan “One World. One System. One Intelligent Network.”
+- Replaced abbreviated footer text with individual links for all requested footer destinations.
+- Added white-and-purple styling for the Marketplace login selection and white-and-green styling for the Tenant login selection; retained the existing blue-and-white Corporate styling.
+- Added small-screen CSS adjustments for the login footer and environment cards.
+
+**Not completed / not claimed:** The requested staff-at-computers background image has not been added; the login uses the existing CSS/globe visual. Footer destinations have not been tested in a browser and may still need route/page implementation. Authentication, password recovery, and identity-provider integration remain unconnected. No browser/device test, automated test, merge, or deployment has been confirmed.
+
+**Next environment sequence after the login is reviewed:**  
+1. Section 2 — Tenant environment, green and white.  
+2. Section 3 — Marketplace environment, purple and white, including ShiftMatch.  
+3. Section 4 — Global Command Center Home Screen.
 
 ## 3. Section 2 — Tenant Environment (Green and White)
 
