@@ -1,9 +1,9 @@
 {
   "application": "Maximus Optimus Global Command Center",
   "product": "IntelliStack Systems",
-  "applicationVersion": "0.38.0",
-  "productBuild": "038",
-  "releaseLabel": "Build 038 — Profile Photo, Profile Background & Manager-Controlled Identity",
+  "applicationVersion": "0.39.0",
+  "productBuild": "039",
+  "releaseLabel": "Build 039 — Manager-Owned Profile Details & Read-Only Employee View",
   "status": "merged",
   "canonical": true,
   "sourceOfTruth": "app-version.json",
@@ -13,16 +13,17 @@
     "footerSlogan": "Secured, Trusted & Compliant."
   },
   "verification": {
-    "inlineJavaScriptSyntax": "validated by GitHub Actions after Build 038 commit",
-    "versionMetadata": "validated by GitHub Actions after Build 038 commit",
-    "header": "header profile photo upload, optional profile-card background, visible profile settings gear, readable profile details, manager-controlled role/title, and editable personal contact fields",
+    "inlineJavaScriptSyntax": "validation defined in GitHub Actions; verify Build 039 workflow result",
+    "versionMetadata": "validation defined in GitHub Actions; verify Build 039 workflow result",
+    "header": "larger profile photo, optional profile background, visible profile settings gear, editable personal contact fields, read-only manager-owned details, manager sync limitation clearly disclosed",
     "globalClock": "compact configurable locations saved in browser localStorage using IANA time zones",
     "departmentIntelligence": "personal feed selection/add/remove/reorder with explicitly labeled sample items; live external news sources not connected",
     "footer": "compact grouped company/support/privacy/legal/trust footer; policy pages are placeholders pending reviewed policy content",
     "workspacePersonalization": "existing drag-and-drop modules retained; time-zone and department-feed preferences saved locally",
     "securityBoundary": "front-end preview only; authentication, role enforcement, shared persistence and live data require backend/services",
     "browserVerification": "not yet performed",
-    "repositoryWorkflow": "Command Center Build & Visual QA"
+    "repositoryWorkflow": "Command Center Build & Visual QA",
+    "managerProfile": "employee profile cannot edit or persist manager name/contact; shared cross-user synchronization requires connected backend directory/profile records"
   },
-  "notes": "Build 038 adds profile photo upload and removal, optional profile-card background image, a visible profile settings gear, editable personal contact fields including work address, and read-only manager-controlled job title/department/manager fields. Photos and profile details remain browser-local until secure backend profile storage is connected. Browser/device verification remains outstanding."
+  "notes": "Build 039 clarifies manager ownership: employee personal settings display manager name/contact read-only and do not persist those fields as employee-owned profile data. Automatic reflection of manager changes across user accounts requires shared backend directory/profile synchronization; this is not claimed as live until connected. Profile photo/background and personal contact settings remain browser-local."
 }
