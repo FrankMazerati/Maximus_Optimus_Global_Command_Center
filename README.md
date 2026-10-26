@@ -74,3 +74,8 @@ Approved login image assets can be added later using the agreed filenames:
 - Added [docs/MARKETPLACE_CUSTOMER_BUYING_GUIDE.md](docs/MARKETPLACE_CUSTOMER_BUYING_GUIDE.md) with the full customer-facing copy, competitor comparison rationale, pricing caveats, and launch gates.
 - Paid package prices remain proposed, package purchase buttons are disabled, and existing standalone product estimates remain explicitly illustrative. No Supabase data/schema, live pricing, payments, subscriptions, or entitlements changed.
 - Browser rendering, JavaScript syntax, and mobile/tablet verification remain to be completed before calling the UI release verified.
+
+## Build 026 — Organization size and package fit
+- Added a Marketplace planner where customers enter organization headcount, estimated IntelliStack accounts, and primary use case to receive a preliminary tier recommendation and compare all six proposed packages.
+- Added [docs/ORGANIZATION_SIZE_PACKAGE_PLANNER.md](docs/ORGANIZATION_SIZE_PACKAGE_PLANNER.md) documenting the recommendation bands, assumptions, pricing-model decision, and implementation gates.
+- The current draft assumes flat organization pricing; headcount affects fit guidance, not price. Seat limits and prices are not approved. No live directory lookup, billing, Supabase changes, subscriptions, or entitlements are connected. Inline JavaScript syntax passed; browser/device verification remains pending.
