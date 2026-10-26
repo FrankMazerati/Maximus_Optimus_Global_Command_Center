@@ -58,3 +58,8 @@ Approved login image assets can be added later using the agreed filenames:
 ## Build 022 — operational continuity
 - Build ledger, main-branch workflow, verification checklists, deployment smoke-test procedure, troubleshooting guide, rollback procedure, and release-status definitions are maintained in [docs/OPERATIONS_AND_BUILD_CONTINUITY.md](docs/OPERATIONS_AND_BUILD_CONTINUITY.md).
 - Build 022 is a documentation-only update. It does not claim new application functionality, Supabase writes, a production deployment, or live-browser verification.
+
+
+## Build 023 — Marketplace package and entitlement matrix
+- Added [docs/MARKETPLACE_PACKAGE_ENTITLEMENT_MATRIX.md](docs/MARKETPLACE_PACKAGE_ENTITLEMENT_MATRIX.md), documenting the six existing Supabase draft packages, the proposed six-tier customer model, the frontend/database catalog mismatch, entitlement guardrails, and a phased synchronization plan.
+- The review was read-only. No Supabase rows/schema, prices, checkout settings, subscriptions, or entitlements were changed. RLS policy correctness and live Marketplace integration remain unverified.
