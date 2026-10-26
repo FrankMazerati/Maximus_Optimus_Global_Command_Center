@@ -36,8 +36,8 @@ jobs:
           const expected = {
             application: 'Maximus Optimus Global Command Center',
             product: 'IntelliStack Systems',
-            applicationVersion: '0.38.0',
-            productBuild: '038',
+            applicationVersion: '0.39.0',
+            productBuild: '039',
             canonical: true
           };
           for (const [key, value] of Object.entries(expected)) {
@@ -71,6 +71,8 @@ jobs:
               'profile photo upload': 'profilePhotoUpload',
               'profile background upload': 'profileBackgroundUpload',
               'visible profile settings gear': 'profileSettingsGear',
+              'manager read-only fields': 'Assigned manager (read-only)',
+              'manager synchronization limitation': 'shared directory/profile synchronization is connected',
               'manager-controlled job title': 'manager assigned'
           }
           failed = False
@@ -120,7 +122,7 @@ jobs:
           cat > build-output/BUILD-RESULTS.txt <<EOF
           Maximus Optimus Global Command Center
           IntelliStack Systems
-          Build 038 — Approved Branding, Compact Footer & Repository Validation
+          Build 039 — Approved Branding, Compact Footer & Repository Validation
           Primary slogan: One World. One System. One Intelligent Network.
           Footer slogan: Secured, Trusted & Compliant.
           Source: ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/tree/${GITHUB_SHA}
@@ -132,7 +134,7 @@ jobs:
       - name: Upload inspectable build artifact
         uses: actions/upload-artifact@v4
         with:
-          name: command-center-build-038
+          name: command-center-build-039
           path: build-output/
           if-no-files-found: error
           retention-days: 14
@@ -148,7 +150,7 @@ jobs:
             echo "- **Commit:** \`$GITHUB_SHA\`"
             echo "- **Repository:** [$GITHUB_REPOSITORY]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY)"
             echo "- **Source view:** [$GITHUB_SHA]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/tree/$GITHUB_SHA)"
-            echo "- **Inspect artifact:** open this run's **Artifacts** section and select \`command-center-build-038\`."
+            echo "- **Inspect artifact:** open this run's **Artifacts** section and select \`command-center-build-039\`."
             echo
             echo "This workflow checks metadata, approved branding/footer strings, and inline JavaScript syntax. It does not claim browser verification or live backend readiness."
           } >> "$GITHUB_STEP_SUMMARY"
