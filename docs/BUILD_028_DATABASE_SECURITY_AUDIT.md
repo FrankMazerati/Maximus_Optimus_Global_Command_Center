@@ -147,3 +147,10 @@ This initial pass did not yet test every relationship or endpoint. Before any pr
 - No penetration test, external vulnerability scan, load test, or 100,000-user test was performed.
 - The Supabase advisors are automated signals, not a complete security verdict.
 - Findings are time-sensitive; rerun catalog queries and advisors immediately before applying remediation.
+
+
+### P1 — Excessive table-level grants to anonymous role
+
+A follow-up privilege inventory found table-level grants on **86 of 91 public tables for the anon role** (602 grant entries across those tables), **91 of 91 for authenticated** (620 entries), and **91 of 91 for service_role** (637 entries). This is not by itself proof of data exposure because RLS policies still govern row access for roles subject to RLS, and the anonymous role does not bypass RLS. However, broad grants are unnecessary attack surface and make mistakes in future policies more consequential.
+
+Action: generate a per-table privilege matrix, determine which tables truly need anonymous access, and revoke unnecessary anon grants (and unnecessary client privileges) through reviewed migrations. Keep RLS as a separate required control. Test any intended public catalog/landing-page reads explicitly after privilege changes. Do not perform a blanket revoke without mapping current application behavior.
