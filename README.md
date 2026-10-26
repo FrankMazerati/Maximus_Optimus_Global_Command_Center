@@ -79,3 +79,9 @@ Approved login image assets can be added later using the agreed filenames:
 - Added a Marketplace planner where customers enter organization headcount, estimated IntelliStack accounts, and primary use case to receive a preliminary tier recommendation and compare all six proposed packages.
 - Added [docs/ORGANIZATION_SIZE_PACKAGE_PLANNER.md](docs/ORGANIZATION_SIZE_PACKAGE_PLANNER.md) documenting the recommendation bands, assumptions, pricing-model decision, and implementation gates.
 - The current draft assumes flat organization pricing; headcount affects fit guidance, not price. Seat limits and prices are not approved. No live directory lookup, billing, Supabase changes, subscriptions, or entitlements are connected. Inline JavaScript syntax passed; browser/device verification remains pending.
+
+
+## Build 027 — IntelliStack New Active Directory architecture
+- Added [docs/INTELLISTACK_NEW_ACTIVE_DIRECTORY_ARCHITECTURE.md](docs/INTELLISTACK_NEW_ACTIVE_DIRECTORY_ARCHITECTURE.md), establishing the native IntelliStack directory direction and covering Identity Center, Organization Directory, Groups & Access Manager, Device Directory, Identity Security Center, directory synchronization, bulk imports, automated provisioning, enterprise integrations, tenant security, scale testing and phased delivery.
+- Defines 100,000 employees as a design target requiring measured load tests—not a current capacity claim.
+- This is an architecture and planning milestone. No application code, Supabase schema/data, authentication, provisioning, or external connector was changed or activated. Next step is a Phase 0 audit of the current app and database schema before implementation.
