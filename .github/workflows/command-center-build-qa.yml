@@ -1,0 +1,150 @@
+name: Command Center Build & Visual QA
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: command-center-qa-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    name: Validate repository build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Validate canonical build metadata
+        shell: bash
+        run: |
+          node <<'NODE'
+          const fs = require('node:fs');
+          const meta = JSON.parse(fs.readFileSync('app-version.json', 'utf8'));
+          const expected = {
+            application: 'Maximus Optimus Global Command Center',
+            product: 'IntelliStack Systems',
+            applicationVersion: '0.37.0',
+            productBuild: '037',
+            canonical: true
+          };
+          for (const [key, value] of Object.entries(expected)) {
+            if (meta[key] !== value) {
+              console.error(`FAIL metadata ${key}: expected ${JSON.stringify(value)}, got ${JSON.stringify(meta[key])}`);
+              process.exitCode = 1;
+            } else {
+              console.log(`PASS metadata ${key}: ${JSON.stringify(value)}`);
+            }
+          }
+          if (meta.branding?.primarySlogan !== 'One World. One System. One Intelligent Network.') {
+            console.error('FAIL primary slogan metadata'); process.exitCode = 1;
+          } else console.log('PASS primary slogan metadata');
+          if (meta.branding?.footerSlogan !== 'Secured, Trusted & Compliant.') {
+            console.error('FAIL footer slogan metadata'); process.exitCode = 1;
+          } else console.log('PASS footer slogan metadata');
+          NODE
+
+      - name: Validate approved branding and footer in the app
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          html = Path('index.html').read_text(encoding='utf-8')
+          checks = {
+              'primary slogan': 'One <span class="brand-accent">World</span>. One <span class="brand-accent">System</span>. One Intelligent <span class="brand-accent">Network</span>.',
+              'cyan brand accent': '#00D4FF',
+              'secured footer tagline': 'Secured, Trusted &amp; Compliant.',
+              'copyright year': '2026 IntelliStack Systems',
+              'compact footer function': 'globalFooterHTML'
+          }
+          failed = False
+          for label, needle in checks.items():
+              if needle in html:
+                  print(f'PASS {label}')
+              else:
+                  print(f'FAIL {label}: expected content not found')
+                  failed = True
+          if failed:
+              raise SystemExit(1)
+          PY
+
+      - name: Check inline JavaScript syntax
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          html = Path('index.html').read_text(encoding='utf-8')
+          blocks = re.findall(r'<script\b([^>]*)>([\s\S]*?)</script\s*>', html, flags=re.I)
+          inline = [(attrs, body) for attrs, body in blocks
+                    if not re.search(r'\bsrc\s*=', attrs, flags=re.I)
+                    and body.strip()
+                    and not re.search(r'\btype\s*=\s*["\']application/(?:ld\+json|json)["\']', attrs, flags=re.I)]
+          if not inline:
+              raise SystemExit('No inline JavaScript blocks found to check')
+          out = Path('/tmp/command-center-inline-js')
+          out.mkdir(exist_ok=True)
+          for i, (_, body) in enumerate(inline, start=1):
+              (out / f'inline-{i}.js').write_text(body, encoding='utf-8')
+          Path('/tmp/command-center-inline-js/count.txt').write_text(str(len(inline)))
+          print(f'Extracted {len(inline)} inline JavaScript block(s)')
+          PY
+          count=$(cat /tmp/command-center-inline-js/count.txt)
+          for file in /tmp/command-center-inline-js/inline-*.js; do
+            echo "Checking $file"
+            node --check "$file"
+          done
+          echo "PASS syntax checked for $count inline JavaScript block(s)"
+
+      - name: Prepare repository-view artifact
+        shell: bash
+        run: |
+          mkdir -p build-output
+          cp index.html app-version.json README.md build-output/ 2>/dev/null || true
+          cat > build-output/BUILD-RESULTS.txt <<EOF
+          Maximus Optimus Global Command Center
+          IntelliStack Systems
+          Build 037 — Approved Branding, Compact Footer & Repository Validation
+          Primary slogan: One World. One System. One Intelligent Network.
+          Footer slogan: Secured, Trusted & Compliant.
+          Source: ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/tree/${GITHUB_SHA}
+          Commit: ${GITHUB_SHA}
+          Generated by GitHub Actions.
+          Browser/device verification is not implied by this artifact.
+          EOF
+
+      - name: Upload inspectable build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: command-center-build-037
+          path: build-output/
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Publish result summary
+        if: always()
+        shell: bash
+        run: |
+          {
+            echo "## Command Center Build & Visual QA"
+            echo
+            echo "- **Build:** 037"
+            echo "- **Commit:** \`$GITHUB_SHA\`"
+            echo "- **Repository:** [$GITHUB_REPOSITORY]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY)"
+            echo "- **Source view:** [$GITHUB_SHA]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/tree/$GITHUB_SHA)"
+            echo "- **Inspect artifact:** open this run's **Artifacts** section and select \`command-center-build-037\`."
+            echo
+            echo "This workflow checks metadata, approved branding/footer strings, and inline JavaScript syntax. It does not claim browser verification or live backend readiness."
+          } >> "$GITHUB_STEP_SUMMARY"
