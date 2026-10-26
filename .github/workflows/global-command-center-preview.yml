@@ -1,0 +1,64 @@
+name: Global Command Center Website Preview
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      preview_label:
+        description: "Preview label shown in the deployment summary"
+        required: false
+        default: "Global Command Center"
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: global-command-center-pages
+  cancel-in-progress: true
+
+jobs:
+  publish-preview:
+    name: Publish live website preview
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Check out main
+        uses: actions/checkout@v4
+
+      - name: Prepare website files
+        run: |
+          mkdir -p _site
+          cp index.html _site/index.html
+          cp app-version.json _site/app-version.json
+          touch _site/.nojekyll
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload website for publishing
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - name: Publish live preview
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+      - name: Report live website URL
+        env:
+          PAGE_URL: ${{ steps.deployment.outputs.page_url }}
+          PREVIEW_LABEL: ${{ inputs.preview_label || 'Global Command Center' }}
+        run: |
+          {
+            echo "## ${PREVIEW_LABEL} — live website preview"
+            echo
+            echo "${PAGE_URL}"
+            echo
+            echo "Build metadata: `app-version.json`"
+          } >> "$GITHUB_STEP_SUMMARY"
