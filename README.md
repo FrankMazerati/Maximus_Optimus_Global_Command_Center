@@ -53,3 +53,8 @@ Approved login image assets can be added later using the agreed filenames:
 - Marketplace cart, environment selections, and demo orders are stored in browser local storage only. Payment processing, live pricing, subscriptions, entitlements, and service provisioning are not connected.
 - The Marketplace is responsive for narrow/mobile layouts and uses the existing Command Center page shell.
 - Inline JavaScript syntax and required Marketplace implementation markers were checked. Real-browser visual verification and deployment confirmation remain pending.
+
+
+## Build 022 — operational continuity
+- Build ledger, main-branch workflow, verification checklists, deployment smoke-test procedure, troubleshooting guide, rollback procedure, and release-status definitions are maintained in [docs/OPERATIONS_AND_BUILD_CONTINUITY.md](docs/OPERATIONS_AND_BUILD_CONTINUITY.md).
+- Build 022 is a documentation-only update. It does not claim new application functionality, Supabase writes, a production deployment, or live-browser verification.
