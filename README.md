@@ -91,3 +91,16 @@ Approved login image assets can be added later using the agreed filenames:
 - Added [docs/BUILD_028_DATABASE_SECURITY_AUDIT.md](docs/BUILD_028_DATABASE_SECURITY_AUDIT.md) documenting the first read-only Supabase audit pass and prioritized remediation plan.
 - Initial verified inventory: 91/91 public tables have RLS enabled; 24 tables have no RLS policies; 4 SECURITY DEFINER functions are executable by authenticated users; leaked-password protection is disabled; performance advisor reports 23 foreign-key indexes to review. Initial cross-organization/tenant consistency checks returned zero mismatches for profiles, groups, devices, and profile-role records in the tested joins.
 - No Supabase schema/data, policy, or function changes were made. Next step is deeper pathway/relationship review and then narrowly scoped, tested remediations.
+
+
+## Integrated feature work — Build 037
+
+The current `main` branch selectively integrates the non-conflicting feature intent from PRs #6, #8, #13, and #14 without replacing the newer approved dashboard shell:
+
+- Global Search Center with typed preview-record results and record detail modal.
+- Company Announcements, Messaging Studio, and planned Avatar AI Studio navigation destinations.
+- Responsive compact header, overlay hamburger navigation, and independently scrollable tablet work areas.
+- Canonical build metadata in `app-version.json` and repository validation in `.github/workflows/command-center-build-qa.yml`.
+- Build 018 employee workflow acceptance, QA release checklist, production-readiness baseline, project control register, and employee knowledge-base documentation.
+
+These are selectively integrated changes, not a claim that the original PR branches were merged as GitHub merge commits. Search and announcements still use preview content; production auth, tenant enforcement, and shared backend workflows remain separate work.
