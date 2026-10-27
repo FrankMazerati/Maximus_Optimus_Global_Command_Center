@@ -1,9 +1,9 @@
 {
   "application": "Maximus Optimus Global Command Center",
   "product": "IntelliStack Systems",
-  "applicationVersion": "0.54.0",
-  "productBuild": "054",
-  "releaseLabel": "Build 054 — In-Page Visual Design Controls",
+  "applicationVersion": "0.55.0",
+  "productBuild": "055",
+  "releaseLabel": "Build 055 — Compact Adaptive Masthead",
   "status": "committed; website publishing triggered",
   "canonical": true,
   "sourceOfTruth": "app-version.json",
@@ -15,7 +15,7 @@
   "verification": {
     "inlineJavaScriptSyntax": "validation defined in GitHub Actions; verify Build 039 workflow result",
     "versionMetadata": "validation defined in GitHub Actions; verify Build 039 workflow result",
-    "header": "Build 053: signed-in header places profile/navigation controls at left, Maximus Optimus Global Command Center centered, Secured, Trusted & Compliant at top right, and the One World mission line at the bottom of the central brand area; header color is dark navy with restrained adaptive blue accents.",
+    "header": "Build 055 reduces header height and shadow, standardizes all adaptive words to one selected environment color, uses light cyan for employee access, purple for business/organization, green for tenant, reduces tagline size and weight spacing, and places the smaller shield beside the Maximus Optimus login wordmark. Mobile portrait header spacing is tightened.",
     "globalClock": "compact configurable locations saved in browser localStorage using IANA time zones",
     "departmentIntelligence": "personal feed selection/add/remove/reorder with explicitly labeled sample items; live external news sources not connected",
     "footer": "compact grouped company/support/privacy/legal/trust footer; policy pages are placeholders pending reviewed policy content",
@@ -30,16 +30,16 @@
     "loginBackground": "Build 049 increases login background image visibility with a lighter overlay and higher image positioning.",
     "loginBrandColors": "Build 049 uses restrained blue, purple, and green environment accents; business purple and tenant green are toned down.",
     "shieldAsset": "Build 046 uses repository-root shield.jpg for the login shield and Global Command Center header brandmark.",
-    "loginHeader": "Build 049 separates the IntelliStack Systems presents Maximus Optimus Global Command Center masthead from the primary slogan and prominent See Everything. Connect Everything. Work Smarter. tagline.",
+    "loginHeader": "Build 055 reduces masthead height, removes glow/blur/shadow treatment, and aligns the small shield at the upper-left beside the Maximus wordmark.",
     "loginAssets": "Build 048 fixes the publishing root cause: the Pages workflow now copies shield.jpg and background.png into the published site alongside index.html and app-version.json.",
     "loginBranding": "Build 048 enforces same font family and non-glowing wordmark treatment for Maximus and Optimus; Maximus blue and Optimus white; tagline dark blue.",
     "loginShield": "Build 049 removes the shield container background and uses screen blending to suppress the black background in shield.jpg; confirm visual appearance in live preview.",
     "loginSearch": "Hide the signed-in Global Search Center while login screen is active.",
     "loginFooter": "Build 051 removes generic Enterprise Security, Global Infrastructure, Compliance Ready, 24/7 Support and Think Beyond Locally / Connect Everything Globally promotional claims; footer has dark readable text on white.",
-    "loginEnvironmentAccents": "Build 051 wraps World, System, Network, both Everything words, and Smarter in adaptive accent spans; Optimus and selected login controls use the chosen environment accent.",
+    "loginEnvironmentAccents": "Build 055 applies one CSS variable to World, System, Network, both Everything words, Smarter, and Maximus/Optimus; employee cyan, business purple, tenant green.",
     "loginEnvironmentLabels": "Build 051 labels the first environment Employee / Contractor and the second Business / Employer / Organization; Tenant remains separate.",
     "loginPalette": "Build 051 uses a charcoal/navy login banner with controlled background-image overlay, white main text, and environment-specific blue, purple, or green accent words.",
     "visualDesignMode": "In-page design mode provides component selection, HTML drag/drop reordering within the same parent, width/font/padding/radius sliders, text/background/border color controls, local browser persistence, and reset controls. User styling is local to the browser and does not publish back to source files."
   },
-  "notes": "Build 054 adds a floating Design Mode editor for manual layout and color adjustments, optimized for mouse and touch-friendly component selection on tablet. Changes are saved locally in the current browser only."
+  "notes": "Build 055 is a visual refinement of the login and signed-in header. Browser visual verification is still required after publication."
 }
