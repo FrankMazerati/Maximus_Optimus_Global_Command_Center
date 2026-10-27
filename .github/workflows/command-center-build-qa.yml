@@ -3,8 +3,6 @@ name: Command Center Build & Visual QA
 on:
   push:
     branches: [main]
-  pull_request:
-    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -36,8 +34,6 @@ jobs:
           const expected = {
             application: 'Maximus Optimus Global Command Center',
             product: 'IntelliStack Systems',
-            applicationVersion: '0.42.0',
-            productBuild: '042',
             canonical: true
           };
           for (const [key, value] of Object.entries(expected)) {
@@ -48,6 +44,12 @@ jobs:
               console.log(`PASS metadata ${key}: ${JSON.stringify(value)}`);
             }
           }
+          if (!/^\d+\.\d+\.\d+$/.test(meta.applicationVersion || '')) {
+            console.error('FAIL applicationVersion must be semantic version'); process.exitCode = 1;
+          } else console.log(`PASS applicationVersion ${meta.applicationVersion}`);
+          if (!/^\d{3,}$/.test(meta.productBuild || '')) {
+            console.error('FAIL productBuild must be a numeric build label'); process.exitCode = 1;
+          } else console.log(`PASS productBuild ${meta.productBuild}`);
           if (meta.branding?.primarySlogan !== 'One World. One System. One Intelligent Network.') {
             console.error('FAIL primary slogan metadata'); process.exitCode = 1;
           } else console.log('PASS primary slogan metadata');
@@ -119,10 +121,12 @@ jobs:
         run: |
           mkdir -p build-output
           cp index.html app-version.json README.md build-output/ 2>/dev/null || true
+          PRODUCT_BUILD=$(node -p "require('./app-version.json').productBuild")
+          RELEASE_LABEL=$(node -p "require('./app-version.json').releaseLabel")
           cat > build-output/BUILD-RESULTS.txt <<EOF
           Maximus Optimus Global Command Center
           IntelliStack Systems
-          Build 042 — Identity-First Navigation & Approved Branding Corrections
+          Build ${PRODUCT_BUILD} — ${RELEASE_LABEL}
           Primary slogan: One World. One System. One Intelligent Network.
           Footer slogan: Secure, Trusted & Compliant.
           Source: ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/tree/${GITHUB_SHA}
@@ -134,7 +138,7 @@ jobs:
       - name: Upload inspectable build artifact
         uses: actions/upload-artifact@v4
         with:
-          name: command-center-build-042
+          name: command-center-build-${{ github.run_number }}
           path: build-output/
           if-no-files-found: error
           retention-days: 14
@@ -146,11 +150,15 @@ jobs:
           {
             echo "## Command Center Build & Visual QA"
             echo
-            echo "- **Build:** 042"
+            PRODUCT_BUILD=$(node -p "require('./app-version.json').productBuild")
+            RELEASE_LABEL=$(node -p "require('./app-version.json').releaseLabel")
+            echo "- **Build:** ${PRODUCT_BUILD} — ${RELEASE_LABEL}"
             echo "- **Commit:** \`$GITHUB_SHA\`"
-            echo "- **Repository:** [$GITHUB_REPOSITORY]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY)"
-            echo "- **Source view:** [$GITHUB_SHA]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/tree/$GITHUB_SHA)"
-            echo "- **Inspect artifact:** open this run's **Artifacts** section and select \`command-center-build-042\`."
+            echo "- **1. Build & QA run:** [Run #$GITHUB_RUN_NUMBER]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID)"
+            echo "- **2. Website deployment runs:** [Open deployment history]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/workflows/global-command-center-preview.yml)"
+            echo "- **3. GitHub Pages settings:** [Open publishing settings]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/settings/pages)"
+            echo "- **Source commit:** [$GITHUB_SHA]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/tree/$GITHUB_SHA)"
+            echo "- **Inspect artifact:** open this run's **Artifacts** section and select \`command-center-build-$GITHUB_RUN_NUMBER\`."
             echo
             echo "This workflow checks metadata, approved branding/footer strings, and inline JavaScript syntax. It does not claim browser verification or live backend readiness."
           } >> "$GITHUB_STEP_SUMMARY"
