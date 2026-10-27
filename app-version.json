@@ -1,10 +1,10 @@
 {
   "application": "Maximus Optimus Global Command Center",
   "product": "IntelliStack Systems",
-  "applicationVersion": "0.46.0",
-  "productBuild": "046",
-  "releaseLabel": "Build 046 — Official Shield Image",
-  "status": "committed; QA and publishing pending",
+  "applicationVersion": "0.47.0",
+  "productBuild": "047",
+  "releaseLabel": "Build 047 — Unified Login Header",
+  "status": "committed; QA and publishing workflows triggered",
   "canonical": true,
   "sourceOfTruth": "app-version.json",
   "branding": {
@@ -21,15 +21,16 @@
     "footer": "compact grouped company/support/privacy/legal/trust footer; policy pages are placeholders pending reviewed policy content",
     "workspacePersonalization": "existing drag-and-drop modules retained; time-zone and department-feed preferences saved locally",
     "securityBoundary": "front-end preview only; authentication, role enforcement, shared persistence and live data require backend/services",
-    "browserVerification": "not yet performed",
+    "browserVerification": "not yet independently verified in a browser",
     "repositoryWorkflow": "Command Center Build & Visual QA — direct main pushes and manual dispatch; no pull-request validation trigger",
     "managerProfile": "employee profile cannot edit or persist manager name/contact; shared cross-user synchronization requires connected backend directory/profile records",
     "navigation": "Identity and access group precedes home navigation; company ID/global user ID/roles/directory prioritized; Organizations & Tenants and Users & Devices explicitly marked pending rather than presented as working pages.",
-    "publishingWorkflow": "GitHub Actions Pages workflow emits direct links to the build/deployment run, QA history, and Pages settings; published URL is shown only when deployment returns one.",
+    "publishingWorkflow": "Use the live GitHub Pages website preview as the user-facing output; GitHub Actions runs are internal verification only.",
     "homepageBackground": "Uses repository-root background.png as a cover background behind the signed-in Command Center workspace, with a light overlay for readable content; login screen backgrounds are unchanged.",
-    "loginBackground": "Build 045 applies repository-root background.png to both upper login bands: IntelliStack/tagline band and Maximus Optimus/slogan hero band.",
+    "loginBackground": "Build 045 background image remains behind the login header.",
     "loginBrandColors": "Build 045: See Everything, Connect Everything, Work Smarter, and One World. One System. One Intelligent Network. are dark blue; Maximus is blue and Optimus is white with dark contrast outline.",
-    "shieldAsset": "Build 046 uses repository-root shield.jpg for the login shield and Global Command Center header brandmark."
+    "shieldAsset": "Build 046 uses repository-root shield.jpg for the login shield and Global Command Center header brandmark.",
+    "loginHeader": "Build 047 merges the visual treatment of the IntelliStack tagline and Maximus Optimus hero into one continuous header panel; environment-specific employee, business, and tenant color treatments retained."
   },
-  "notes": "Build 039 clarifies manager ownership: employee personal settings display manager name/contact read-only and do not persist those fields as employee-owned profile data. Automatic reflection of manager changes across user accounts requires shared backend directory/profile synchronization; this is not claimed as live until connected. Profile photo/background and personal contact settings remain browser-local. Build 044 applies the uploaded repository-root background.png to the signed-in Command Center workspace background. Visual browser verification remains pending. Build 045 corrects login styling: uploaded background.png appears behind both top login sections; the top tagline and One World/System/Network slogan use dark blue; Maximus is blue and Optimus white. QA, publishing, and browser rendering still require confirmation. Build 046 replaces the text-based IS placeholders in the login header and signed-in Global Command Center header with the uploaded shield.jpg image. QA and publishing pending."
+  "notes": "Build 047 unifies the login tagline and Maximus Optimus hero into one continuous top section while retaining shield.jpg, background.png, the login slogan, and environment-specific colors. Browser rendering must still be checked against the live preview."
 }
