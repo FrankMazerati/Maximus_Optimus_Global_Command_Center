@@ -50,15 +50,30 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
 
-      - name: Report live website URL
+      - name: Report build, deployment, and troubleshooting links
+        if: always()
         env:
           PAGE_URL: ${{ steps.deployment.outputs.page_url }}
           PREVIEW_LABEL: ${{ inputs.preview_label || 'Global Command Center' }}
+          DEPLOY_STATUS: ${{ job.status }}
         run: |
+          PRODUCT_BUILD=$(node -p "require('./app-version.json').productBuild" 2>/dev/null || echo "unknown")
+          RELEASE_LABEL=$(node -p "require('./app-version.json').releaseLabel" 2>/dev/null || echo "unknown")
           {
-            echo "## ${PREVIEW_LABEL} — live website preview"
+            echo "## ${PREVIEW_LABEL} — website deployment"
             echo
-            echo "${PAGE_URL}"
-            echo
-            echo "Build metadata: `app-version.json`"
+            echo "- **Product build:** ${PRODUCT_BUILD} — ${RELEASE_LABEL}"
+            echo "- **Deployment result:** ${DEPLOY_STATUS}"
+            echo "- **1. This build/deployment run:** [Run #${GITHUB_RUN_NUMBER}](${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID})"
+            echo "- **2. Build & QA runs:** [Open validation history](${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/workflows/command-center-build-qa.yml)"
+            echo "- **3. GitHub Pages settings:** [Open publishing settings](${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/settings/pages)"
+            echo "- **Source commit:** [${GITHUB_SHA}](${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/tree/${GITHUB_SHA})"
+            if [ -n "${PAGE_URL}" ]; then
+              echo
+              echo "### Published website"
+              echo "${PAGE_URL}"
+            else
+              echo
+              echo "No published URL was returned by the deploy step. The current deployment is not confirmed live; use the run link above to inspect the failed step."
+            fi
           } >> "$GITHUB_STEP_SUMMARY"
