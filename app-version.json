@@ -1,21 +1,21 @@
 {
   "application": "Maximus Optimus Global Command Center",
   "product": "IntelliStack Systems",
-  "applicationVersion": "0.39.0",
-  "productBuild": "039",
-  "releaseLabel": "Build 039 — Manager-Owned Profile Details & Read-Only Employee View",
-  "status": "merged",
+  "applicationVersion": "0.41.0",
+  "productBuild": "041",
+  "releaseLabel": "Build 041 — Identity-First Navigation & Approved Branding Corrections",
+  "status": "committed; publishing and browser verification pending",
   "canonical": true,
   "sourceOfTruth": "app-version.json",
   "branding": {
     "primarySlogan": "One World. One System. One Intelligent Network.",
     "tagline": "Bring the Work to You.",
-    "footerSlogan": "Secured, Trusted & Compliant."
+    "footerSlogan": "Secure, Trusted & Compliant."
   },
   "verification": {
     "inlineJavaScriptSyntax": "validation defined in GitHub Actions; verify Build 039 workflow result",
     "versionMetadata": "validation defined in GitHub Actions; verify Build 039 workflow result",
-    "header": "larger profile photo, optional profile background, visible profile settings gear, editable personal contact fields, read-only manager-owned details, manager sync limitation clearly disclosed",
+    "header": "Build 041: dashboard renamed; identity-first navigation; company/global identity prioritized; tenant/device pages clearly labeled as pending where dedicated functional pages do not yet exist; approved footer slogan corrected.",
     "globalClock": "compact configurable locations saved in browser localStorage using IANA time zones",
     "departmentIntelligence": "personal feed selection/add/remove/reorder with explicitly labeled sample items; live external news sources not connected",
     "footer": "compact grouped company/support/privacy/legal/trust footer; policy pages are placeholders pending reviewed policy content",
@@ -23,7 +23,9 @@
     "securityBoundary": "front-end preview only; authentication, role enforcement, shared persistence and live data require backend/services",
     "browserVerification": "not yet performed",
     "repositoryWorkflow": "Command Center Build & Visual QA",
-    "managerProfile": "employee profile cannot edit or persist manager name/contact; shared cross-user synchronization requires connected backend directory/profile records"
+    "managerProfile": "employee profile cannot edit or persist manager name/contact; shared cross-user synchronization requires connected backend directory/profile records",
+    "navigation": "Identity and access group precedes home navigation; company ID/global user ID/roles/directory prioritized; Organizations & Tenants and Users & Devices explicitly marked pending rather than presented as working pages.",
+    "publishingWorkflow": "GitHub Actions Pages workflow exists; latest Build 041 publishing run must be checked before providing a live preview URL."
   },
   "notes": "Build 039 clarifies manager ownership: employee personal settings display manager name/contact read-only and do not persist those fields as employee-owned profile data. Automatic reflection of manager changes across user accounts requires shared backend directory/profile synchronization; this is not claimed as live until connected. Profile photo/background and personal contact settings remain browser-local."
 }
