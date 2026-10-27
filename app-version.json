@@ -1,16 +1,16 @@
 {
   "application": "Maximus Optimus Global Command Center",
   "product": "IntelliStack Systems",
-  "applicationVersion": "0.50.0",
-  "productBuild": "050",
-  "releaseLabel": "Build 050 — Centered Login Masthead & Clear Message Hierarchy",
-  "status": "committed; website publishing triggered",
+  "applicationVersion": "0.51.0",
+  "productBuild": "051",
+  "releaseLabel": "Build 051 — Professional Environment Redesign",
+  "status": "committed to feature branch; preview pending",
   "canonical": true,
   "sourceOfTruth": "app-version.json",
   "branding": {
     "primarySlogan": "One World. One System. One Intelligent Network.",
     "tagline": "Bring the Work to You.",
-    "footerSlogan": "Secure, Trusted & Compliant."
+    "footerSlogan": "Secured, Trusted & Compliant."
   },
   "verification": {
     "inlineJavaScriptSyntax": "validation defined in GitHub Actions; verify Build 039 workflow result",
@@ -21,21 +21,23 @@
     "footer": "compact grouped company/support/privacy/legal/trust footer; policy pages are placeholders pending reviewed policy content",
     "workspacePersonalization": "existing drag-and-drop modules retained; time-zone and department-feed preferences saved locally",
     "securityBoundary": "front-end preview only; authentication, role enforcement, shared persistence and live data require backend/services",
-    "browserVerification": "not yet independently verified in a browser",
+    "browserVerification": "not independently verified in a browser",
     "repositoryWorkflow": "Command Center Build & Visual QA — direct main pushes and manual dispatch; no pull-request validation trigger",
     "managerProfile": "employee profile cannot edit or persist manager name/contact; shared cross-user synchronization requires connected backend directory/profile records",
     "navigation": "Identity and access group precedes home navigation; company ID/global user ID/roles/directory prioritized; Organizations & Tenants and Users & Devices explicitly marked pending rather than presented as working pages.",
     "publishingWorkflow": "Use the live GitHub Pages website preview as the user-facing output; GitHub Actions runs are internal verification only.",
     "homepageBackground": "Uses repository-root background.png as a cover background behind the signed-in Command Center workspace, with a light overlay for readable content; login screen backgrounds are unchanged.",
     "loginBackground": "Build 049 increases login background image visibility with a lighter overlay and higher image positioning.",
-    "loginBrandColors": "Build 049 uses restrained blue, purple, and green environment accents; business purple and tenant green are toned down.",
+    "loginBrandColors": "Build 051 uses adaptive blue, purple, and green emphasis for Optimus and the World/System/Network and Everything/Smarter words.",
     "shieldAsset": "Build 046 uses repository-root shield.jpg for the login shield and Global Command Center header brandmark.",
     "loginHeader": "Build 049 separates the IntelliStack Systems presents Maximus Optimus Global Command Center masthead from the primary slogan and prominent See Everything. Connect Everything. Work Smarter. tagline.",
     "loginAssets": "Build 048 fixes the publishing root cause: the Pages workflow now copies shield.jpg and background.png into the published site alongside index.html and app-version.json.",
     "loginBranding": "Build 048 enforces same font family and non-glowing wordmark treatment for Maximus and Optimus; Maximus blue and Optimus white; tagline dark blue.",
     "loginShield": "Build 049 removes the shield container background and uses screen blending to suppress the black background in shield.jpg; confirm visual appearance in live preview.",
     "loginSearch": "Hide the signed-in Global Search Center while login screen is active.",
-    "loginFooter": "Keep login footer full-width within login screen flow."
+    "loginFooter": "Keep login footer full-width within login screen flow.",
+    "loginDesign": "Build 051 applies a charcoal/navy enterprise login, stronger contrast over the background image, clear brand hierarchy, responsive sign-in panels, and distinct selected-environment states.",
+    "workspaceDesign": "Build 051 introduces a cohesive dark enterprise visual system across workspace surfaces; existing functionality is retained and not represented as a production backend."
   },
-  "notes": "Build 050 centers the Maximus Optimus Global Command Center identity, places IntelliStack Systems presents... above it, positions the shield beside the centered masthead, keeps One World. One System. One Intelligent Network. beneath the title, and places See Everything. Connect Everything. Work Smarter. at the bottom of the image panel. Background overlay is reduced to keep the image visible while retaining text contrast."
+  "notes": "Build 051 is a major visual design pass over the login environment and workspace surfaces. It updates adaptive environment-highlight words, professional dark surfaces, responsive layouts, focus states, and accessible reduced-motion handling. Authentication and shared backend persistence remain unconnected and must not be represented as live."
 }
