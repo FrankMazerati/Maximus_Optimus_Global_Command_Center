@@ -10,7 +10,7 @@
   "branding": {
     "primarySlogan": "One World. One System. One Intelligent Network.",
     "tagline": "Bring the Work to You.",
-    "footerSlogan": "Secured, Trusted & Compliant."
+    "footerSlogan": "Secure, Trusted & Compliant."
   },
   "verification": {
     "inlineJavaScriptSyntax": "validation defined in GitHub Actions; verify Build 039 workflow result",
