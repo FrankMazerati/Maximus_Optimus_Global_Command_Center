@@ -582,6 +582,33 @@ body.menu-open{overflow:hidden}
 body.login-gate.env-business .login-banner{background-image:linear-gradient(100deg,rgba(247,239,255,.88),rgba(239,224,255,.70)),url("./background.png")!important;}
 body.login-gate.env-tenant .login-banner{background-image:linear-gradient(100deg,rgba(234,255,245,.88),rgba(216,250,233,.70)),url("./background.png")!important;}
 body.login-gate.env-employee .login-banner{background-image:linear-gradient(100deg,rgba(234,247,255,.88),rgba(223,243,255,.70)),url("./background.png")!important;}
+
+/* Build 048: professional unified login masthead and typography refinement. */
+.login-screen{font-family:Inter,"Segoe UI",Roboto,Arial,sans-serif!important;padding:clamp(12px,2.2vw,28px)!important;}
+.login-banner{border-radius:20px!important;border:1px solid #b8d8ef!important;box-shadow:0 18px 50px rgba(7,45,86,.16)!important;margin-bottom:20px!important;overflow:hidden!important;}
+.login-brand-row{display:flex!important;flex-wrap:wrap!important;gap:12px 16px!important;align-items:center!important;padding:clamp(16px,2.2vw,26px) clamp(18px,3vw,34px) 10px!important;}
+.login-shield{width:58px!important;height:58px!important;border-radius:14px!important;border:1px solid rgba(7,85,165,.22)!important;background:rgba(255,255,255,.92)!important;box-shadow:0 5px 18px rgba(7,85,165,.12)!important;flex:0 0 58px!important;}
+.login-brand-row>div:nth-child(2) b{font-size:12px!important;letter-spacing:.13em!important;font-weight:850!important;color:#073b7a!important;}
+.login-brand-row>div:nth-child(2) small{font-size:9px!important;letter-spacing:.11em!important;color:#315e89!important;}
+.login-brand-divider{display:none!important;}
+.login-top-tagline{flex:1 1 320px!important;font-size:clamp(15px,2vw,22px)!important;line-height:1.25!important;font-weight:800!important;letter-spacing:-.025em!important;color:#073b7a!important;}
+.login-hero{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:24px!important;padding:8px clamp(18px,3vw,34px) clamp(22px,3vw,36px)!important;min-height:145px!important;}
+.login-copy{max-width:800px!important;}
+.login-eyebrow{font-size:clamp(28px,4.5vw,46px)!important;line-height:1.04!important;font-weight:900!important;letter-spacing:-.045em!important;gap:0 10px!important;margin:0 0 10px!important;}
+.login-copy h1{font-size:clamp(12px,1.5vw,16px)!important;letter-spacing:.16em!important;font-weight:850!important;margin:0 0 12px!important;color:#123d69!important;}
+.login-copy p{font-size:clamp(14px,1.6vw,17px)!important;line-height:1.55!important;margin:0!important;max-width:760px!important;color:#16466f!important;}
+.login-globe{font-size:clamp(44px,7vw,76px)!important;opacity:.85!important;flex:0 0 auto!important;filter:drop-shadow(0 7px 14px rgba(7,85,165,.12))!important;}
+.login-content{gap:20px!important;max-width:1400px!important;margin:0 auto!important;}
+.login-panel,.login-benefits{border-radius:18px!important;box-shadow:0 12px 34px rgba(7,45,86,.10)!important;}
+.login-panel{border:1px solid #c5deef!important;padding:clamp(18px,2.4vw,30px)!important;}
+.login-panel h2{font-size:clamp(21px,2.4vw,28px)!important;letter-spacing:-.035em!important;color:#123d69!important;}
+.login-panel>p{font-size:14px!important;color:#526f87!important;}
+.environment{border-radius:12px!important;padding:13px 14px!important;border-width:1px!important;}
+.login-form input{border-radius:10px!important;min-height:44px!important;border-color:#c5d9e8!important;}
+.login-submit{border-radius:10px!important;min-height:46px!important;font-weight:800!important;letter-spacing:.01em!important;}
+.login-footer{max-width:1400px!important;margin:20px auto 0!important;}
+@media(max-width:640px){.login-brand-row{align-items:flex-start!important}.login-top-tagline{flex-basis:100%!important}.login-hero{min-height:0!important;gap:10px!important}.login-globe{font-size:40px!important}.login-eyebrow{font-size:32px!important}.login-copy h1{letter-spacing:.1em!important}.login-copy p{font-size:14px!important}.login-content{display:block!important}.login-benefits{margin-top:14px!important}}
+
 </style>
 </head>
 <body>
