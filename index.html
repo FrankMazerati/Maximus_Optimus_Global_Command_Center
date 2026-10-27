@@ -804,6 +804,49 @@ body.env-tenant{--accent:#318667;--login-accent:#318667}
  .command-brand-mission{font-size:11px!important}
 }
 
+
+/* Build 053: identity-first header composition — profile left, brand centered, compliance top-right. */
+.command-header{position:relative!important;display:grid!important;grid-template-columns:minmax(240px,1fr) minmax(340px,1.35fr) minmax(240px,1fr)!important;grid-template-rows:auto auto!important;grid-template-areas:"user brand compliance" "context context context"!important;align-items:center!important;gap:10px 16px!important;padding:16px 18px 12px!important;background:linear-gradient(115deg,#0b1725 0%,#132a40 52%,#0b1725 100%)!important;border-bottom:2px solid var(--header-accent,#1688b8)!important;color:#f5f8fb!important;overflow:visible!important}
+.command-user{grid-area:user!important;grid-column:1!important;grid-row:1!important;align-self:center!important;background:rgba(247,250,252,.97)!important;border:1px solid #cbd5df!important;color:#1c2936!important;box-shadow:0 5px 16px rgba(0,0,0,.22)!important;padding:10px!important}
+.command-brand{grid-area:brand!important;grid-column:2!important;grid-row:1!important;min-width:0!important;align-items:center!important;justify-content:center!important;text-align:center!important;gap:6px!important;padding:18px 12px 12px!important;background:transparent!important;border:0!important;box-shadow:none!important}
+.command-brand-top{justify-content:center!important;gap:9px!important}
+.command-brand-top strong{color:#f6f8fb!important}
+.command-brand-top small{color:#fff!important;font-size:clamp(18px,2vw,27px)!important}
+.command-brand-top small span{color:var(--header-accent,#1688b8)!important}
+.command-brand-title{margin:0!important;color:#fff!important;font-size:clamp(16px,1.7vw,23px)!important;letter-spacing:.14em!important;text-align:center!important}
+.command-brand-mission{margin:8px 0 0!important;color:#f5f8fb!important;font-size:clamp(12px,1.2vw,16px)!important;line-height:1.4!important;text-align:center!important}
+.command-brand-mission .brand-accent{color:var(--header-accent,#1688b8)!important}
+.command-brand-tagline{display:none!important}
+.command-brand-security{position:absolute!important;top:12px!important;right:18px!important;margin:0!important;color:#f2f5f8!important;font-size:10px!important;font-weight:800!important;letter-spacing:.06em!important;text-align:right!important}
+.command-context{grid-area:context!important;grid-column:1/-1!important;grid-row:2!important;display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;align-items:stretch!important;gap:8px!important;width:100%!important}
+.header-widget{background:rgba(247,250,252,.97)!important;border-color:#cbd5df!important;color:#243341!important}
+.header-widget-head span,.header-widget-head{color:#3a4c5c!important}
+.header-widget p,.header-widget small,.header-widget .muted{color:#536372!important}
+.header-widget .icon-btn,.header-widget .btn{border-color:#c4d0da!important;color:#23394b!important}
+.command-user .home-greeting,.command-user .profile-role,.command-user .header-department,.command-user .header-manager{color:#485767!important}
+.command-user .command-user-copy strong{color:#172330!important}
+.command-user .availability-control span{color:#354555!important}
+body:not(.login-gate) .command-brand-security{color:#f3f6f9!important}
+body:not(.login-gate) .command-brand-mission .brand-accent{color:var(--header-accent,#1688b8)!important}
+body:not(.login-gate) .global-footer,body:not(.login-gate) .global-footer a{color:#263746!important}
+body:not(.login-gate) .global-footer{background:#fff!important}
+@media(max-width:900px){
+ .command-header{grid-template-columns:minmax(0,1fr) minmax(0,1.2fr)!important;grid-template-areas:"user compliance" "brand brand" "context context"!important}
+ .command-user{grid-area:user!important;grid-column:1!important;grid-row:1!important}
+ .command-brand{grid-area:brand!important;grid-column:1/-1!important;grid-row:2!important;padding:10px 8px!important}
+ .command-brand-security{position:absolute!important;top:12px!important;right:12px!important;max-width:42%!important}
+ .command-context{grid-area:context!important;grid-column:1/-1!important;grid-row:3!important;grid-template-columns:repeat(2,minmax(0,1fr))!important}
+}
+@media(max-width:600px){
+ .command-header{grid-template-columns:minmax(0,1fr)!important;grid-template-areas:"user" "brand" "context"!important;padding:8px!important}
+ .command-user{grid-area:user!important;grid-column:1!important;grid-row:1!important}
+ .command-brand{grid-area:brand!important;grid-column:1!important;grid-row:2!important;padding:24px 6px 10px!important}
+ .command-brand-security{top:9px!important;right:10px!important;font-size:9px!important}
+ .command-context{grid-area:context!important;grid-column:1!important;grid-row:3!important;grid-template-columns:repeat(2,minmax(0,1fr))!important}
+ .command-brand-top .brandmark{width:36px!important;height:36px!important}
+ .command-brand-mission{font-size:12px!important}
+}
+
 </style>
 </head>
 <body>
