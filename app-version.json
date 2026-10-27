@@ -1,9 +1,9 @@
 {
   "application": "Maximus Optimus Global Command Center",
   "product": "IntelliStack Systems",
-  "applicationVersion": "0.45.0",
-  "productBuild": "045",
-  "releaseLabel": "Build 045 — Login Background & Brand Color Corrections",
+  "applicationVersion": "0.46.0",
+  "productBuild": "046",
+  "releaseLabel": "Build 046 — Official Shield Image",
   "status": "committed; QA and publishing pending",
   "canonical": true,
   "sourceOfTruth": "app-version.json",
@@ -28,7 +28,8 @@
     "publishingWorkflow": "GitHub Actions Pages workflow emits direct links to the build/deployment run, QA history, and Pages settings; published URL is shown only when deployment returns one.",
     "homepageBackground": "Uses repository-root background.png as a cover background behind the signed-in Command Center workspace, with a light overlay for readable content; login screen backgrounds are unchanged.",
     "loginBackground": "Build 045 applies repository-root background.png to both upper login bands: IntelliStack/tagline band and Maximus Optimus/slogan hero band.",
-    "loginBrandColors": "Build 045: See Everything, Connect Everything, Work Smarter, and One World. One System. One Intelligent Network. are dark blue; Maximus is blue and Optimus is white with dark contrast outline."
+    "loginBrandColors": "Build 045: See Everything, Connect Everything, Work Smarter, and One World. One System. One Intelligent Network. are dark blue; Maximus is blue and Optimus is white with dark contrast outline.",
+    "shieldAsset": "Build 046 uses repository-root shield.jpg for the login shield and Global Command Center header brandmark."
   },
-  "notes": "Build 039 clarifies manager ownership: employee personal settings display manager name/contact read-only and do not persist those fields as employee-owned profile data. Automatic reflection of manager changes across user accounts requires shared backend directory/profile synchronization; this is not claimed as live until connected. Profile photo/background and personal contact settings remain browser-local. Build 044 applies the uploaded repository-root background.png to the signed-in Command Center workspace background. Visual browser verification remains pending. Build 045 corrects login styling: uploaded background.png appears behind both top login sections; the top tagline and One World/System/Network slogan use dark blue; Maximus is blue and Optimus white. QA, publishing, and browser rendering still require confirmation."
+  "notes": "Build 039 clarifies manager ownership: employee personal settings display manager name/contact read-only and do not persist those fields as employee-owned profile data. Automatic reflection of manager changes across user accounts requires shared backend directory/profile synchronization; this is not claimed as live until connected. Profile photo/background and personal contact settings remain browser-local. Build 044 applies the uploaded repository-root background.png to the signed-in Command Center workspace background. Visual browser verification remains pending. Build 045 corrects login styling: uploaded background.png appears behind both top login sections; the top tagline and One World/System/Network slogan use dark blue; Maximus is blue and Optimus white. QA, publishing, and browser rendering still require confirmation. Build 046 replaces the text-based IS placeholders in the login header and signed-in Global Command Center header with the uploaded shield.jpg image. QA and publishing pending."
 }
