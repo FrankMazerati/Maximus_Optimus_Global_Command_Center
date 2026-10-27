@@ -730,6 +730,47 @@ body.login-gate .login-benefits{display:none!important;}
 @supports not (color:color-mix(in srgb,red,blue)){body.login-gate .environment.active{background:#e9f3fa!important;}}
 @media(max-width:760px){body.login-gate .login-content{display:block!important;}body.login-gate .login-panel{margin-bottom:0!important;}}
 
+
+/* Build 053: balanced three-zone header, adaptive theme and approved security wording. */
+.command-header{display:grid!important;grid-template-columns:minmax(190px,.85fr) minmax(320px,1.35fr) minmax(190px,.85fr)!important;grid-template-areas:"profile brand context"!important;align-items:center!important;gap:14px!important;padding:12px 16px!important;background:linear-gradient(135deg,#101b29,#17283a)!important;border:1px solid #34495b!important;color:#f4f7fb!important;border-radius:14px!important}
+.command-header .command-user{grid-area:profile!important;grid-column:1!important;grid-row:1!important;align-self:center!important;display:flex!important;flex-direction:column!important;background:rgba(245,248,251,.97)!important;color:#1b2b3a!important;border:1px solid #c7d2de!important;border-radius:12px!important;padding:10px!important;box-shadow:0 4px 16px rgba(0,0,0,.16)!important}
+.command-header .command-user-top{display:grid!important;grid-template-columns:auto auto minmax(0,1fr)!important;align-items:center!important;gap:8px!important}
+.command-header .mobile-menu{grid-column:1!important;grid-row:1!important;align-self:center!important;margin:0!important;background:#17283a!important;color:#fff!important;border:1px solid #526579!important}
+.command-header .header-avatar{grid-column:2!important;grid-row:1!important;width:54px!important;height:54px!important;min-width:54px!important;font-size:18px!important;border-width:2px!important}
+.command-header .profile-settings-gear{grid-column:2!important;grid-row:2!important;justify-self:center!important;margin:0!important}
+.command-header .command-user-copy{grid-column:3!important;grid-row:1 / span 2!important}
+.command-header .command-user-copy .home-greeting{font-size:14px!important;color:#243f58!important}
+.command-header .command-user-copy>strong{color:#172b3d!important}
+.command-header .header-department,.command-header .header-manager{color:#4c6072!important}
+.command-header .command-user-bottom{margin-top:7px!important}
+.command-header .command-brand{grid-area:brand!important;grid-column:2!important;grid-row:1!important;align-items:center!important;text-align:center!important;min-width:0!important;gap:5px!important;padding:4px 8px!important}
+.command-header .command-brand-top{justify-content:center!important}
+.command-header .command-brand-title,.command-header .command-brand-mission,.command-header .command-brand-tagline,.command-header .command-brand-security{margin-left:0!important;text-align:center!important}
+.command-header .command-brand-top strong{color:#f5f7fb!important}
+.command-header .command-brand-top small{color:var(--accent,#28a4e8)!important;font-size:clamp(18px,2vw,27px)!important;letter-spacing:.05em!important}
+.command-header .command-brand-top small span{color:#fff!important}
+.command-header .command-brand-title{font-size:clamp(13px,1.4vw,18px)!important;letter-spacing:.14em!important;color:#f7f9fc!important}
+.command-header .command-brand-mission{font-size:clamp(11px,1.1vw,14px)!important;color:#e8edf3!important}
+.command-header .command-brand-mission .brand-accent{color:var(--accent,#28a4e8)!important;font-weight:900!important}
+.command-header .command-brand-tagline{display:none!important}
+.command-header .command-brand-security{font-size:11px!important;color:#d6dee7!important}
+.command-header .command-context{grid-area:context!important;grid-column:3!important;grid-row:1!important;align-self:start!important}
+.command-header .header-widget{background:rgba(245,248,251,.97)!important;color:#1b2b3a!important;border-color:#c7d2de!important}
+.command-header .header-widget-head span,.command-header .header-widget-foot,.command-header .header-local-widget span{color:#43586b!important}
+.command-header .header-local-widget{background:#fff!important;border-color:#d1dbe5!important}
+.command-header .header-local-widget b{color:var(--accent,#1688b8)!important}
+.command-header .header-intel-ticker{background:#fff!important;color:#25384a!important;border-color:#cbd6e1!important}
+.command-header .ticker-label{color:var(--accent,#1688b8)!important}
+.command-header .header-message-copy,.command-header .header-company-news-list,.command-header .header-department-news-list{color:#25384a!important}
+.command-header .command-user .btn{color:#23384a!important}
+.command-header .availability-control{color:#35495b!important}
+.command-header .availability-control select{color:#23384a!important;background:#fff!important}
+@media(max-width:1050px){.command-header{grid-template-columns:minmax(170px,.85fr) minmax(260px,1.15fr)!important;grid-template-areas:"profile brand" "context context"!important}.command-header .command-user{grid-column:1!important;grid-row:1!important}.command-header .command-brand{grid-column:2!important;grid-row:1!important}.command-header .command-context{grid-column:1 / -1!important;grid-row:2!important;display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important}}
+@media(max-width:620px){.command-header{grid-template-columns:minmax(0,1fr)!important;grid-template-areas:"brand" "profile" "context"!important;padding:10px!important}.command-header .command-brand{grid-column:1!important;grid-row:1!important;order:0!important}.command-header .command-user{grid-column:1!important;grid-row:2!important}.command-header .command-context{grid-column:1!important;grid-row:3!important;grid-template-columns:minmax(0,1fr)!important}.command-header .command-brand-top .brandmark{width:38px!important;height:38px!important}.command-header .command-brand-top small{font-size:20px!important}.command-header .command-brand-title{font-size:13px!important}}
+body.env-employee{--accent:#1688b8;--login-accent:#1688b8}
+body.env-business{--accent:#8062bf;--login-accent:#8062bf}
+body.env-tenant{--accent:#318667;--login-accent:#318667}
+
 </style>
 </head>
 <body>
