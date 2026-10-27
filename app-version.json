@@ -1,9 +1,9 @@
 {
   "application": "Maximus Optimus Global Command Center",
   "product": "IntelliStack Systems",
-  "applicationVersion": "0.42.0",
-  "productBuild": "042",
-  "releaseLabel": "Build 042 — Identity-First Navigation & Approved Branding Corrections",
+  "applicationVersion": "0.43.0",
+  "productBuild": "043",
+  "releaseLabel": "Build 043 — Direct-Main QA & Deployment Navigation",
   "status": "committed; publishing and browser verification pending",
   "canonical": true,
   "sourceOfTruth": "app-version.json",
@@ -22,10 +22,10 @@
     "workspacePersonalization": "existing drag-and-drop modules retained; time-zone and department-feed preferences saved locally",
     "securityBoundary": "front-end preview only; authentication, role enforcement, shared persistence and live data require backend/services",
     "browserVerification": "not yet performed",
-    "repositoryWorkflow": "Command Center Build & Visual QA",
+    "repositoryWorkflow": "Command Center Build & Visual QA — direct main pushes and manual dispatch; no pull-request validation trigger",
     "managerProfile": "employee profile cannot edit or persist manager name/contact; shared cross-user synchronization requires connected backend directory/profile records",
     "navigation": "Identity and access group precedes home navigation; company ID/global user ID/roles/directory prioritized; Organizations & Tenants and Users & Devices explicitly marked pending rather than presented as working pages.",
-    "publishingWorkflow": "GitHub Actions Pages workflow exists; latest Build 042 publishing run must be checked before providing a live preview URL."
+    "publishingWorkflow": "GitHub Actions Pages workflow emits direct links to the build/deployment run, QA history, and Pages settings; published URL is shown only when deployment returns one."
   },
   "notes": "Build 039 clarifies manager ownership: employee personal settings display manager name/contact read-only and do not persist those fields as employee-owned profile data. Automatic reflection of manager changes across user accounts requires shared backend directory/profile synchronization; this is not claimed as live until connected. Profile photo/background and personal contact settings remain browser-local."
 }
