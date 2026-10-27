@@ -3,7 +3,7 @@
   "product": "IntelliStack Systems",
   "applicationVersion": "0.53.0",
   "productBuild": "053",
-  "releaseLabel": "Build 053 — Centered Brand and Left Profile Header",
+  "releaseLabel": "Build 053 — Centered Header and Profile-First Layout",
   "status": "committed; website publishing triggered",
   "canonical": true,
   "sourceOfTruth": "app-version.json",
@@ -15,7 +15,7 @@
   "verification": {
     "inlineJavaScriptSyntax": "validation defined in GitHub Actions; verify Build 039 workflow result",
     "versionMetadata": "validation defined in GitHub Actions; verify Build 039 workflow result",
-    "header": "Build 042: dashboard renamed; identity-first navigation; company/global identity prioritized; tenant/device pages clearly labeled as pending where dedicated functional pages do not yet exist; approved footer slogan corrected.",
+    "header": "Build 053 places the signed-in profile/navigation controls at the left, centers Maximus Optimus and Global Command Center, places Secured, Trusted & Compliant at the top right, and anchors One World. One System. One Intelligent Network. along the bottom of the brand header. Removes Bring the Work to You from the header.",
     "globalClock": "compact configurable locations saved in browser localStorage using IANA time zones",
     "departmentIntelligence": "personal feed selection/add/remove/reorder with explicitly labeled sample items; live external news sources not connected",
     "footer": "compact grouped company/support/privacy/legal/trust footer; policy pages are placeholders pending reviewed policy content",
@@ -40,5 +40,5 @@
     "loginEnvironmentLabels": "Build 051 labels the first environment Employee / Contractor and the second Business / Employer / Organization; Tenant remains separate.",
     "loginPalette": "Build 051 uses a charcoal/navy login banner with controlled background-image overlay, white main text, and environment-specific blue, purple, or green accent words."
   },
-  "notes": "Build 053 rearranges the signed-in header into three zones: profile/navigation on the left, centered Maximus Optimus / Global Command Center brand with mission at the bottom, and Secured, Trusted & Compliant at upper right. Accent colors are defined per login environment."
+  "notes": "Build 053 fixes the signed-in header hierarchy and corrects Secured spelling with D across page copy."
 }
