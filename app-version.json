@@ -1,16 +1,16 @@
 {
   "application": "Maximus Optimus Global Command Center",
   "product": "IntelliStack Systems",
-  "applicationVersion": "0.50.0",
-  "productBuild": "050",
-  "releaseLabel": "Build 050 — Centered Login Masthead & Clear Message Hierarchy",
+  "applicationVersion": "0.51.0",
+  "productBuild": "051",
+  "releaseLabel": "Build 051 — Login Environment Accents & Contrast Correction",
   "status": "committed; website publishing triggered",
   "canonical": true,
   "sourceOfTruth": "app-version.json",
   "branding": {
     "primarySlogan": "One World. One System. One Intelligent Network.",
     "tagline": "Bring the Work to You.",
-    "footerSlogan": "Secure, Trusted & Compliant."
+    "footerSlogan": "Secured, Trusted & Compliant."
   },
   "verification": {
     "inlineJavaScriptSyntax": "validation defined in GitHub Actions; verify Build 039 workflow result",
@@ -21,7 +21,7 @@
     "footer": "compact grouped company/support/privacy/legal/trust footer; policy pages are placeholders pending reviewed policy content",
     "workspacePersonalization": "existing drag-and-drop modules retained; time-zone and department-feed preferences saved locally",
     "securityBoundary": "front-end preview only; authentication, role enforcement, shared persistence and live data require backend/services",
-    "browserVerification": "not yet independently verified in a browser",
+    "browserVerification": "not independently visually verified; confirm published website preview",
     "repositoryWorkflow": "Command Center Build & Visual QA — direct main pushes and manual dispatch; no pull-request validation trigger",
     "managerProfile": "employee profile cannot edit or persist manager name/contact; shared cross-user synchronization requires connected backend directory/profile records",
     "navigation": "Identity and access group precedes home navigation; company ID/global user ID/roles/directory prioritized; Organizations & Tenants and Users & Devices explicitly marked pending rather than presented as working pages.",
@@ -35,7 +35,10 @@
     "loginBranding": "Build 048 enforces same font family and non-glowing wordmark treatment for Maximus and Optimus; Maximus blue and Optimus white; tagline dark blue.",
     "loginShield": "Build 049 removes the shield container background and uses screen blending to suppress the black background in shield.jpg; confirm visual appearance in live preview.",
     "loginSearch": "Hide the signed-in Global Search Center while login screen is active.",
-    "loginFooter": "Keep login footer full-width within login screen flow."
+    "loginFooter": "Build 051 removes generic Enterprise Security, Global Infrastructure, Compliance Ready, 24/7 Support and Think Beyond Locally / Connect Everything Globally promotional claims; footer has dark readable text on white.",
+    "loginEnvironmentAccents": "Build 051 wraps World, System, Network, both Everything words, and Smarter in adaptive accent spans; Optimus and selected login controls use the chosen environment accent.",
+    "loginEnvironmentLabels": "Build 051 labels the first environment Employee / Contractor and the second Business / Employer / Organization; Tenant remains separate.",
+    "loginPalette": "Build 051 uses a charcoal/navy login banner with controlled background-image overlay, white main text, and environment-specific blue, purple, or green accent words."
   },
-  "notes": "Build 050 centers the Maximus Optimus Global Command Center identity, places IntelliStack Systems presents... above it, positions the shield beside the centered masthead, keeps One World. One System. One Intelligent Network. beneath the title, and places See Everything. Connect Everything. Work Smarter. at the bottom of the image panel. Background overlay is reduced to keep the image visible while retaining text contrast."
+  "notes": "Build 051 corrects login environment wording and makes highlighted mission words adaptive to the selected environment; removes generic promo panel; restores dark readable footer text on white; retains existing footer navigation and sign-in/Quick Access layout."
 }
