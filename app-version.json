@@ -3,8 +3,8 @@
   "product": "IntelliStack Systems",
   "applicationVersion": "0.48.0",
   "productBuild": "048",
-  "releaseLabel": "Build 048 — Login Asset Publishing & Design Refinement",
-  "status": "committed; website publishing triggered",
+  "releaseLabel": "Build 048 — Login Branding and Layout Corrections",
+  "status": "committed; publishing workflow triggered",
   "canonical": true,
   "sourceOfTruth": "app-version.json",
   "branding": {
@@ -21,17 +21,21 @@
     "footer": "compact grouped company/support/privacy/legal/trust footer; policy pages are placeholders pending reviewed policy content",
     "workspacePersonalization": "existing drag-and-drop modules retained; time-zone and department-feed preferences saved locally",
     "securityBoundary": "front-end preview only; authentication, role enforcement, shared persistence and live data require backend/services",
-    "browserVerification": "not independently confirmed by a live visual browser session",
+    "browserVerification": "not yet independently verified in a browser",
     "repositoryWorkflow": "Command Center Build & Visual QA — direct main pushes and manual dispatch; no pull-request validation trigger",
     "managerProfile": "employee profile cannot edit or persist manager name/contact; shared cross-user synchronization requires connected backend directory/profile records",
     "navigation": "Identity and access group precedes home navigation; company ID/global user ID/roles/directory prioritized; Organizations & Tenants and Users & Devices explicitly marked pending rather than presented as working pages.",
     "publishingWorkflow": "Use the live GitHub Pages website preview as the user-facing output; GitHub Actions runs are internal verification only.",
     "homepageBackground": "Uses repository-root background.png as a cover background behind the signed-in Command Center workspace, with a light overlay for readable content; login screen backgrounds are unchanged.",
-    "loginBackground": "Build 045 background image remains behind the login header.",
+    "loginBackground": "Build 048 strengthens visibility of background.png in the unified login header.",
     "loginBrandColors": "Build 045: See Everything, Connect Everything, Work Smarter, and One World. One System. One Intelligent Network. are dark blue; Maximus is blue and Optimus is white with dark contrast outline.",
     "shieldAsset": "Build 046 uses repository-root shield.jpg for the login shield and Global Command Center header brandmark.",
     "loginHeader": "Build 048 keeps the login masthead as one continuous panel and refines type scale, spacing, brandmark sizing, form styling, and mobile layout.",
-    "loginAssets": "Build 048 fixes the publishing root cause: the Pages workflow now copies shield.jpg and background.png into the published site alongside index.html and app-version.json."
+    "loginAssets": "Build 048 fixes the publishing root cause: the Pages workflow now copies shield.jpg and background.png into the published site alongside index.html and app-version.json.",
+    "loginBranding": "Build 048 enforces same font family and non-glowing wordmark treatment for Maximus and Optimus; Maximus blue and Optimus white; tagline dark blue.",
+    "loginShield": "Build 048 retains shield.jpg in the login header and removes the emoji globe from the hero.",
+    "loginSearch": "Hide the signed-in Global Search Center while login screen is active.",
+    "loginFooter": "Keep login footer full-width within login screen flow."
   },
-  "notes": "Build 048 fixes missing image assets in the published Pages output: the workflow previously copied only index.html and app-version.json, so shield.jpg and background.png were not deployed and appeared broken/missing. The workflow now copies both assets. Login masthead typography, spacing, responsive layout, and form styling were refined while preserving environment-specific colors and the single continuous header."
+  "notes": "Build 048 addresses login feedback: consistent Maximus/Optimus typography without glow, dark-blue tagline, stronger login background image treatment, official shield asset sizing, removal of emoji globe, hiding the signed-in global search bar during login, and footer layout cleanup. Browser rendering still needs confirmation."
 }
