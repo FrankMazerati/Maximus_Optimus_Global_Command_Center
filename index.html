@@ -573,6 +573,15 @@ body.menu-open{overflow:hidden}
 .login-shield img{display:block;width:100%;height:100%;object-fit:contain;}
 .brandmark{overflow:hidden;background:transparent!important;padding:0;}
 .brandmark img{display:block;width:100%;height:100%;object-fit:contain;border-radius:inherit;}
+
+/* Build 047: unify the two login header bands into one continuous hero section. */
+.login-banner{position:relative;background-image:linear-gradient(100deg,rgba(239,248,255,.84),rgba(225,242,255,.68)),url("./background.png")!important;background-size:cover!important;background-position:center 42%!important;background-repeat:no-repeat!important;}
+.login-brand-row{background:transparent!important;border-bottom:0!important;padding-bottom:6px!important;}
+.login-hero{background:transparent!important;background-image:none!important;border-top:0!important;padding-top:4px!important;}
+.login-brand-divider{border-color:rgba(7,59,122,.28)!important;}
+body.login-gate.env-business .login-banner{background-image:linear-gradient(100deg,rgba(247,239,255,.88),rgba(239,224,255,.70)),url("./background.png")!important;}
+body.login-gate.env-tenant .login-banner{background-image:linear-gradient(100deg,rgba(234,255,245,.88),rgba(216,250,233,.70)),url("./background.png")!important;}
+body.login-gate.env-employee .login-banner{background-image:linear-gradient(100deg,rgba(234,247,255,.88),rgba(223,243,255,.70)),url("./background.png")!important;}
 </style>
 </head>
 <body>
