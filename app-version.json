@@ -1,16 +1,16 @@
 {
   "application": "Maximus Optimus Global Command Center",
   "product": "IntelliStack Systems",
-  "applicationVersion": "0.51.0",
-  "productBuild": "051",
-  "releaseLabel": "Build 051 — Login Environment Accents & Contrast Correction",
+  "applicationVersion": "0.53.0",
+  "productBuild": "053",
+  "releaseLabel": "Build 053 — Centered Brand and Left Profile Header",
   "status": "committed; website publishing triggered",
   "canonical": true,
   "sourceOfTruth": "app-version.json",
   "branding": {
     "primarySlogan": "One World. One System. One Intelligent Network.",
     "tagline": "Bring the Work to You.",
-    "footerSlogan": "Secure, Trusted & Compliant."
+    "footerSlogan": "Secured, Trusted & Compliant."
   },
   "verification": {
     "inlineJavaScriptSyntax": "validation defined in GitHub Actions; verify Build 039 workflow result",
@@ -40,5 +40,5 @@
     "loginEnvironmentLabels": "Build 051 labels the first environment Employee / Contractor and the second Business / Employer / Organization; Tenant remains separate.",
     "loginPalette": "Build 051 uses a charcoal/navy login banner with controlled background-image overlay, white main text, and environment-specific blue, purple, or green accent words."
   },
-  "notes": "Build 051 corrects login environment wording and makes highlighted mission words adaptive to the selected environment; removes generic promo panel; restores dark readable footer text on white; retains existing footer navigation and sign-in/Quick Access layout."
+  "notes": "Build 053 rearranges the signed-in header into three zones: profile/navigation on the left, centered Maximus Optimus / Global Command Center brand with mission at the bottom, and Secured, Trusted & Compliant at upper right. Accent colors are defined per login environment."
 }
