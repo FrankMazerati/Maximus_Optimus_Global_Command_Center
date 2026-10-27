@@ -36,6 +36,8 @@ jobs:
           mkdir -p _site
           cp index.html _site/index.html
           cp app-version.json _site/app-version.json
+          cp shield.jpg _site/shield.jpg
+          cp background.png _site/background.png
           touch _site/.nojekyll
 
       - name: Configure GitHub Pages
