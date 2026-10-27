@@ -1,9 +1,9 @@
 {
   "application": "Maximus Optimus Global Command Center",
   "product": "IntelliStack Systems",
-  "applicationVersion": "0.49.0",
-  "productBuild": "049",
-  "releaseLabel": "Build 049 — Executive Login Brand Hierarchy & Refined Environment Colors",
+  "applicationVersion": "0.50.0",
+  "productBuild": "050",
+  "releaseLabel": "Build 050 — Centered Login Masthead & Clear Message Hierarchy",
   "status": "committed; website publishing triggered",
   "canonical": true,
   "sourceOfTruth": "app-version.json",
@@ -37,5 +37,5 @@
     "loginSearch": "Hide the signed-in Global Search Center while login screen is active.",
     "loginFooter": "Keep login footer full-width within login screen flow."
   },
-  "notes": "Build 049 updates login hierarchy, prominent independent tagline, standalone primary slogan, cleaner shield treatment, more visible background image, and more restrained environment colors. Live browser visual confirmation still required."
+  "notes": "Build 050 centers the Maximus Optimus Global Command Center identity, places IntelliStack Systems presents... above it, positions the shield beside the centered masthead, keeps One World. One System. One Intelligent Network. beneath the title, and places See Everything. Connect Everything. Work Smarter. at the bottom of the image panel. Background overlay is reduced to keep the image visible while retaining text contrast."
 }
