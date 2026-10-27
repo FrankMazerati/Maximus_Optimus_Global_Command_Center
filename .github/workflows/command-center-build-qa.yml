@@ -146,7 +146,7 @@ jobs:
           {
             echo "## Command Center Build & Visual QA"
             echo
-            echo "- **Build:** 037"
+            echo "- **Build:** 041"
             echo "- **Commit:** \`$GITHUB_SHA\`"
             echo "- **Repository:** [$GITHUB_REPOSITORY]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY)"
             echo "- **Source view:** [$GITHUB_SHA]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/tree/$GITHUB_SHA)"
