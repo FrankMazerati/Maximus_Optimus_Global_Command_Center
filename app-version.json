@@ -1,10 +1,10 @@
 {
   "application": "Maximus Optimus Global Command Center",
   "product": "IntelliStack Systems",
-  "applicationVersion": "0.43.0",
-  "productBuild": "043",
-  "releaseLabel": "Build 043 — Direct-Main QA & Deployment Navigation",
-  "status": "committed; publishing and browser verification pending",
+  "applicationVersion": "0.44.0",
+  "productBuild": "044",
+  "releaseLabel": "Build 044 — Homepage Background Image",
+  "status": "committed; QA and publishing pending",
   "canonical": true,
   "sourceOfTruth": "app-version.json",
   "branding": {
@@ -25,7 +25,8 @@
     "repositoryWorkflow": "Command Center Build & Visual QA — direct main pushes and manual dispatch; no pull-request validation trigger",
     "managerProfile": "employee profile cannot edit or persist manager name/contact; shared cross-user synchronization requires connected backend directory/profile records",
     "navigation": "Identity and access group precedes home navigation; company ID/global user ID/roles/directory prioritized; Organizations & Tenants and Users & Devices explicitly marked pending rather than presented as working pages.",
-    "publishingWorkflow": "GitHub Actions Pages workflow emits direct links to the build/deployment run, QA history, and Pages settings; published URL is shown only when deployment returns one."
+    "publishingWorkflow": "GitHub Actions Pages workflow emits direct links to the build/deployment run, QA history, and Pages settings; published URL is shown only when deployment returns one.",
+    "homepageBackground": "Uses repository-root background.png as a cover background behind the signed-in Command Center workspace, with a light overlay for readable content; login screen backgrounds are unchanged."
   },
-  "notes": "Build 039 clarifies manager ownership: employee personal settings display manager name/contact read-only and do not persist those fields as employee-owned profile data. Automatic reflection of manager changes across user accounts requires shared backend directory/profile synchronization; this is not claimed as live until connected. Profile photo/background and personal contact settings remain browser-local."
+  "notes": "Build 039 clarifies manager ownership: employee personal settings display manager name/contact read-only and do not persist those fields as employee-owned profile data. Automatic reflection of manager changes across user accounts requires shared backend directory/profile synchronization; this is not claimed as live until connected. Profile photo/background and personal contact settings remain browser-local. Build 044 applies the uploaded repository-root background.png to the signed-in Command Center workspace background. Visual browser verification remains pending."
 }
