@@ -1,9 +1,9 @@
 {
   "application": "Maximus Optimus Global Command Center",
   "product": "IntelliStack Systems",
-  "applicationVersion": "0.53.0",
-  "productBuild": "053",
-  "releaseLabel": "Build 053 — Centered Brand, Profile-Left Header",
+  "applicationVersion": "0.54.0",
+  "productBuild": "054",
+  "releaseLabel": "Build 054 — In-Page Visual Design Controls",
   "status": "committed; website publishing triggered",
   "canonical": true,
   "sourceOfTruth": "app-version.json",
@@ -38,7 +38,8 @@
     "loginFooter": "Build 051 removes generic Enterprise Security, Global Infrastructure, Compliance Ready, 24/7 Support and Think Beyond Locally / Connect Everything Globally promotional claims; footer has dark readable text on white.",
     "loginEnvironmentAccents": "Build 051 wraps World, System, Network, both Everything words, and Smarter in adaptive accent spans; Optimus and selected login controls use the chosen environment accent.",
     "loginEnvironmentLabels": "Build 051 labels the first environment Employee / Contractor and the second Business / Employer / Organization; Tenant remains separate.",
-    "loginPalette": "Build 051 uses a charcoal/navy login banner with controlled background-image overlay, white main text, and environment-specific blue, purple, or green accent words."
+    "loginPalette": "Build 051 uses a charcoal/navy login banner with controlled background-image overlay, white main text, and environment-specific blue, purple, or green accent words.",
+    "visualDesignMode": "In-page design mode provides component selection, HTML drag/drop reordering within the same parent, width/font/padding/radius sliders, text/background/border color controls, local browser persistence, and reset controls. User styling is local to the browser and does not publish back to source files."
   },
-  "notes": "Build 053 restructures the signed-in header hierarchy and updates the security statement to Secured, Trusted & Compliant throughout the page."
+  "notes": "Build 054 adds a floating Design Mode editor for manual layout and color adjustments, optimized for mouse and touch-friendly component selection on tablet. Changes are saved locally in the current browser only."
 }
