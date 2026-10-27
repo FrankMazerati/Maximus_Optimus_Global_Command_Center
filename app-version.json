@@ -1,10 +1,10 @@
 {
   "application": "Maximus Optimus Global Command Center",
   "product": "IntelliStack Systems",
-  "applicationVersion": "0.48.0",
-  "productBuild": "048",
-  "releaseLabel": "Build 048 — Login Branding and Layout Corrections",
-  "status": "committed; publishing workflow triggered",
+  "applicationVersion": "0.49.0",
+  "productBuild": "049",
+  "releaseLabel": "Build 049 — Executive Login Brand Hierarchy & Refined Environment Colors",
+  "status": "committed; website publishing triggered",
   "canonical": true,
   "sourceOfTruth": "app-version.json",
   "branding": {
@@ -27,15 +27,15 @@
     "navigation": "Identity and access group precedes home navigation; company ID/global user ID/roles/directory prioritized; Organizations & Tenants and Users & Devices explicitly marked pending rather than presented as working pages.",
     "publishingWorkflow": "Use the live GitHub Pages website preview as the user-facing output; GitHub Actions runs are internal verification only.",
     "homepageBackground": "Uses repository-root background.png as a cover background behind the signed-in Command Center workspace, with a light overlay for readable content; login screen backgrounds are unchanged.",
-    "loginBackground": "Build 048 strengthens visibility of background.png in the unified login header.",
-    "loginBrandColors": "Build 045: See Everything, Connect Everything, Work Smarter, and One World. One System. One Intelligent Network. are dark blue; Maximus is blue and Optimus is white with dark contrast outline.",
+    "loginBackground": "Build 049 increases login background image visibility with a lighter overlay and higher image positioning.",
+    "loginBrandColors": "Build 049 uses restrained blue, purple, and green environment accents; business purple and tenant green are toned down.",
     "shieldAsset": "Build 046 uses repository-root shield.jpg for the login shield and Global Command Center header brandmark.",
-    "loginHeader": "Build 048 keeps the login masthead as one continuous panel and refines type scale, spacing, brandmark sizing, form styling, and mobile layout.",
+    "loginHeader": "Build 049 separates the IntelliStack Systems presents Maximus Optimus Global Command Center masthead from the primary slogan and prominent See Everything. Connect Everything. Work Smarter. tagline.",
     "loginAssets": "Build 048 fixes the publishing root cause: the Pages workflow now copies shield.jpg and background.png into the published site alongside index.html and app-version.json.",
     "loginBranding": "Build 048 enforces same font family and non-glowing wordmark treatment for Maximus and Optimus; Maximus blue and Optimus white; tagline dark blue.",
-    "loginShield": "Build 048 retains shield.jpg in the login header and removes the emoji globe from the hero.",
+    "loginShield": "Build 049 removes the shield container background and uses screen blending to suppress the black background in shield.jpg; confirm visual appearance in live preview.",
     "loginSearch": "Hide the signed-in Global Search Center while login screen is active.",
     "loginFooter": "Keep login footer full-width within login screen flow."
   },
-  "notes": "Build 048 addresses login feedback: consistent Maximus/Optimus typography without glow, dark-blue tagline, stronger login background image treatment, official shield asset sizing, removal of emoji globe, hiding the signed-in global search bar during login, and footer layout cleanup. Browser rendering still needs confirmation."
+  "notes": "Build 049 updates login hierarchy, prominent independent tagline, standalone primary slogan, cleaner shield treatment, more visible background image, and more restrained environment colors. Live browser visual confirmation still required."
 }
