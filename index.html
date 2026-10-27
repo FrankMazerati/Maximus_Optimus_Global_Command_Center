@@ -609,6 +609,22 @@ body.login-gate.env-employee .login-banner{background-image:linear-gradient(100d
 .login-footer{max-width:1400px!important;margin:20px auto 0!important;}
 @media(max-width:640px){.login-brand-row{align-items:flex-start!important}.login-top-tagline{flex-basis:100%!important}.login-hero{min-height:0!important;gap:10px!important}.login-globe{font-size:40px!important}.login-eyebrow{font-size:32px!important}.login-copy h1{letter-spacing:.1em!important}.login-copy p{font-size:14px!important}.login-content{display:block!important}.login-benefits{margin-top:14px!important}}
 
+
+/* Build 048: login visual corrections — consistent wordmark, uploaded assets, no stray search or emoji globe. */
+body.login-gate .global-search-center{display:none!important;}
+body.login-gate .login-banner{background-image:linear-gradient(100deg,rgba(239,248,255,.48),rgba(225,242,255,.36)),url("./background.png")!important;background-size:cover!important;background-position:center center!important;background-repeat:no-repeat!important;}
+body.login-gate .login-brand-row,.login-screen .login-hero{background:transparent!important;background-image:none!important;}
+body.login-gate .login-shield{width:56px!important;height:56px!important;flex:0 0 56px!important;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;overflow:visible!important;}
+body.login-gate .login-shield img{width:100%!important;height:100%!important;object-fit:contain!important;border-radius:0!important;}
+body.login-gate .login-top-tagline,body.login-gate .login-top-tagline span,body.login-gate .login-top-tagline em{color:#073b7a!important;font-family:inherit!important;font-style:normal!important;font-weight:800!important;text-shadow:none!important;}
+body.login-gate .login-eyebrow{font-family:inherit!important;font-size:clamp(22px,4vw,42px)!important;font-weight:900!important;letter-spacing:.015em!important;line-height:1.1!important;text-shadow:none!important;}
+body.login-gate .login-eyebrow .login-maximus,body.login-gate .login-eyebrow .login-optimus{font-family:inherit!important;font-weight:900!important;font-style:normal!important;letter-spacing:inherit!important;text-shadow:none!important;}
+body.login-gate .login-eyebrow .login-maximus{color:#0755a5!important;}
+body.login-gate .login-eyebrow .login-optimus{color:#fff!important;-webkit-text-stroke:0!important;}
+body.login-gate .login-globe{display:none!important;}
+body.login-gate .login-footer{position:relative!important;clear:both!important;max-width:1400px!important;width:100%!important;margin:14px auto 0!important;box-sizing:border-box!important;}
+@media(max-width:640px){body.login-gate .login-brand-row{align-items:center!important;gap:10px!important;}body.login-gate .login-shield{width:48px!important;height:48px!important;flex-basis:48px!important;}body.login-gate .login-top-tagline{flex-basis:100%!important;}body.login-gate .login-footer-links{justify-content:flex-start!important;}}
+
 </style>
 </head>
 <body>
