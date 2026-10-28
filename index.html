@@ -1235,7 +1235,8 @@ body:not(.login-gate) .main{background-color:#edf1f5;background-image:linear-gra
             <span><b>Global User ID</b> <strong id="headerGlobalUserId">GID-00012345</strong></span>
             <span><b>Work Email</b> <strong id="headerWorkEmail">Not set</strong></span>
             <span><b>Work Phone</b> <strong id="headerWorkPhone">Not set</strong></span>
-            <span><b>Work Location</b> <strong id="headerWorkLocation">Chicago, IL</strong></span>\n            <span><b>Work Address</b> <strong id="headerWorkAddress">Not set</strong></span>
+            <span><b>Work Location</b> <strong id="headerWorkLocation">Chicago, IL</strong></span>
+            <span><b>Work Address</b> <strong id="headerWorkAddress">Not set</strong></span>
             <span><b>Level</b> <strong id="headerWorkLevel">10,000</strong></span>
             <span><b>Stars</b> <strong id="headerWorkStars">0</strong></span>
           </div>
@@ -1253,6 +1254,17 @@ body:not(.login-gate) .main{background-color:#edf1f5;background-image:linear-gra
       </div>
     </div>
     
+<section class="global-search-center" aria-label="Global search">
+  <div class="global-search-inner">
+    <span class="global-search-icon" aria-hidden="true">⌕</span>
+    <div class="global-search-input-wrap">
+      <label class="global-search-label" for="globalSearch">GLOBAL SEARCH CENTER</label>
+      <input id="globalSearch" type="search" autocomplete="off" placeholder="Search users, devices, tickets, applications, documents…" aria-controls="globalSearchResults" aria-expanded="false">
+    </div>
+    <span class="global-search-hint">Search everything</span>
+  </div>
+  <div id="globalSearchResults" class="global-search-results" hidden role="region" aria-label="Global search results"></div>
+</section>
   </div>
   <aside class="reference-header-right" aria-label="Local time, date and weather">
     <div class="header-local-widget">
@@ -1275,17 +1287,7 @@ body:not(.login-gate) .main{background-color:#edf1f5;background-image:linear-gra
     <div class="header-company-news-list" id="headerCompanyNewsList"><div class="small muted">Announcements load from this browser's preview data.</div></div>
   </section>
 </div>
-<section class="global-search-center" aria-label="Global search">
-  <div class="global-search-inner">
-    <span class="global-search-icon" aria-hidden="true">⌕</span>
-    <div class="global-search-input-wrap">
-      <label class="global-search-label" for="globalSearch">GLOBAL SEARCH CENTER</label>
-      <input id="globalSearch" type="search" autocomplete="off" placeholder="Search users, devices, tickets, applications, documents…" aria-controls="globalSearchResults" aria-expanded="false">
-    </div>
-    <span class="global-search-hint">Search everything</span>
-  </div>
-  <div id="globalSearchResults" class="global-search-results" hidden role="region" aria-label="Global search results"></div>
-</section>
+
 <div class="layout">
 <div id="menuScrim" class="menu-scrim" aria-hidden="true"></div>
 <aside class="sidebar" id="sidebar">
