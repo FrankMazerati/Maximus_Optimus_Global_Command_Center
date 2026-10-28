@@ -53,7 +53,7 @@ jobs:
           if (meta.branding?.primarySlogan !== 'One World. One System. One Intelligent Network.') {
             console.error('FAIL primary slogan metadata'); process.exitCode = 1;
           } else console.log('PASS primary slogan metadata');
-          if (meta.branding?.footerSlogan !== 'Secure, Trusted & Compliant.') {
+          if (meta.branding?.footerSlogan !== 'Secured, Trusted, and Compliant.') {
             console.error('FAIL footer slogan metadata'); process.exitCode = 1;
           } else console.log('PASS footer slogan metadata');
           NODE
@@ -67,7 +67,7 @@ jobs:
           checks = {
               'primary slogan': 'One <span class="brand-accent">World</span>. One <span class="brand-accent">System</span>. One Intelligent <span class="brand-accent">Network</span>.',
               'cyan brand accent': '#00D4FF',
-              'secure footer tagline': 'Secure, Trusted &amp; Compliant.',
+              'secure footer tagline': 'Secured, Trusted, and Compliant.',
               'copyright year': '2026 IntelliStack Systems',
               'compact footer function': 'globalFooterHTML',
               'profile photo upload': 'profilePhotoUpload',
