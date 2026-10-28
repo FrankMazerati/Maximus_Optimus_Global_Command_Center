@@ -1210,6 +1210,40 @@ body:not(.login-gate) .main{background-color:#edf1f5;background-image:linear-gra
 @media(max-width:1100px){.reference-command-header{grid-template-columns:115px minmax(0,1fr) 170px;gap:10px;padding:12px}.reference-shield{width:58px;height:58px}.reference-brand .command-brand-security{font-size:8px}.reference-profile-details span{font-size:9px}.reference-profile-details b,.reference-profile-details strong{font-size:9px}}
 @media(max-width:760px){.reference-command-header{grid-template-columns:1fr;gap:10px;padding:10px}.reference-brand{display:grid;grid-template-columns:42px 54px 1fr;align-items:center;gap:8px}.reference-brand .mobile-menu{order:1}.reference-shield{order:2;width:48px;height:48px}.reference-brand .command-brand-security{order:3;font-size:9px}.reference-header-right{padding:0}.reference-header-right .header-local-widget{grid-template-columns:1fr 1fr}.reference-product-brand>strong{font-size:23px}.reference-command-user .header-avatar{width:55px;height:55px;min-width:55px}.reference-profile-details{gap:4px}.reference-profile-details span{font-size:9px}.command-info-strips{padding:0 10px}.header-department-news-item,.header-company-news-item{flex-basis:220px}.workbench-grid.reference-priority-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:440px){.reference-profile-details span{width:100%}.workbench-grid.reference-priority-grid{grid-template-columns:1fr}.reference-user-controls{align-items:flex-start}.reference-user-controls .availability-control{width:100%;justify-content:flex-start}.reference-header-right .header-local-widget{padding:9px}.reference-header-right .header-local-widget b{font-size:20px}}
+
+/* Reference layout refinements: independent scroll regions and responsive workbench. */
+.sidebar{overflow-y:auto;overscroll-behavior:contain}
+.nav-group>summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px}
+.nav-group>summary::-webkit-details-marker{display:none}
+.nav-group>summary:after{content:"＋";margin-left:auto;color:#7792a5;font-size:13px}
+.nav-group[open]>summary:after{content:"−"}
+.home-top{grid-template-columns:minmax(0,1fr) minmax(285px,340px)}
+.hb-panel{position:relative;display:flex;flex-direction:column;min-width:0;max-height:min(980px,calc(100vh - 24px));overflow:hidden}
+.hb-messages,.hb-extra-modules{min-height:0;overflow-y:auto;overscroll-behavior:contain}
+.hb-messages{flex:1 1 auto}
+.hb-extra-modules{max-height:230px}
+.home-quick .quick-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+@media(min-width:1101px) and (orientation:landscape){
+  .home-top{grid-template-columns:minmax(0,1fr) minmax(290px,340px)}
+  .hb-panel{position:sticky;top:10px}
+}
+@media(max-width:1100px){
+  .reference-command-header{grid-template-columns:105px minmax(0,1fr) 160px}
+  .home-top{grid-template-columns:minmax(0,1fr) minmax(260px,310px)}
+  .hb-panel{max-height:calc(100vh - 20px)}
+}
+@media(max-width:760px){
+  .reference-command-header{grid-template-columns:minmax(0,1fr)}
+  .home-top{grid-template-columns:minmax(0,1fr)}
+  .hb-panel{position:relative;max-height:620px;min-height:440px}
+  .home-quick .quick-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .sidebar{max-height:calc(100dvh - 16px)}
+}
+@media(max-width:440px){
+  .home-quick .quick-grid{grid-template-columns:minmax(0,1fr)}
+  .hb-panel{max-height:70dvh;min-height:420px}
+}
+
 </style>
 </head>
 <body>
@@ -1291,96 +1325,77 @@ body:not(.login-gate) .main{background-color:#edf1f5;background-image:linear-gra
 <div class="layout">
 <div id="menuScrim" class="menu-scrim" aria-hidden="true"></div>
 <aside class="sidebar" id="sidebar">
-<div class="menu-intro"><strong>WORKSPACES</strong><small>Open a section to drill down</small></div>
-<details class="nav-group" open><summary>♙ Identity, Access &amp; Tenants</summary>
-<div class="nav-subhead">Company &amp; Global Identity</div>
-<button class="nav-btn" data-page="companyid"><span class="ico">▣</span>Company ID &amp; Identity</button>
+<div class="menu-intro"><strong>WORKSPACE NAVIGATION</strong><small>Open a section to drill down</small></div>
+<details class="nav-group" open><summary>⌂ COMMAND</summary>
+<button class="nav-btn active" data-page="home"><span class="ico">⌂</span>Global Dashboard</button>
+<button class="nav-btn" data-page="tickets"><span class="ico">▤</span>Bring the Work to You</button>
+<button class="nav-btn" data-page="warroom"><span class="ico">◎</span>Global Map</button>
+<button class="nav-btn" data-page="messages"><span class="ico">▧</span>Live News</button>
+<button class="nav-btn" data-page="calendar"><span class="ico">◷</span>Global Time &amp; Calendar</button>
+</details>
+<details class="nav-group" open><summary>♙ IDENTITY &amp; PEOPLE</summary>
+<button class="nav-btn" data-page="companyid"><span class="ico">▣</span>Global Company ID</button>
 <button class="nav-btn" data-page="userid"><span class="ico">♙</span>Global User ID</button>
-<div class="nav-subhead">Identity &amp; Access Management</div>
-<button class="nav-btn" data-page="people"><span class="ico">♧</span>Users, Roles &amp; Permissions</button>
-<div class="nav-subhead">Organizations &amp; Directories</div>
-<button class="nav-btn planned-nav" type="button" disabled><span class="ico">▦</span>Organizations &amp; Tenants <small>Dedicated tenant page pending</small></button>
-<button class="nav-btn" data-page="directory"><span class="ico">▤</span>Active Directory</button>
-<button class="nav-btn" data-page="migration"><span class="ico">⇄</span>Directory Migration</button>
-<button class="nav-btn planned-nav" type="button" disabled><span class="ico">▣</span>Users &amp; Devices <small>Dedicated device page pending</small></button>
-<button class="nav-btn" data-page="people"><span class="ico">♙</span>End User Directory</button>
+<button class="nav-btn" data-page="people"><span class="ico">♧</span>People &amp; Profiles</button>
+<button class="nav-btn" data-page="people"><span class="ico">⚿</span>Roles &amp; Access</button>
+<button class="nav-btn" data-page="companyid"><span class="ico">▦</span>Companies</button>
+<button class="nav-btn" data-page="companyid"><span class="ico">▤</span>Organizations &amp; Tenants</button>
+<button class="nav-btn" data-page="directory"><span class="ico">▥</span>Active Directory</button>
+<button class="nav-btn" data-page="migration"><span class="ico">⇄</span>Identity Management</button>
+<button class="nav-btn" data-page="directory"><span class="ico">▣</span>Devices &amp; Authentication</button>
 </details>
-<details class="nav-group" open><summary>⌂ Home &amp; Command Center</summary>
-<button class="nav-btn active" data-page="home"><span class="ico">⌂</span>Dashboard / Global Command Center</button>
-<button class="nav-btn" data-page="calendar"><span class="ico">▦</span>IntelliCalendar</button>
+<details class="nav-group" open><summary>✉ COMMUNICATE &amp; CREATE</summary>
 <button class="nav-btn" data-page="chat"><span class="ico">◉</span>IntelliChat</button>
-<button class="nav-btn" data-page="helpbuddy"><span class="ico">?</span>HelpBuddy</button>
-<button class="nav-btn" data-page="announcements"><span class="ico">▣</span>Company Announcements</button>
-<button class="nav-btn" data-page="messagestudio"><span class="ico">✎</span>Messaging Studio</button>
-<button class="nav-btn" data-page="avatarstudio"><span class="ico">✧</span>Avatar AI Studio</button>
-<button class="nav-btn" data-page="tickets"><span class="ico">▤</span>Priority Center &amp; Tickets</button>
+<button class="nav-btn" data-page="sheets"><span class="ico">▦</span>IntelliSheets &amp; Notes</button>
 <button class="nav-btn" data-page="knowledge"><span class="ico">▧</span>Knowledge Base</button>
-<button class="nav-btn" data-page="messages"><span class="ico">✉</span>Global Intelligence &amp; News</button>
-</details>
-<details class="nav-group"><summary>▣ Business Products</summary>
-<div class="nav-subhead">Workforce &amp; Talent</div>
-<button class="nav-btn" data-page="hire"><span class="ico">♧</span>IntelliHire &amp; IntelliStaff</button>
-<button class="nav-btn" data-page="people"><span class="ico">♙</span>IntelliWork / Employee Directory</button>
-<button class="nav-btn planned-nav" type="button" disabled><span class="ico">✓</span>IntelliCheck <small>Planned</small></button>
-<div class="nav-subhead">Finance &amp; Administration</div>
-<button class="nav-btn" data-page="tax"><span class="ico">▥</span>IntelliTax</button>
-<button class="nav-btn" data-page="pay"><span class="ico">$</span>IntelliPay</button>
-<button class="nav-btn planned-nav" type="button" disabled><span class="ico">▤</span>IntelliBook <small>Planned</small></button>
-<button class="nav-btn" data-page="marketplace"><span class="ico">▣</span>Marketplace &amp; Subscriptions</button>
-<button class="nav-btn planned-nav" type="button" disabled><span class="ico">▦</span>Customers, Sales &amp; Partners <small>Planned</small></button>
-</details>
-
-<details class="nav-group"><summary>✦ Productivity &amp; Collaboration</summary>
-<div class="nav-subhead">Communication</div>
-<button class="nav-btn" data-page="chat"><span class="ico">◉</span>IntelliChat</button>
+<button class="nav-btn" data-page="reports"><span class="ico">⌘</span>Work Board</button>
 <button class="nav-btn" data-page="calendar"><span class="ico">▦</span>IntelliCalendar</button>
-<button class="nav-btn planned-nav" type="button" disabled><span class="ico">▣</span>IntelliMeet <small>Video setup required</small></button>
-<button class="nav-btn planned-nav" type="button" disabled><span class="ico">✉</span>IntelliMail <small>Planned</small></button>
-<div class="nav-subhead">Documents &amp; Creation</div>
-<button class="nav-btn" data-page="word"><span class="ico">W</span>IntelliWord</button>
-<button class="nav-btn" data-page="sheets"><span class="ico">▦</span>IntelliSheets</button>
-<button class="nav-btn" data-page="slides"><span class="ico">▣</span>IntelliSlides</button>
-<button class="nav-btn" data-page="notes"><span class="ico">✎</span>IntelliNotes</button>
-<button class="nav-btn" data-page="drive"><span class="ico">▱</span>IntelliDrive</button>
-<button class="nav-btn" data-page="text"><span class="ico">✉</span>IntelliText</button>
-<button class="nav-btn" data-page="forms"><span class="ico">☑</span>IntelliForms</button>
-<button class="nav-btn" data-page="studio"><span class="ico">✧</span>IntelliStudio</button>
-<button class="nav-btn planned-nav" type="button" disabled><span class="ico">✓</span>IntelliDocs &amp; IntelliTasks <small>Scope to finalize</small></button>
+<button class="nav-btn" data-page="messages"><span class="ico">✉</span>Company Announcements</button>
+<button class="nav-btn" data-page="messagestudio"><span class="ico">✎</span>Messaging Studio</button>
 </details>
-<details class="nav-group"><summary>⚙ Service Desk &amp; Enterprise Operations</summary>
+<details class="nav-group"><summary>⚙ SERVICE OPERATIONS</summary>
 <button class="nav-btn" data-page="tickets"><span class="ico">▤</span>Service Desk &amp; Tickets</button>
-<button class="nav-btn" data-page="connectors"><span class="ico">⌘</span>System Integrations / IntelliLink</button>
-<button class="nav-btn" data-page="automation"><span class="ico">⚙</span>Workflow &amp; Automation</button>
+<button class="nav-btn" data-page="tickets"><span class="ico">⚑</span>Incidents &amp; Requests</button>
 <button class="nav-btn" data-page="dispatch"><span class="ico">↗</span>Intelligent Dispatch</button>
-<button class="nav-btn" data-page="warroom"><span class="ico">⚑</span>War Room &amp; Simulations</button>
-<button class="nav-btn" data-page="investigation"><span class="ico">⌕</span>Investigation Center</button>
-<button class="nav-btn planned-nav" type="button" disabled><span class="ico">⌘</span>Network Operations Center (NOC) <small>Planned</small></button>
-<button class="nav-btn planned-nav" type="button" disabled><span class="ico">▣</span>Security Operations Center (SOC) <small>Planned</small></button>
+<button class="nav-btn" data-page="automation"><span class="ico">✓</span>Workflow Companion</button>
+<button class="nav-btn" data-page="helpbuddy"><span class="ico">?</span>HelpBuddy</button>
+<button class="nav-btn" data-page="connectors"><span class="ico">⌘</span>Remote Support &amp; Integrations</button>
 </details>
-<details class="nav-group"><summary>🛡 Security, Risk &amp; Governance</summary>
-<button class="nav-btn" data-page="reports"><span class="ico">▤</span>Reports, Audit &amp; Compliance</button>
-<button class="nav-btn" data-page="idealedger"><span class="ico">▧</span>Idea Ledger &amp; Provenance</button>
-<button class="nav-btn" data-page="messages"><span class="ico">✉</span>Message Library &amp; Notifications</button>
-<button class="nav-btn" data-page="marketplace"><span class="ico">▣</span>Environment Builder</button>
+<details class="nav-group"><summary>▣ NOC &amp; NETWORK</summary>
+<button class="nav-btn" data-page="warroom"><span class="ico">⌘</span>NOC &amp; Network</button>
+<button class="nav-btn" data-page="directory"><span class="ico">▣</span>Servers &amp; Devices</button>
+<button class="nav-btn" data-page="warroom"><span class="ico">⌁</span>Threat Matrix</button>
+<button class="nav-btn" data-page="reports"><span class="ico">⌕</span>Monitoring &amp; System Status</button>
 </details>
-<details class="nav-group"><summary>✦ AI &amp; Business Intelligence</summary>
-<button class="nav-btn" data-page="maximus"><span class="ico">✦</span>Maximus · Executive AI</button>
-<button class="nav-btn" data-page="optimus"><span class="ico">⌘</span>Optimus · Technical AI</button>
-<button class="nav-btn planned-nav" type="button" disabled><span class="ico">▥</span>IntelliVision · Analytics <small>Planned</small></button>
-<button class="nav-btn planned-nav" type="button" disabled><span class="ico">♫</span>IntelliVoice <small>Planned</small></button>
+<details class="nav-group"><summary>🛡 INTELLIGENCE &amp; GOVERNANCE</summary>
+<button class="nav-btn" data-page="maximus"><span class="ico">✦</span>Maximus AI</button>
+<button class="nav-btn" data-page="optimus"><span class="ico">⌘</span>Optimus</button>
+<button class="nav-btn" data-page="warroom"><span class="ico">⚡</span>Trinity</button>
+<button class="nav-btn" data-page="reports"><span class="ico">▤</span>Governance &amp; Compliance</button>
+<button class="nav-btn" data-page="reports"><span class="ico">▧</span>Policies &amp; Audit</button>
+<button class="nav-btn" data-page="reports"><span class="ico">⚿</span>Risk &amp; Approvals</button>
+<button class="nav-btn" data-page="investigation"><span class="ico">◉</span>Evidence &amp; Signoffs</button>
 </details>
-<details class="nav-group"><summary>♙ Employee &amp; Manager Workspace</summary>
+<details class="nav-group"><summary>▣ BUSINESS &amp; MARKETPLACE</summary>
+<button class="nav-btn" data-page="marketplace"><span class="ico">▣</span>Marketplace &amp; Subscriptions</button>
+<button class="nav-btn" data-page="marketplace"><span class="ico">▥</span>Current Stack Comparison</button>
+<button class="nav-btn" data-page="marketplace"><span class="ico">▤</span>Business / Enterprise</button>
+<button class="nav-btn" data-page="hire"><span class="ico">♧</span>IntelliHire &amp; IntelliStaff</button>
+<button class="nav-btn" data-page="pay"><span class="ico">$</span>IntelliPay</button>
+<button class="nav-btn" data-page="tax"><span class="ico">▥</span>IntelliTax</button>
+<button class="nav-btn" data-page="studio"><span class="ico">✧</span>Design Studio</button>
+</details>
+<details class="nav-group"><summary>♙ EMPLOYEE &amp; MANAGER WORKSPACE</summary>
 <button class="nav-btn" data-page="people"><span class="ico">♙</span>Employee Profile &amp; Directory</button>
 <button class="nav-btn" data-page="knowledge"><span class="ico">▧</span>Training &amp; Knowledge</button>
 <button class="nav-btn" data-page="tickets"><span class="ico">✓</span>Work Queue &amp; Follow-Ups</button>
-<button class="nav-btn" data-page="helpbuddy"><span class="ico">?</span>HelpBuddy</button>
+<button class="nav-btn" data-page="calendar"><span class="ico">◷</span>Meetings &amp; Schedule</button>
 </details>
-<details class="nav-group"><summary>⚙ Account &amp; Administration</summary>
+<details class="nav-group"><summary>⚙ SETTINGS &amp; ADMINISTRATION</summary>
 <button class="nav-btn" data-page="settings"><span class="ico">⚙</span>Settings &amp; Theme Studio</button>
 <button class="nav-btn" data-page="connectors"><span class="ico">⌘</span>Connector Hub</button>
-<button class="nav-btn" data-page="marketplace"><span class="ico">▣</span>Product &amp; Environment Builder</button>
 <button class="nav-btn" data-page="reports"><span class="ico">▤</span>System Status &amp; Audit</button>
-<button class="nav-btn" data-page="companyid"><span class="ico">▣</span>Company Identity</button>
+<button class="nav-btn" data-page="avatarstudio"><span class="ico">✧</span>Avatar Studio</button>
 </details>
 <div class="nav-bottom">
 <button class="nav-btn" data-page="settings"><span class="ico">⚙</span>Settings &amp; Theme Studio</button>
