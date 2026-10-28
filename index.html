@@ -1105,6 +1105,41 @@ body:not(.login-gate) .home-main-column .grid.g2.home-module{grid-template-colum
 body:not(.login-gate) .home-main-column .map-preview{min-height:110px}
 @media(max-width:1100px){body:not(.login-gate) .home-top{grid-template-columns:minmax(0,1fr) 290px}body:not(.login-gate) .home-quick .quick-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
 @media(max-width:760px){body:not(.login-gate) .home-top{grid-template-columns:minmax(0,1fr);height:100%;overflow:hidden}body:not(.login-gate) .home-main-column{height:52%;max-height:52%;overflow-y:auto}body:not(.login-gate) .hb-panel{height:48%;max-height:48%;min-height:300px}body:not(.login-gate) .home-quick .quick-grid{grid-template-columns:repeat(3,minmax(0,1fr))}body:not(.login-gate) .home-main-column>.home-module[data-movable-module=bringwork] .workbench-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* Build 057: stabilize independent workspace scrolling across tablet orientations. */
+@media (min-width:761px) and (max-width:1100px) and (orientation:portrait){
+ body:not(.login-gate) .layout{grid-template-columns:205px minmax(0,1fr);height:calc(100dvh - 170px);min-height:0}
+ body:not(.login-gate) .home-reference-layout,body:not(.login-gate) .home-top{grid-template-columns:minmax(0,1fr);height:100%;min-height:0;overflow:hidden}
+ body:not(.login-gate) .home-main-column{height:56%;max-height:56%;min-height:0;overflow-y:auto;overscroll-behavior:contain}
+ body:not(.login-gate) .reference-right-column{height:44%;min-height:0;overflow-y:auto;overscroll-behavior:contain;align-content:start}
+ body:not(.login-gate) .hb-panel{height:100%;max-height:none;min-height:0;overflow:hidden}
+ body:not(.login-gate) .hb-messages{min-height:0;overflow-y:auto;overscroll-behavior:contain}
+}
+@media (max-width:760px) and (orientation:portrait){
+ body:not(.login-gate) .layout{height:calc(100dvh - 250px);min-height:220px}
+ body:not(.login-gate) .main{height:100%;min-height:0;overflow:hidden}
+ body:not(.login-gate) .home-reference-layout,body:not(.login-gate) .home-top{height:100%;min-height:0;overflow:hidden}
+ body:not(.login-gate) .home-main-column{height:52%;max-height:52%;min-height:0;overflow-y:auto;overscroll-behavior:contain}
+ body:not(.login-gate) .reference-right-column,body:not(.login-gate) .hb-panel{height:48%;max-height:48%;min-height:0;overflow:hidden}
+ body:not(.login-gate) .hb-messages{min-height:0;overflow-y:auto;overscroll-behavior:contain}
+}
+@media (max-width:760px) and (orientation:landscape){
+ body:not(.login-gate) .topbar.command-header{display:grid;grid-template-columns:minmax(130px,1fr) minmax(180px,1fr);gap:4px;padding:4px 7px}
+ body:not(.login-gate) .command-brand{grid-column:1/-1;flex:initial;border:0;border-bottom:1px solid #dbe2e8;padding:2px 4px}
+ body:not(.login-gate) .command-user{flex:initial;min-width:0}
+ body:not(.login-gate) .command-context{grid-column:1/-1;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px}
+ body:not(.login-gate) .header-widget{padding:3px 5px}
+ body:not(.login-gate) .layout{display:block;height:calc(100dvh - 125px);min-height:180px}
+ body:not(.login-gate) .main{height:100%;min-height:0;overflow:hidden;padding:5px}
+ body:not(.login-gate) .home-reference-layout,body:not(.login-gate) .home-top{grid-template-columns:minmax(0,1fr) minmax(220px,34%);height:100%;min-height:0;overflow:hidden}
+ body:not(.login-gate) .home-main-column{height:100%;max-height:100%;min-height:0;overflow-y:auto;overscroll-behavior:contain}
+ body:not(.login-gate) .reference-right-column,body:not(.login-gate) .hb-panel{height:100%;max-height:100%;min-height:0;overflow:hidden}
+ body:not(.login-gate) .hb-messages{min-height:0;overflow-y:auto;overscroll-behavior:contain}
+ body:not(.login-gate) .reference-profile{grid-template-columns:42px minmax(0,1fr) 130px;padding:5px;gap:6px}
+ body:not(.login-gate) .reference-profile-photo{width:40px;height:40px}
+ body:not(.login-gate) .reference-quick-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+}
+
 </style>
 </head>
 <body>
