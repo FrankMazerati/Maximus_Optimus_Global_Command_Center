@@ -917,6 +917,64 @@ body.env-tenant{--login-accent:#34d399;--login-word-accent:#34d399}
  .login-top-tagline{font-size:clamp(9px,2.8vw,12px)!important;white-space:normal!important}
 }
 
+
+/* Build 056 — restore the approved photo-led login composition */
+body.login-gate .login-screen{
+  min-height:100svh!important;
+  padding:clamp(8px,1.5vw,20px)!important;
+  background-color:#031126!important;
+  background-image:linear-gradient(90deg,rgba(2,12,29,.86),rgba(2,22,48,.58) 55%,rgba(2,12,29,.78)),url("./background.png")!important;
+  background-size:cover!important;background-position:center!important;background-repeat:no-repeat!important;
+}
+body.login-gate .login-banner{
+  max-width:1500px!important;margin:0 auto 12px!important;
+  background:rgba(3,18,41,.78)!important;border:1px solid rgba(51,160,235,.58)!important;
+  border-radius:14px!important;overflow:hidden!important;
+  box-shadow:0 16px 42px rgba(0,0,0,.24)!important;
+}
+body.login-gate .login-brand-row{background:rgba(2,13,30,.82)!important;padding:12px 20px!important}
+body.login-gate .login-company-lockup{display:flex!important;align-items:center!important;gap:9px!important;flex-wrap:wrap!important}
+body.login-gate .login-company-lockup b{color:#f4fbff!important;letter-spacing:.12em!important}
+body.login-gate .login-presents{color:#b9d7ed!important;font-style:normal!important}
+body.login-gate .login-hero{
+  min-height:145px!important;padding:20px 24px 20px 78px!important;
+  display:flex!important;align-items:center!important;justify-content:center!important;text-align:center!important;
+  position:relative!important;background:linear-gradient(100deg,rgba(4,23,49,.94),rgba(4,54,100,.78),rgba(3,22,47,.94))!important;
+}
+body.login-gate .login-copy{padding:0!important;width:100%!important}
+body.login-gate .login-eyebrow{justify-content:center!important;gap:0 12px!important;font-size:clamp(34px,5vw,58px)!important;letter-spacing:-.035em!important;color:#fff!important}
+body.login-gate .login-maximus{color:#168cff!important}
+body.login-gate .login-optimus{color:#fff!important}
+body.login-gate .login-copy h1{color:#fff!important;font-size:clamp(14px,2vw,22px)!important;letter-spacing:.17em!important;margin:7px 0!important}
+body.login-gate .approved-brand-slogan{font-size:clamp(12px,1.45vw,16px)!important;letter-spacing:.01em!important}
+body.login-gate .login-shield{left:20px!important;width:48px!important;height:48px!important}
+body.login-gate .login-tagline-block{background:rgba(2,12,28,.94)!important;padding:10px 16px!important;text-align:center!important}
+body.login-gate .login-top-tagline{font-size:clamp(12px,1.4vw,16px)!important;white-space:normal!important;text-align:center!important}
+body.login-gate .login-content{max-width:1500px!important;margin:0 auto!important}
+body.login-gate .login-panel{background:rgba(248,252,255,.97)!important;border:1px solid rgba(121,191,231,.72)!important;box-shadow:0 18px 48px rgba(0,0,0,.26)!important}
+body.login-gate .environment-options{gap:12px!important}
+body.login-gate .environment{min-height:84px!important}
+body.login-gate .provider-grid button{display:flex!important;align-items:center!important;justify-content:center!important;min-height:48px!important;font-weight:750!important}
+body.login-gate .login-security{border-radius:10px!important}
+body.login-gate .login-footer{max-width:1500px!important;margin:12px auto 0!important;background:#f8fbff!important;color:#18364a!important;border-radius:10px!important;padding:12px 16px!important}
+body.login-gate .login-footer a,body.login-gate .login-footer-bottom,body.login-gate .login-footer-brand small{color:#18364a!important}
+body.login-gate .login-footer-bottom strong{color:#18364a!important}
+body.login-gate.env-employee{--login-accent:#00D4FF;--login-word-accent:#00D4FF}
+body.login-gate.env-business{--login-accent:#8A2BE2;--login-word-accent:#8A2BE2}
+body.login-gate.env-tenant{--login-accent:#10B981;--login-word-accent:#10B981}
+body.login-gate .login-eyebrow .login-maximus{color:#168cff!important}
+body.login-gate .login-eyebrow .login-optimus{color:#fff!important}
+@media(max-width:760px){
+ body.login-gate .login-hero{min-height:120px!important;padding:18px 10px 16px!important}
+ body.login-gate .login-shield{left:10px!important;top:10px!important;transform:none!important;width:28px!important;height:28px!important}
+ body.login-gate .login-eyebrow{font-size:clamp(28px,8vw,42px)!important;gap:0 8px!important}
+ body.login-gate .login-copy h1{font-size:12px!important;letter-spacing:.1em!important}
+ body.login-gate .login-brand-row{padding:9px 12px!important}
+ body.login-gate .login-columns{grid-template-columns:minmax(0,1fr)!important}
+ body.login-gate .environment-options{grid-template-columns:minmax(0,1fr)!important}
+ body.login-gate .login-footer-links{gap:8px 12px!important}
+}
+
 </style>
 </head>
 <body>
