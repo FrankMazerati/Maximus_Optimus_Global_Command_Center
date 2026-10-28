@@ -65,7 +65,7 @@ jobs:
           from pathlib import Path
           html = Path('index.html').read_text(encoding='utf-8')
           checks = {
-              'primary slogan': 'One <span class="brand-accent">World</span>. One <span class="brand-accent">System</span>. One Intelligent <span class="brand-accent">Network</span>.',
+              'primary slogan': 'One <span class="adaptive-accent">World</span>. One <span class="adaptive-accent">System</span>. One Intelligent <span class="adaptive-accent">Network</span>.',
               'cyan brand accent': '#00D4FF',
               'secure footer tagline': 'Secured, Trusted, and Compliant.',
               'copyright year': '2026 IntelliStack Systems',
