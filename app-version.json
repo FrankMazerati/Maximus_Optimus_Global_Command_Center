@@ -1,16 +1,16 @@
 {
   "application": "Maximus Optimus Global Command Center",
   "product": "IntelliStack Systems",
-  "applicationVersion": "0.56.0",
-  "productBuild": "056",
-  "releaseLabel": "Build 056 — Approved Photo-Led Login Restoration",
+  "applicationVersion": "0.57.0",
+  "productBuild": "057",
+  "releaseLabel": "Build 057 — Responsive Workspace & Navigation",
   "status": "committed; website publishing triggered; validation pending",
   "canonical": true,
   "sourceOfTruth": "app-version.json",
   "branding": {
     "primarySlogan": "One World. One System. One Intelligent Network.",
     "tagline": "Bring the Work to You.",
-    "footerSlogan": "Secured, Trusted & Compliant."
+    "footerSlogan": "Secured, Trusted, and Compliant."
   },
   "verification": {
     "inlineJavaScriptSyntax": "validation defined in GitHub Actions; verify Build 039 workflow result",
@@ -41,7 +41,8 @@
     "loginPalette": "Build 051 uses a charcoal/navy login banner with controlled background-image overlay, white main text, and environment-specific blue, purple, or green accent words.",
     "visualDesignMode": "In-page design mode provides component selection, HTML drag/drop reordering within the same parent, width/font/padding/radius sliders, text/background/border color controls, local browser persistence, and reset controls. User styling is local to the browser and does not publish back to source files.",
     "login": "Restored photo-led login composition with dark global operations background, stronger masthead hierarchy, responsive form/provider layout, white footer, and corrected environment accent tokens. Visual browser verification pending.",
-    "environmentColors": "Employee #00D4FF; Business/Organization #8A2BE2; Tenant #10B981. Maximus remains blue and Optimus white."
+    "environmentColors": "Employee #00D4FF; Business/Organization #8A2BE2; Tenant #10B981. Maximus remains blue and Optimus white.",
+    "responsiveScrolling": "Build 057 adds explicit tablet portrait and narrow landscape scroll containment; physical-device visual verification pending."
   },
   "notes": "Build 055 is a visual refinement of the login and signed-in header. Browser visual verification is still required after publication."
 }
