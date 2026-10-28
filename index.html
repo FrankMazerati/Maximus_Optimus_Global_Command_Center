@@ -1244,6 +1244,19 @@ body:not(.login-gate) .main{background-color:#edf1f5;background-image:linear-gra
   .hb-panel{max-height:70dvh;min-height:420px}
 }
 
+
+/* Keep the profile and search side-by-side on wider screens, stacked on phones. */
+@media(min-width:761px){
+  .reference-header-center{display:grid;grid-template-columns:minmax(0,1fr) minmax(205px,270px);align-items:start;column-gap:12px;row-gap:8px}
+  .reference-product-brand{grid-column:1/-1}
+  .reference-command-user{grid-column:1;min-width:0}
+  .reference-header-center .header-search-inline{grid-column:2;grid-row:2;align-self:center;width:100%;min-width:0}
+}
+@media(max-width:760px){
+  .reference-header-center{display:flex;flex-direction:column}
+  .reference-header-center .header-search-inline{width:100%}
+}
+
 </style>
 </head>
 <body>
@@ -1328,7 +1341,7 @@ body:not(.login-gate) .main{background-color:#edf1f5;background-image:linear-gra
 <div class="menu-intro"><strong>WORKSPACE NAVIGATION</strong><small>Open a section to drill down</small></div>
 <details class="nav-group" open><summary>⌂ COMMAND</summary>
 <button class="nav-btn active" data-page="home"><span class="ico">⌂</span>Global Dashboard</button>
-<button class="nav-btn" data-page="tickets"><span class="ico">▤</span>Bring the Work to You</button>
+<button class="nav-btn" data-page="home"><span class="ico">▤</span>Bring the Work to You</button>
 <button class="nav-btn" data-page="warroom"><span class="ico">◎</span>Global Map</button>
 <button class="nav-btn" data-page="messages"><span class="ico">▧</span>Live News</button>
 <button class="nav-btn" data-page="calendar"><span class="ico">◷</span>Global Time &amp; Calendar</button>
