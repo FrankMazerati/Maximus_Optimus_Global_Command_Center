@@ -1639,6 +1639,112 @@ body.login-gate .provider-grid button span{min-width:0}
  .header-department-news-list,.header-company-news-list{grid-template-columns:minmax(0,1fr)!important}
  .quick-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
 }
+
+
+/* Build 056: compact dashboard panels with user-adjustable heights. */
+.login-footer{
+  margin:6px auto 0!important;
+  padding:7px 10px!important;
+  gap:7px 10px!important;
+  border-radius:8px!important;
+  font-size:8px!important;
+  line-height:1.25!important;
+}
+.login-footer b{font-size:9px!important}
+.login-footer-bottom{padding-top:5px!important;gap:6px!important;flex-wrap:wrap}
+.login-screen{padding:12px!important}
+.login-banner{margin-bottom:7px!important}
+.login-hero{min-height:76px!important;padding:10px 16px!important}
+.login-content{gap:9px!important}
+.login-panel,.login-benefits{padding:12px!important}
+.login-benefits{gap:7px!important}
+.login-powered{padding-top:7px!important;margin-top:2px!important}
+
+body:not(.login-gate) .command-info-strips{
+  display:grid!important;
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  gap:8px!important;
+  padding:8px 12px!important;
+  align-items:start!important;
+}
+body:not(.login-gate) .command-info-strips>.reference-full-strip{
+  min-width:0!important;
+  min-height:0!important;
+  height:112px!important;
+  max-height:42vh!important;
+  overflow:auto!important;
+  resize:vertical!important;
+  padding:7px 8px!important;
+  border:1px solid #cbd5df!important;
+  border-radius:9px!important;
+  background:#f8fafc!important;
+}
+body:not(.login-gate) .command-info-strips>.reference-full-strip[aria-label*="global time" i]{
+  height:82px!important;min-height:70px!important;
+}
+body:not(.login-gate) .command-info-strips>.reference-full-strip .header-widget-head{
+  padding:1px 2px 4px!important;margin-bottom:2px!important;
+}
+body:not(.login-gate) .command-info-strips>.reference-full-strip .header-widget-head>span{
+  font-size:10px!important;
+}
+body:not(.login-gate) .command-info-strips .global-clock-locations,
+body:not(.login-gate) .command-info-strips .header-department-news-list,
+body:not(.login-gate) .command-info-strips .header-company-news-list{
+  max-height:calc(100% - 24px)!important;
+  overflow:auto!important;
+  padding:2px!important;
+}
+body:not(.login-gate) .command-info-strips .global-clock-location{
+  padding:4px 7px!important;font-size:9px!important;
+}
+body:not(.login-gate) .command-info-strips .header-department-news-item,
+body:not(.login-gate) .command-info-strips .header-company-news-item{
+  flex-basis:205px!important;padding:6px 8px!important;
+}
+body:not(.login-gate) .home-quick{margin-bottom:8px!important}
+body:not(.login-gate) .home-quick>.card-head{padding:8px 11px!important}
+body:not(.login-gate) .home-quick>.card-body{padding:8px 10px!important}
+body:not(.login-gate) .home-quick .quick-grid{
+  grid-template-columns:repeat(4,minmax(0,1fr))!important;
+  gap:6px!important;
+}
+body:not(.login-gate) .home-quick .quick-card{
+  min-height:42px!important;padding:7px!important;gap:6px!important;border-radius:8px!important;
+}
+body:not(.login-gate) .home-quick .quick-card .bigicon{font-size:16px!important}
+body:not(.login-gate) .home-quick .quick-card b{font-size:10px!important}
+body:not(.login-gate) .home-quick .quick-card small{font-size:9px!important}
+body:not(.login-gate) .home-main-column>.home-module[data-movable-module="bringwork"]{
+  min-height:0!important;flex:0 0 auto!important;
+}
+body:not(.login-gate) .home-main-column>.home-module[data-movable-module="bringwork"]>.card-body{
+  height:clamp(220px,38vh,440px)!important;
+  min-height:180px!important;
+  max-height:62vh!important;
+  overflow:auto!important;
+  resize:vertical!important;
+  overscroll-behavior:contain;
+}
+body:not(.login-gate) .home-main-column>.home-module[data-movable-module="bringwork"] .workbench-grid{
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  gap:7px!important;
+}
+body:not(.login-gate) .home-main-column>.home-module[data-movable-module="bringwork"] .work-tile{
+  min-height:0!important;padding:9px!important;
+}
+body:not(.login-gate) .home-main-column>.home-module[data-movable-module="bringwork"] .work-tile h3{font-size:11px!important}
+body:not(.login-gate) .home-main-column>.home-module[data-movable-module="bringwork"] .work-tile p{font-size:10px!important}
+@media(max-width:760px){
+ body:not(.login-gate) .command-info-strips{grid-template-columns:minmax(0,1fr)!important;padding:6px 8px!important;gap:6px!important}
+ body:not(.login-gate) .command-info-strips>.reference-full-strip{height:100px!important;max-height:35vh!important}
+ body:not(.login-gate) .command-info-strips>.reference-full-strip[aria-label*="global time" i]{height:76px!important}
+ body:not(.login-gate) .home-quick .quick-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+ body:not(.login-gate) .home-main-column>.home-module[data-movable-module="bringwork"]>.card-body{height:36vh!important;min-height:190px!important}
+ body:not(.login-gate) .home-main-column>.home-module[data-movable-module="bringwork"] .workbench-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+ .login-footer{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+}
+
 </style>
 </head>
 <body>
