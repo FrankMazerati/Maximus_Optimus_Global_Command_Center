@@ -1257,10 +1257,648 @@ body:not(.login-gate) .main{background-color:#edf1f5;background-image:linear-gra
   .reference-header-center .header-search-inline{width:100%}
 }
 
+
+/* Login refinement: consistent parent-company / marketplace / tenant theme behavior */
+body.login-gate{--login-accent:#168cff;--login-word-accent:#168cff}
+body.login-gate.env-business{--login-accent:#8a2be2;--login-word-accent:#8a2be2}
+body.login-gate.env-tenant{--login-accent:#10b981;--login-word-accent:#10b981}
+body.login-gate .login-eyebrow .login-maximus,
+body.login-gate .approved-brand-slogan .adaptive-accent,
+body.login-gate .login-top-tagline .adaptive-accent{color:var(--login-word-accent)!important}
+body.login-gate .login-eyebrow .login-optimus{color:#fff!important}
+body.login-gate .environment.active,
+body.login-gate .environment[data-environment=employee].active{border-color:var(--login-accent)!important;box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--login-accent) 42%,transparent),0 0 18px color-mix(in srgb,var(--login-accent) 18%,transparent)!important}
+body.login-gate .environment.active>span{background:var(--login-accent)!important}
+body.login-gate .login-submit{background:var(--login-accent)!important;border-color:var(--login-accent)!important}
+body.login-gate .login-preview,body.login-gate .text-button{border-color:var(--login-accent)!important;color:var(--login-accent)!important}
+body.login-gate .login-shield{border-color:var(--login-accent)!important}
+body.login-gate .login-brand-row em,body.login-gate .login-brand-row small{color:var(--login-accent)!important}
+body.login-gate .environment{min-height:84px!important;grid-template-columns:34px minmax(0,1fr)!important;gap:5px 10px!important;padding:13px!important;border-radius:12px!important;transition:background .18s ease,border-color .18s ease,transform .18s ease,box-shadow .18s ease!important}
+body.login-gate .environment:hover{transform:translateY(-2px);border-color:var(--login-accent)!important}
+body.login-gate .environment>span{width:32px!important;height:32px!important;font-size:15px!important;grid-row:1 / span 2!important}
+body.login-gate .environment b{font-size:clamp(10px,1vw,13px)!important;line-height:1.3!important}
+body.login-gate .environment small{font-size:10px!important;line-height:1.35!important}
+body.login-gate .login-panel h2{font-size:clamp(20px,2vw,28px)!important;letter-spacing:-.025em!important}
+@media(max-width:760px){body.login-gate .environment{min-height:68px!important}}
+
+
+/* Login background: use the repository's uploaded homepagephoto.png asset behind the existing functional login UI. */
+body.login-gate .login-banner{
+  background-color:#020817!important;
+  background-image:linear-gradient(180deg,rgba(2,10,24,.28),rgba(2,10,24,.64)),url("./homepagephoto.png")!important;
+  background-size:cover!important;
+  background-position:center 44%!important;
+  background-repeat:no-repeat!important;
+}
+body.login-gate .login-brand-row,
+body.login-gate .login-hero,
+body.login-gate .login-tagline-block{
+  background-color:transparent!important;
+  background-image:none!important;
+}
+@media(max-width:760px){
+  body.login-gate .login-banner{background-position:center 42%!important}
+}
+
+
+/* Login page refinement: keep workspace widgets out of the public sign-in screen. */
+body.login-gate .command-info-strips{display:none!important}
+body.login-gate .login-footer{
+  max-width:1400px;margin:16px auto 0;padding:24px 24px 14px;
+  display:grid;grid-template-columns:minmax(210px,1.35fr) repeat(4,minmax(130px,1fr));
+  gap:24px;background:linear-gradient(145deg,#04152d,#061f3c);
+  border:1px solid #174b78;border-radius:14px;color:#b7cce0;font-size:11px;
+  text-align:left;box-shadow:0 12px 32px #0003
+}
+body.login-gate .login-footer-brand{min-width:0;padding-right:12px}
+body.login-gate .login-footer-brand>b{font-size:14px;letter-spacing:.11em;color:#f5fbff}
+body.login-gate .login-footer-brand>small{display:block;margin-top:9px;line-height:1.6;color:#b5cce1}
+body.login-gate .login-footer-brand .footer-brand-note{color:#66d9ff}
+body.login-gate .login-footer-group{display:flex;flex-direction:column;align-items:flex-start;gap:9px;min-width:0}
+body.login-gate .login-footer-group>b{margin-bottom:3px;color:#63d8ff;font-size:10px;letter-spacing:.13em}
+body.login-gate .login-footer-group a{color:#c4d7e9;text-decoration:none;line-height:1.45}
+body.login-gate .login-footer-group a:hover,body.login-gate .login-footer-group a:focus-visible{color:#fff;text-decoration:underline;text-underline-offset:3px}
+body.login-gate .login-footer-bottom{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-top:3px;padding-top:13px;border-top:1px solid #1a4268;color:#8eacc7;font-size:10px}
+body.login-gate .login-footer-status{color:#71efbb;letter-spacing:.04em}
+body.login-gate .login-brand-row{gap:9px;flex-wrap:nowrap}
+body.login-gate .login-company-lockup{display:flex;align-items:baseline;gap:8px;flex-wrap:nowrap;white-space:nowrap}
+body.login-gate .login-company-lockup>b{font-family:"Trebuchet MS",Arial,sans-serif;font-weight:900;font-size:clamp(12px,1.4vw,17px);letter-spacing:.12em}
+body.login-gate .login-company-lockup .login-presents{display:inline!important;margin:0!important;font-size:clamp(10px,1.05vw,13px);letter-spacing:.035em;white-space:nowrap}
+body.login-gate .login-eyebrow{font-family:"Arial Black","Trebuchet MS",system-ui,sans-serif;font-weight:1000;letter-spacing:.075em;text-transform:uppercase;text-shadow:0 3px 0 #062b59,0 0 24px #00bfff65}
+body.login-gate .login-maximus{font-weight:1000;letter-spacing:.085em}
+body.login-gate .login-optimus{font-weight:1000;letter-spacing:.085em}
+body.login-gate .approved-brand-slogan{font-family:"Trebuchet MS",system-ui,sans-serif;font-size:clamp(12px,1.35vw,16px);font-weight:700;letter-spacing:.035em;line-height:1.55}
+body.login-gate .login-top-tagline{font-family:"Trebuchet MS",system-ui,sans-serif;font-size:clamp(12px,1.35vw,16px);font-weight:800;letter-spacing:.045em;line-height:1.55}
+body.login-gate .provider-grid button{display:flex;align-items:center;justify-content:flex-start;gap:9px;min-height:44px;padding:9px 11px;text-align:left;font-weight:700}
+body.login-gate .provider-grid button img{display:block;width:22px;height:22px;flex:0 0 22px;object-fit:contain}
+body.login-gate .provider-grid button span{min-width:0}
+@media(max-width:900px){
+ body.login-gate .login-footer{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;padding:20px}
+ body.login-gate .login-footer-brand{grid-column:1/-1;padding:0 0 14px;border-bottom:1px solid #1a4268}
+}
+@media(max-width:520px){
+ body.login-gate .login-screen{padding:9px}
+ body.login-gate .login-company-lockup{gap:5px;white-space:normal;flex-wrap:wrap}
+ body.login-gate .login-company-lockup>b{font-size:11px}
+ body.login-gate .login-company-lockup .login-presents{font-size:10px}
+ body.login-gate .login-footer{grid-template-columns:minmax(0,1fr);gap:17px;padding:18px}
+ body.login-gate .login-footer-brand,body.login-gate .login-footer-bottom{grid-column:1}
+ body.login-gate .login-footer-bottom{align-items:flex-start;flex-direction:column}
+ body.login-gate .login-footer-group{gap:7px}
+}
+
+/* Responsive header correction: keep profile, status, time and weather together. */
+.reference-command-header{grid-template-columns:minmax(190px,.72fr) minmax(0,2fr);align-items:start;gap:12px}
+.reference-header-center{min-width:0;display:flex;flex-direction:column;gap:10px}
+.reference-command-user .command-user-top{display:grid;grid-template-columns:74px minmax(0,1fr) auto;align-items:start;gap:12px}
+.reference-command-user .command-user-copy{min-width:0}
+.reference-profile-details{display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:3px!important}
+.reference-profile-details span{display:grid!important;grid-template-columns:minmax(115px,auto) minmax(0,1fr);align-items:baseline;width:100%;max-width:100%;padding:3px 0!important;border:0!important;border-bottom:1px solid #e5edf3!important;border-radius:0!important;background:transparent!important}
+.reference-profile-details b{font-size:10px!important}
+.reference-profile-details strong{min-width:0;overflow-wrap:anywhere}
+.reference-command-user .reference-user-controls{display:grid;grid-template-columns:auto minmax(190px,1fr) auto;align-items:center;gap:10px;margin-top:10px;padding-top:10px}
+.reference-command-user .availability-control{display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:10px;min-width:0}
+.reference-command-user .availability-control select{width:100%;max-width:none!important;min-width:0;padding:7px 26px 7px 9px;font-size:11px}
+.reference-command-user .header-local-widget{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:12px;padding:9px 11px;border:1px solid #d4e5ef;border-radius:10px;background:linear-gradient(110deg,#f1f9ff,#fff)}
+.reference-command-user .header-local-time,.reference-command-user .header-weather{min-width:0}
+.reference-command-user .header-local-widget b{font-size:clamp(16px,1.6vw,22px);line-height:1.25;overflow-wrap:anywhere}
+.reference-command-user .header-local-widget small{font-size:10px;overflow-wrap:anywhere}
+.reference-header-right{display:none!important}
+.header-search-inline{width:100%;min-width:0}
+.header-search-inline .global-search-inner{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:10px}
+.header-search-inline .global-search-input-wrap{min-width:0}
+.command-info-strips{padding:0 14px}
+.reference-full-strip{min-width:0}
+.reference-full-strip .header-widget-head{gap:8px}
+.reference-full-strip .header-widget-head>button{flex:0 0 auto;margin-left:auto}
+.header-department-news-list,.header-company-news-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;overflow:visible}
+.header-department-news-item,.header-company-news-item{min-width:0;width:100%;max-width:none;overflow-wrap:anywhere}
+@media(max-width:900px){
+ .reference-command-header{grid-template-columns:minmax(150px,.65fr) minmax(0,1.5fr);gap:9px;padding:10px}
+ .reference-command-user{padding:10px}
+ .reference-command-user .command-user-top{grid-template-columns:56px minmax(0,1fr) auto;gap:8px}
+ .reference-command-user .header-avatar{width:56px;height:56px;min-width:56px}
+ .reference-command-user .reference-user-controls{grid-template-columns:1fr;align-items:stretch}
+ .reference-command-user .reference-user-controls>.btn{width:100%}
+ .reference-command-user .header-status-chip{justify-self:start}
+ .reference-command-user .availability-control{grid-template-columns:72px minmax(0,1fr);width:100%}
+ .header-department-news-list,.header-company-news-list{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .global-clock-locations{flex-wrap:wrap;overflow:visible}
+}
+@media(max-width:760px){
+ .reference-command-header{display:flex;flex-direction:column;align-items:stretch;gap:9px;padding:9px;background:#f4f9fe}
+ .reference-command-header>.reference-brand{width:100%;display:grid;grid-template-columns:42px minmax(0,1fr);align-items:center;gap:8px;padding:8px;border-radius:10px;background:linear-gradient(110deg,#03152d,#07376a)}
+ .reference-command-header .mobile-menu{display:inline-grid;grid-row:1}
+ .reference-command-header .reference-shield{grid-column:2;grid-row:1;width:34px;height:34px;object-fit:contain}
+ .reference-command-header .command-brand-security{grid-column:1/-1;margin:0;font-size:10px}
+ .reference-header-center{width:100%;gap:8px}
+ .reference-product-brand{min-width:0;text-align:center}
+ .reference-command-user{width:100%;padding:10px}
+ .reference-command-user .command-user-top{display:grid;grid-template-columns:48px minmax(0,1fr) auto;gap:8px}
+ .reference-command-user .header-avatar{width:48px;height:48px;min-width:48px}
+ .reference-command-user .home-greeting{font-size:17px}
+ .reference-command-user #headerDisplayName{overflow-wrap:anywhere}
+ .reference-command-user .profile-role{font-size:11px}
+ .reference-command-user .reference-profile-details span{grid-template-columns:minmax(112px,40%) minmax(0,1fr);font-size:10px}
+ .reference-command-user .reference-user-controls{display:grid;grid-template-columns:minmax(0,1fr);gap:8px}
+ .reference-command-user .availability-control{display:grid;grid-template-columns:72px minmax(0,1fr);gap:8px;width:100%}
+ .reference-command-user .availability-control select{width:100%;max-width:none}
+ .reference-command-user .header-local-widget{grid-template-columns:repeat(2,minmax(0,1fr));margin-top:9px;gap:8px;padding:9px}
+ .reference-command-user .header-local-widget b{font-size:18px}
+ .header-search-inline .global-search-inner{grid-template-columns:auto minmax(0,1fr);gap:8px}
+ .header-search-inline .global-search-hint{grid-column:2;justify-self:start;font-size:9px}
+ .command-info-strips{padding:0 9px}
+ .reference-full-strip{padding:9px 0}
+ .reference-full-strip .header-widget-head{display:flex;flex-wrap:wrap;align-items:center;padding:4px 2px 8px}
+ .reference-full-strip .header-widget-head>span{flex:1 1 65%;font-size:10px}
+ .reference-full-strip .header-widget-head>button{margin-left:auto;max-width:100%}
+ .global-clock-locations{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;padding:2px}
+ .global-clock-location{white-space:normal;min-width:0;justify-content:space-between;gap:4px;padding:7px}
+ .header-department-news-list,.header-company-news-list{grid-template-columns:minmax(0,1fr);gap:7px}
+ .header-department-news-item,.header-company-news-item{width:100%;max-width:none}
+}
+@media(orientation:landscape) and (max-height:600px){
+ .reference-command-header{grid-template-columns:minmax(150px,.55fr) minmax(0,1.6fr);gap:8px;padding:8px}
+ .reference-command-user{padding:8px}
+ .reference-command-user .command-user-top{grid-template-columns:48px minmax(0,1fr) auto;gap:8px}
+ .reference-command-user .header-avatar{width:48px;height:48px;min-width:48px}
+ .reference-command-user .reference-profile-details{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:14px}
+ .reference-command-user .reference-profile-details span{grid-template-columns:minmax(88px,42%) minmax(0,1fr);font-size:9px}
+ .reference-command-user .reference-user-controls{grid-template-columns:auto minmax(170px,1fr) auto;gap:7px;margin-top:7px;padding-top:7px}
+ .reference-command-user .availability-control{grid-template-columns:auto minmax(0,1fr);gap:6px}
+ .reference-command-user .header-local-widget{margin-top:7px;padding:6px 9px}
+ .reference-command-user .header-local-widget b{font-size:16px}
+ .header-department-news-list,.header-company-news-list{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+
+/* Responsive header: stacked identity details in portrait; controlled reflow in landscape. */
+.reference-command-header{grid-template-columns:minmax(200px,.8fr) minmax(0,1.6fr) minmax(180px,.7fr);gap:12px;align-items:start}
+.reference-header-center{display:flex;flex-direction:column;gap:9px;min-width:0}
+.reference-command-user{min-width:0}
+.reference-profile-details{display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:4px!important}
+.reference-profile-details span{display:grid!important;grid-template-columns:minmax(100px,max-content) minmax(0,1fr);gap:6px!important;max-width:100%;overflow-wrap:anywhere}
+.reference-profile-details strong{min-width:0;overflow-wrap:anywhere}
+.reference-user-controls{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.reference-user-controls .availability-control{display:flex;align-items:center;justify-content:flex-start;gap:8px;min-width:0}
+.reference-user-controls .availability-control select{width:auto;max-width:100%;min-width:130px}
+.reference-user-controls .header-status-chip{margin-left:auto}
+.reference-command-user .header-search-inline{width:100%;min-width:0;margin-top:10px!important}
+.reference-command-user .header-search-inline .global-search-inner{display:flex;align-items:center;gap:10px;min-width:0}
+.reference-command-user .global-search-input-wrap{flex:1;min-width:0}
+.reference-command-user .header-search-inline input{width:100%;min-width:0}
+.reference-header-right{min-width:0}
+.reference-header-right .header-local-widget{grid-template-columns:1fr 1fr!important;gap:10px}
+@media(max-width:1100px){
+ .reference-command-header{grid-template-columns:minmax(0,1fr) minmax(0,1.5fr);gap:10px;padding:10px 12px}
+ .reference-brand{grid-column:1/-1;display:flex;align-items:center;gap:10px}
+ .reference-header-center,.reference-header-right{grid-column:1/-1}
+ .reference-header-right{padding-top:0}
+ .reference-header-right .header-local-widget{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+}
+@media(max-width:760px){
+ .reference-command-header{display:flex;flex-direction:column;align-items:stretch;gap:10px;padding:10px}
+ .reference-brand,.reference-header-center,.reference-header-right{width:100%;grid-column:auto}
+ .reference-command-user{padding:10px}
+ .reference-command-user .command-user-top{align-items:flex-start}
+ .reference-command-user .header-avatar{width:48px;height:48px;min-width:48px}
+ .reference-profile-details span{grid-template-columns:minmax(96px,auto) minmax(0,1fr);font-size:10px}
+ .reference-user-controls{display:grid;grid-template-columns:minmax(0,1fr);align-items:stretch}
+ .reference-user-controls .availability-control{width:100%;justify-content:space-between}
+ .reference-user-controls .availability-control select{flex:1;width:1%;min-width:0}
+ .reference-user-controls .header-status-chip{margin-left:0;justify-self:start}
+ .reference-header-right .header-local-widget{grid-template-columns:repeat(2,minmax(0,1fr))!important;padding:10px}
+ .reference-header-right .header-local-widget b{font-size:clamp(18px,5vw,24px)}
+ .reference-command-user .header-search-inline .global-search-hint{display:none}
+}
+@media(orientation:landscape) and (max-width:900px){
+ .reference-command-header{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:10px;align-items:start}
+ .reference-brand,.reference-header-center,.reference-header-right{grid-column:1/-1}
+ .reference-profile-details{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr));gap:5px 12px!important}
+ .reference-profile-details span{grid-template-columns:minmax(88px,max-content) minmax(0,1fr);font-size:10px}
+ .reference-user-controls{display:flex;justify-content:flex-start}
+ .reference-header-right .header-local-widget{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+}
+
+/* Corrected responsive identity header: consistent alignment in portrait and landscape. */
+#sectionOneHeader.reference-command-header{display:grid!important;grid-template-columns:minmax(0,1fr)!important;gap:12px!important;align-items:stretch!important;padding:12px 16px!important;background:linear-gradient(115deg,#071b34 0%,#0a3763 42%,#f7fbff 42.2%,#fff 100%)!important;color:inherit}
+#sectionOneHeader .reference-brand{display:grid!important;grid-template-columns:44px 58px minmax(0,1fr)!important;align-items:center!important;justify-content:initial!important;gap:10px!important;width:100%;min-width:0;grid-column:auto!important}
+#sectionOneHeader .reference-brand .mobile-menu{display:inline-grid!important;position:static!important;place-items:center;width:40px;height:40px;margin:0!important;grid-column:1;grid-row:1;background:#0b3763;color:#fff;border:1px solid #68c9f1;border-radius:9px}
+#sectionOneHeader .reference-shield{display:block!important;position:static!important;grid-column:2;grid-row:1;width:48px!important;height:48px!important;max-width:48px;object-fit:contain;margin:0!important;justify-self:start}
+#sectionOneHeader .command-brand-security{grid-column:3;grid-row:1;justify-self:end;align-self:center;margin:0!important;text-align:right;white-space:normal;font-size:clamp(9px,1.2vw,12px);line-height:1.3}
+#sectionOneHeader .reference-header-center{display:flex!important;flex-direction:column!important;gap:10px!important;grid-column:auto!important;min-width:0;width:100%}
+#sectionOneHeader .reference-product-brand{position:static!important;text-align:center!important;display:flex;flex-direction:column;align-items:center;gap:4px;min-width:0;width:100%;background:transparent!important}
+#sectionOneHeader .reference-product-brand strong{display:block;color:#fff!important;background:transparent!important;line-height:1.1}
+#sectionOneHeader .reference-product-brand strong em{color:#32b9ff!important}
+#sectionOneHeader .reference-product-brand strong b{color:#fff!important;background:transparent!important}
+#sectionOneHeader .command-user.reference-command-user{grid-column:auto!important;grid-row:auto!important;width:100%;min-width:0;box-sizing:border-box;display:flex!important;flex-direction:column!important;gap:10px!important}
+#sectionOneHeader .reference-command-user .command-user-top{display:grid!important;grid-template-columns:56px minmax(0,1fr) auto!important;align-items:start!important;gap:10px!important}
+#sectionOneHeader .reference-profile-details{display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:2px!important;margin-top:7px!important}
+#sectionOneHeader .reference-profile-details span{display:flex!important;flex-direction:row!important;align-items:baseline!important;justify-content:flex-start!important;gap:7px!important;width:100%!important;max-width:100%!important;box-sizing:border-box!important;margin:0!important;padding:2px 0!important;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;font-size:11px!important;line-height:1.4!important;color:#2f485d!important}
+#sectionOneHeader .reference-profile-details b{display:inline!important;flex:0 0 auto!important;font-size:11px!important;font-weight:800!important;color:#183f5a!important;margin:0!important}
+#sectionOneHeader .reference-profile-details strong{display:inline!important;flex:0 1 auto!important;min-width:0!important;font-size:11px!important;font-weight:600!important;color:#173b5c!important;overflow-wrap:anywhere!important}
+#sectionOneHeader .reference-user-controls{display:flex!important;flex-direction:row!important;align-items:center!important;justify-content:flex-start!important;flex-wrap:wrap!important;gap:10px!important}
+#sectionOneHeader .reference-user-controls .availability-control{display:flex!important;flex-direction:row!important;align-items:center!important;justify-content:flex-start!important;gap:8px!important;width:auto!important}
+#sectionOneHeader .reference-user-controls .availability-control select{width:auto!important;max-width:100%!important;min-width:130px!important;flex:0 1 auto!important}
+#sectionOneHeader .reference-user-controls .header-status-chip{margin-left:0!important}
+#sectionOneHeader .reference-header-right{display:none!important}
+#sectionOneHeader .profile-local-context,#sectionOneHeader .header-local-widget{width:100%;box-sizing:border-box}
+#sectionOneHeader .reference-command-user .header-local-widget{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:12px!important;margin:0!important;padding:10px 12px!important}
+#sectionOneHeader .reference-command-user .header-local-widget>div{min-width:0}
+#sectionOneHeader .reference-command-user .header-local-widget b{font-size:clamp(17px,2.4vw,25px)!important;overflow-wrap:anywhere}
+#sectionOneHeader .header-search-inline{display:block!important;width:100%!important;min-width:0!important;margin:0!important;padding:0!important}
+#sectionOneHeader .header-search-inline .global-search-inner{display:grid!important;grid-template-columns:auto minmax(0,1fr) auto!important;align-items:center!important;gap:10px!important;min-width:0!important}
+#sectionOneHeader .header-search-inline .global-search-input-wrap{min-width:0!important}
+#sectionOneHeader .header-search-inline input{width:100%!important;min-width:0!important;box-sizing:border-box!important}
+@media(max-width:760px){
+ #sectionOneHeader.reference-command-header{display:flex!important;flex-direction:column!important;align-items:stretch!important;padding:10px!important;gap:9px!important}
+ #sectionOneHeader .reference-brand{grid-template-columns:42px 48px minmax(0,1fr)!important;gap:8px!important}
+ #sectionOneHeader .reference-brand .mobile-menu{width:38px;height:38px}
+ #sectionOneHeader .reference-shield{width:42px!important;height:42px!important;max-width:42px}
+ #sectionOneHeader .command-brand-security{font-size:9px!important;max-width:150px}
+ #sectionOneHeader .reference-product-brand strong{font-size:clamp(20px,6vw,30px)!important}
+ #sectionOneHeader .reference-command-user{padding:10px!important}
+ #sectionOneHeader .reference-command-user .command-user-top{grid-template-columns:46px minmax(0,1fr) auto!important;gap:8px!important}
+ #sectionOneHeader .reference-command-user .header-avatar{width:44px!important;height:44px!important;min-width:44px!important}
+ #sectionOneHeader .reference-profile-details span{font-size:10px!important}
+ #sectionOneHeader .reference-profile-details b,#sectionOneHeader .reference-profile-details strong{font-size:10px!important}
+ #sectionOneHeader .reference-user-controls{display:flex!important;flex-wrap:wrap!important;justify-content:flex-start!important}
+ #sectionOneHeader .reference-user-controls .availability-control{width:auto!important;justify-content:flex-start!important}
+ #sectionOneHeader .reference-user-controls .availability-control select{min-width:120px!important;max-width:calc(100vw - 170px)!important}
+ #sectionOneHeader .reference-command-user .header-local-widget{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important;padding:9px!important}
+ #sectionOneHeader .header-search-inline .global-search-inner{grid-template-columns:auto minmax(0,1fr)!important;gap:8px!important}
+ #sectionOneHeader .header-search-inline .global-search-hint{display:none!important}
+}
+@media(orientation:landscape) and (max-width:900px){
+ #sectionOneHeader.reference-command-header{display:flex!important;flex-direction:column!important;gap:8px!important}
+ #sectionOneHeader .reference-brand{grid-template-columns:42px 48px minmax(0,1fr)!important}
+ #sectionOneHeader .reference-command-user .command-user-top{grid-template-columns:46px minmax(0,1fr) auto!important}
+ #sectionOneHeader .reference-profile-details{display:flex!important;flex-direction:column!important}
+ #sectionOneHeader .reference-user-controls{flex-direction:row!important;align-items:center!important}
+}
+
+/* Build 055: readable global bars and genuinely usable Quick Picks ordering. */
+.command-info-strips{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;align-items:stretch!important;gap:12px!important;padding:12px 16px!important;background:#edf4f9!important;min-width:0!important}
+.command-info-strips .header-widget{display:flex!important;flex-direction:column!important;min-width:0!important;width:100%!important;min-height:190px!important;max-height:none!important;height:auto!important;overflow:visible!important;box-sizing:border-box!important;padding:13px!important;border:1px solid #c6dce9!important;border-radius:13px!important;background:#fff!important;box-shadow:0 4px 14px #143c5810!important}
+.command-info-strips .header-widget-head{display:flex!important;align-items:center!important;justify-content:space-between!important;flex-wrap:wrap!important;gap:8px!important;margin:0 0 10px!important;padding:0 0 9px!important;border-bottom:1px solid #e3edf3!important}
+.command-info-strips .header-widget-head>span{font-size:clamp(11px,1vw,13px)!important;letter-spacing:.06em!important;white-space:normal!important;overflow:visible!important;text-overflow:clip!important;line-height:1.3!important}
+.command-info-strips .header-widget-head>small{font-size:10px!important;white-space:normal!important}
+.command-info-strips .header-widget-head .icon-btn{width:32px!important;height:32px!important;font-size:16px!important}
+.command-info-strips .header-widget-head .btn{font-size:11px!important;padding:7px 9px!important}
+.command-info-strips .global-clock-locations,.command-info-strips .header-department-news-list,.command-info-strips .header-company-news-list{display:flex!important;flex:1 1 auto!important;flex-wrap:wrap!important;align-content:flex-start!important;gap:8px!important;overflow:visible!important;max-width:100%!important;min-width:0!important;padding:3px 0!important}
+.command-info-strips .global-clock-location,.command-info-strips .header-department-news-item,.command-info-strips .header-company-news-item{flex:1 1 145px!important;min-width:0!important;max-width:100%!important;box-sizing:border-box!important;white-space:normal!important;padding:10px!important;border:1px solid #d6e5ee!important;border-radius:9px!important;background:#f9fcff!important}
+.command-info-strips .global-clock-location{align-items:flex-start!important;flex-direction:column!important;gap:4px!important;font-size:11px!important}
+.command-info-strips .global-clock-location b{font-size:14px!important}
+.command-info-strips .header-department-news-item b,.command-info-strips .header-company-news-item b{white-space:normal!important;overflow:visible!important;text-overflow:clip!important;font-size:12px!important;line-height:1.35!important}
+.command-info-strips .header-department-news-item p,.command-info-strips .header-company-news-item p{font-size:11px!important;line-height:1.45!important;white-space:normal!important;overflow:visible!important}
+.command-info-strips .header-department-news-item small{font-size:10px!important}
+.quick-grid{display:grid!important;grid-template-columns:repeat(5,minmax(0,1fr))!important;gap:10px!important;align-items:stretch!important}
+.quick-grid .quick-card{position:relative!important;min-width:0!important;min-height:88px!important;padding:12px 28px 12px 10px!important;box-sizing:border-box!important;overflow-wrap:anywhere!important;touch-action:pan-y!important}
+.quick-grid .quick-card>span:not(.quick-pick-move-controls){min-width:0!important}
+.quick-grid .quick-card b,.quick-grid .quick-card small{overflow-wrap:anywhere!important;white-space:normal!important}
+.quick-pick-move-controls{position:absolute!important;right:5px!important;top:5px!important;display:flex!important;flex-direction:column!important;gap:3px!important;z-index:2}
+.quick-pick-move{display:grid!important;place-items:center!important;width:23px!important;height:23px!important;padding:0!important;border:1px solid #b8d4e5!important;border-radius:6px!important;background:#fff!important;color:#155d8d!important;font-size:13px!important;font-weight:900!important;line-height:1!important;cursor:pointer!important}
+.quick-pick-move:focus-visible{outline:2px solid #168be4!important;outline-offset:2px!important}
+.quick-grid .add-quick-pick{padding-right:10px!important}
+.quick-grid .add-quick-pick .quick-pick-move-controls{display:none!important}
+@media(max-width:1050px){.command-info-strips{grid-template-columns:repeat(2,minmax(0,1fr))!important}.quick-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important}}
+@media(max-width:650px){.command-info-strips{grid-template-columns:minmax(0,1fr)!important;padding:9px!important;gap:9px!important}.command-info-strips .header-widget{min-height:140px!important;padding:11px!important}.command-info-strips .global-clock-location,.command-info-strips .header-department-news-item,.command-info-strips .header-company-news-item{flex-basis:100%!important}.quick-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important}.quick-grid .quick-card{min-height:76px!important;padding:10px 27px 10px 9px!important}}
+
+/* Build 056: make mobile navigation a solid, readable drawer instead of a blurred glass panel. */
+@media(max-width:760px){
+ html,body{max-width:100%;overflow-x:hidden}
+ #sidebar.sidebar,#sidebar.sidebar.open{
+  position:fixed!important;top:0!important;bottom:0!important;left:0!important;right:auto!important;
+  display:flex!important;flex-direction:column!important;
+  width:min(86vw,340px)!important;max-width:340px!important;height:100dvh!important;max-height:100dvh!important;
+  padding:16px 12px calc(20px + env(safe-area-inset-bottom))!important;
+  box-sizing:border-box!important;overflow-x:hidden!important;overflow-y:auto!important;
+  background:#071b34!important;background-image:none!important;opacity:1!important;
+  color:#f1f8ff!important;filter:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;
+  border-right:1px solid #23628d!important;box-shadow:14px 0 36px rgba(0,0,0,.34)!important;
+  z-index:10020!important;visibility:visible!important;transform:none!important;
+ }
+ #sidebar.sidebar:not(.open){display:none!important;visibility:hidden!important}
+ #sidebar .menu-intro{position:sticky;top:-16px;z-index:2;background:#071b34!important;color:#fff!important;padding:12px 8px 14px!important;border-bottom:1px solid #1b4d72!important;margin-bottom:8px!important}
+ #sidebar .menu-intro strong{display:block!important;color:#6ed7ff!important;font-size:12px!important;letter-spacing:.08em!important}
+ #sidebar .menu-intro small{display:block!important;color:#d4e9f8!important;font-size:11px!important;margin-top:4px!important}
+ #sidebar details.nav-group{display:block!important;flex:0 0 auto!important;background:#0b2543!important;border:1px solid #174568!important;border-radius:10px!important;margin:0 0 8px!important;padding:4px!important;overflow:visible!important}
+ #sidebar details.nav-group>summary{display:flex!important;align-items:center!important;min-height:38px!important;padding:9px 8px!important;color:#75d7ff!important;font-size:11px!important;font-weight:850!important;letter-spacing:.04em!important;cursor:pointer!important}
+ #sidebar .nav-btn{display:flex!important;align-items:center!important;gap:10px!important;width:100%!important;min-height:40px!important;padding:10px 9px!important;margin:2px 0!important;box-sizing:border-box!important;background:transparent!important;color:#e8f4ff!important;border:1px solid transparent!important;border-radius:8px!important;text-align:left!important;white-space:normal!important;overflow-wrap:anywhere!important;font-size:13px!important;line-height:1.3!important;opacity:1!important;filter:none!important}
+ #sidebar .nav-btn .ico{display:inline-flex!important;align-items:center!important;justify-content:center!important;flex:0 0 22px!important;width:22px!important;color:#83dfff!important;opacity:1!important}
+ #sidebar .nav-btn:hover,#sidebar .nav-btn:focus-visible,#sidebar .nav-btn.active{background:#10416a!important;border-color:#267bb0!important;color:#fff!important;outline-offset:1px}
+ #sidebar .nav-bottom{position:static!important;flex:0 0 auto!important;margin-top:10px!important;padding-top:10px!important;background:#071b34!important;border-top:1px solid #1b4d72!important}
+ #sidebar .nav-bottom .small{color:#a9c5d9!important}
+ #menuScrim.menu-scrim,body.menu-open #menuScrim{
+  display:block!important;position:fixed!important;inset:0!important;width:100vw!important;height:100dvh!important;
+  z-index:10010!important;background:rgba(2,10,22,.58)!important;
+  opacity:1!important;filter:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;
+ }
+ body.menu-open{overflow:hidden!important}
+ body.menu-open #sidebar{pointer-events:auto!important}
+ #sidebar details.nav-group:not([open])>*:not(summary){display:none!important}
+}
+
+/* Build 057: cohesive portrait/landscape workspace repair. */
+#sectionOneHeader .reference-command-user .command-user-top{display:grid!important;grid-template-columns:58px minmax(0,1fr) 34px!important;align-items:start!important;gap:10px!important;min-width:0!important}
+#sectionOneHeader .reference-command-user .header-avatar{position:relative!important;grid-column:1!important;grid-row:1!important;align-self:start!important;margin:0!important;z-index:1}
+#sectionOneHeader .reference-command-user .command-user-copy{grid-column:2!important;grid-row:1!important;min-width:0!important;position:relative!important;z-index:2!important}
+#sectionOneHeader .reference-command-user .profile-settings-gear{grid-column:3!important;grid-row:1!important;position:static!important;align-self:start!important;justify-self:end!important;margin:0!important;width:32px!important;height:32px!important;z-index:3!important}
+#sectionOneHeader .reference-profile-details{display:flex!important;flex-direction:column!important;gap:1px!important;margin-left:0!important}
+#sectionOneHeader .reference-profile-details span{display:flex!important;flex-direction:row!important;align-items:baseline!important;flex-wrap:wrap!important;gap:6px!important;padding:2px 0!important;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important}
+#sectionOneHeader .reference-profile-details b,#sectionOneHeader .reference-profile-details strong{display:inline!important}
+#sectionOneHeader .reference-user-controls{display:flex!important;align-items:center!important;gap:9px!important;flex-wrap:wrap!important}
+#sectionOneHeader .header-local-widget{width:100%!important;box-sizing:border-box!important;grid-template-columns:repeat(2,minmax(0,1fr))!important}
+.command-info-strips{display:grid!important;grid-template-columns:minmax(0,1fr)!important;gap:12px!important;padding:12px!important;min-width:0!important}
+.command-info-strips .reference-full-strip{display:block!important;width:100%!important;min-width:0!important;box-sizing:border-box!important;min-height:0!important;height:auto!important;max-height:none!important;overflow:visible!important;padding:14px!important;border:1px solid #d3e1eb!important;border-radius:13px!important;background:#fff!important}
+.command-info-strips .header-widget-head{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:8px!important;flex-wrap:wrap!important}
+.global-clock-locations{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:8px!important;overflow:visible!important;align-items:stretch!important}
+.global-clock-location{display:flex!important;flex-direction:column!important;gap:4px!important;min-width:0!important;width:auto!important;box-sizing:border-box!important;padding:10px!important;white-space:normal!important;border:1px solid #d7e5ef!important;border-radius:9px!important;background:#f7fbff!important;font-size:11px!important}
+.global-clock-location b{display:block!important;margin:0!important;font-size:16px!important;white-space:nowrap!important}
+.header-department-news-list,.header-company-news-list{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:9px!important;min-width:0!important;overflow:visible!important}
+.header-department-news-item,.header-company-news-item{min-width:0!important;max-width:100%!important;white-space:normal!important;overflow-wrap:anywhere!important}
+.sidebar>.small.muted{display:none!important}
+.quick-grid{grid-template-columns:repeat(5,minmax(0,1fr))!important;gap:8px!important}
+.quick-grid .quick-card{position:relative!important;min-width:0!important;min-height:76px!important;padding:12px 44px 12px 10px!important;overflow-wrap:anywhere!important}
+.quick-pick-manage-controls{position:absolute!important;right:5px!important;top:5px!important;display:flex!important;flex-direction:column!important;gap:4px!important;z-index:5!important}
+.quick-pick-manage-controls .quick-pick-move-controls{display:flex!important;flex-direction:row!important;gap:3px!important}
+.quick-pick-delete{display:grid!important;place-items:center!important;width:23px!important;height:23px!important;padding:0!important;border:1px solid #e6b5b5!important;border-radius:6px!important;background:#fff!important;color:#b42323!important;font-size:18px!important;font-weight:800!important;line-height:1!important;cursor:pointer!important}
+.quick-grid .quick-card b,.quick-grid .quick-card small{white-space:normal!important;overflow-wrap:anywhere!important}
+@media(orientation:landscape) and (max-width:1100px){
+ #sectionOneHeader .reference-command-user .command-user-top{grid-template-columns:50px minmax(0,1fr) 32px!important}
+ #sectionOneHeader .reference-command-user .header-avatar{width:48px!important;height:48px!important;min-width:48px!important}
+ #sectionOneHeader .reference-product-brand{display:flex!important;align-items:center!important;justify-content:center!important}
+ .global-clock-locations{grid-template-columns:repeat(4,minmax(0,1fr))!important}
+ .command-info-strips .reference-full-strip{padding:10px!important}
+ .quick-grid{grid-template-columns:repeat(5,minmax(0,1fr))!important}
+}
+@media(max-width:760px){
+ #sectionOneHeader .reference-command-user .command-user-top{grid-template-columns:46px minmax(0,1fr) 30px!important;gap:8px!important}
+ #sectionOneHeader .reference-command-user .header-avatar{width:44px!important;height:44px!important;min-width:44px!important}
+ #sectionOneHeader .reference-command-user .profile-settings-gear{width:30px!important;height:30px!important}
+ .global-clock-locations{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+ .header-department-news-list,.header-company-news-list{grid-template-columns:minmax(0,1fr)!important}
+ .quick-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+}
+
+
+/* Build 056: compact dashboard panels with user-adjustable heights. */
+.login-footer{
+  margin:6px auto 0!important;
+  padding:7px 10px!important;
+  gap:7px 10px!important;
+  border-radius:8px!important;
+  font-size:8px!important;
+  line-height:1.25!important;
+}
+.login-footer b{font-size:9px!important}
+.login-footer-bottom{padding-top:5px!important;gap:6px!important;flex-wrap:wrap}
+.login-screen{padding:12px!important}
+.login-banner{margin-bottom:7px!important}
+.login-hero{min-height:76px!important;padding:10px 16px!important}
+.login-content{gap:9px!important}
+.login-panel,.login-benefits{padding:12px!important}
+.login-benefits{gap:7px!important}
+.login-powered{padding-top:7px!important;margin-top:2px!important}
+
+body:not(.login-gate) .command-info-strips{
+  display:grid!important;
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  gap:8px!important;
+  padding:8px 12px!important;
+  align-items:start!important;
+}
+body:not(.login-gate) .command-info-strips>.reference-full-strip{
+  min-width:0!important;
+  min-height:0!important;
+  height:112px!important;
+  max-height:42vh!important;
+  overflow:auto!important;
+  resize:vertical!important;
+  padding:7px 8px!important;
+  border:1px solid #cbd5df!important;
+  border-radius:9px!important;
+  background:#f8fafc!important;
+}
+body:not(.login-gate) .command-info-strips>.reference-full-strip[aria-label*="global time" i]{
+  height:82px!important;min-height:70px!important;
+}
+body:not(.login-gate) .command-info-strips>.reference-full-strip .header-widget-head{
+  padding:1px 2px 4px!important;margin-bottom:2px!important;
+}
+body:not(.login-gate) .command-info-strips>.reference-full-strip .header-widget-head>span{
+  font-size:10px!important;
+}
+body:not(.login-gate) .command-info-strips .global-clock-locations,
+body:not(.login-gate) .command-info-strips .header-department-news-list,
+body:not(.login-gate) .command-info-strips .header-company-news-list{
+  max-height:calc(100% - 24px)!important;
+  overflow:auto!important;
+  padding:2px!important;
+}
+body:not(.login-gate) .command-info-strips .global-clock-location{
+  padding:4px 7px!important;font-size:9px!important;
+}
+body:not(.login-gate) .command-info-strips .header-department-news-item,
+body:not(.login-gate) .command-info-strips .header-company-news-item{
+  flex-basis:205px!important;padding:6px 8px!important;
+}
+body:not(.login-gate) .home-quick{margin-bottom:8px!important}
+body:not(.login-gate) .home-quick>.card-head{padding:8px 11px!important}
+body:not(.login-gate) .home-quick>.card-body{padding:8px 10px!important}
+body:not(.login-gate) .home-quick .quick-grid{
+  grid-template-columns:repeat(4,minmax(0,1fr))!important;
+  gap:6px!important;
+}
+body:not(.login-gate) .home-quick .quick-card{
+  min-height:42px!important;padding:7px!important;gap:6px!important;border-radius:8px!important;
+}
+body:not(.login-gate) .home-quick .quick-card .bigicon{font-size:16px!important}
+body:not(.login-gate) .home-quick .quick-card b{font-size:10px!important}
+body:not(.login-gate) .home-quick .quick-card small{font-size:9px!important}
+body:not(.login-gate) .home-main-column>.home-module[data-movable-module="bringwork"]{
+  min-height:0!important;flex:0 0 auto!important;
+}
+body:not(.login-gate) .home-main-column>.home-module[data-movable-module="bringwork"]>.card-body{
+  height:clamp(220px,38vh,440px)!important;
+  min-height:180px!important;
+  max-height:62vh!important;
+  overflow:auto!important;
+  resize:vertical!important;
+  overscroll-behavior:contain;
+}
+body:not(.login-gate) .home-main-column>.home-module[data-movable-module="bringwork"] .workbench-grid{
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  gap:7px!important;
+}
+body:not(.login-gate) .home-main-column>.home-module[data-movable-module="bringwork"] .work-tile{
+  min-height:0!important;padding:9px!important;
+}
+body:not(.login-gate) .home-main-column>.home-module[data-movable-module="bringwork"] .work-tile h3{font-size:11px!important}
+body:not(.login-gate) .home-main-column>.home-module[data-movable-module="bringwork"] .work-tile p{font-size:10px!important}
+@media(max-width:760px){
+ body:not(.login-gate) .command-info-strips{grid-template-columns:minmax(0,1fr)!important;padding:6px 8px!important;gap:6px!important}
+ body:not(.login-gate) .command-info-strips>.reference-full-strip{height:100px!important;max-height:35vh!important}
+ body:not(.login-gate) .command-info-strips>.reference-full-strip[aria-label*="global time" i]{height:76px!important}
+ body:not(.login-gate) .home-quick .quick-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+ body:not(.login-gate) .home-main-column>.home-module[data-movable-module="bringwork"]>.card-body{height:36vh!important;min-height:190px!important}
+ body:not(.login-gate) .home-main-column>.home-module[data-movable-module="bringwork"] .workbench-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+ .login-footer{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+}
+
+
+/* Build 058: make Help Buddy discoverable and reachable on every signed-in screen. */
+#helpBuddyLauncher{
+ position:fixed!important;right:14px!important;bottom:14px!important;z-index:12000!important;
+ display:none;align-items:center;gap:8px;padding:11px 15px!important;
+ border:2px solid #fff!important;border-radius:999px!important;
+ background:linear-gradient(120deg,#0864bd,#11a9c9)!important;color:#fff!important;
+ box-shadow:0 6px 24px #0b365566!important;font-weight:850!important;
+}
+#helpBuddyLauncher .hb-launcher-icon{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:#ffffff2b;font-size:15px}
+#helpBuddyLauncher .hb-launcher-label{font-size:12px}
+#helpBuddyClose{display:none}
+@media(max-width:760px){
+ body:not(.login-gate) #helpBuddyLauncher{display:flex!important}
+ body:not(.login-gate) .home-top{height:auto!important;max-height:none!important;overflow:visible!important;grid-template-columns:minmax(0,1fr)!important}
+ body:not(.login-gate) .home-main-column{height:auto!important;max-height:none!important;overflow:visible!important}
+ body:not(.login-gate) .hb-panel{
+  display:none!important;position:fixed!important;z-index:11999!important;
+  left:8px!important;right:8px!important;bottom:72px!important;top:auto!important;
+  width:auto!important;height:min(72dvh,620px)!important;max-height:72dvh!important;
+  min-height:340px!important;border-radius:16px!important;
+  box-shadow:0 16px 55px #06284455!important;overflow:hidden!important;
+ }
+ body:not(.login-gate) .hb-panel.hb-mobile-open{display:flex!important}
+ body:not(.login-gate) .hb-panel.hb-mobile-open #helpBuddyClose{display:inline-flex!important;margin-left:auto!important}
+ body:not(.login-gate) .hb-panel .hb-messages{min-height:0!important;flex:1!important;overflow-y:auto!important}
+ body:not(.login-gate) .hb-panel .hb-extra-modules{max-height:100px!important;overflow-y:auto!important}
+}
+@media(min-width:761px){
+ body:not(.login-gate) .home-top{grid-template-columns:minmax(0,1fr) minmax(285px,340px)!important;height:auto!important;overflow:visible!important}
+ body:not(.login-gate) .hb-panel{display:flex!important;position:sticky!important;top:12px!important;min-height:520px!important;max-height:calc(100dvh - 24px)!important}
+}
+
+
+/* Build 059: reference-aligned responsive Command Center layout.
+   Desktop/tablet landscape: persistent navigation + workbench + Help Buddy columns.
+   Phone portrait: stack sections in reading order; never hide the assistant. */
+@media (min-width:761px){
+ body:not(.login-gate) .home-top{
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) clamp(285px,28vw,360px)!important;
+  gap:12px!important;align-items:start!important;
+  height:auto!important;max-height:none!important;overflow:visible!important
+ }
+ body:not(.login-gate) .home-main-column{
+  min-width:0!important;min-height:0!important;height:auto!important;
+  max-height:calc(100dvh - 110px)!important;overflow-y:auto!important;
+  overflow-x:hidden!important;overscroll-behavior:contain!important
+ }
+ body:not(.login-gate) .hb-panel{
+  display:flex!important;position:sticky!important;top:76px!important;
+  min-width:0!important;min-height:480px!important;
+  height:calc(100dvh - 92px)!important;max-height:calc(100dvh - 92px)!important;
+  overflow:hidden!important
+ }
+}
+@media (max-width:760px){
+ body:not(.login-gate) .home-top{
+  display:flex!important;flex-direction:column!important;gap:10px!important;
+  height:auto!important;max-height:none!important;overflow:visible!important
+ }
+ body:not(.login-gate) .home-main-column{
+  display:flex!important;flex-direction:column!important;order:1!important;
+  width:100%!important;min-width:0!important;height:auto!important;
+  max-height:none!important;overflow:visible!important;padding:0!important
+ }
+ body:not(.login-gate) .hb-panel{
+  display:flex!important;position:relative!important;inset:auto!important;
+  order:2!important;width:100%!important;min-width:0!important;
+  height:min(66dvh,620px)!important;min-height:360px!important;
+  max-height:620px!important;margin:0!important
+ }
+ body:not(.login-gate) #helpBuddyLauncher{display:none!important}
+ body:not(.login-gate) .command-info-strips{
+  display:flex!important;flex-direction:column!important;gap:8px!important
+ }
+ body:not(.login-gate) .command-info-strips>.reference-full-strip{
+  width:100%!important;max-width:100%!important;min-width:0!important;
+  height:auto!important;max-height:none!important;resize:vertical!important;overflow:auto!important
+ }
+ body:not(.login-gate) .command-header{
+  grid-template-columns:minmax(0,1fr)!important;gap:8px!important
+ }
+ body:not(.login-gate) .header-context-actions{display:flex!important;flex-wrap:wrap!important}
+ body:not(.login-gate) .global-footer-groups{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+}
+@media (max-width:420px){
+ body:not(.login-gate) .main{padding:8px 7px!important}
+ body:not(.login-gate) .home-greeting{font-size:19px!important}
+ body:not(.login-gate) .quick-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:6px!important}
+ body:not(.login-gate) .hb-panel{min-height:340px!important;height:62dvh!important}
+}
+
+/* Build 060: login is an exclusive screen; never render the signed-in shell beneath it. */
+html:has(body.login-gate),body.login-gate{min-height:100%;height:100%;overflow-x:hidden}
+body.login-gate .topbar,
+body.login-gate .layout,
+body.login-gate #main,
+body.login-gate #sectionOneHeader,
+body.login-gate #modalBackdrop,
+body.login-gate #toast,
+body.login-gate #helpBuddyLauncher,
+body.login-gate .hb-panel,
+body.login-gate .home-top,
+body.login-gate .command-info-strips,
+body.login-gate .global-footer-groups{display:none!important}
+body.login-gate #loginScreen{display:block!important;position:relative;min-height:100dvh;height:auto;overflow:visible}
+body.login-gate #loginScreen~*{display:none!important}
 </style>
 </head>
-<body>
-<section id="loginScreen" class="login-screen" aria-label="IntelliStack secure sign in"><div class="login-banner"><div class="login-brand-row"><div class="login-company-lockup"><b>INTELLISTACK SYSTEMS</b><span class="login-presents">presents...</span></div></div><div class="login-hero"><div class="login-copy"><div class="login-eyebrow"><span class="login-maximus">Maximus</span> <span class="login-optimus">Optimus</span></div><h1>GLOBAL COMMAND CENTER</h1><p class="approved-brand-slogan">One <span class="adaptive-accent">World</span>. One <span class="adaptive-accent">System</span>. One Intelligent <span class="adaptive-accent">Network</span>.</p></div><div class="login-shield"><img src="./shield.jpg" alt="IntelliStack Systems shield"></div></div><div class="login-tagline-block"><p class="login-top-tagline">See <span class="adaptive-accent">Everything</span>. Connect <span class="adaptive-accent">Everything</span>. Work <span class="adaptive-accent">Smarter</span>.</p></div></div><div class="login-content"><section class="login-panel"><h2>Select Your Login Environment</h2><p>Choose your access type to continue to IntelliStack Systems.</p><div class="environment-options"><button type="button" class="environment active" data-environment="employee"><span>●</span><b>Employee / Contractor</b><small>Blue · Corporate access</small></button><button type="button" class="environment" data-environment="business"><span>▦</span><b>Business / Organization</b><small>Purple · Organization access</small></button><button type="button" class="environment" data-environment="tenant"><span>♧</span><b>Tenant</b><small>Green · Tenant-specific access</small></button></div><div class="login-columns"><form id="loginForm" class="login-form"><h3>Sign In With Your Verified Provider</h3><p>Use your organization's identity provider for secure access.</p><label for="loginEmail">Email address</label><input id="loginEmail" type="email" autocomplete="username" placeholder="you@company.com"><label for="loginPassword">Password</label><input id="loginPassword" type="password" autocomplete="current-password" placeholder="Enter your password"><div class="login-form-options"><label class="remember-label"><input type="checkbox" id="rememberLogin"> Remember this device</label><button type="button" class="text-button" id="forgotLogin">Forgot password?</button></div><button class="login-submit" type="submit">Sign In Securely</button><p class="login-message" id="loginMessage" aria-live="polite"></p><button class="login-preview" type="button" id="quickPreviewBtn">Quick Access — Preview Command Center</button><small class="preview-warning">Preview only. Quick Access does not authenticate or grant real system access.</small></form><div class="provider-panel"><h3>Verified Identity Providers</h3><p>Provider buttons are visual placeholders until configured.</p><div class="provider-grid"><button type="button" data-provider="Google Workspace">Google Workspace</button><button type="button" data-provider="Microsoft 365">Microsoft 365</button><button type="button" data-provider="Microsoft Entra ID">Microsoft Entra ID</button><button type="button" data-provider="AWS">AWS</button><button type="button" data-provider="GitHub">GitHub</button><button type="button" data-provider="Apple">Apple</button></div><button class="provider-other" type="button" id="otherProviders">Other identity providers · Setup required⌄</button><div class="login-security"><span>🛡</span><div><b>Secure Access</b><small>Your data, your organization, your priority.</small></div></div></div></div></section><aside class="login-benefits reference-login-benefits"><section><span class="benefit-icon">⬡</span><div><b>Secure Access</b><small>Your data, your organization, your priority.</small></div></section><section><span class="benefit-icon">◎</span><div><b>Global Infrastructure</b><small>Worldwide, high-availability.</small></div></section><section><span class="benefit-icon">⬡</span><div><b>Enterprise Security</b><small>Advanced threat protection.</small></div></section><section><span class="benefit-icon">▤</span><div><b>Compliance Ready</b><small>SOC 2, ISO 27001, GDPR.</small></div></section><section><span class="benefit-icon">◉</span><div><b>24/7 Support</b><small>Always here when you need us.</small></div></section><section class="benefit-final"><b>Think Beyond Locally.</b><br>Connect Everything Globally.<br><strong>Powered by Intelligence.</strong></section></aside></div><footer class="login-footer"><div class="login-footer-brand"><b>INTELLISTACK SYSTEMS</b><small>Designed &amp; Developed by IntelliStack Systems</small></div><nav class="login-footer-links" aria-label="Company and legal links"><a href="#" data-footer-home>Home</a><a href="#about" data-footer-page="about">About Us</a><a href="#contact" data-footer-page="contact">Contact Us</a><a href="#partners" data-footer-page="partners">Partners</a><a href="#careers" data-footer-page="careers">Careers / Looking for Work</a><a href="#privacy" data-footer-page="privacy">Privacy Policy</a><a href="#information" data-footer-page="information">How We Handle Your Information</a><a href="#terms" data-footer-page="terms">Terms of Service</a><a href="#cookies" data-footer-page="cookies">Cookie Policy</a><a href="#acceptable-use" data-footer-page="acceptable">Acceptable Use</a></nav><div class="login-footer-bottom"><span>© 2026 IntelliStack Systems. All rights reserved.</span><strong>Secured, Trusted, and Compliant.</strong><span>Build 052 · Adaptive login color and contrast correction</span></div></footer></section>
+<body class="login-gate">
+<section id="loginScreen" class="login-screen" aria-label="IntelliStack secure sign in"><div class="login-banner"><div class="login-brand-row"><div class="login-company-lockup"><b>INTELLISTACK SYSTEMS</b><span class="login-presents">presents...</span></div></div><div class="login-hero"><div class="login-copy"><div class="login-eyebrow"><span class="login-maximus">Maximus</span> <span class="login-optimus">Optimus</span></div><h1>GLOBAL COMMAND CENTER</h1><p class="approved-brand-slogan">One <span class="adaptive-accent">World</span>. One <span class="adaptive-accent">System</span>. One Intelligent <span class="adaptive-accent">Network</span>.</p></div><div class="login-shield"><img src="./shield.jpg" alt="IntelliStack Systems shield"></div></div><div class="login-tagline-block"><p class="login-top-tagline">See <span class="adaptive-accent">Everything</span>. Connect <span class="adaptive-accent">Everything</span>. Work <span class="adaptive-accent">Smarter</span>.</p></div></div><div class="login-content"><section class="login-panel"><h2>Select Your Login Environment</h2><p>Choose your access type to continue to IntelliStack Systems.</p><div class="environment-options"><button type="button" class="environment active" data-environment="employee"><span>◆</span><b>IntelliStack Systems Login</b><small>Blue · Parent company access</small></button><button type="button" class="environment" data-environment="business"><span>▦</span><b>Business, Organization, Employee &amp; Contractor</b><small>Purple · Organizations, hiring &amp; job seekers</small></button><button type="button" class="environment" data-environment="tenant"><span>♧</span><b>Tenant Login</b><small>Green · Tenant-specific access</small></button></div><div class="login-columns"><form id="loginForm" class="login-form"><h3>Sign In With Your Verified Provider</h3><p>Use your organization's identity provider for secure access.</p><label for="loginEmail">Email address</label><input id="loginEmail" type="email" autocomplete="username" placeholder="you@company.com"><label for="loginPassword">Password</label><input id="loginPassword" type="password" autocomplete="current-password" placeholder="Enter your password"><div class="login-form-options"><label class="remember-label"><input type="checkbox" id="rememberLogin"> Remember this device</label><button type="button" class="text-button" id="forgotLogin">Forgot password?</button></div><button class="login-submit" type="submit">Sign In Securely</button><p class="login-message" id="loginMessage" aria-live="polite"></p><button class="login-preview" type="button" id="quickPreviewBtn">Quick Access — Preview Command Center</button><small class="preview-warning">Preview only. Quick Access does not authenticate or grant real system access.</small></form><div class="provider-panel"><h3>Verified Identity Providers</h3><p>Provider buttons are visual placeholders until configured.</p><div class="provider-grid">
+<button type="button" data-provider="Google Workspace"><img src="https://cdn.simpleicons.org/googleworkspace/FFFFFF" alt="" aria-hidden="true"><span>Google Workspace</span></button>
+<button type="button" data-provider="Microsoft 365"><img src="https://cdn.simpleicons.org/microsoft365/FFFFFF" alt="" aria-hidden="true"><span>Microsoft 365</span></button>
+<button type="button" data-provider="Microsoft Entra ID"><img src="https://cdn.simpleicons.org/microsoftentra/FFFFFF" alt="" aria-hidden="true"><span>Microsoft Entra ID</span></button>
+<button type="button" data-provider="AWS"><img src="https://cdn.simpleicons.org/amazonaws/FFFFFF" alt="" aria-hidden="true"><span>AWS</span></button>
+<button type="button" data-provider="GitHub"><img src="https://cdn.simpleicons.org/github/FFFFFF" alt="" aria-hidden="true"><span>GitHub</span></button>
+<button type="button" data-provider="Apple"><img src="https://cdn.simpleicons.org/apple/FFFFFF" alt="" aria-hidden="true"><span>Apple</span></button>
+</div><button class="provider-other" type="button" id="otherProviders">Other identity providers · Setup required⌄</button><div class="login-security"><span>🛡</span><div><b>Secure Access</b><small>Your data, your organization, your priority.</small></div></div></div></div></section><aside class="login-benefits reference-login-benefits"><section><span class="benefit-icon">⬡</span><div><b>Secure Access</b><small>Your data, your organization, your priority.</small></div></section><section><span class="benefit-icon">◎</span><div><b>Global Infrastructure</b><small>Worldwide, high-availability.</small></div></section><section><span class="benefit-icon">⬡</span><div><b>Enterprise Security</b><small>Advanced threat protection.</small></div></section><section><span class="benefit-icon">▤</span><div><b>Compliance Ready</b><small>SOC 2, ISO 27001, GDPR.</small></div></section><section><span class="benefit-icon">◉</span><div><b>24/7 Support</b><small>Always here when you need us.</small></div></section><section class="benefit-final"><b>Think Beyond Locally.</b><br>Connect Everything Globally.<br><strong>Powered by Intelligence.</strong></section></aside></div><footer class="login-footer" aria-label="IntelliStack Systems site information">
+  <div class="login-footer-brand">
+    <b>INTELLISTACK SYSTEMS</b>
+    <small>Designed &amp; Developed by IntelliStack Systems</small>
+    <small class="footer-brand-note">Secure technology. Connected work. Intelligent outcomes.</small>
+  </div>
+  <nav class="login-footer-group" aria-label="Company">
+    <b>COMPANY</b>
+    <a href="#" data-footer-home>Home</a>
+    <a href="#about" data-footer-page="about">About Us</a>
+    <a href="#contact" data-footer-page="contact">Contact Us</a>
+  </nav>
+  <nav class="login-footer-group" aria-label="Opportunities">
+    <b>OPPORTUNITIES</b>
+    <a href="#careers" data-footer-page="careers">Careers</a>
+    <a href="#looking-for-work" data-footer-page="looking-for-work">Looking for Work</a>
+    <a href="#partners" data-footer-page="partners">Become a Partner</a>
+  </nav>
+  <nav class="login-footer-group" aria-label="Resources and trust">
+    <b>RESOURCES &amp; TRUST</b>
+    <a href="#information" data-footer-page="information">How We Handle Your Information</a>
+    <a href="#security" data-footer-page="security">Security &amp; Compliance</a>
+    <a href="#accessibility" data-footer-page="accessibility">Accessibility</a>
+  </nav>
+  <nav class="login-footer-group" aria-label="Legal policies">
+    <b>LEGAL</b>
+    <a href="#terms" data-footer-page="terms">Terms of Service</a>
+    <a href="#privacy" data-footer-page="privacy">Privacy Policy</a>
+    <a href="#cookies" data-footer-page="cookies">Cookie Policy</a>
+    <a href="#acceptable-use" data-footer-page="acceptable">Acceptable Use</a>
+  </nav>
+  <div class="login-footer-bottom">
+    <span>© 2026 IntelliStack Systems. All rights reserved.</span>
+    <strong class="login-footer-status">Secured · Trusted · Compliant</strong>
+  </div>
+</footer></section>
 <header class="topbar command-header reference-command-header" id="sectionOneHeader" aria-label="Global Command Center header">
   <div class="command-brand reference-brand" aria-label="IntelliStack security branding">
     <button class="icon-btn mobile-menu" id="menuToggle" type="button" aria-label="Open navigation" aria-expanded="false">☰</button>
@@ -1299,9 +1937,14 @@ body:not(.login-gate) .main{background-color:#edf1f5;background-image:linear-gra
         </select></label>
         <span class="header-status-chip" id="headerStatusChip">● Available</span>
       </div>
-    </div>
+      <aside class="reference-header-right" aria-label="Local time, date and weather">
+        <div class="header-local-widget">
+          <div class="header-local-time"><span>LOCAL TIME</span><b id="headerLocalTime">--:--</b><small id="headerLocalDate">--</small></div>
+          <div class="header-weather"><span>WEATHER</span><b id="headerWeather">Loading…</b><small id="headerWeatherDetail">Local weather</small></div>
+        </div>
+      </aside>
     
-<section class="global-search-center header-search-inline" aria-label="Global search">
+      <section class="global-search-center header-search-inline" aria-label="Global search">
   <div class="global-search-inner">
     <span class="global-search-icon" aria-hidden="true">⌕</span>
     <div class="global-search-input-wrap">
@@ -1312,13 +1955,11 @@ body:not(.login-gate) .main{background-color:#edf1f5;background-image:linear-gra
   </div>
   <div id="globalSearchResults" class="global-search-results" hidden role="region" aria-label="Global search results"></div>
 </section>
-  </div>
-  <aside class="reference-header-right" aria-label="Local time, date and weather">
-    <div class="header-local-widget">
-      <div class="header-local-time"><span>LOCAL TIME</span><b id="headerLocalTime">--:--</b><small id="headerLocalDate">--</small></div>
-      <div class="header-weather"><span>WEATHER</span><b id="headerWeather">Loading…</b><small id="headerWeatherDetail">Local weather</small></div>
     </div>
-  </aside>
+    
+
+  </div>
+
 </header>
 <div class="command-info-strips" aria-label="Configurable global information strips">
   <section class="header-widget header-clock-widget reference-full-strip" aria-label="Global time zones">
@@ -1712,7 +2353,8 @@ $('globalSearch')?.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventD
 document.addEventListener('click',e=>{const box=$('globalSearchResults'),input=$('globalSearch');if(box&&input&&!box.contains(e.target)&&e.target!==input){box.hidden=true;input.setAttribute('aria-expanded','false')}});
 document.addEventListener('keydown',e=>{if(e.key==='/'&&!['INPUT','TEXTAREA'].includes(document.activeElement.tagName)){e.preventDefault();$('globalSearch')?.focus()}if(e.key==='Escape'){closeModal();closeMobileMenu()}});
 $('modalX').onclick=closeModal;$('modalBackdrop').addEventListener('click',e=>{if(e.target===$('modalBackdrop'))closeModal()});
-function setupLoginGate(){let env='employee';document.body.classList.remove('env-employee','env-business','env-tenant');document.body.classList.add('env-employee');document.querySelectorAll('[data-environment]').forEach(b=>b.addEventListener('click',()=>{env=b.dataset.environment;document.querySelectorAll('[data-environment]').forEach(x=>x.classList.toggle('active',x===b));const colors={employee:'#1688b8',business:'#6550a4',tenant:'#287f63'};document.documentElement.style.setProperty('--login-accent',colors[env]);document.body.classList.remove('env-employee','env-business','env-tenant');document.body.classList.add('env-'+env);$('loginMessage').textContent='Environment selected: '+b.querySelector('b').textContent+'.';}));$('quickPreviewBtn').onclick=()=>enterPreview('Quick Access preview mode — no authentication performed.');$('loginForm').onsubmit=e=>{e.preventDefault();const email=$('loginEmail').value.trim(),password=$('loginPassword').value;if(!email||!password){$('loginMessage').textContent='Enter an email and password, or use Quick Access to preview the interface.';return}$('loginMessage').textContent='This login screen is not connected to an authentication provider yet. Use Quick Access for a safe visual preview.';};$('forgotLogin').onclick=()=>{$('loginMessage').textContent='Password recovery is not connected yet. Configure the identity provider before using password recovery.'};document.querySelectorAll('[data-provider]').forEach(b=>b.onclick=()=>{$('loginMessage').textContent=b.dataset.provider+' sign-in is a visual placeholder until configured.'});$('otherProviders').onclick=()=>{$('loginMessage').textContent='Additional identity providers require secure backend configuration.'};}function enterPreview(message){document.body.classList.remove('login-gate');$('loginScreen').classList.remove('active');toast(message);setPage('home');}function startGlobalClock(){const tick=()=>{const d=new Date(),time=d.toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'}),date=d.toLocaleDateString([],{weekday:'short',month:'short',day:'numeric'});['globalClockTime','globalClockSecondary'].forEach(k=>{const e=$(k);if(e)e.textContent=time});const dt=$('globalClockDate');if(dt)dt.textContent=date;const ht=$('headerLocalTime');if(ht)ht.textContent=time;const hd=$('headerLocalDate');if(hd)hd.textContent=date;renderGlobalClockLocations()};tick();setInterval(tick,15000)}function setupMovableModules(){const c=document.querySelector('.home-main-column');if(!c)return;let order=[];try{order=JSON.parse(localStorage.getItem('intellistack.home.order.v1')||'[]')}catch(e){}order.forEach(key=>{const node=c.querySelector('[data-movable-module="'+key+'"]');if(node)c.appendChild(node)});c.querySelectorAll('[data-movable-module]').forEach(node=>{node.addEventListener('dragstart',e=>{node.classList.add('dragging');e.dataTransfer.setData('text/plain',node.dataset.movableModule);e.dataTransfer.effectAllowed='move'});node.addEventListener('dragend',()=>{node.classList.remove('dragging');c.querySelectorAll('.drop-target').forEach(x=>x.classList.remove('drop-target'));localStorage.setItem('intellistack.home.order.v1',JSON.stringify([...c.querySelectorAll('[data-movable-module]')].map(x=>x.dataset.movableModule)))});node.addEventListener('dragover',e=>{e.preventDefault();node.classList.add('drop-target')});node.addEventListener('dragleave',()=>node.classList.remove('drop-target'));node.addEventListener('drop',e=>{e.preventDefault();node.classList.remove('drop-target');const key=e.dataTransfer.getData('text/plain'),dragged=c.querySelector('[data-movable-module="'+key+'"]');if(dragged&&dragged!==node){const r=node.getBoundingClientRect();c.insertBefore(dragged,e.clientY>r.top+r.height/2?node.nextSibling:node);localStorage.setItem('intellistack.home.order.v1',JSON.stringify([...c.querySelectorAll('[data-movable-module]')].map(x=>x.dataset.movableModule)))}})});}function setupBuild015HeaderAndQuickPicks(){const updateLocal=()=>{const d=new Date(),time=$('headerLocalTime'),date=$('headerLocalDate'),zone=Intl.DateTimeFormat().resolvedOptions().timeZone||'Local time';const zoneLabel=document.querySelector('.header-local-time>span');if(zoneLabel)zoneLabel.textContent=zone.replaceAll('_',' ').toUpperCase();if(time)time.textContent=d.toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'});if(date)date.textContent=d.toLocaleDateString([], {month:'short',day:'numeric'});};updateLocal();if(!window._isBuild015HeaderClockStarted){window._isBuild015HeaderClockStarted=true;setInterval(updateLocal,1000)}const weather=$('headerWeather'),detail=$('headerWeatherDetail');if(weather&&!window._isBuild015WeatherStarted){window._isBuild015WeatherStarted=true;fetch('https://api.open-meteo.com/v1/forecast?latitude=41.8781&longitude=-87.6298&current=temperature_2m,weather_code,wind_speed_10m&temperature_unit=fahrenheit&wind_speed_unit=mph&timezone=America%2FChicago').then(r=>{if(!r.ok)throw new Error('weather unavailable');return r.json()}).then(d=>{const c=d.current||{},codes={0:'Clear',1:'Mostly clear',2:'Partly cloudy',3:'Cloudy',45:'Fog',48:'Fog',51:'Drizzle',53:'Drizzle',55:'Drizzle',61:'Rain',63:'Rain',65:'Heavy rain',71:'Snow',73:'Snow',75:'Heavy snow',80:'Showers',81:'Showers',82:'Heavy showers',95:'Thunderstorm',96:'Thunderstorm',99:'Thunderstorm'};weather.textContent=(c.temperature_2m==null?'—':Math.round(c.temperature_2m)+'°F')+' · '+(codes[c.weather_code]||'Current');if(detail)detail.textContent='Chicago · wind '+Math.round(c.wind_speed_10m||0)+' mph';}).catch(()=>{weather.textContent='Unavailable';if(detail)detail.textContent='Weather connection unavailable'})}const grid=document.querySelector('.quick-grid');if(!grid||grid.dataset.build015Bound==='1')return;grid.dataset.build015Bound='1';let dragged=null;const cards=()=>[...grid.querySelectorAll('.quick-card:not(.add-quick-pick)')];try{const order=JSON.parse(localStorage.getItem('intellistack.quickpicks.order.v1')||'[]');order.forEach(key=>{const el=cards().find(c=>c.dataset.goto===key);if(el)grid.insertBefore(el,grid.querySelector('.add-quick-pick'))})}catch(e){};const save=()=>{try{localStorage.setItem('intellistack.quickpicks.order.v1',JSON.stringify(cards().map(c=>c.dataset.goto)))}catch(e){}};cards().forEach(card=>{card.draggable=true;card.addEventListener('dragstart',e=>{dragged=card;card.classList.add('dragging');e.dataTransfer.setData('text/plain',card.dataset.goto||'');e.dataTransfer.effectAllowed='move'});card.addEventListener('dragover',e=>{if(!dragged||dragged===card)return;e.preventDefault();card.classList.add('drop-target')});card.addEventListener('dragleave',()=>card.classList.remove('drop-target'));card.addEventListener('drop',e=>{e.preventDefault();card.classList.remove('drop-target');if(!dragged||dragged===card)return;const r=card.getBoundingClientRect();grid.insertBefore(dragged,e.clientY>r.top+r.height/2?card.nextSibling:card);save()});card.addEventListener('dragend',()=>{card.classList.remove('dragging');grid.querySelectorAll('.drop-target').forEach(x=>x.classList.remove('drop-target'));dragged=null;save()})});}
+function setupLoginGate(){let env='employee';document.body.classList.remove('env-employee','env-business','env-tenant');document.body.classList.add('env-employee');document.querySelectorAll('[data-environment]').forEach(b=>b.addEventListener('click',()=>{env=b.dataset.environment;document.querySelectorAll('[data-environment]').forEach(x=>x.classList.toggle('active',x===b));const colors={employee:'#1688b8',business:'#6550a4',tenant:'#287f63'};document.documentElement.style.setProperty('--login-accent',colors[env]);document.body.classList.remove('env-employee','env-business','env-tenant');document.body.classList.add('env-'+env);$('loginMessage').textContent='Environment selected: '+b.querySelector('b').textContent+'.';}));$('quickPreviewBtn').onclick=()=>enterPreview('Quick Access preview mode — no authentication performed.');$('loginForm').onsubmit=e=>{e.preventDefault();const email=$('loginEmail').value.trim(),password=$('loginPassword').value;if(!email||!password){$('loginMessage').textContent='Enter an email and password, or use Quick Access to preview the interface.';return}$('loginMessage').textContent='This login screen is not connected to an authentication provider yet. Use Quick Access for a safe visual preview.';};$('forgotLogin').onclick=()=>{$('loginMessage').textContent='Password recovery is not connected yet. Configure the identity provider before using password recovery.'};document.querySelectorAll('[data-provider]').forEach(b=>b.onclick=()=>{$('loginMessage').textContent=b.dataset.provider+' sign-in is a visual placeholder until configured.'});$('otherProviders').onclick=()=>{$('loginMessage').textContent='Additional identity providers require secure backend configuration.'};}function enterPreview(message){document.body.classList.remove('login-gate');$('loginScreen').classList.remove('active');toast(message);setPage('home');}function startGlobalClock(){const tick=()=>{const d=new Date(),time=d.toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'}),date=d.toLocaleDateString([],{weekday:'short',month:'short',day:'numeric'});['globalClockTime','globalClockSecondary'].forEach(k=>{const e=$(k);if(e)e.textContent=time});const dt=$('globalClockDate');if(dt)dt.textContent=date;const ht=$('headerLocalTime');if(ht)ht.textContent=time;const hd=$('headerLocalDate');if(hd)hd.textContent=date;renderGlobalClockLocations()};tick();setInterval(tick,15000)}function setupMovableModules(){const c=document.querySelector('.home-main-column');if(!c)return;let order=[];try{order=JSON.parse(localStorage.getItem('intellistack.home.order.v1')||'[]')}catch(e){}order.forEach(key=>{const node=c.querySelector('[data-movable-module="'+key+'"]');if(node)c.appendChild(node)});c.querySelectorAll('[data-movable-module]').forEach(node=>{node.addEventListener('dragstart',e=>{node.classList.add('dragging');e.dataTransfer.setData('text/plain',node.dataset.movableModule);e.dataTransfer.effectAllowed='move'});node.addEventListener('dragend',()=>{node.classList.remove('dragging');c.querySelectorAll('.drop-target').forEach(x=>x.classList.remove('drop-target'));localStorage.setItem('intellistack.home.order.v1',JSON.stringify([...c.querySelectorAll('[data-movable-module]')].map(x=>x.dataset.movableModule)))});node.addEventListener('dragover',e=>{e.preventDefault();node.classList.add('drop-target')});node.addEventListener('dragleave',()=>node.classList.remove('drop-target'));node.addEventListener('drop',e=>{e.preventDefault();node.classList.remove('drop-target');const key=e.dataTransfer.getData('text/plain'),dragged=c.querySelector('[data-movable-module="'+key+'"]');if(dragged&&dragged!==node){const r=node.getBoundingClientRect();c.insertBefore(dragged,e.clientY>r.top+r.height/2?node.nextSibling:node);localStorage.setItem('intellistack.home.order.v1',JSON.stringify([...c.querySelectorAll('[data-movable-module]')].map(x=>x.dataset.movableModule)))}})});}function setupBuild015HeaderAndQuickPicks(){const updateLocal=()=>{const d=new Date(),time=$('headerLocalTime'),date=$('headerLocalDate'),zone=Intl.DateTimeFormat().resolvedOptions().timeZone||'Local time';const zoneLabel=document.querySelector('.header-local-time>span');if(zoneLabel)zoneLabel.textContent=zone.replaceAll('_',' ').toUpperCase();if(time)time.textContent=d.toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'});if(date)date.textContent=d.toLocaleDateString([], {month:'short',day:'numeric'});};updateLocal();if(!window._isBuild015HeaderClockStarted){window._isBuild015HeaderClockStarted=true;setInterval(updateLocal,1000)}const weather=$('headerWeather'),detail=$('headerWeatherDetail');if(weather&&!window._isBuild015WeatherStarted){window._isBuild015WeatherStarted=true;fetch('https://api.open-meteo.com/v1/forecast?latitude=41.8781&longitude=-87.6298&current=temperature_2m,weather_code,wind_speed_10m&temperature_unit=fahrenheit&wind_speed_unit=mph&timezone=America%2FChicago').then(r=>{if(!r.ok)throw new Error('weather unavailable');return r.json()}).then(d=>{const c=d.current||{},codes={0:'Clear',1:'Mostly clear',2:'Partly cloudy',3:'Cloudy',45:'Fog',48:'Fog',51:'Drizzle',53:'Drizzle',55:'Drizzle',61:'Rain',63:'Rain',65:'Heavy rain',71:'Snow',73:'Snow',75:'Heavy snow',80:'Showers',81:'Showers',82:'Heavy showers',95:'Thunderstorm',96:'Thunderstorm',99:'Thunderstorm'};weather.textContent=(c.temperature_2m==null?'—':Math.round(c.temperature_2m)+'°F')+' · '+(codes[c.weather_code]||'Current');if(detail)detail.textContent='Chicago · wind '+Math.round(c.wind_speed_10m||0)+' mph';}).catch(()=>{weather.textContent='Unavailable';if(detail)detail.textContent='Weather connection unavailable'})}const grid=document.querySelector('.quick-grid');if(!grid||grid.dataset.build015Bound==='1')return;grid.dataset.build015Bound='1';let dragged=null;const cards=()=>[...grid.querySelectorAll('.quick-card:not(.add-quick-pick)')];try{const order=JSON.parse(localStorage.getItem('intellistack.quickpicks.order.v1')||'[]');order.forEach(key=>{const el=cards().find(c=>c.dataset.goto===key);if(el)grid.insertBefore(el,grid.querySelector('.add-quick-pick'))})}catch(e){};const save=()=>{try{localStorage.setItem('intellistack.quickpicks.order.v1',JSON.stringify(cards().map(c=>c.dataset.goto)))}catch(e){}};
+const ensureMoveControls=()=>cards().forEach(card=>{if(card.querySelector('.quick-pick-manage-controls'))return;const controls=document.createElement('span');controls.className='quick-pick-manage-controls';controls.setAttribute('aria-label','Manage quick pick');controls.innerHTML='<span class="quick-pick-move-controls"><button type="button" class="quick-pick-move" data-move="-1" aria-label="Move shortcut left or up" title="Move left or up">←</button><button type="button" class="quick-pick-move" data-move="1" aria-label="Move shortcut right or down" title="Move right or down">→</button></span><button type="button" class="quick-pick-delete" aria-label="Remove this quick pick" title="Remove shortcut">×</button>';controls.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;e.preventDefault();e.stopPropagation();if(b.classList.contains('quick-pick-delete')){card.remove();save();return}if(!b.hasAttribute('data-move'))return;const list=cards(),at=list.indexOf(card),next=Math.max(0,Math.min(list.length-1,at+Number(b.dataset.move)));if(at===next)return;if(next>at)grid.insertBefore(card,list[next].nextSibling);else grid.insertBefore(card,list[next]);save()});card.appendChild(controls)});ensureMoveControls();cards().forEach(card=>{card.draggable=true;card.addEventListener('dragstart',e=>{dragged=card;card.classList.add('dragging');e.dataTransfer.setData('text/plain',card.dataset.goto||'');e.dataTransfer.effectAllowed='move'});card.addEventListener('dragover',e=>{if(!dragged||dragged===card)return;e.preventDefault();card.classList.add('drop-target')});card.addEventListener('dragleave',()=>card.classList.remove('drop-target'));card.addEventListener('drop',e=>{e.preventDefault();card.classList.remove('drop-target');if(!dragged||dragged===card)return;const r=card.getBoundingClientRect();grid.insertBefore(dragged,e.clientY>r.top+r.height/2?card.nextSibling:card);save()});card.addEventListener('dragend',()=>{card.classList.remove('dragging');grid.querySelectorAll('.drop-target').forEach(x=>x.classList.remove('drop-target'));dragged=null;save()})});}
 /* Build 054: local visual editor for selecting, moving, resizing, and recoloring page components. */
 function setupVisualDesignMode(){
  if(document.getElementById('visualDesignToggle'))return;
@@ -1754,7 +2396,70 @@ function setupVisualDesignMode(){
  identify();restore();
 }
 
-function init(){try{document.body.classList.add('login-gate');$('loginScreen').classList.add('active');applySettings();setupMovableNavigation();render();setupLoginGate();setupMovableModules();setupBuild015HeaderAndQuickPicks();startGlobalClock();updateCommandHeader()}catch(error){console.error('Command Center startup failed:',error);const main=$('main');if(main)main.innerHTML='<section class="card" style="padding:24px"><h1>Command Center could not finish loading</h1><p>The workspace caught a startup error instead of leaving a blank page. Refresh once; if it continues, clear this site\'s stored demo data in browser settings and reopen the deployment.</p><p class="small muted">Diagnostic: '+String(error&&error.message||error).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]))+'</p><button class="btn primary" onclick="location.reload()">Reload workspace</button><button class="btn" onclick="localStorage.removeItem(\'intellistack.frontend.v1\');location.reload()">Reset local demo data</button></section>'}}init();
+
+/* Build 057: remember user-resized dashboard panel heights in this browser. */
+
+function setupHelpBuddyAccess(){
+ if(document.getElementById('helpBuddyLauncher'))return;
+ const launcher=document.createElement('button');
+ launcher.id='helpBuddyLauncher';launcher.type='button';
+ launcher.setAttribute('aria-label','Open Help Buddy assistant');
+ launcher.innerHTML='<span class="hb-launcher-icon">HB</span><span class="hb-launcher-label">Help Buddy</span>';
+ document.body.appendChild(launcher);
+ const panel=document.querySelector('.hb-panel');
+ if(!panel)return;
+ const head=panel.querySelector('.hb-head');
+ if(head&&!head.querySelector('#helpBuddyClose')){
+  const close=document.createElement('button');
+  close.id='helpBuddyClose';close.type='button';close.className='icon-btn';
+  close.textContent='✕';close.setAttribute('aria-label','Close Help Buddy');
+  close.addEventListener('click',()=>{panel.classList.remove('hb-mobile-open');launcher.setAttribute('aria-expanded','false')});
+  head.appendChild(close);
+ }
+ launcher.setAttribute('aria-expanded','false');
+ launcher.addEventListener('click',()=>{
+  const open=panel.classList.toggle('hb-mobile-open');
+  launcher.setAttribute('aria-expanded',String(open));
+  if(open){const draft=panel.querySelector('#hbDraft');if(draft)draft.focus({preventScroll:true})}
+ });
+}
+
+function setupPersistentPanelSizing(){
+ const key='intellistack.dashboard.panel-heights.v1';
+ let saved={};
+ try{saved=JSON.parse(localStorage.getItem(key)||'{}')||{}}catch(e){saved={}}
+ const getPanels=()=>[
+  ...document.querySelectorAll('body:not(.login-gate) .command-info-strips>.reference-full-strip'),
+  document.querySelector('body:not(.login-gate) .home-main-column>.home-module[data-movable-module="bringwork"]>.card-body')
+ ].filter(Boolean);
+ const idFor=(el)=>el.matches('.home-module .card-body')?'bringwork-body':(el.getAttribute('aria-label')||el.className||'panel').toString().toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+ const apply=()=>{
+  getPanels().forEach(el=>{
+   const id=idFor(el),h=Number(saved[id]);
+   if(h>=70&&h<=1000)el.style.setProperty('height',h+'px','important');
+   if(el.dataset.persistSizeBound==='1')return;
+   el.dataset.persistSizeBound='1';
+   if(typeof ResizeObserver==='undefined')return;
+   let pending;
+   const observer=new ResizeObserver(entries=>{
+    const entry=entries[0];if(!entry)return;
+    const height=Math.round(entry.contentRect.height);
+    if(height<70||height>1000)return;
+    clearTimeout(pending);
+    pending=setTimeout(()=>{
+     try{saved[idFor(el)]=height;localStorage.setItem(key,JSON.stringify(saved))}catch(e){}
+    },250);
+   });
+   observer.observe(el);
+  });
+ };
+ if(document.body.classList.contains('login-gate'))return;
+ apply();
+ const mo=new MutationObserver(()=>{if(!document.body.classList.contains('login-gate'))apply()});
+ mo.observe(document.body,{attributes:true,attributeFilter:['class']});
+}
+
+function init(){try{document.body.classList.add('login-gate');$('loginScreen').classList.add('active');applySettings();setupMovableNavigation();render();setupLoginGate();setupMovableModules();setupBuild015HeaderAndQuickPicks();startGlobalClock();updateCommandHeader();setupPersistentPanelSizing();setupHelpBuddyAccess()}catch(error){console.error('Command Center startup failed:',error);const main=$('main');if(main)main.innerHTML='<section class="card" style="padding:24px"><h1>Command Center could not finish loading</h1><p>The workspace caught a startup error instead of leaving a blank page. Refresh once; if it continues, clear this site\'s stored demo data in browser settings and reopen the deployment.</p><p class="small muted">Diagnostic: '+String(error&&error.message||error).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]))+'</p><button class="btn primary" onclick="location.reload()">Reload workspace</button><button class="btn" onclick="localStorage.removeItem(\'intellistack.frontend.v1\');location.reload()">Reset local demo data</button></section>'}}init();
 })(); 
 </script>
 </body>
