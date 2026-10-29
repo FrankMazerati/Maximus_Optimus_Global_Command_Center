@@ -1827,3 +1827,59 @@ function init(){try{document.body.classList.add('login-gate');$('loginScreen').c
 </script>
 </body>
 </html>
+
+/* Command-center correction: tablet portrait navigation and workspace layout.
+   Keep the menu trigger anchored at the left edge; never center it in the brand row. */
+@media (min-width:601px) and (max-width:1000px) and (orientation:portrait) {
+  .reference-command-header,
+  .command-header { grid-template-columns:minmax(0,1fr) !important; }
+  .reference-brand,
+  .command-brand {
+    grid-column:1 !important;
+    display:flex !important;
+    justify-content:flex-start !important;
+    align-items:center !important;
+    width:100% !important;
+    min-width:0 !important;
+    gap:10px !important;
+    text-align:left !important;
+  }
+  .reference-brand .mobile-menu,
+  .command-brand .mobile-menu {
+    display:inline-grid !important;
+    order:0 !important;
+    flex:0 0 42px !important;
+    place-items:center !important;
+    width:42px !important;
+    min-width:42px !important;
+    height:42px !important;
+    margin:0 4px 0 0 !important;
+    align-self:center !important;
+  }
+  .reference-brand .reference-shield { order:1 !important; flex:0 0 42px !important; width:42px !important; height:42px !important; }
+  .reference-brand .command-brand-security { order:2 !important; text-align:left !important; }
+  .reference-header-center,
+  .reference-header-right { grid-column:1 !important; min-width:0 !important; width:100% !important; }
+  .home-top,
+  .home-reference-layout { grid-template-columns:minmax(0,1fr) !important; height:auto !important; overflow:visible !important; }
+  .home-main-column { height:auto !important; max-height:none !important; overflow:visible !important; }
+  .reference-right-column,
+  .hb-panel { position:relative !important; top:auto !important; height:auto !important; max-height:none !important; min-height:420px !important; }
+  .layout { display:block !important; height:auto !important; min-height:0 !important; overflow:visible !important; }
+  .sidebar {
+    display:none !important;
+    position:fixed !important;
+    inset:0 auto 0 0 !important;
+    width:min(82vw,340px) !important;
+    max-height:100dvh !important;
+    overflow-y:auto !important;
+    z-index:1001 !important;
+    box-shadow:0 12px 42px rgba(0,0,0,.28) !important;
+  }
+  .sidebar.open { display:flex !important; }
+  .menu-scrim { z-index:1000 !important; }
+}
+@media (min-width:601px) and (max-width:1000px) and (orientation:portrait) {
+  body:not(.login-gate) .main { overflow:visible !important; height:auto !important; min-height:0 !important; }
+  body:not(.login-gate) .command-context { grid-template-columns:repeat(2,minmax(0,1fr)) !important; }
+}
