@@ -1778,6 +1778,65 @@ body:not(.login-gate) .home-main-column>.home-module[data-movable-module="bringw
  body:not(.login-gate) .hb-panel{display:flex!important;position:sticky!important;top:12px!important;min-height:520px!important;max-height:calc(100dvh - 24px)!important}
 }
 
+
+/* Build 059: reference-aligned responsive Command Center layout.
+   Desktop/tablet landscape: persistent navigation + workbench + Help Buddy columns.
+   Phone portrait: stack sections in reading order; never hide the assistant. */
+@media (min-width:761px){
+ body:not(.login-gate) .home-top{
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) clamp(285px,28vw,360px)!important;
+  gap:12px!important;align-items:start!important;
+  height:auto!important;max-height:none!important;overflow:visible!important
+ }
+ body:not(.login-gate) .home-main-column{
+  min-width:0!important;min-height:0!important;height:auto!important;
+  max-height:calc(100dvh - 110px)!important;overflow-y:auto!important;
+  overflow-x:hidden!important;overscroll-behavior:contain!important
+ }
+ body:not(.login-gate) .hb-panel{
+  display:flex!important;position:sticky!important;top:76px!important;
+  min-width:0!important;min-height:480px!important;
+  height:calc(100dvh - 92px)!important;max-height:calc(100dvh - 92px)!important;
+  overflow:hidden!important
+ }
+}
+@media (max-width:760px){
+ body:not(.login-gate) .home-top{
+  display:flex!important;flex-direction:column!important;gap:10px!important;
+  height:auto!important;max-height:none!important;overflow:visible!important
+ }
+ body:not(.login-gate) .home-main-column{
+  display:flex!important;flex-direction:column!important;order:1!important;
+  width:100%!important;min-width:0!important;height:auto!important;
+  max-height:none!important;overflow:visible!important;padding:0!important
+ }
+ body:not(.login-gate) .hb-panel{
+  display:flex!important;position:relative!important;inset:auto!important;
+  order:2!important;width:100%!important;min-width:0!important;
+  height:min(66dvh,620px)!important;min-height:360px!important;
+  max-height:620px!important;margin:0!important
+ }
+ body:not(.login-gate) #helpBuddyLauncher{display:none!important}
+ body:not(.login-gate) .command-info-strips{
+  display:flex!important;flex-direction:column!important;gap:8px!important
+ }
+ body:not(.login-gate) .command-info-strips>.reference-full-strip{
+  width:100%!important;max-width:100%!important;min-width:0!important;
+  height:auto!important;max-height:none!important;resize:vertical!important;overflow:auto!important
+ }
+ body:not(.login-gate) .command-header{
+  grid-template-columns:minmax(0,1fr)!important;gap:8px!important
+ }
+ body:not(.login-gate) .header-context-actions{display:flex!important;flex-wrap:wrap!important}
+ body:not(.login-gate) .global-footer-groups{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+}
+@media (max-width:420px){
+ body:not(.login-gate) .main{padding:8px 7px!important}
+ body:not(.login-gate) .home-greeting{font-size:19px!important}
+ body:not(.login-gate) .quick-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:6px!important}
+ body:not(.login-gate) .hb-panel{min-height:340px!important;height:62dvh!important}
+}
 </style>
 </head>
 <body>
