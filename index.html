@@ -1478,6 +1478,63 @@ body.login-gate .provider-grid button span{min-width:0}
  .reference-user-controls{display:flex;justify-content:flex-start}
  .reference-header-right .header-local-widget{grid-template-columns:repeat(2,minmax(0,1fr))!important}
 }
+
+/* Corrected responsive identity header: consistent alignment in portrait and landscape. */
+#sectionOneHeader.reference-command-header{display:grid!important;grid-template-columns:minmax(0,1fr)!important;gap:12px!important;align-items:stretch!important;padding:12px 16px!important;background:linear-gradient(115deg,#071b34 0%,#0a3763 42%,#f7fbff 42.2%,#fff 100%)!important;color:inherit}
+#sectionOneHeader .reference-brand{display:grid!important;grid-template-columns:44px 58px minmax(0,1fr)!important;align-items:center!important;justify-content:initial!important;gap:10px!important;width:100%;min-width:0;grid-column:auto!important}
+#sectionOneHeader .reference-brand .mobile-menu{display:inline-grid!important;position:static!important;place-items:center;width:40px;height:40px;margin:0!important;grid-column:1;grid-row:1;background:#0b3763;color:#fff;border:1px solid #68c9f1;border-radius:9px}
+#sectionOneHeader .reference-shield{display:block!important;position:static!important;grid-column:2;grid-row:1;width:48px!important;height:48px!important;max-width:48px;object-fit:contain;margin:0!important;justify-self:start}
+#sectionOneHeader .command-brand-security{grid-column:3;grid-row:1;justify-self:end;align-self:center;margin:0!important;text-align:right;white-space:normal;font-size:clamp(9px,1.2vw,12px);line-height:1.3}
+#sectionOneHeader .reference-header-center{display:flex!important;flex-direction:column!important;gap:10px!important;grid-column:auto!important;min-width:0;width:100%}
+#sectionOneHeader .reference-product-brand{position:static!important;text-align:center!important;display:flex;flex-direction:column;align-items:center;gap:4px;min-width:0;width:100%;background:transparent!important}
+#sectionOneHeader .reference-product-brand strong{display:block;color:#fff!important;background:transparent!important;line-height:1.1}
+#sectionOneHeader .reference-product-brand strong em{color:#32b9ff!important}
+#sectionOneHeader .reference-product-brand strong b{color:#fff!important;background:transparent!important}
+#sectionOneHeader .command-user.reference-command-user{grid-column:auto!important;grid-row:auto!important;width:100%;min-width:0;box-sizing:border-box;display:flex!important;flex-direction:column!important;gap:10px!important}
+#sectionOneHeader .reference-command-user .command-user-top{display:grid!important;grid-template-columns:56px minmax(0,1fr) auto!important;align-items:start!important;gap:10px!important}
+#sectionOneHeader .reference-profile-details{display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:2px!important;margin-top:7px!important}
+#sectionOneHeader .reference-profile-details span{display:flex!important;flex-direction:row!important;align-items:baseline!important;justify-content:flex-start!important;gap:7px!important;width:100%!important;max-width:100%!important;box-sizing:border-box!important;margin:0!important;padding:2px 0!important;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;font-size:11px!important;line-height:1.4!important;color:#2f485d!important}
+#sectionOneHeader .reference-profile-details b{display:inline!important;flex:0 0 auto!important;font-size:11px!important;font-weight:800!important;color:#183f5a!important;margin:0!important}
+#sectionOneHeader .reference-profile-details strong{display:inline!important;flex:0 1 auto!important;min-width:0!important;font-size:11px!important;font-weight:600!important;color:#173b5c!important;overflow-wrap:anywhere!important}
+#sectionOneHeader .reference-user-controls{display:flex!important;flex-direction:row!important;align-items:center!important;justify-content:flex-start!important;flex-wrap:wrap!important;gap:10px!important}
+#sectionOneHeader .reference-user-controls .availability-control{display:flex!important;flex-direction:row!important;align-items:center!important;justify-content:flex-start!important;gap:8px!important;width:auto!important}
+#sectionOneHeader .reference-user-controls .availability-control select{width:auto!important;max-width:100%!important;min-width:130px!important;flex:0 1 auto!important}
+#sectionOneHeader .reference-user-controls .header-status-chip{margin-left:0!important}
+#sectionOneHeader .reference-header-right{display:none!important}
+#sectionOneHeader .profile-local-context,#sectionOneHeader .header-local-widget{width:100%;box-sizing:border-box}
+#sectionOneHeader .reference-command-user .header-local-widget{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:12px!important;margin:0!important;padding:10px 12px!important}
+#sectionOneHeader .reference-command-user .header-local-widget>div{min-width:0}
+#sectionOneHeader .reference-command-user .header-local-widget b{font-size:clamp(17px,2.4vw,25px)!important;overflow-wrap:anywhere}
+#sectionOneHeader .header-search-inline{display:block!important;width:100%!important;min-width:0!important;margin:0!important;padding:0!important}
+#sectionOneHeader .header-search-inline .global-search-inner{display:grid!important;grid-template-columns:auto minmax(0,1fr) auto!important;align-items:center!important;gap:10px!important;min-width:0!important}
+#sectionOneHeader .header-search-inline .global-search-input-wrap{min-width:0!important}
+#sectionOneHeader .header-search-inline input{width:100%!important;min-width:0!important;box-sizing:border-box!important}
+@media(max-width:760px){
+ #sectionOneHeader.reference-command-header{display:flex!important;flex-direction:column!important;align-items:stretch!important;padding:10px!important;gap:9px!important}
+ #sectionOneHeader .reference-brand{grid-template-columns:42px 48px minmax(0,1fr)!important;gap:8px!important}
+ #sectionOneHeader .reference-brand .mobile-menu{width:38px;height:38px}
+ #sectionOneHeader .reference-shield{width:42px!important;height:42px!important;max-width:42px}
+ #sectionOneHeader .command-brand-security{font-size:9px!important;max-width:150px}
+ #sectionOneHeader .reference-product-brand strong{font-size:clamp(20px,6vw,30px)!important}
+ #sectionOneHeader .reference-command-user{padding:10px!important}
+ #sectionOneHeader .reference-command-user .command-user-top{grid-template-columns:46px minmax(0,1fr) auto!important;gap:8px!important}
+ #sectionOneHeader .reference-command-user .header-avatar{width:44px!important;height:44px!important;min-width:44px!important}
+ #sectionOneHeader .reference-profile-details span{font-size:10px!important}
+ #sectionOneHeader .reference-profile-details b,#sectionOneHeader .reference-profile-details strong{font-size:10px!important}
+ #sectionOneHeader .reference-user-controls{display:flex!important;flex-wrap:wrap!important;justify-content:flex-start!important}
+ #sectionOneHeader .reference-user-controls .availability-control{width:auto!important;justify-content:flex-start!important}
+ #sectionOneHeader .reference-user-controls .availability-control select{min-width:120px!important;max-width:calc(100vw - 170px)!important}
+ #sectionOneHeader .reference-command-user .header-local-widget{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important;padding:9px!important}
+ #sectionOneHeader .header-search-inline .global-search-inner{grid-template-columns:auto minmax(0,1fr)!important;gap:8px!important}
+ #sectionOneHeader .header-search-inline .global-search-hint{display:none!important}
+}
+@media(orientation:landscape) and (max-width:900px){
+ #sectionOneHeader.reference-command-header{display:flex!important;flex-direction:column!important;gap:8px!important}
+ #sectionOneHeader .reference-brand{grid-template-columns:42px 48px minmax(0,1fr)!important}
+ #sectionOneHeader .reference-command-user .command-user-top{grid-template-columns:46px minmax(0,1fr) auto!important}
+ #sectionOneHeader .reference-profile-details{display:flex!important;flex-direction:column!important}
+ #sectionOneHeader .reference-user-controls{flex-direction:row!important;align-items:center!important}
+}
 </style>
 </head>
 <body>
