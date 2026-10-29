@@ -2288,7 +2288,44 @@ function setupVisualDesignMode(){
  identify();restore();
 }
 
-function init(){try{document.body.classList.add('login-gate');$('loginScreen').classList.add('active');applySettings();setupMovableNavigation();render();setupLoginGate();setupMovableModules();setupBuild015HeaderAndQuickPicks();startGlobalClock();updateCommandHeader()}catch(error){console.error('Command Center startup failed:',error);const main=$('main');if(main)main.innerHTML='<section class="card" style="padding:24px"><h1>Command Center could not finish loading</h1><p>The workspace caught a startup error instead of leaving a blank page. Refresh once; if it continues, clear this site\'s stored demo data in browser settings and reopen the deployment.</p><p class="small muted">Diagnostic: '+String(error&&error.message||error).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]))+'</p><button class="btn primary" onclick="location.reload()">Reload workspace</button><button class="btn" onclick="localStorage.removeItem(\'intellistack.frontend.v1\');location.reload()">Reset local demo data</button></section>'}}init();
+
+/* Build 057: remember user-resized dashboard panel heights in this browser. */
+function setupPersistentPanelSizing(){
+ const key='intellistack.dashboard.panel-heights.v1';
+ let saved={};
+ try{saved=JSON.parse(localStorage.getItem(key)||'{}')||{}}catch(e){saved={}}
+ const getPanels=()=>[
+  ...document.querySelectorAll('body:not(.login-gate) .command-info-strips>.reference-full-strip'),
+  document.querySelector('body:not(.login-gate) .home-main-column>.home-module[data-movable-module="bringwork"]>.card-body')
+ ].filter(Boolean);
+ const idFor=(el)=>el.matches('.home-module .card-body')?'bringwork-body':(el.getAttribute('aria-label')||el.className||'panel').toString().toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+ const apply=()=>{
+  getPanels().forEach(el=>{
+   const id=idFor(el),h=Number(saved[id]);
+   if(h>=70&&h<=1000)el.style.setProperty('height',h+'px','important');
+   if(el.dataset.persistSizeBound==='1')return;
+   el.dataset.persistSizeBound='1';
+   if(typeof ResizeObserver==='undefined')return;
+   let pending;
+   const observer=new ResizeObserver(entries=>{
+    const entry=entries[0];if(!entry)return;
+    const height=Math.round(entry.contentRect.height);
+    if(height<70||height>1000)return;
+    clearTimeout(pending);
+    pending=setTimeout(()=>{
+     try{saved[idFor(el)]=height;localStorage.setItem(key,JSON.stringify(saved))}catch(e){}
+    },250);
+   });
+   observer.observe(el);
+  });
+ };
+ if(document.body.classList.contains('login-gate'))return;
+ apply();
+ const mo=new MutationObserver(()=>{if(!document.body.classList.contains('login-gate'))apply()});
+ mo.observe(document.body,{attributes:true,attributeFilter:['class']});
+}
+
+function init(){try{document.body.classList.add('login-gate');$('loginScreen').classList.add('active');applySettings();setupMovableNavigation();render();setupLoginGate();setupMovableModules();setupBuild015HeaderAndQuickPicks();startGlobalClock();updateCommandHeader();setupPersistentPanelSizing()}catch(error){console.error('Command Center startup failed:',error);const main=$('main');if(main)main.innerHTML='<section class="card" style="padding:24px"><h1>Command Center could not finish loading</h1><p>The workspace caught a startup error instead of leaving a blank page. Refresh once; if it continues, clear this site\'s stored demo data in browser settings and reopen the deployment.</p><p class="small muted">Diagnostic: '+String(error&&error.message||error).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]))+'</p><button class="btn primary" onclick="location.reload()">Reload workspace</button><button class="btn" onclick="localStorage.removeItem(\'intellistack.frontend.v1\');location.reload()">Reset local demo data</button></section>'}}init();
 })(); 
 </script>
 </body>
