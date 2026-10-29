@@ -1257,6 +1257,91 @@ body:not(.login-gate) .main{background-color:#edf1f5;background-image:linear-gra
   .reference-header-center .header-search-inline{width:100%}
 }
 
+
+
+/* Build 046 — Colorful, touch-friendly Command Center foundation.
+   Preserve existing behavior; this layer upgrades presentation and focus states. */
+:root{
+  --blue:#155eef;--bright:#2878ff;--teal:#0797b2;--ink:#20364d;--muted:#657b90;
+  --line:#d5e2ef;--surface:#fff;--soft:#f4f8ff;--canvas:#f4f7fc;
+  --shadow:0 10px 28px rgba(37,66,108,.09);
+}
+body:not(.login-gate){background:linear-gradient(135deg,#f3f7ff 0%,#f1fbfa 45%,#fbf5ff 100%);}
+body:not(.login-gate) .main{background-color:transparent;background-image:none;}
+.topbar{background:rgba(255,255,255,.96);backdrop-filter:blur(14px);border-bottom-color:#dbe6f3;box-shadow:0 5px 20px rgba(35,66,108,.07);}
+.brandmark{background:linear-gradient(135deg,#2267ee 0%,#12a8bd 58%,#8b5cf6 100%);box-shadow:0 6px 16px rgba(34,103,238,.22);}
+.brand strong{color:#155eef;}
+.card{border-color:#dce6f2;box-shadow:0 8px 24px rgba(37,66,108,.07);transition:box-shadow .18s ease,border-color .18s ease,transform .18s ease;}
+.card:hover{border-color:#b8d1f2;box-shadow:0 12px 30px rgba(37,66,108,.11);}
+.card-head{background:linear-gradient(100deg,#f2f7ff,#fff 72%);border-bottom-color:#e3ebf5;border-radius:14px 14px 0 0;}
+.card-head h2,.card-head h3{color:#244361;}
+.btn,.top-action,.icon-btn{min-height:40px;border-color:#d5e2f0;transition:transform .15s ease,box-shadow .15s ease,background .15s ease;}
+.btn:hover,.top-action:hover,.icon-btn:hover{transform:translateY(-1px);box-shadow:0 5px 14px rgba(35,82,145,.12);}
+.btn.primary{background:linear-gradient(135deg,#2468ed,#128dc4);border-color:#2468ed;box-shadow:0 5px 13px rgba(36,104,237,.18);}
+.btn.soft{background:linear-gradient(135deg,#edf5ff,#eefbff);border-color:#d4e6fb;color:#1557bd;}
+.nav-btn{min-height:44px;border-radius:11px;gap:12px;padding:10px 12px;transition:background .16s ease,border-color .16s ease,transform .16s ease;}
+.nav-btn .ico{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:9px;background:#edf4ff;color:#2868dc;font-size:18px;flex:0 0 28px;}
+.nav-btn:hover{background:#f0f6ff;border-color:#dce9fb;transform:translateX(2px);}
+.nav-btn.active{background:linear-gradient(100deg,#e7f2ff,#effaff);border-color:#bcd8fb;box-shadow:inset 3px 0 #2878ff;color:#164fae;}
+/* Give menu icons a clear, varied palette while retaining their original glyphs. */
+.sidebar .nav-btn:nth-of-type(7n+1) .ico{background:#e8f2ff;color:#2265df}
+.sidebar .nav-btn:nth-of-type(7n+2) .ico{background:#e2faf1;color:#07845b}
+.sidebar .nav-btn:nth-of-type(7n+3) .ico{background:#f2eaff;color:#7945c6}
+.sidebar .nav-btn:nth-of-type(7n+4) .ico{background:#fff0df;color:#bd650b}
+.sidebar .nav-btn:nth-of-type(7n+5) .ico{background:#ffe9ed;color:#c13756}
+.sidebar .nav-btn:nth-of-type(7n+6) .ico{background:#e3f8fb;color:#087f9d}
+.sidebar .nav-btn:nth-of-type(7n) .ico{background:#fff5d9;color:#a87900}
+.side-label{color:#71849b;font-size:10px;letter-spacing:.14em;padding-top:15px;}
+.reference-command-header{background:linear-gradient(110deg,#f4f8ff 0%,#fff 42%,#f1fbff 100%);border-bottom-color:#d8e5f2;box-shadow:0 7px 24px rgba(37,66,108,.08);}
+.reference-brand .command-brand-security{color:#0d7658;font-weight:850;letter-spacing:.045em;}
+.reference-product-brand>span{color:#596e89;}
+.reference-product-brand>strong{color:#165de4;text-shadow:0 2px 0 rgba(255,255,255,.8);}
+.reference-product-brand strong b{background:linear-gradient(135deg,#155eef,#7b48d8);color:#fff;border-radius:7px;padding:2px 7px;box-shadow:0 3px 9px rgba(21,94,239,.18);}
+.reference-product-brand small{color:#314d70;}
+.reference-command-user{border-color:#d7e5f3;background:linear-gradient(135deg,#fff 0%,#f7fbff 70%,#f5fffc 100%);border-radius:16px;box-shadow:0 8px 22px rgba(35,66,108,.08);}
+.reference-command-user .home-greeting{color:#2055bd;}
+.reference-profile-details span{background:#f4f8ff;border-color:#dce8f5;border-radius:8px;}
+.reference-profile-details span:nth-child(3n+1){background:#eef6ff;border-color:#d8e8ff}
+.reference-profile-details span:nth-child(3n+2){background:#effbf6;border-color:#d5f0e4}
+.reference-profile-details span:nth-child(3n){background:#f8f1ff;border-color:#eadcff}
+.reference-header-right .header-local-widget{border-radius:15px;background:linear-gradient(145deg,#fff,#f1f8ff);border-color:#d6e5f4;}
+.reference-full-strip{background:transparent;border-bottom:1px solid #dce7f3;padding:13px 2px;}
+.reference-full-strip .header-widget-head>span{color:#204d9a;font-size:12px;letter-spacing:.09em;}
+.global-clock-location{border-color:#d8e6f5;border-radius:11px;background:linear-gradient(145deg,#fff,#f5f9ff);box-shadow:0 3px 10px rgba(35,66,108,.04);padding:9px 12px;min-height:42px;}
+.global-clock-location b{color:#155eef;}
+.header-department-news-item,.header-company-news-item{border-color:#d8e6f5;border-radius:12px;background:linear-gradient(145deg,#fff,#f7fbff);box-shadow:0 4px 12px rgba(35,66,108,.05);padding:12px;}
+.header-department-news-item b,.header-company-news-item b{color:#2055bd;}
+.home-quick .quick-grid{gap:10px;}
+.home-quick .quick-grid>*,.quick-pick,.quick-pick-button{border-radius:13px;}
+.workbench-grid{gap:11px;}
+.work-tile{border-radius:14px;box-shadow:0 4px 13px rgba(35,66,108,.05);transition:transform .16s ease,box-shadow .16s ease;}
+.work-tile:hover{transform:translateY(-2px);box-shadow:0 9px 20px rgba(35,66,108,.10);}
+.work-tile.red{border-top-color:#ef476f;background:linear-gradient(180deg,#fff7f8,#fff 45%);}
+.work-tile.blue{border-top-color:#3678f5;background:linear-gradient(180deg,#f2f7ff,#fff 45%);}
+.work-tile.cyan{border-top-color:#06a6c8;background:linear-gradient(180deg,#effcff,#fff 45%);}
+.work-tile.green{border-top-color:#16a36a;background:linear-gradient(180deg,#effcf5,#fff 45%);}
+.hb-panel{border-color:#d4e4f2;border-radius:17px;box-shadow:0 12px 30px rgba(35,66,108,.10);background:#fff;}
+.hb-head{background:linear-gradient(115deg,#eaf4ff 0%,#f5f0ff 55%,#edfffa 100%);border-bottom-color:#dce7f4;}
+.hb-avatar{background:linear-gradient(135deg,#1765ed,#12a8b8 60%,#8755dc);box-shadow:0 5px 13px rgba(30,103,216,.2);}
+.hb-messages{background:linear-gradient(180deg,#f5f9ff,#f7fbff);}
+.hb-message{border-radius:14px;border-color:#dce8f5;box-shadow:0 2px 7px rgba(35,66,108,.035);}
+.hb-message.user{background:linear-gradient(135deg,#2167ed,#118fbd);border-color:#2167ed;}
+input,select,textarea{border-color:#d4e1ef;border-radius:9px;}
+input:focus,select:focus,textarea:focus{border-color:#6ea7f8;box-shadow:0 0 0 3px rgba(40,120,255,.12);}
+button,select,a{-webkit-tap-highlight-color:transparent;}
+@media(max-width:760px){
+  .reference-command-header{padding:12px;gap:12px;}
+  .main{padding:14px;}
+  .reference-full-strip{padding:12px 0;}
+  .global-clock-locations,.header-department-news-list,.header-company-news-list{padding-bottom:8px;scrollbar-width:thin;}
+  .nav-btn{min-height:48px;}
+  .btn,.top-action,.icon-btn{min-height:44px;}
+  .card{border-radius:13px;}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important;}
+}
+
 </style>
 </head>
 <body>
