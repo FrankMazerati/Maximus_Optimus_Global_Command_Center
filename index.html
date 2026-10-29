@@ -1837,9 +1837,25 @@ body:not(.login-gate) .home-main-column>.home-module[data-movable-module="bringw
  body:not(.login-gate) .quick-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:6px!important}
  body:not(.login-gate) .hb-panel{min-height:340px!important;height:62dvh!important}
 }
+
+/* Build 060: login is an exclusive screen; never render the signed-in shell beneath it. */
+html:has(body.login-gate),body.login-gate{min-height:100%;height:100%;overflow-x:hidden}
+body.login-gate .topbar,
+body.login-gate .layout,
+body.login-gate #main,
+body.login-gate #sectionOneHeader,
+body.login-gate #modalBackdrop,
+body.login-gate #toast,
+body.login-gate #helpBuddyLauncher,
+body.login-gate .hb-panel,
+body.login-gate .home-top,
+body.login-gate .command-info-strips,
+body.login-gate .global-footer-groups{display:none!important}
+body.login-gate #loginScreen{display:block!important;position:relative;min-height:100dvh;height:auto;overflow:visible}
+body.login-gate #loginScreen~*{display:none!important}
 </style>
 </head>
-<body>
+<body class="login-gate">
 <section id="loginScreen" class="login-screen" aria-label="IntelliStack secure sign in"><div class="login-banner"><div class="login-brand-row"><div class="login-company-lockup"><b>INTELLISTACK SYSTEMS</b><span class="login-presents">presents...</span></div></div><div class="login-hero"><div class="login-copy"><div class="login-eyebrow"><span class="login-maximus">Maximus</span> <span class="login-optimus">Optimus</span></div><h1>GLOBAL COMMAND CENTER</h1><p class="approved-brand-slogan">One <span class="adaptive-accent">World</span>. One <span class="adaptive-accent">System</span>. One Intelligent <span class="adaptive-accent">Network</span>.</p></div><div class="login-shield"><img src="./shield.jpg" alt="IntelliStack Systems shield"></div></div><div class="login-tagline-block"><p class="login-top-tagline">See <span class="adaptive-accent">Everything</span>. Connect <span class="adaptive-accent">Everything</span>. Work <span class="adaptive-accent">Smarter</span>.</p></div></div><div class="login-content"><section class="login-panel"><h2>Select Your Login Environment</h2><p>Choose your access type to continue to IntelliStack Systems.</p><div class="environment-options"><button type="button" class="environment active" data-environment="employee"><span>◆</span><b>IntelliStack Systems Login</b><small>Blue · Parent company access</small></button><button type="button" class="environment" data-environment="business"><span>▦</span><b>Business, Organization, Employee &amp; Contractor</b><small>Purple · Organizations, hiring &amp; job seekers</small></button><button type="button" class="environment" data-environment="tenant"><span>♧</span><b>Tenant Login</b><small>Green · Tenant-specific access</small></button></div><div class="login-columns"><form id="loginForm" class="login-form"><h3>Sign In With Your Verified Provider</h3><p>Use your organization's identity provider for secure access.</p><label for="loginEmail">Email address</label><input id="loginEmail" type="email" autocomplete="username" placeholder="you@company.com"><label for="loginPassword">Password</label><input id="loginPassword" type="password" autocomplete="current-password" placeholder="Enter your password"><div class="login-form-options"><label class="remember-label"><input type="checkbox" id="rememberLogin"> Remember this device</label><button type="button" class="text-button" id="forgotLogin">Forgot password?</button></div><button class="login-submit" type="submit">Sign In Securely</button><p class="login-message" id="loginMessage" aria-live="polite"></p><button class="login-preview" type="button" id="quickPreviewBtn">Quick Access — Preview Command Center</button><small class="preview-warning">Preview only. Quick Access does not authenticate or grant real system access.</small></form><div class="provider-panel"><h3>Verified Identity Providers</h3><p>Provider buttons are visual placeholders until configured.</p><div class="provider-grid">
 <button type="button" data-provider="Google Workspace"><img src="https://cdn.simpleicons.org/googleworkspace/FFFFFF" alt="" aria-hidden="true"><span>Google Workspace</span></button>
 <button type="button" data-provider="Microsoft 365"><img src="https://cdn.simpleicons.org/microsoft365/FFFFFF" alt="" aria-hidden="true"><span>Microsoft 365</span></button>
