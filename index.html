@@ -1281,6 +1281,25 @@ body.login-gate .environment small{font-size:10px!important;line-height:1.35!imp
 body.login-gate .login-panel h2{font-size:clamp(20px,2vw,28px)!important;letter-spacing:-.025em!important}
 @media(max-width:760px){body.login-gate .environment{min-height:68px!important}}
 
+
+/* Login background: use the repository's uploaded homepagephoto.png asset behind the existing functional login UI. */
+body.login-gate .login-banner{
+  background-color:#020817!important;
+  background-image:linear-gradient(180deg,rgba(2,10,24,.28),rgba(2,10,24,.64)),url("./homepagephoto.png")!important;
+  background-size:cover!important;
+  background-position:center 44%!important;
+  background-repeat:no-repeat!important;
+}
+body.login-gate .login-brand-row,
+body.login-gate .login-hero,
+body.login-gate .login-tagline-block{
+  background-color:transparent!important;
+  background-image:none!important;
+}
+@media(max-width:760px){
+  body.login-gate .login-banner{background-position:center 42%!important}
+}
+
 </style>
 </head>
 <body>
