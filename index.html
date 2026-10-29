@@ -1430,6 +1430,54 @@ body.login-gate .provider-grid button span{min-width:0}
  .reference-command-user .header-local-widget b{font-size:16px}
  .header-department-news-list,.header-company-news-list{grid-template-columns:repeat(3,minmax(0,1fr))}
 }
+
+/* Responsive header: stacked identity details in portrait; controlled reflow in landscape. */
+.reference-command-header{grid-template-columns:minmax(200px,.8fr) minmax(0,1.6fr) minmax(180px,.7fr);gap:12px;align-items:start}
+.reference-header-center{display:flex;flex-direction:column;gap:9px;min-width:0}
+.reference-command-user{min-width:0}
+.reference-profile-details{display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:4px!important}
+.reference-profile-details span{display:grid!important;grid-template-columns:minmax(100px,max-content) minmax(0,1fr);gap:6px!important;max-width:100%;overflow-wrap:anywhere}
+.reference-profile-details strong{min-width:0;overflow-wrap:anywhere}
+.reference-user-controls{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.reference-user-controls .availability-control{display:flex;align-items:center;justify-content:flex-start;gap:8px;min-width:0}
+.reference-user-controls .availability-control select{width:auto;max-width:100%;min-width:130px}
+.reference-user-controls .header-status-chip{margin-left:auto}
+.reference-command-user .header-search-inline{width:100%;min-width:0;margin-top:10px!important}
+.reference-command-user .header-search-inline .global-search-inner{display:flex;align-items:center;gap:10px;min-width:0}
+.reference-command-user .global-search-input-wrap{flex:1;min-width:0}
+.reference-command-user .header-search-inline input{width:100%;min-width:0}
+.reference-header-right{min-width:0}
+.reference-header-right .header-local-widget{grid-template-columns:1fr 1fr!important;gap:10px}
+@media(max-width:1100px){
+ .reference-command-header{grid-template-columns:minmax(0,1fr) minmax(0,1.5fr);gap:10px;padding:10px 12px}
+ .reference-brand{grid-column:1/-1;display:flex;align-items:center;gap:10px}
+ .reference-header-center,.reference-header-right{grid-column:1/-1}
+ .reference-header-right{padding-top:0}
+ .reference-header-right .header-local-widget{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+}
+@media(max-width:760px){
+ .reference-command-header{display:flex;flex-direction:column;align-items:stretch;gap:10px;padding:10px}
+ .reference-brand,.reference-header-center,.reference-header-right{width:100%;grid-column:auto}
+ .reference-command-user{padding:10px}
+ .reference-command-user .command-user-top{align-items:flex-start}
+ .reference-command-user .header-avatar{width:48px;height:48px;min-width:48px}
+ .reference-profile-details span{grid-template-columns:minmax(96px,auto) minmax(0,1fr);font-size:10px}
+ .reference-user-controls{display:grid;grid-template-columns:minmax(0,1fr);align-items:stretch}
+ .reference-user-controls .availability-control{width:100%;justify-content:space-between}
+ .reference-user-controls .availability-control select{flex:1;width:1%;min-width:0}
+ .reference-user-controls .header-status-chip{margin-left:0;justify-self:start}
+ .reference-header-right .header-local-widget{grid-template-columns:repeat(2,minmax(0,1fr))!important;padding:10px}
+ .reference-header-right .header-local-widget b{font-size:clamp(18px,5vw,24px)}
+ .reference-command-user .header-search-inline .global-search-hint{display:none}
+}
+@media(orientation:landscape) and (max-width:900px){
+ .reference-command-header{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:10px;align-items:start}
+ .reference-brand,.reference-header-center,.reference-header-right{grid-column:1/-1}
+ .reference-profile-details{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr));gap:5px 12px!important}
+ .reference-profile-details span{grid-template-columns:minmax(88px,max-content) minmax(0,1fr);font-size:10px}
+ .reference-user-controls{display:flex;justify-content:flex-start}
+ .reference-header-right .header-local-widget{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+}
 </style>
 </head>
 <body>
@@ -1520,9 +1568,8 @@ body.login-gate .provider-grid button span{min-width:0}
           <div class="header-weather"><span>WEATHER</span><b id="headerWeather">Loading…</b><small id="headerWeatherDetail">Local weather</small></div>
         </div>
       </aside>
-    </div>
     
-<section class="global-search-center header-search-inline" aria-label="Global search">
+      <section class="global-search-center header-search-inline" aria-label="Global search">
   <div class="global-search-inner">
     <span class="global-search-icon" aria-hidden="true">⌕</span>
     <div class="global-search-input-wrap">
@@ -1533,6 +1580,9 @@ body.login-gate .provider-grid button span{min-width:0}
   </div>
   <div id="globalSearchResults" class="global-search-results" hidden role="region" aria-label="Global search results"></div>
 </section>
+    </div>
+    
+
   </div>
 
 </header>
