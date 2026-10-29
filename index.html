@@ -2349,7 +2349,7 @@ function setupHelpBuddyAccess(){
  });
 }
 
-function setupPersistentPanelSizing();setupHelpBuddyAccess(){
+function setupPersistentPanelSizing(){
  const key='intellistack.dashboard.panel-heights.v1';
  let saved={};
  try{saved=JSON.parse(localStorage.getItem(key)||'{}')||{}}catch(e){saved={}}
@@ -2384,7 +2384,7 @@ function setupPersistentPanelSizing();setupHelpBuddyAccess(){
  mo.observe(document.body,{attributes:true,attributeFilter:['class']});
 }
 
-function init(){try{document.body.classList.add('login-gate');$('loginScreen').classList.add('active');applySettings();setupMovableNavigation();render();setupLoginGate();setupMovableModules();setupBuild015HeaderAndQuickPicks();startGlobalClock();updateCommandHeader();setupPersistentPanelSizing()}catch(error){console.error('Command Center startup failed:',error);const main=$('main');if(main)main.innerHTML='<section class="card" style="padding:24px"><h1>Command Center could not finish loading</h1><p>The workspace caught a startup error instead of leaving a blank page. Refresh once; if it continues, clear this site\'s stored demo data in browser settings and reopen the deployment.</p><p class="small muted">Diagnostic: '+String(error&&error.message||error).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]))+'</p><button class="btn primary" onclick="location.reload()">Reload workspace</button><button class="btn" onclick="localStorage.removeItem(\'intellistack.frontend.v1\');location.reload()">Reset local demo data</button></section>'}}init();
+function init(){try{document.body.classList.add('login-gate');$('loginScreen').classList.add('active');applySettings();setupMovableNavigation();render();setupLoginGate();setupMovableModules();setupBuild015HeaderAndQuickPicks();startGlobalClock();updateCommandHeader();setupPersistentPanelSizing();setupHelpBuddyAccess()}catch(error){console.error('Command Center startup failed:',error);const main=$('main');if(main)main.innerHTML='<section class="card" style="padding:24px"><h1>Command Center could not finish loading</h1><p>The workspace caught a startup error instead of leaving a blank page. Refresh once; if it continues, clear this site\'s stored demo data in browser settings and reopen the deployment.</p><p class="small muted">Diagnostic: '+String(error&&error.message||error).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]))+'</p><button class="btn primary" onclick="location.reload()">Reload workspace</button><button class="btn" onclick="localStorage.removeItem(\'intellistack.frontend.v1\');location.reload()">Reset local demo data</button></section>'}}init();
 })(); 
 </script>
 </body>
