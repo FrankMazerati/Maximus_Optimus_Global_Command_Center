@@ -1745,6 +1745,39 @@ body:not(.login-gate) .home-main-column>.home-module[data-movable-module="bringw
  .login-footer{grid-template-columns:repeat(2,minmax(0,1fr))!important}
 }
 
+
+/* Build 058: make Help Buddy discoverable and reachable on every signed-in screen. */
+#helpBuddyLauncher{
+ position:fixed!important;right:14px!important;bottom:14px!important;z-index:12000!important;
+ display:none;align-items:center;gap:8px;padding:11px 15px!important;
+ border:2px solid #fff!important;border-radius:999px!important;
+ background:linear-gradient(120deg,#0864bd,#11a9c9)!important;color:#fff!important;
+ box-shadow:0 6px 24px #0b365566!important;font-weight:850!important;
+}
+#helpBuddyLauncher .hb-launcher-icon{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:#ffffff2b;font-size:15px}
+#helpBuddyLauncher .hb-launcher-label{font-size:12px}
+#helpBuddyClose{display:none}
+@media(max-width:760px){
+ body:not(.login-gate) #helpBuddyLauncher{display:flex!important}
+ body:not(.login-gate) .home-top{height:auto!important;max-height:none!important;overflow:visible!important;grid-template-columns:minmax(0,1fr)!important}
+ body:not(.login-gate) .home-main-column{height:auto!important;max-height:none!important;overflow:visible!important}
+ body:not(.login-gate) .hb-panel{
+  display:none!important;position:fixed!important;z-index:11999!important;
+  left:8px!important;right:8px!important;bottom:72px!important;top:auto!important;
+  width:auto!important;height:min(72dvh,620px)!important;max-height:72dvh!important;
+  min-height:340px!important;border-radius:16px!important;
+  box-shadow:0 16px 55px #06284455!important;overflow:hidden!important;
+ }
+ body:not(.login-gate) .hb-panel.hb-mobile-open{display:flex!important}
+ body:not(.login-gate) .hb-panel.hb-mobile-open #helpBuddyClose{display:inline-flex!important;margin-left:auto!important}
+ body:not(.login-gate) .hb-panel .hb-messages{min-height:0!important;flex:1!important;overflow-y:auto!important}
+ body:not(.login-gate) .hb-panel .hb-extra-modules{max-height:100px!important;overflow-y:auto!important}
+}
+@media(min-width:761px){
+ body:not(.login-gate) .home-top{grid-template-columns:minmax(0,1fr) minmax(285px,340px)!important;height:auto!important;overflow:visible!important}
+ body:not(.login-gate) .hb-panel{display:flex!important;position:sticky!important;top:12px!important;min-height:520px!important;max-height:calc(100dvh - 24px)!important}
+}
+
 </style>
 </head>
 <body>
@@ -2290,7 +2323,33 @@ function setupVisualDesignMode(){
 
 
 /* Build 057: remember user-resized dashboard panel heights in this browser. */
-function setupPersistentPanelSizing(){
+
+function setupHelpBuddyAccess(){
+ if(document.getElementById('helpBuddyLauncher'))return;
+ const launcher=document.createElement('button');
+ launcher.id='helpBuddyLauncher';launcher.type='button';
+ launcher.setAttribute('aria-label','Open Help Buddy assistant');
+ launcher.innerHTML='<span class="hb-launcher-icon">HB</span><span class="hb-launcher-label">Help Buddy</span>';
+ document.body.appendChild(launcher);
+ const panel=document.querySelector('.hb-panel');
+ if(!panel)return;
+ const head=panel.querySelector('.hb-head');
+ if(head&&!head.querySelector('#helpBuddyClose')){
+  const close=document.createElement('button');
+  close.id='helpBuddyClose';close.type='button';close.className='icon-btn';
+  close.textContent='✕';close.setAttribute('aria-label','Close Help Buddy');
+  close.addEventListener('click',()=>{panel.classList.remove('hb-mobile-open');launcher.setAttribute('aria-expanded','false')});
+  head.appendChild(close);
+ }
+ launcher.setAttribute('aria-expanded','false');
+ launcher.addEventListener('click',()=>{
+  const open=panel.classList.toggle('hb-mobile-open');
+  launcher.setAttribute('aria-expanded',String(open));
+  if(open){const draft=panel.querySelector('#hbDraft');if(draft)draft.focus({preventScroll:true})}
+ });
+}
+
+function setupPersistentPanelSizing();setupHelpBuddyAccess(){
  const key='intellistack.dashboard.panel-heights.v1';
  let saved={};
  try{saved=JSON.parse(localStorage.getItem(key)||'{}')||{}}catch(e){saved={}}
