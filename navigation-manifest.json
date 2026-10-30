@@ -240,6 +240,21 @@
         "revoke or expire access",
         "preserve source references and provenance"
       ]
-    }
+    },
+    "hamburgerEntry": {
+      "label": "Modify My Help Buddy",
+      "placement": "immediately below HelpBuddy in Service Operations",
+      "opens": "dedicated character customization pop-out",
+      "saveBehavior": "persist personal character preferences locally in preview and reflect the selected character in the right-side persistent Help Buddy panel"
+    },
+    "previewAcceptanceCriteria": [
+      "Open hamburger while Command Center dashboard is visible.",
+      "Select Modify My Help Buddy immediately beneath HelpBuddy.",
+      "Dedicated customization pop-out opens without replacing the dashboard.",
+      "Change character name, presentation, tone, outfit, voice style, and expression.",
+      "Save and close the pop-out.",
+      "Close hamburger and verify the same selected character is reflected in the right-side Help Buddy panel.",
+      "Refresh preview and verify local character preference persists."
+    ]
   }
 }
