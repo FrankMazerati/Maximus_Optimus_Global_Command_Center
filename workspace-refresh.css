@@ -21,3 +21,28 @@
 @keyframes hb-think { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-2px)} }
 @keyframes hb-work { from{transform:scale(1)} to{transform:scale(1.045)} }
 @media (prefers-reduced-motion:reduce) { .hb-avatar { animation:none !important; transition:none !important; } }
+
+
+/* Build 059 — Help Buddy modular workspaces */
+.hb-module-tabs{display:flex;gap:5px;padding:8px 9px;overflow-x:auto;flex:0 0 auto;border-bottom:1px solid #dcebf4;background:#f8fcff;scrollbar-width:thin}
+.hb-tab{flex:0 0 auto;border:1px solid #d1e2ed;background:#fff;color:#315a75;border-radius:8px;padding:7px 9px;font-size:10px;font-weight:750;white-space:nowrap}
+.hb-tab.active{background:#0c68b7;border-color:#0c68b7;color:#fff}
+.hb-tab-panel{display:none;flex:1;min-height:0;overflow:auto;background:#f7fbff}
+.hb-tab-panel.active{display:flex;flex-direction:column}
+.hb-panel-content{padding:13px;overflow:auto}
+.hb-panel-content h3{font-size:14px;margin:0 0 5px;color:#174d75}
+.hb-empty-state{border:1px dashed #c4d9e8;background:#fff;border-radius:9px;padding:12px;color:#617c8e;font-size:11px;line-height:1.45;margin:10px 0}
+.hb-notes{width:100%;min-height:170px;resize:vertical;border:1px solid #cbdfea;border-radius:9px;padding:10px;font:inherit;font-size:12px;background:#fff;margin:10px 0}
+.hb-context-card{background:#fff;border:1px solid #d8e7f0;border-radius:9px;padding:10px;margin:10px 0;font-size:11px}
+.hb-context-card select{width:100%;margin:8px 0}
+.hb-step-list{padding-left:22px;margin:12px 0;display:grid;gap:12px;font-size:11px}
+.hb-step-list label,.hb-check{display:flex;gap:8px;align-items:flex-start}
+.hb-step-list input,.hb-check input{margin-top:2px;accent-color:#0c68b7}
+.hb-check{padding:10px 0;border-bottom:1px solid #e3edf4;font-size:11px}
+.hb-progress{font-size:10px;color:#527084;margin-top:12px}
+.hb-progress>div{height:7px;border-radius:8px;background:#e0ebf2;overflow:hidden;margin-top:5px}
+.hb-progress i{display:block;height:100%;width:0;background:#16a36a;transition:width .2s ease}
+.hb-connector-row{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 0;border-bottom:1px solid #e2edf4;font-size:11px}
+.hb-connector-row span{display:grid;gap:3px}.hb-connector-row small{color:#6b8292;font-size:9px}
+.hb-connector-row button{border:1px solid #cbdfea;background:#fff;color:#175b8a;border-radius:7px;padding:6px 9px;font-size:10px}
+@media(max-width:600px){.hb-module-tabs{padding:7px}.hb-tab{padding:7px 8px}}
