@@ -109,6 +109,10 @@ jobs:
               'Help Buddy has dedicated workspace tabs': ['conversation','attachments','notes','workflow','checklists','knowledge','recognition','activity','connectors'].every(k => html.includes('data-hb-tab="'+k+'"')),
               'workflow checklist progress persists': html.includes('intellistack.helpbuddy.workflow.') && html.includes('hbWorkflowProgressBar'),
               'ticket context is shared with knowledge panel': html.includes('hbKnowledgeContext') && html.includes('hbTicketContext'),
+              'Help Buddy notes persist locally': html.includes('intellistack.helpbuddy.notes.v1'),
+              'Help Buddy has dedicated workspace tabs': ['conversation','attachments','notes','workflow','checklists','knowledge','recognition','activity','connectors'].every(k => html.includes('data-hb-tab="'+k+'"')),
+              'workflow checklist progress persists': html.includes('intellistack.helpbuddy.workflow.') && html.includes('hbWorkflowProgressBar'),
+              'ticket context is shared with knowledge panel': html.includes('hbKnowledgeContext') && html.includes('hbTicketContext'),
               'Help Buddy notes persist locally': html.includes('intellistack.helpbuddy.notes.v1')
           }
           failed = [label for label, ok in checks.items() if not ok]
