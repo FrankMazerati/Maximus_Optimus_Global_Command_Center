@@ -1,9 +1,9 @@
 {
   "application": "Maximus Optimus Global Command Center",
   "product": "IntelliStack Systems",
-  "applicationVersion": "0.58.0",
-  "productBuild": "058",
-  "releaseLabel": "Build 058 — Unified Workspace & Login Refresh",
+  "applicationVersion": "0.59.0",
+  "productBuild": "059",
+  "releaseLabel": "Build 059 — Help Buddy Modular Workspaces",
   "status": "feature branch committed; pull-request validation pending",
   "canonical": true,
   "sourceOfTruth": "app-version.json",
@@ -42,7 +42,8 @@
     "visualDesignMode": "In-page design mode provides component selection, HTML drag/drop reordering within the same parent, width/font/padding/radius sliders, text/background/border color controls, local browser persistence, and reset controls. User styling is local to the browser and does not publish back to source files.",
     "login": "Restored photo-led login composition with dark global operations background, stronger masthead hierarchy, responsive form/provider layout, white footer, and corrected environment accent tokens. Visual browser verification pending.",
     "environmentColors": "Employee #00D4FF; Business/Organization #8A2BE2; Tenant #10B981. Maximus remains blue and Optimus white.",
-    "responsiveScrolling": "Build 057 adds explicit tablet portrait and narrow landscape scroll containment; physical-device visual verification pending."
+    "responsiveScrolling": "Build 057 adds explicit tablet portrait and narrow landscape scroll containment; physical-device visual verification pending.",
+    "helpBuddy": "Conversation, attachments, notes, Workflow Companion, checklists, knowledge base, recognition ledger, activity, and connector tabs added; notes and checklist progress persist locally; ticket-to-KB mapping awaits backend relationship data."
   },
   "notes": "Build 055 is a visual refinement of the login and signed-in header. Browser visual verification is still required after publication."
 }
