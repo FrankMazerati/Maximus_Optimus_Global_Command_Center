@@ -46,3 +46,10 @@
 .hb-connector-row span{display:grid;gap:3px}.hb-connector-row small{color:#6b8292;font-size:9px}
 .hb-connector-row button{border:1px solid #cbdfea;background:#fff;color:#175b8a;border-radius:7px;padding:6px 9px;font-size:10px}
 @media(max-width:600px){.hb-module-tabs{padding:7px}.hb-tab{padding:7px 8px}}
+
+
+/* Build 059 — signature and personal ticket workspace */
+#hbSignatureCanvas{display:block;width:100%;height:130px;background:#fff;border:1px dashed #8eafc3;border-radius:8px;touch-action:none;margin:8px 0 12px}
+.hb-ticket-history{display:block;width:100%;text-align:left;padding:10px;border:0;border-bottom:1px solid #e2edf4;background:#fff;color:#23465f;font-size:11px}
+.hb-ticket-history small{display:block;color:#70889a;margin-top:3px}
+#hbRecognitionForm label{display:block;font-size:11px;font-weight:700;margin:8px 0 4px}
