@@ -95,30 +95,33 @@ jobs:
         run: |
           python3 - <<'PY'
           from pathlib import Path
+          import sys
           html = Path('index.html').read_text(encoding='utf-8')
           login = Path('login.html').read_text(encoding='utf-8')
           css = Path('workspace-refresh.css').read_text(encoding='utf-8')
           checks = {
               'workspace stylesheet linked': 'workspace-refresh.css' in html,
-              'HelpBuddy remains a persistent dashboard region': 'aria-label="HelpBuddy assistant panel"' in html,
-              'Bring the Work to You home section retained': 'Bring the Work to You' in html,
-              'Quick Picks remain configurable': 'add-quickpick' in html,
-              'login uses existing homepage artwork': 'homepagephoto.png' in login,
-              'tablet portrait keeps both workspace columns': '@media (min-width:601px) and (max-width:900px)' in css,
-              'reduced motion is respected': 'prefers-reduced-motion:reduce' in css,
-              'Help Buddy has dedicated workspace tabs': all(k in html for k in ['conversation','attachments','notes','workflow','checklists','knowledge','recognition','activity','connectors']),
-              'workflow checklist progress persists': html.includes('intellistack.helpbuddy.workflow.') && html.includes('hbWorkflowProgressBar'),
-              'ticket context is shared with knowledge panel': html.includes('hbKnowledgeContext') && html.includes('hbTicketContext'),
-              'Help Buddy notes persist locally': html.includes('intellistack.helpbuddy.notes.v1'),
-              'Help Buddy has dedicated workspace tabs': ['conversation','attachments','notes','workflow','checklists','knowledge','recognition','activity','connectors'].every(k => html.includes('data-hb-tab="'+k+'"')),
-              'workflow checklist progress persists': html.includes('intellistack.helpbuddy.workflow.') && html.includes('hbWorkflowProgressBar'),
-              'ticket context is shared with knowledge panel': html.includes('hbKnowledgeContext') && html.includes('hbTicketContext'),
-              'Help Buddy notes persist locally': html.includes('intellistack.helpbuddy.notes.v1')
+              'persistent HelpBuddy rail': 'aria-label="HelpBuddy assistant panel"' in html,
+              'Bring the Work to You retained': 'Bring the Work to You' in html,
+              'Quick Picks add action retained': 'add-quickpick' in html,
+              'login uses approved homepage artwork': 'homepagephoto.png' in login,
+              'tablet portrait layout rule': '@media (min-width:601px) and (max-width:900px)' in css,
+              'reduced motion rule': 'prefers-reduced-motion:reduce' in css,
+              'HelpBuddy modular tabs': all(('data-hb-tab="' + key + '"') in html for key in ['conversation','attachments','notes','workflow','checklists','knowledge','recognition','activity','connectors']),
+              'workflow checklist persistence': 'intellistack.helpbuddy.workflow.' in html and 'hbWorkflowProgressBar' in html,
+              'ticket and knowledge context': 'hbKnowledgeContext' in html and 'hbTicketContext' in html,
+              'HelpBuddy local notes persistence': 'intellistack.helpbuddy.notes.v1' in html,
+              'Active Directory workspace': 'data-ad-tab=' in html and 'adPeopleSearch' in html,
+              'preview role selector': 'previewRole' in html,
+              'no fabricated notification badge': 'headerNotificationCount' not in html
           }
-          failed = [label for label, ok in checks.items() if not ok]
+          failed = []
           for label, ok in checks.items():
               print(('PASS ' if ok else 'FAIL ') + label)
+              if not ok:
+                  failed.append(label)
           if failed:
+              print('Validation failed: ' + ', '.join(failed), file=sys.stderr)
               raise SystemExit(1)
           PY
 
