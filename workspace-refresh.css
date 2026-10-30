@@ -1,0 +1,23 @@
+/* Build 058 — unified workspace layout refinements */
+@media (min-width:601px) and (max-width:900px) {
+  .home-top { grid-template-columns:minmax(0,1fr) minmax(210px,34%) !important; gap:8px !important; align-items:stretch; }
+  .home-main-column { min-height:0; max-height:calc(100dvh - 205px); overflow-y:auto; overscroll-behavior:contain; }
+  .hb-panel { position:sticky !important; top:8px !important; height:calc(100dvh - 205px); max-height:calc(100dvh - 205px); min-height:0; }
+  .hb-messages { min-height:0; }
+  .quick-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+}
+@media (max-width:600px) {
+  .home-top { grid-template-columns:minmax(0,1fr) !important; }
+  .home-main-column { max-height:none; height:auto; overflow:visible; }
+  .hb-panel { position:relative !important; top:auto !important; height:60vh; max-height:60vh; min-height:340px; }
+}
+.home-module .card-head { min-height:48px; }
+.home-quick .quick-card { min-height:62px; }
+.hb-avatar { position:relative; transition:transform .2s ease,filter .2s ease; }
+.hb-avatar[data-state="thinking"] { filter:brightness(1.12); animation:hb-think 1.4s ease-in-out infinite; }
+.hb-avatar[data-state="working"] { filter:saturate(1.35); animation:hb-work .9s ease-in-out infinite alternate; }
+.hb-avatar[data-state="success"] { filter:hue-rotate(35deg) brightness(1.08); }
+.hb-avatar[data-state="warning"] { filter:hue-rotate(20deg) saturate(.85); }
+@keyframes hb-think { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-2px)} }
+@keyframes hb-work { from{transform:scale(1)} to{transform:scale(1.045)} }
+@media (prefers-reduced-motion:reduce) { .hb-avatar { animation:none !important; transition:none !important; } }
