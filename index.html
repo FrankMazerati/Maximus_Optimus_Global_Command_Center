@@ -1331,6 +1331,20 @@ body:not(.login-gate) .main{background-color:#edf1f5;background-image:linear-gra
  .reference-command-header .reference-header-right .header-weather{border-top:0;border-left:1px solid #dcebf3;padding:0 0 0 10px;grid-template-columns:1fr}
 }
 
+
+/* Build 061: top-right global communications, alerts, settings and sign-out actions */
+.reference-command-header .reference-header-right{display:flex!important;flex-direction:column;align-items:stretch!important;justify-content:center!important;gap:9px}
+.reference-global-actions{display:flex;align-items:center;justify-content:flex-end;gap:6px;flex-wrap:wrap}
+.reference-action{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:5px;min-height:34px;padding:5px 9px;border:1px solid #c5dfed;border-radius:9px;background:#fff;color:#24536f;font:inherit;cursor:pointer;box-shadow:0 2px 7px rgba(12,83,126,.06)}
+.reference-action>span{font-size:15px;line-height:1}
+.reference-action>small{font-size:9px;font-weight:850;white-space:nowrap}
+.reference-action:hover,.reference-action:focus-visible{background:#eaf7ff;border-color:#75bfe3;outline:2px solid #8bd2f2;outline-offset:1px}
+.reference-notification-action i{position:absolute;top:-6px;right:-5px;min-width:16px;height:16px;padding:0 4px;border-radius:20px;background:#e34c59;color:#fff;font-size:9px;font-style:normal;font-weight:950;display:grid;place-items:center;border:2px solid #fff}
+.reference-logout-action{color:#a3343b;border-color:#efc9c9;background:#fffafa}
+.reference-logout-action:hover{background:#fff0f0;border-color:#e6a6aa}
+@media(max-width:900px){.reference-command-header .reference-header-right{gap:7px}.reference-global-actions{gap:4px}.reference-action{min-height:30px;padding:4px 7px}}
+@media(max-width:600px){.reference-global-actions{justify-content:space-between}.reference-action{flex:1;min-width:0}.reference-action>small{font-size:8px}.reference-command-header .reference-header-right .header-local-widget{margin-top:1px}}
+
 </style>
 <link rel="stylesheet" href="./workspace-refresh.css">
 </head>
@@ -1388,7 +1402,13 @@ body:not(.login-gate) .main{background-color:#edf1f5;background-image:linear-gra
   <div id="globalSearchResults" class="global-search-results" hidden role="region" aria-label="Global search results"></div>
 </section>
   </div>
-  <aside class="reference-header-right" aria-label="Local time, date and weather">
+  <aside class="reference-header-right" aria-label="Global actions, local time, date and weather">
+    <nav class="reference-global-actions" aria-label="Quick actions">
+      <button class="reference-action" id="headerMessagesBtn" type="button" aria-label="Open IntelliChat" title="Messages"><span aria-hidden="true">✉</span><small>Messages</small></button>
+      <button class="reference-action reference-notification-action" id="headerNotificationsBtn" type="button" aria-label="View notifications" title="Notifications"><span aria-hidden="true">♢</span><small>Alerts</small><i id="headerNotificationCount" aria-label="Unread notification count">3</i></button>
+      <button class="reference-action" id="headerSettingsBtn" type="button" aria-label="Open settings" title="Settings"><span aria-hidden="true">⚙</span><small>Settings</small></button>
+      <button class="reference-action reference-logout-action" id="headerLogoutBtn" type="button" aria-label="Log out" title="Quick log out"><span aria-hidden="true">↪</span><small>Log out</small></button>
+    </nav>
     <div class="header-local-widget">
       <div class="header-local-time"><span>LOCAL TIME</span><b id="headerLocalTime">--:--</b><small id="headerLocalDate">--</small></div>
       <div class="header-weather"><span>WEATHER</span><b id="headerWeather">Loading…</b><small id="headerWeatherDetail">Local weather</small></div>
@@ -1880,6 +1900,15 @@ function setupVisualDesignMode(){
 }
 
 
+
+function setupHeaderGlobalActions(){
+ const messages=$('headerMessagesBtn'),alerts=$('headerNotificationsBtn'),settings=$('headerSettingsBtn'),logout=$('headerLogoutBtn');
+ if(messages&&messages.dataset.bound!=='1'){messages.addEventListener('click',()=>setPage('chat'));messages.dataset.bound='1'}
+ if(settings&&settings.dataset.bound!=='1'){settings.addEventListener('click',()=>setPage('settings'));settings.dataset.bound='1'}
+ if(logout&&logout.dataset.bound!=='1'){logout.addEventListener('click',()=>{$('logoutBtn')?.click()});logout.dataset.bound='1'}
+ if(alerts&&alerts.dataset.bound!=='1'){alerts.addEventListener('click',()=>{const items=[{title:'Command Center architecture review',detail:'Calendar · Scheduled today'},{title:'Marketplace data contract sync',detail:'Project · Upcoming'},{title:'Security & access review',detail:'Governance · Upcoming'}];openModal('Notifications','<div class="stack-list">'+items.map(x=>'<div class="list-row"><div><b>'+esc(x.title)+'</b><div class="small muted">'+esc(x.detail)+'</div></div></div>').join('')+'</div><p class="small muted">These are workspace preview reminders. Live push notifications and message delivery require configured services.</p>');const badge=$('headerNotificationCount');if(badge)badge.hidden=true;alerts.setAttribute('aria-label','Notifications viewed');});alerts.dataset.bound='1'}
+}
+
 function setupAvailabilityPresence(){
  const select=$('availabilitySelect'),chip=$('headerStatusChip');if(!select||select.dataset.presenceBound==='1')return;
  const key='intellistack.availability.v1',allowed=['Available','Active','Away','Busy','Out to Lunch','On Break','In a Meeting','On a Call','Helping a User','Do Not Disturb','Offline'];
@@ -1892,7 +1921,7 @@ function setupAvailabilityPresence(){
  select.addEventListener('change',paint);select.dataset.presenceBound='1';paint();
 }
 
-function init(){try{document.body.classList.add('login-gate');$('loginScreen').classList.add('active');applySettings();setupMovableNavigation();render();setupLoginGate();setupMovableModules();setupBuild015HeaderAndQuickPicks();setupAvailabilityPresence();setupHelpBuddyModules();startGlobalClock();updateCommandHeader()}catch(error){console.error('Command Center startup failed:',error);const main=$('main');if(main)main.innerHTML='<section class="card" style="padding:24px"><h1>Command Center could not finish loading</h1><p>The workspace caught a startup error instead of leaving a blank page. Refresh once; if it continues, clear this site\'s stored demo data in browser settings and reopen the deployment.</p><p class="small muted">Diagnostic: '+String(error&&error.message||error).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]))+'</p><button class="btn primary" onclick="location.reload()">Reload workspace</button><button class="btn" onclick="localStorage.removeItem(\'intellistack.frontend.v1\');location.reload()">Reset local demo data</button></section>'}}init();
+function init(){try{document.body.classList.add('login-gate');$('loginScreen').classList.add('active');applySettings();setupMovableNavigation();render();setupLoginGate();setupMovableModules();setupBuild015HeaderAndQuickPicks();setupAvailabilityPresence();setupHeaderGlobalActions();setupHelpBuddyModules();startGlobalClock();updateCommandHeader()}catch(error){console.error('Command Center startup failed:',error);const main=$('main');if(main)main.innerHTML='<section class="card" style="padding:24px"><h1>Command Center could not finish loading</h1><p>The workspace caught a startup error instead of leaving a blank page. Refresh once; if it continues, clear this site\'s stored demo data in browser settings and reopen the deployment.</p><p class="small muted">Diagnostic: '+String(error&&error.message||error).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]))+'</p><button class="btn primary" onclick="location.reload()">Reload workspace</button><button class="btn" onclick="localStorage.removeItem(\'intellistack.frontend.v1\');location.reload()">Reset local demo data</button></section>'}}init();
 })(); 
 </script>
 </body>
