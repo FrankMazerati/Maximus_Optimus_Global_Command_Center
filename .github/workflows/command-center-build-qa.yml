@@ -2,6 +2,8 @@ name: Command Center Build & Visual QA
 
 on:
   push:
+    branches: [main, 'feature/**']
+  pull_request:
     branches: [main]
   workflow_dispatch:
 
@@ -84,6 +86,30 @@ jobs:
               else:
                   print(f'FAIL {label}: expected content not found')
                   failed = True
+          if failed:
+              raise SystemExit(1)
+          PY
+
+      - name: Validate unified workspace and login assets
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          html = Path('index.html').read_text(encoding='utf-8')
+          login = Path('login.html').read_text(encoding='utf-8')
+          css = Path('workspace-refresh.css').read_text(encoding='utf-8')
+          checks = {
+              'workspace stylesheet linked': 'workspace-refresh.css' in html,
+              'HelpBuddy remains a persistent dashboard region': 'aria-label="HelpBuddy assistant panel"' in html,
+              'Bring the Work to You home section retained': 'Bring the Work to You' in html,
+              'Quick Picks remain configurable': 'add-quickpick' in html,
+              'login uses existing homepage artwork': 'homepagephoto.png' in login,
+              'tablet portrait keeps both workspace columns': '@media (min-width:601px) and (max-width:900px)' in css,
+              'reduced motion is respected': 'prefers-reduced-motion:reduce' in css
+          }
+          failed = [label for label, ok in checks.items() if not ok]
+          for label, ok in checks.items():
+              print(('PASS ' if ok else 'FAIL ') + label)
           if failed:
               raise SystemExit(1)
           PY
