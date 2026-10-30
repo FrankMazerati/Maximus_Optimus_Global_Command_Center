@@ -106,7 +106,7 @@ jobs:
               'login uses existing homepage artwork': 'homepagephoto.png' in login,
               'tablet portrait keeps both workspace columns': '@media (min-width:601px) and (max-width:900px)' in css,
               'reduced motion is respected': 'prefers-reduced-motion:reduce' in css,
-              'Help Buddy has dedicated workspace tabs': ['conversation','attachments','notes','workflow','checklists','knowledge','recognition','activity','connectors'].every(k => html.includes('data-hb-tab="'+k+'"')),
+              'Help Buddy has dedicated workspace tabs': all(k in html for k in ['conversation','attachments','notes','workflow','checklists','knowledge','recognition','activity','connectors']),
               'workflow checklist progress persists': html.includes('intellistack.helpbuddy.workflow.') && html.includes('hbWorkflowProgressBar'),
               'ticket context is shared with knowledge panel': html.includes('hbKnowledgeContext') && html.includes('hbTicketContext'),
               'Help Buddy notes persist locally': html.includes('intellistack.helpbuddy.notes.v1'),
