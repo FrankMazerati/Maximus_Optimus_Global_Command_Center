@@ -1257,6 +1257,80 @@ body:not(.login-gate) .main{background-color:#edf1f5;background-image:linear-gra
   .reference-header-center .header-search-inline{width:100%}
 }
 
+
+/* Build 060: approved bright command header hierarchy and functional presence states */
+.command-header.reference-command-header{
+  display:grid!important;
+  grid-template-columns:minmax(190px,1fr) minmax(300px,1.35fr) minmax(190px,1fr)!important;
+  grid-template-areas:"brand center right"!important;
+  align-items:center!important;gap:14px!important;
+  padding:14px 20px!important;
+  min-height:142px;
+  color:#173b55!important;
+  background:linear-gradient(115deg,#f4faff 0%,#fff 48%,#eef8ff 100%)!important;
+  border-bottom:3px solid #12a9e8!important;
+  box-shadow:0 5px 20px rgba(16,83,128,.12)!important;
+}
+.reference-command-header .command-brand{grid-area:brand;display:flex!important;flex-direction:column;align-items:flex-start;justify-content:center;gap:7px;min-width:0}
+.reference-command-header .command-brand #menuToggle{display:inline-grid!important;order:0;width:42px;height:42px;border-radius:11px;background:#e8f5ff;color:#0755a5;border:1px solid #9bcce9;font-size:21px}
+.reference-command-header .reference-shield{display:block;width:76px;height:76px;object-fit:contain;object-position:left center}
+.reference-command-header .command-brand-security{margin:0!important;color:#087b9f!important;font-size:10px!important;font-weight:900;letter-spacing:.1em}
+.reference-command-header .reference-brand-contact{display:grid;gap:3px;margin-top:3px;color:#42647b;font-size:10px;line-height:1.35}
+.reference-command-header .reference-brand-contact a{color:#0878b9;text-decoration:none;font-weight:750}
+.reference-command-header .reference-brand-contact small{color:#698397;font-size:9px}
+.reference-command-header .reference-header-center{grid-area:center;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;min-width:0;text-align:center}
+.reference-command-header .reference-product-brand{display:flex;flex-direction:column;align-items:center;gap:3px}
+.reference-command-header .reference-product-brand>span{font-size:12px;font-weight:750;letter-spacing:.12em;color:#45677e}
+.reference-command-header .reference-product-brand>strong{font-size:clamp(28px,3.3vw,48px);line-height:1.02;font-weight:1000;letter-spacing:.025em;color:#fff;text-shadow:0 2px 0 rgba(7,67,112,.12),0 4px 18px rgba(7,110,174,.18)}
+.reference-command-header .reference-product-brand>strong em{font-style:normal;color:#0879d1}
+.reference-command-header .reference-product-brand>strong b{color:#173b55}
+.reference-command-header .reference-product-brand>small{font-size:12px;font-weight:950;letter-spacing:.2em;color:#087b9f}
+.reference-command-header .reference-command-user{width:100%;max-width:560px;padding:9px 12px!important;border:1px solid #c8e1ef!important;border-radius:13px!important;background:rgba(255,255,255,.94)!important;color:#173b55!important;box-shadow:0 3px 14px rgba(14,75,111,.07)!important;text-align:left}
+.reference-command-header .reference-command-user .command-user-copy .home-greeting{color:#0879c7!important}
+.reference-command-header .reference-command-user .command-user-copy>strong{color:#173b55!important}
+.reference-command-header .reference-command-user .profile-role{color:#315d78!important}
+.reference-command-header .reference-command-user .header-department,.reference-command-header .reference-command-user .header-manager{color:#58778a!important}
+.reference-command-header .reference-header-right{grid-area:right;display:flex;align-items:center;justify-content:flex-end;min-width:0}
+.reference-command-header .reference-header-right .header-local-widget{width:100%;max-width:330px;min-height:105px;grid-template-columns:1fr;gap:9px;padding:14px 16px;border:1px solid #bcdced;border-radius:14px;background:linear-gradient(145deg,#fff,#f0f9ff);box-shadow:0 4px 16px rgba(12,83,126,.08)}
+.reference-command-header .reference-header-right .header-local-time b{font-size:26px;color:#0879c7}
+.reference-command-header .reference-header-right .header-local-time span,.reference-command-header .reference-header-right .header-weather span{font-size:9px;letter-spacing:.12em;color:#52758b;font-weight:900}
+.reference-command-header .reference-header-right .header-weather{display:grid;grid-template-columns:auto 1fr;align-items:center;gap:3px 8px;border:0;border-top:1px solid #dcebf3;padding:7px 0 0}
+.reference-command-header .reference-header-right .header-weather b{font-size:14px;color:#23516d}
+.reference-command-header .reference-header-right .header-weather small{grid-column:1/-1}
+.reference-command-header .reference-user-controls{justify-content:flex-start;gap:8px}
+.reference-command-header .availability-control{color:#365b73!important;font-size:10px!important}
+.reference-command-header .availability-control select{max-width:160px!important;width:160px!important;padding:7px 9px!important;border-radius:9px!important;font-size:11px!important;border:1px solid #b9d8e8!important}
+.reference-command-header .header-status-chip{font-size:10px;padding:6px 10px;border-radius:9px;white-space:nowrap}
+.reference-command-header .status-color-OnaCall{background:#e8eaff!important;color:#4540a8!important;border-color:#c7c9ff!important}
+.reference-command-header .status-color-HelpingUser{background:#f0e7ff!important;color:#7135a8!important;border-color:#d9c2f5!important}
+.reference-command-header .status-color-Busy{background:#fff0ef!important;color:#a12c2c!important;border-color:#f2c9c6!important}
+.reference-command-header .status-color-InaMeeting{background:#f2eaff!important;color:#7138a8!important;border-color:#ddc8f5!important}
+.reference-command-header .status-color-OuttoLunch{background:#fff1e5!important;color:#a65313!important;border-color:#f4d0b2!important}
+.reference-command-header .status-color-OnBreak{background:#fff6d9!important;color:#89630b!important;border-color:#f0dfa7!important}
+.reference-command-header .status-color-Away{background:#fff4d9!important;color:#855d0a!important;border-color:#efdfb6!important}
+.reference-command-header .status-color-Available,.reference-command-header .status-color-Active{background:#e5f8ee!important;color:#176b43!important;border-color:#bde7cf!important}
+.reference-command-header .status-color-Offline,.reference-command-header .status-color-DoNotDisturb{background:#fceaea!important;color:#a12c2c!important;border-color:#efc5c5!important}
+@media(max-width:900px){
+ .command-header.reference-command-header{grid-template-columns:minmax(0,1fr) minmax(0,1.3fr)!important;grid-template-areas:"brand right" "center center"!important;padding:10px 12px!important;gap:10px!important}
+ .reference-command-header .reference-header-right{justify-content:flex-end}
+ .reference-command-header .reference-header-right .header-local-widget{max-width:260px}
+ .reference-command-header .reference-header-center{gap:8px}
+}
+@media(max-width:600px){
+ .command-header.reference-command-header{grid-template-columns:1fr!important;grid-template-areas:"brand" "center" "right"!important;padding:10px!important}
+ .reference-command-header .command-brand{display:grid!important;grid-template-columns:42px 64px 1fr;grid-template-rows:auto auto;align-items:center;gap:5px 9px}
+ .reference-command-header .command-brand #menuToggle{grid-column:1;grid-row:1}
+ .reference-command-header .reference-shield{width:60px;height:60px;grid-column:2;grid-row:1/3}
+ .reference-command-header .command-brand-security{grid-column:3;grid-row:1;align-self:end;font-size:9px!important}
+ .reference-command-header .reference-brand-contact{grid-column:3;grid-row:2;align-self:start}
+ .reference-command-header .reference-header-center{width:100%}
+ .reference-command-header .reference-product-brand>strong{font-size:clamp(25px,8vw,36px)}
+ .reference-command-header .reference-command-user{max-width:none}
+ .reference-command-header .reference-header-right{justify-content:stretch}
+ .reference-command-header .reference-header-right .header-local-widget{max-width:none;min-height:0;grid-template-columns:1fr 1fr}
+ .reference-command-header .reference-header-right .header-weather{border-top:0;border-left:1px solid #dcebf3;padding:0 0 0 10px;grid-template-columns:1fr}
+}
+
 </style>
 <link rel="stylesheet" href="./workspace-refresh.css">
 </head>
@@ -1266,7 +1340,7 @@ body:not(.login-gate) .main{background-color:#edf1f5;background-image:linear-gra
   <div class="command-brand reference-brand" aria-label="IntelliStack security branding">
     <button class="icon-btn mobile-menu" id="menuToggle" type="button" aria-label="Open navigation" aria-expanded="false">☰</button>
     <img class="reference-shield" src="./shield.jpg" alt="IntelliStack Systems shield">
-    <div class="command-brand-security">SECURED · TRUSTED · COMPLIANT</div>
+    <div class="command-brand-security">SECURED · TRUSTED · COMPLIANT</div><div class="reference-brand-contact" aria-label="Company contact information"><a href="mailto:hello@intellistacksystems.com">hello@intellistacksystems.com</a><a href="https://intellistacksystems.com" target="_blank" rel="noopener">IntelliStackSystems.com</a><small>Company contact details · preview configuration</small></div>
   </div>
   <div class="reference-header-center">
     <div class="reference-product-brand"><span>IntelliStack Systems presents</span><strong><em>MAXIMUS</em> <b>OPTIMUS</b></strong><small>GLOBAL COMMAND CENTER</small></div>
@@ -1296,7 +1370,7 @@ body:not(.login-gate) .main{background-color:#edf1f5;background-image:linear-gra
       <div class="command-user-bottom reference-user-controls">
         <button class="btn soft" id="editProfileBtn" type="button">Edit profile</button>
         <label class="availability-control"><span>Status</span><select id="availabilitySelect" aria-label="Set availability">
-          <option>Available</option><option>Active</option><option>Away</option><option>Busy</option><option>Out to Lunch</option><option>On Break</option><option>In a Meeting</option><option>Do Not Disturb</option><option>Offline</option>
+          <option>Available</option><option>Active</option><option>Away</option><option>Busy</option><option>Out to Lunch</option><option>On Break</option><option>In a Meeting</option><option>On a Call</option><option>Helping a User</option><option>Do Not Disturb</option><option>Offline</option>
         </select></label>
         <span class="header-status-chip" id="headerStatusChip">● Available</span>
       </div>
@@ -1805,7 +1879,20 @@ function setupVisualDesignMode(){
  identify();restore();
 }
 
-function init(){try{document.body.classList.add('login-gate');$('loginScreen').classList.add('active');applySettings();setupMovableNavigation();render();setupLoginGate();setupMovableModules();setupBuild015HeaderAndQuickPicks();setupHelpBuddyModules();startGlobalClock();updateCommandHeader()}catch(error){console.error('Command Center startup failed:',error);const main=$('main');if(main)main.innerHTML='<section class="card" style="padding:24px"><h1>Command Center could not finish loading</h1><p>The workspace caught a startup error instead of leaving a blank page. Refresh once; if it continues, clear this site\'s stored demo data in browser settings and reopen the deployment.</p><p class="small muted">Diagnostic: '+String(error&&error.message||error).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]))+'</p><button class="btn primary" onclick="location.reload()">Reload workspace</button><button class="btn" onclick="localStorage.removeItem(\'intellistack.frontend.v1\');location.reload()">Reset local demo data</button></section>'}}init();
+
+function setupAvailabilityPresence(){
+ const select=$('availabilitySelect'),chip=$('headerStatusChip');if(!select||select.dataset.presenceBound==='1')return;
+ const key='intellistack.availability.v1',allowed=['Available','Active','Away','Busy','Out to Lunch','On Break','In a Meeting','On a Call','Helping a User','Do Not Disturb','Offline'];
+ let saved='Available';try{saved=localStorage.getItem(key)||'Available'}catch(e){}
+ if(allowed.includes(saved))select.value=saved;
+ const paint=()=>{const value=select.value||'Available';try{localStorage.setItem(key,value)}catch(e){}
+  if(chip){chip.textContent='● '+value;chip.className='header-status-chip status-color-'+value.replace(/[^a-z]/gi,'')}
+  select.setAttribute('aria-label','Current availability: '+value+'. Select to change presence.');
+ };
+ select.addEventListener('change',paint);select.dataset.presenceBound='1';paint();
+}
+
+function init(){try{document.body.classList.add('login-gate');$('loginScreen').classList.add('active');applySettings();setupMovableNavigation();render();setupLoginGate();setupMovableModules();setupBuild015HeaderAndQuickPicks();setupAvailabilityPresence();setupHelpBuddyModules();startGlobalClock();updateCommandHeader()}catch(error){console.error('Command Center startup failed:',error);const main=$('main');if(main)main.innerHTML='<section class="card" style="padding:24px"><h1>Command Center could not finish loading</h1><p>The workspace caught a startup error instead of leaving a blank page. Refresh once; if it continues, clear this site\'s stored demo data in browser settings and reopen the deployment.</p><p class="small muted">Diagnostic: '+String(error&&error.message||error).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]))+'</p><button class="btn primary" onclick="location.reload()">Reload workspace</button><button class="btn" onclick="localStorage.removeItem(\'intellistack.frontend.v1\');location.reload()">Reset local demo data</button></section>'}}init();
 })(); 
 </script>
 </body>
