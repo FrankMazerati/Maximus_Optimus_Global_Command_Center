@@ -104,3 +104,10 @@ The current `main` branch selectively integrates the non-conflicting feature int
 - Build 018 employee workflow acceptance, QA release checklist, production-readiness baseline, project control register, and employee knowledge-base documentation.
 
 These are selectively integrated changes, not a claim that the original PR branches were merged as GitHub merge commits. Search and announcements still use preview content; production auth, tenant enforcement, and shared backend workflows remain separate work.
+
+
+## Build 058 — Role-aware Marketplace & connector ecosystem
+- Added [the role-aware Marketplace and IntelliLink connector ecosystem](docs/ROLE_AWARE_MARKETPLACE_CONNECTOR_ECOSYSTEM.md) and canonical structured seed catalog at [marketplace/role-connector-catalog.json](marketplace/role-connector-catalog.json).
+- CFO recommendations include Salesforce, QuickBooks Online, Xero, NetSuite, Stripe, Power BI and Tableau; CIO recommendations include GitHub/GitLab, cloud, identity, endpoint, security, ITSM and observability connectors; CEO recommendations include executive reporting, CRM/revenue and strategic work-management connectors.
+- Extended [Marketplace build specification](docs/MARKETPLACE_BUILD_SPEC.md) with role-based discovery, catalog experience, connector lifecycle, commercial separation, security contract and acceptance gates.
+- This commit adds catalog metadata and documentation only. It does not implement the role-aware frontend, activate connectors, alter Supabase schema/data, grant entitlements, configure provider credentials, or make checkout live. All connector entries are catalog candidates until implemented and verified.

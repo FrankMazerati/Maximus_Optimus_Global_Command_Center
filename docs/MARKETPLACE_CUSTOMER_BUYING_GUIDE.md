@@ -121,3 +121,7 @@ Competitor pricing changes, may be billed per user/agent/technician or by assets
 4. Inspect tenant authorization and RLS; current correctness remains unverified.
 5. Replace the hard-coded catalog with a validated data source and server-enforced entitlements.
 6. Test the buying guide on phone/tablet portrait and landscape and confirm no misleading checkout path remains.
+
+
+## Role-aware applications and connectors
+The Marketplace direction now includes role-aware collections and external connector discovery in addition to the six IntelliStack subscription tiers. CFO, CIO and CEO recommendations are defined in the [role-aware Marketplace ecosystem specification](ROLE_AWARE_MARKETPLACE_CONNECTOR_ECOSYSTEM.md). Connector vendor licensing, API/usage fees, package entitlements, tenant authorization and actual connected state are separate and must be disclosed independently. The structured catalog is maintained at [marketplace/role-connector-catalog.json](../marketplace/role-connector-catalog.json). Catalog presence is not proof of a live integration; paid prices and package terms remain subject to approval.
