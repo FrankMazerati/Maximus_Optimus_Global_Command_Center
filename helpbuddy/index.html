@@ -5,6 +5,37 @@
 <title>HelpBuddy — Command Center AI</title>
 <style>
 :root{--bg:#061018;--panel:#0b1720;--panel2:#0e202b;--line:#244552;--text:#edf8fc;--muted:#8da8b5;--cyan:#57dcff;--blue:#668cff;--green:#54e5a0;--amber:#ffd166;--red:#ff687c}*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 70% -10%,#16445a 0,transparent 35%),var(--bg);color:var(--text);font:14px Inter,system-ui,sans-serif}.app{min-height:100vh;display:grid;grid-template-columns:250px 1fr 310px}.side,.rail{background:#08151e;border-right:1px solid var(--line);padding:16px}.rail{border-left:1px solid var(--line);border-right:0}.brand{font-weight:950;font-size:18px;color:#fff;margin-bottom:4px}.sub{font-size:10px;color:var(--muted);letter-spacing:.12em}.nav{margin-top:22px;display:grid;gap:7px}.nav button,.action{width:100%;text-align:left;border:1px solid transparent;background:#0a1b24;color:#cfe2e9;border-radius:10px;padding:11px}.nav button:hover,.nav button.active{border-color:#2c5968;background:#0e2631;color:#fff}.main{padding:18px;min-width:0}.top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:14px}.top h1{font-size:20px;margin:0}.badge{border:1px solid #2b5362;color:var(--green);padding:5px 8px;border-radius:99px;font-size:9px}.hero{background:linear-gradient(145deg,#0d2632,#09161f);border:1px solid var(--line);border-radius:16px;padding:16px;margin-bottom:12px}.hero-row{display:flex;gap:10px}.hero input{flex:1;background:#07131b;border:1px solid var(--line);color:#fff;border-radius:10px;padding:12px}.btn{border:1px solid var(--line);background:#0b202a;color:#e8f6fa;border-radius:10px;padding:10px 12px}.primary{background:linear-gradient(90deg,var(--cyan),#8d9dff);color:#031018;font-weight:900}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.card{background:rgba(8,20,29,.96);border:1px solid var(--line);border-radius:14px;padding:14px}.card h3{margin:0 0 7px;font-size:12px}.num{font-size:28px;font-weight:950}.muted{color:var(--muted);font-size:11px}.list{display:grid;gap:7px;margin-top:10px}.item{border:1px solid #1d3945;background:#081821;border-radius:10px;padding:10px}.item strong{font-size:11px}.item small{display:block;color:var(--muted);margin:4px 0 8px}.actions{display:flex;gap:6px;flex-wrap:wrap}.actions .btn{font-size:10px;padding:7px 9px}.danger{color:var(--red)}.warn{color:var(--amber)}.good{color:var(--green)}.section{margin-bottom:18px}.section h3{font-size:11px;margin:0 0 8px}.notice{border:1px solid #284c5b;background:#091b24;border-radius:10px;padding:10px;margin-bottom:7px}.notice button{margin-top:7px}.modal{position:fixed;inset:0;background:#000b;display:none;place-items:center;padding:16px;z-index:20}.modal.open{display:grid}.modalbox{width:min(780px,100%);max-height:90vh;overflow:auto;background:#08151e;border:1px solid var(--line);border-radius:16px;padding:18px}.modalhead{display:flex;justify-content:space-between;align-items:center}.kv{display:grid;grid-template-columns:140px 1fr;gap:7px;border-bottom:1px solid #17303a;padding:7px 0;font-size:11px}.signature{height:75px;border:1px dashed #3a6575;border-radius:9px;display:grid;place-items:center;color:#74dfff;font-family:cursive;font-size:28px;background:#06131a;margin-top:10px}.tabs{display:flex;gap:6px;overflow:auto;margin-bottom:12px}.tabs button{white-space:nowrap}.hidden{display:none!important}@media(max-width:1050px){.app{grid-template-columns:210px 1fr}.rail{display:none}.grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:700px){.app{display:block}.side{display:none}.main{padding:10px}.grid{grid-template-columns:1fr}.hero-row{flex-direction:column}.top{align-items:flex-start}}
+
+/* HelpBuddy personalized companion workspace — prototype layout */
+.companion{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(230px,.8fr);gap:12px;margin:12px 0}
+.companion-panel{background:#fff;color:#183247;border:1px solid #d8e7f1;border-radius:16px;padding:14px;box-shadow:0 5px 18px #1b54700c}
+.companion-panel h3{color:#163c5a;font-size:14px;margin:0 0 5px}
+.companion-sub{font-size:11px;color:#637d90;margin-bottom:12px}
+.buddy-task{display:flex;align-items:center;gap:9px;background:#f5f9fc;border:1px solid #e0ebf2;border-radius:10px;padding:9px;margin-bottom:7px;color:#23445a}
+.buddy-task input{accent-color:#2788c7;width:16px;height:16px}
+.buddy-task .task-copy{flex:1;font-size:12px}
+.buddy-stars{font-size:11px;font-weight:900;color:#a36b00;white-space:nowrap}
+.buddy-character{display:flex;flex-direction:column;align-items:center;text-align:center;justify-content:center;min-height:100%;background:linear-gradient(150deg,#eef8ff,#fff5e8);border:1px solid #dbe9f4;border-radius:15px;padding:16px;color:#193e59}
+.buddy-avatar{width:112px;height:112px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(145deg,#bce9ff,#f5d9ff);border:5px solid white;box-shadow:0 5px 18px #275c7920;font-size:66px;margin:4px auto 10px}
+.buddy-name{font-size:16px;font-weight:900;color:#174d79}
+.buddy-name-edit{width:100%;max-width:190px;text-align:center;border:1px solid #c9dce9;border-radius:8px;padding:7px;color:#21445a;background:white;margin:6px auto}
+.buddy-message{font-size:12px;line-height:1.5;color:#526f83;max-width:250px}
+.buddy-points{margin-top:10px;border-radius:99px;padding:5px 10px;background:#fff;border:1px solid #d8e7f1;font-size:11px;color:#795a13;font-weight:800}
+.attachment-board{margin:12px 0;background:#fff;color:#183247;border:1px solid #d8e7f1;border-radius:16px;padding:14px}
+.attachment-board h3{margin:0 0 4px;color:#163c5a;font-size:14px}
+.attachment-row{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:7px;margin-top:10px}
+.attachment-tile{min-width:0;border:1px solid #dce8f0;background:#f7fafc;border-radius:9px;padding:9px;text-align:left;color:#23445a;font-size:11px}
+.attachment-tile strong{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:4px}
+.attachment-tile span{color:#698195;font-size:10px}
+.attachment-more{margin-top:7px;color:#276e9f;font-size:11px}
+.attachment-more summary{cursor:pointer;font-weight:800;padding:5px 0}
+.attachment-more .attachment-row{margin-top:5px}
+.module-actions{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:12px;flex-wrap:wrap}
+.module-chip{display:inline-flex;border:1px solid #d7e6f0;border-radius:99px;background:#f4f9fc;color:#31566e;padding:6px 9px;font-size:10px;margin:3px}
+.companion-panel button,.attachment-board button{cursor:pointer}
+@media(max-width:850px){.companion{grid-template-columns:1fr}.buddy-character{min-height:220px}.attachment-row{grid-template-columns:repeat(5,minmax(92px,1fr));overflow-x:auto}}
+@media(max-width:520px){.attachment-row{grid-template-columns:repeat(2,minmax(0,1fr));overflow:visible}.attachment-tile:nth-child(n+3){display:none}.attachment-more[open] .attachment-tile{display:block}.buddy-avatar{width:94px;height:94px;font-size:56px}}
+
 </style>
 </head>
 <body>
@@ -12,7 +43,41 @@
 <aside class="side"><div class="brand">HELPBUDDY</div><div class="sub">COMMAND CENTER AI</div><div class="nav"><button class="active" data-view="home">⌂ Bring the Work to You</button><button data-view="work">✓ My Work</button><button data-view="calendar">◷ Calendar & Meetings</button><button data-view="chat">◉ ChatBuddy Notifications</button><button data-view="knowledge">⌕ Knowledge</button><button data-view="warroom">⚠ War Rooms</button><button data-view="audit">▤ Audit & Ledger</button></div></aside>
 <main class="main"><div class="top"><div><h1>HelpBuddy</h1><span class="muted">Sign in to load your verified employee identity, level, and stars.</span></div><span class="badge">BACKEND STATUS SHOWN BELOW</span></div>
 <section class="hero"><div class="sub" style="margin-bottom:8px">ASK HELPBUDDY</div><div class="hero-row"><input id="prompt" placeholder="Try: Schedule a network incident review tomorrow at 2 PM…"><button class="btn primary" id="ask">Ask HelpBuddy</button></div><div class="muted" id="answer" style="margin-top:9px">HelpBuddy can coordinate authorized work across tickets, tasks, incidents, network, security, knowledge, meetings, documents, approvals and audit.</div></section>
-<div id="home" class="view"><div class="grid">
+<div id="home" class="view">
+<section class="companion" aria-label="Personal Help Buddy companion">
+ <div class="companion-panel">
+  <h3>My Help Buddy · Today's Checklist</h3>
+  <div class="companion-sub">Your next steps, estimated recognition stars, and progress. Star values are illustrative until connected to the verified rewards ledger.</div>
+  <div id="buddyChecklist">
+   <label class="buddy-task"><input type="checkbox" data-buddy-task="Review new ticket queue"><span class="task-copy">Review new ticket queue</span><span class="buddy-stars">★ 1</span></label>
+   <label class="buddy-task"><input type="checkbox" data-buddy-task="Complete assigned workflow checkpoint"><span class="task-copy">Complete assigned workflow checkpoint</span><span class="buddy-stars">★★★ 3</span></label>
+   <label class="buddy-task"><input type="checkbox" data-buddy-task="Document resolution and evidence"><span class="task-copy">Document resolution and evidence</span><span class="buddy-stars">★★★★★ 5</span></label>
+   <label class="buddy-task"><input type="checkbox" data-buddy-task="Complete verified handoff"><span class="task-copy">Complete verified handoff</span><span class="buddy-stars">★★★★★★★★ 8</span></label>
+  </div>
+  <div class="module-actions"><div><strong style="font-size:11px;color:#31566e">My modules</strong><div id="buddyModules"><span class="module-chip">Daily checklist</span><span class="module-chip">Ticket follow-ups</span><span class="module-chip">Knowledge tips</span></div></div><button class="btn primary" id="addBuddyModule" type="button">＋ Add Modules</button></div>
+ </div>
+ <div class="buddy-character">
+  <div class="buddy-avatar" id="buddyFace" aria-label="Help Buddy character expression">😊</div>
+  <div class="buddy-name" id="buddyDisplayName">Maria, My Help Buddy</div>
+  <input class="buddy-name-edit" id="buddyName" aria-label="Personalize your Help Buddy name" value="Maria" maxlength="24">
+  <div class="buddy-message" id="buddyMessage">Hi! I'm Maria, your Help Buddy. I'll help you stay organized, celebrate progress, and keep your next step clear.</div>
+  <div class="buddy-points" id="buddyPoints">0 checklist stars earned today</div>
+ </div>
+</section>
+<section class="attachment-board" aria-label="Conversation attachments and notes">
+ <h3>Conversation Attachments & Notes</h3>
+ <div class="companion-sub">Keep your most-used items visible in compact five-across rows. Expand a row to reveal additional saved items.</div>
+ <div class="attachment-row" id="attachmentRowOne">
+  <button class="attachment-tile"><strong>📎 Ticket evidence</strong><span>Recent attachment</span></button><button class="attachment-tile"><strong>📝 Shift notes</strong><span>Saved note</span></button><button class="attachment-tile"><strong>📄 Runbook</strong><span>Knowledge file</span></button><button class="attachment-tile"><strong>📷 Device photo</strong><span>Image attachment</span></button><button class="attachment-tile"><strong>🔗 Related link</strong><span>Saved reference</span></button>
+ </div>
+ <details class="attachment-more"><summary>⌄ Show more attachments and notes</summary><div class="attachment-row">
+  <button class="attachment-tile"><strong>📎 Incident log</strong><span>Saved attachment</span></button><button class="attachment-tile"><strong>📝 Follow-up</strong><span>Personal note</span></button><button class="attachment-tile"><strong>📊 Status report</strong><span>Shared file</span></button><button class="attachment-tile"><strong>📄 Procedure</strong><span>Knowledge file</span></button><button class="attachment-tile"><strong>🔗 Vendor portal</strong><span>Saved reference</span></button>
+ </div><div class="attachment-row">
+  <button class="attachment-tile"><strong>📎 Network diagram</strong><span>Attachment</span></button><button class="attachment-tile"><strong>📝 Meeting notes</strong><span>Saved note</span></button><button class="attachment-tile"><strong>📄 Checklist</strong><span>Workflow file</span></button>
+ </div></details>
+ <div class="module-actions"><span class="muted">Compact view: five items per row. More items stay tucked away until expanded.</span><button class="btn" id="addAttachmentNote" type="button">＋ Add Note / Attachment</button></div>
+</section>
+<div class="grid">
 <div class="card"><h3>🔴 Critical</h3><div class="num">2</div><div class="muted">Immediate attention</div><div class="list"><div class="item"><strong>HD-10491 · Email outage</strong><small class="danger">18 min SLA · 47 users</small><div class="actions"><button class="btn" data-ticket="HD-10491">View More</button><button class="btn primary" data-accept="HD-10491">Accept</button></div></div></div></div>
 <div class="card"><h3>⏱ SLA Risk</h3><div class="num">7</div><div class="muted">2 critical · 3 high · 2 medium</div><div class="list"><div class="item"><strong>HD-10502 · VPN access</strong><small class="warn">42 min remaining · unassigned</small><div class="actions"><button class="btn" data-ticket="HD-10502">View More</button><button class="btn primary" data-accept="HD-10502">Accept</button></div></div></div></div>
 <div class="card"><h3>🧑‍💻 My Active Work</h3><div class="num">3</div><div class="muted">1 waiting on authorization</div><div class="item" style="margin-top:10px"><strong>HD-10477 · AD access</strong><small>Security Access is the first checkpoint.</small><div class="actions"><button class="btn" data-ticket="HD-10477">Resume</button><button class="btn" data-transfer="HD-10477">Transfer</button></div></div></div>
@@ -49,4 +114,24 @@ document.getElementById('ask').onclick=()=>{const p=document.getElementById('pro
 document.getElementById('newMeeting').onclick=()=>openModal('Create Calendar Event',`<div class="kv"><b>Title</b><input id="mt" value="Command Center Meeting" style="width:100%;background:#07131b;color:#fff;border:1px solid #244552;padding:8px;border-radius:8px"></div><div class="kv"><b>Participants</b><span>Manager · Network Lead · Security Lead</span></div><div class="actions" style="margin-top:12px"><button class="btn primary" onclick="closeModal();document.getElementById('answer').textContent='Calendar event created and ChatBuddy invitations prepared.'">Create & Notify</button></div>`);
 document.getElementById('editMeeting').onclick=()=>openModal('Edit Meeting','<div class="kv"><b>Time</b><span>Tomorrow · 2:00 PM → 3:00 PM</span></div><div class="actions"><button class="btn primary" onclick="closeModal();document.getElementById('answer').textContent=\'Meeting updated and participants notified.\'">Save Changes</button></div>');
 document.getElementById('schedule').onclick=()=>document.getElementById('newMeeting').click();document.getElementById('notify').onclick=()=>{document.getElementById('answer').textContent='ChatBuddy notification queued for the selected recipient.'};document.getElementById('sign').onclick=()=>openModal('Technician Sign-off',`<p class="muted">Your saved signature can be placed into the current checkpoint.</p><div class="signature">Alex Johnson</div><div class="actions" style="margin-top:12px"><button class="btn primary" onclick="closeModal();document.getElementById('answer').textContent='Technician signature applied. Work is ready for Manager Review.'">Apply Signature</button></div>`);
+
+const buddyTaskBoxes=[...document.querySelectorAll('[data-buddy-task]')];
+function refreshBuddy(){
+ const done=buddyTaskBoxes.filter(x=>x.checked).length;
+ const stars=buddyTaskBoxes.filter(x=>x.checked).reduce((n,x)=>n+({1:1,2:3,3:5,4:8}[buddyTaskBoxes.indexOf(x)+1]||0),0);
+ const name=(document.getElementById('buddyName').value||'My').trim();
+ document.getElementById('buddyDisplayName').textContent=name+', My Help Buddy';
+ document.getElementById('buddyPoints').textContent=stars+' checklist stars earned today · '+done+'/'+buddyTaskBoxes.length+' complete';
+ const face=document.getElementById('buddyFace'), message=document.getElementById('buddyMessage');
+ if(done===buddyTaskBoxes.length){face.textContent='🥳';message.textContent='Amazing work, '+name+'! You completed today's checklist. Take a moment to celebrate.'}
+ else if(done>=3){face.textContent='😄';message.textContent='You're on a roll, '+name+'! Just a little more to finish your checklist.'}
+ else if(done>=1){face.textContent='🙂';message.textContent='Nice progress, '+name+'! I have your next step ready whenever you are.'}
+ else{face.textContent='😊';message.textContent='Hi! I’m '+name+', your Help Buddy. I’ll help you stay organized, celebrate progress, and keep your next step clear.'}
+}
+buddyTaskBoxes.forEach(x=>x.addEventListener('change',refreshBuddy));
+document.getElementById('buddyName').addEventListener('input',refreshBuddy);
+document.getElementById('addBuddyModule').onclick=()=>openModal('Add Help Buddy Modules',`<p class="muted">Choose optional modules to add to your personal Help Buddy workspace.</p><div class="list"><label class="buddy-task"><input type="checkbox"> Ticket follow-up reminders</label><label class="buddy-task"><input type="checkbox"> Learning and knowledge tips</label><label class="buddy-task"><input type="checkbox"> Shift handoff checklist</label><label class="buddy-task"><input type="checkbox"> Daily goals and recognition</label><label class="buddy-task"><input type="checkbox"> Calendar preparation</label></div><button class="btn primary" onclick="document.getElementById('buddyModules').insertAdjacentHTML('beforeend','<span class=\\'module-chip\\'>Personal module</span>');closeModal()">Add selected modules</button>`);
+document.getElementById('addAttachmentNote').onclick=()=>openModal('Add Conversation Note or Attachment',`<p class="muted">Attach a file or save a note to this conversation workspace. A connected backend is required for persistent cross-device storage.</p><label class="buddy-task" style="display:block">Note title<input id="newNoteTitle" placeholder="Enter a short title" style="display:block;width:100%;margin-top:6px;padding:9px;border:1px solid #c9dce9;border-radius:8px"></label><label class="buddy-task" style="display:block">Note<textarea id="newNoteBody" placeholder="Write your note…" style="display:block;width:100%;margin-top:6px;padding:9px;border:1px solid #c9dce9;border-radius:8px"></textarea></label><label class="buddy-task" style="display:block">Attachment<input type="file" id="newNoteFile" style="display:block;margin-top:6px"></label><button class="btn primary" onclick="const t=document.getElementById('newNoteTitle').value.trim();if(!t){alert('Enter a title first.');return}document.getElementById('answer').textContent='Note draft prepared: '+t+'. Persistent save requires the connected storage service.';closeModal()">Save note draft</button>`);
+refreshBuddy();
+
 </script><script src="./supabase-adapter.js"></script><script src="./rewards-audit-ui.js"></script></body></html>
