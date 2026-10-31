@@ -77,3 +77,46 @@ Use the established bright IntelliStack theme: clean white workspace surfaces, b
 ## Required trust labels
 
 Use explicit states such as **Live**, **Configured**, **Estimated**, **Synthetic demo data**, **Unavailable**, **Not configured**, **Pending**, and **Verified**. Never imply a real integration, active subscription, payment, or product entitlement where one does not exist.
+
+
+## Role-aware Marketplace and IntelliLink connector ecosystem (Build 058)
+
+The Marketplace is a product, application, and integration ecosystem—not only a subscription-plan selector. It must present native IntelliStack modules, third-party SaaS connectors, curated role collections, bundles, add-ons, setup flows, and a tenant's installed/connected environment.
+
+### Role-based discovery
+- **CFO:** Salesforce (CRM/revenue), QuickBooks Online, Xero, NetSuite, Stripe, Power BI and Tableau. Surface accounting, receivables, expenses, pipeline/revenue, close readiness and governed financial reporting use cases.
+- **CIO:** GitHub, GitLab, Azure, AWS, Google Cloud, Microsoft Entra ID, Okta, Intune, Sentinel, CrowdStrike, Datadog, ServiceNow and Jira. Surface engineering delivery, cloud inventory/cost, identity, endpoint posture, security operations, ITSM and observability.
+- **CEO:** Power BI, Tableau, Salesforce, NetSuite, Asana, monday.com and Jira. Surface executive scorecards, strategic initiatives, customer/revenue health, operating risk, cross-functional dependencies and board reporting.
+
+These are discovery recommendations, not entitlements or access grants. Recommendations must never change a user's role, package, permissions, connector scopes or tenant access.
+
+### Canonical data source
+The initial structured catalog is `marketplace/role-connector-catalog.json`. It contains stable connector/category/role keys, provider metadata, capabilities, role fit, connection method, data direction, proposed catalog status, commercial notes, lifecycle states and security requirements. Treat entries as catalog candidates until provider authorization, connector implementation, health checks and tenant-security tests pass.
+
+### Marketplace experience areas
+- Marketplace Home with role-aware recommendations and recent activity.
+- Browse Catalog with product type, category, vendor, role-fit, readiness, connection-state and commercial filters.
+- CFO Finance Stack, CIO Technology & Security Stack, CEO Executive Operations Stack, plus customizable collections.
+- Product/connector details showing supported objects/actions, data direction, scopes, prerequisites, licensing, fees, readiness, IntelliStack entitlement and setup guide.
+- Bundles and solutions that combine native modules with external connectors.
+- Build My Environment with dependency/incompatibility validation.
+- My Environment with included entitlements, add-ons, connected accounts, connection owners, health, last sync and reauthorization needs.
+- Admin & Governance for catalog publication, entitlement mapping, scopes, ownership, audit and disconnect/revoke.
+
+### Commercial model
+The six selected IntelliStack tiers remain Starter, Business, Professional, Workforce, Enterprise and Full Stack. Prices, package inclusions, connector allowances and support terms remain proposed until approved. Connector vendor licenses, API/usage costs and third-party contracts must be disclosed separately unless explicitly bundled. Some connectors may be add-ons; some tiers may include a defined connector allowance or governance capability. Never promise unlimited connectors or silently upgrade a tenant because a role recommendation exists.
+
+### Connection/security contract
+Use OAuth/vendor app installation where possible. Explain provider, scopes, data objects, read/write behavior, purpose and third-party terms before consent. Store tokens/secrets only in a managed server-side vault. Use least privilege, tenant-scoped connection records, per-action authorization, source-system ACLs, explicit confirmation for sensitive writes, audit connect/sync/export/write/disconnect/revoke, and credential rotation/revocation. Never put secrets in localStorage, browser code, logs or repository files. A connector is not **Connected** until provider authorization and a successful server-side health check are verified.
+
+Connection states: `not_connected`, `authorization_pending`, `connected`, `degraded`, `reauthorization_required`, `disconnected`, `error`.
+
+### Implementation gates
+1. Validate the JSON catalog against existing Marketplace/IntelliLink schema and avoid parallel tables without a proven gap.
+2. Implement role-aware discovery without coupling it to authorization.
+3. Define package/add-on entitlements and commercial allowances after approval.
+4. Audit Supabase RLS and design tenant-scoped connection records and secret-vault references.
+5. Pilot read-only CFO and CIO connectors in a sandbox tenant; add CEO reporting after data governance is proven.
+6. Test tenant isolation, scopes, revocation, retries, audit, secret-leak prevention, rate limits and responsive UX.
+
+See [Role-aware Marketplace & IntelliLink Connector Ecosystem](ROLE_AWARE_MARKETPLACE_CONNECTOR_ECOSYSTEM.md) and the canonical [role/connector catalog](../marketplace/role-connector-catalog.json).
