@@ -1,0 +1,663 @@
+{
+  "schemaVersion": "1.0.0",
+  "catalogStatus": "proposed_catalog_seed",
+  "lastReviewed": "2026-10-30",
+  "principles": {
+    "roleRecommendationsAreNotPermissions": true,
+    "tenantAuthorizationRequired": true,
+    "connectorCredentialsServerSideOnly": true,
+    "thirdPartyLicensesAndFeesDisclosed": true,
+    "noConnectorIsLiveByCatalogPresence": true
+  },
+  "roles": [
+    {
+      "roleKey": "cfo",
+      "label": "Chief Financial Officer",
+      "summary": "Financial visibility, forecasting, accounting, revenue operations and spend control.",
+      "recommendedCategories": [
+        "finance_accounting",
+        "crm_revenue",
+        "payments_billing",
+        "analytics_reporting"
+      ],
+      "recommendedConnectorKeys": [
+        "salesforce",
+        "quickbooks_online",
+        "xero",
+        "netsuite",
+        "stripe",
+        "power_bi",
+        "tableau"
+      ]
+    },
+    {
+      "roleKey": "cio",
+      "label": "Chief Information Officer",
+      "summary": "Technology delivery, engineering, identity, infrastructure, security posture and IT operations.",
+      "recommendedCategories": [
+        "engineering_devops",
+        "cloud_infrastructure",
+        "identity_access",
+        "security_operations",
+        "it_service_management",
+        "observability"
+      ],
+      "recommendedConnectorKeys": [
+        "github",
+        "gitlab",
+        "azure",
+        "aws",
+        "google_cloud",
+        "microsoft_entra_id",
+        "okta",
+        "microsoft_intune",
+        "microsoft_sentinel",
+        "crowdstrike",
+        "datadog",
+        "servicenow"
+      ]
+    },
+    {
+      "roleKey": "ceo",
+      "label": "Chief Executive Officer",
+      "summary": "Executive performance, strategic initiatives, customer health, operating metrics and board-ready reporting.",
+      "recommendedCategories": [
+        "executive_reporting",
+        "crm_revenue",
+        "business_operations",
+        "analytics_reporting",
+        "work_management"
+      ],
+      "recommendedConnectorKeys": [
+        "salesforce",
+        "power_bi",
+        "tableau",
+        "asana",
+        "monday_com",
+        "atlassian_jira",
+        "netsuite"
+      ]
+    }
+  ],
+  "categories": [
+    {
+      "categoryKey": "finance_accounting",
+      "label": "Finance & Accounting",
+      "description": "Accounting, bookkeeping, close, budgets, forecasting and financial consolidation."
+    },
+    {
+      "categoryKey": "crm_revenue",
+      "label": "CRM & Revenue Operations",
+      "description": "Customer relationships, pipeline, bookings, renewals and revenue visibility."
+    },
+    {
+      "categoryKey": "payments_billing",
+      "label": "Payments & Billing",
+      "description": "Payment processing, billing events, settlement and reconciliation."
+    },
+    {
+      "categoryKey": "analytics_reporting",
+      "label": "Analytics & Reporting",
+      "description": "Dashboards, metrics, data models and governed reporting."
+    },
+    {
+      "categoryKey": "engineering_devops",
+      "label": "Engineering & DevOps",
+      "description": "Source control, CI/CD, code review, releases and engineering work."
+    },
+    {
+      "categoryKey": "cloud_infrastructure",
+      "label": "Cloud & Infrastructure",
+      "description": "Cloud accounts, infrastructure inventory, resources and operations."
+    },
+    {
+      "categoryKey": "identity_access",
+      "label": "Identity & Access",
+      "description": "Identity providers, directory, lifecycle, groups and access governance."
+    },
+    {
+      "categoryKey": "security_operations",
+      "label": "Security Operations",
+      "description": "Detection, endpoint security, incident response and security telemetry."
+    },
+    {
+      "categoryKey": "it_service_management",
+      "label": "IT Service Management",
+      "description": "Incidents, changes, requests, configuration and service workflows."
+    },
+    {
+      "categoryKey": "observability",
+      "label": "Monitoring & Observability",
+      "description": "Logs, metrics, traces, service health and alerting."
+    },
+    {
+      "categoryKey": "executive_reporting",
+      "label": "Executive & Strategic Operations",
+      "description": "Executive scorecards, strategic initiatives, portfolio status and board reporting."
+    },
+    {
+      "categoryKey": "business_operations",
+      "label": "Business Operations",
+      "description": "Cross-functional operating data and business process coordination."
+    },
+    {
+      "categoryKey": "work_management",
+      "label": "Work & Portfolio Management",
+      "description": "Projects, initiatives, dependencies and execution tracking."
+    }
+  ],
+  "connectors": [
+    {
+      "connectorKey": "salesforce",
+      "name": "Salesforce",
+      "vendor": "Salesforce",
+      "categoryKeys": [
+        "crm_revenue"
+      ],
+      "summary": "CRM accounts, opportunities, pipeline, forecasts and customer activity.",
+      "roleFit": [
+        "cfo",
+        "ceo"
+      ],
+      "capabilityTags": [
+        "crm",
+        "pipeline",
+        "revenue_forecast",
+        "customer_health"
+      ],
+      "connectionMode": "oauth_or_vendor_app",
+      "dataDirection": "read_write_scoped",
+      "status": "catalog_candidate",
+      "commercialNote": "Requires customer-authorized Salesforce tenant, edition/API entitlement and any applicable vendor fees."
+    },
+    {
+      "connectorKey": "quickbooks_online",
+      "name": "QuickBooks Online",
+      "vendor": "Intuit",
+      "categoryKeys": [
+        "finance_accounting"
+      ],
+      "summary": "Accounting records, invoices, expenses, vendors, accounts and financial summaries.",
+      "roleFit": [
+        "cfo"
+      ],
+      "capabilityTags": [
+        "accounting",
+        "invoices",
+        "expenses",
+        "financial_reporting"
+      ],
+      "connectionMode": "oauth",
+      "dataDirection": "read_write_scoped",
+      "status": "catalog_candidate",
+      "commercialNote": "Requires an authorized QuickBooks Online company and applicable Intuit plan/API access."
+    },
+    {
+      "connectorKey": "xero",
+      "name": "Xero",
+      "vendor": "Xero",
+      "categoryKeys": [
+        "finance_accounting"
+      ],
+      "summary": "Accounting, bank reconciliation, invoices, bills and financial reporting.",
+      "roleFit": [
+        "cfo"
+      ],
+      "capabilityTags": [
+        "accounting",
+        "reconciliation",
+        "invoices",
+        "financial_reporting"
+      ],
+      "connectionMode": "oauth",
+      "dataDirection": "read_write_scoped",
+      "status": "catalog_candidate",
+      "commercialNote": "Requires customer-authorized Xero organization and applicable API access."
+    },
+    {
+      "connectorKey": "netsuite",
+      "name": "Oracle NetSuite",
+      "vendor": "Oracle",
+      "categoryKeys": [
+        "finance_accounting",
+        "crm_revenue",
+        "business_operations"
+      ],
+      "summary": "ERP financials, order-to-cash, procurement and operating data.",
+      "roleFit": [
+        "cfo",
+        "ceo"
+      ],
+      "capabilityTags": [
+        "erp",
+        "financials",
+        "procurement",
+        "revenue_operations"
+      ],
+      "connectionMode": "oauth_or_vendor_app",
+      "dataDirection": "read_write_scoped",
+      "status": "catalog_candidate",
+      "commercialNote": "Requires customer NetSuite licensing, account configuration and approved integration method."
+    },
+    {
+      "connectorKey": "stripe",
+      "name": "Stripe",
+      "vendor": "Stripe",
+      "categoryKeys": [
+        "payments_billing"
+      ],
+      "summary": "Payment events, invoices, subscriptions, refunds and reconciliation signals.",
+      "roleFit": [
+        "cfo"
+      ],
+      "capabilityTags": [
+        "payments",
+        "billing",
+        "subscriptions",
+        "reconciliation"
+      ],
+      "connectionMode": "oauth_or_restricted_api",
+      "dataDirection": "read_write_scoped",
+      "status": "catalog_candidate",
+      "commercialNote": "Financial actions require explicit scopes, approval controls and provider-side authorization; never store secret keys in browser code."
+    },
+    {
+      "connectorKey": "power_bi",
+      "name": "Microsoft Power BI",
+      "vendor": "Microsoft",
+      "categoryKeys": [
+        "analytics_reporting",
+        "executive_reporting"
+      ],
+      "summary": "Governed dashboards, datasets and executive performance reporting.",
+      "roleFit": [
+        "cfo",
+        "ceo"
+      ],
+      "capabilityTags": [
+        "dashboards",
+        "executive_reporting",
+        "financial_kpis"
+      ],
+      "connectionMode": "oauth",
+      "dataDirection": "read_scoped",
+      "status": "catalog_candidate",
+      "commercialNote": "Requires tenant consent, licensing and dataset/workspace permissions."
+    },
+    {
+      "connectorKey": "tableau",
+      "name": "Tableau",
+      "vendor": "Salesforce",
+      "categoryKeys": [
+        "analytics_reporting",
+        "executive_reporting"
+      ],
+      "summary": "Business intelligence dashboards and governed analytics.",
+      "roleFit": [
+        "cfo",
+        "ceo"
+      ],
+      "capabilityTags": [
+        "dashboards",
+        "analytics",
+        "executive_reporting"
+      ],
+      "connectionMode": "oauth_or_vendor_app",
+      "dataDirection": "read_scoped",
+      "status": "catalog_candidate",
+      "commercialNote": "Requires Tableau deployment access, licensing and project/workbook permissions."
+    },
+    {
+      "connectorKey": "github",
+      "name": "GitHub",
+      "vendor": "GitHub",
+      "categoryKeys": [
+        "engineering_devops"
+      ],
+      "summary": "Repositories, pull requests, issues, actions, releases and engineering delivery signals.",
+      "roleFit": [
+        "cio"
+      ],
+      "capabilityTags": [
+        "source_control",
+        "code_review",
+        "ci_cd",
+        "engineering_metrics"
+      ],
+      "connectionMode": "oauth_or_github_app",
+      "dataDirection": "read_write_scoped",
+      "status": "catalog_candidate",
+      "commercialNote": "Install only in approved organizations/repositories; request least-privilege permissions."
+    },
+    {
+      "connectorKey": "gitlab",
+      "name": "GitLab",
+      "vendor": "GitLab",
+      "categoryKeys": [
+        "engineering_devops"
+      ],
+      "summary": "Repositories, merge requests, CI pipelines, releases and security findings.",
+      "roleFit": [
+        "cio"
+      ],
+      "capabilityTags": [
+        "source_control",
+        "ci_cd",
+        "security_scanning"
+      ],
+      "connectionMode": "oauth_or_vendor_app",
+      "dataDirection": "read_write_scoped",
+      "status": "catalog_candidate",
+      "commercialNote": "Requires customer-authorized GitLab group/project scopes."
+    },
+    {
+      "connectorKey": "azure",
+      "name": "Microsoft Azure",
+      "vendor": "Microsoft",
+      "categoryKeys": [
+        "cloud_infrastructure"
+      ],
+      "summary": "Cloud subscriptions, resource inventory, cost and operational telemetry.",
+      "roleFit": [
+        "cio"
+      ],
+      "capabilityTags": [
+        "cloud_inventory",
+        "resource_management",
+        "cloud_cost"
+      ],
+      "connectionMode": "oauth_service_principal",
+      "dataDirection": "read_scoped",
+      "status": "catalog_candidate",
+      "commercialNote": "Use tenant consent and narrowly scoped service principals; avoid broad subscription Owner grants."
+    },
+    {
+      "connectorKey": "aws",
+      "name": "Amazon Web Services",
+      "vendor": "Amazon",
+      "categoryKeys": [
+        "cloud_infrastructure"
+      ],
+      "summary": "AWS account inventory, resource metadata, cost and operational signals.",
+      "roleFit": [
+        "cio"
+      ],
+      "capabilityTags": [
+        "cloud_inventory",
+        "resource_management",
+        "cloud_cost"
+      ],
+      "connectionMode": "role_assumption_or_oauth",
+      "dataDirection": "read_scoped",
+      "status": "catalog_candidate",
+      "commercialNote": "Use cross-account role assumption with external ID and least-privilege policies."
+    },
+    {
+      "connectorKey": "google_cloud",
+      "name": "Google Cloud",
+      "vendor": "Google",
+      "categoryKeys": [
+        "cloud_infrastructure"
+      ],
+      "summary": "Projects, cloud resource inventory, service health and cost signals.",
+      "roleFit": [
+        "cio"
+      ],
+      "capabilityTags": [
+        "cloud_inventory",
+        "resource_management",
+        "cloud_cost"
+      ],
+      "connectionMode": "oauth_service_account",
+      "dataDirection": "read_scoped",
+      "status": "catalog_candidate",
+      "commercialNote": "Use customer-managed service identities and minimal project-level roles."
+    },
+    {
+      "connectorKey": "microsoft_entra_id",
+      "name": "Microsoft Entra ID",
+      "vendor": "Microsoft",
+      "categoryKeys": [
+        "identity_access"
+      ],
+      "summary": "Directory users, groups, sign-in and identity lifecycle signals.",
+      "roleFit": [
+        "cio"
+      ],
+      "capabilityTags": [
+        "identity",
+        "directory",
+        "access_governance"
+      ],
+      "connectionMode": "oauth",
+      "dataDirection": "read_write_scoped",
+      "status": "catalog_candidate",
+      "commercialNote": "Privileged directory scopes require admin consent, explicit justification and audit."
+    },
+    {
+      "connectorKey": "okta",
+      "name": "Okta",
+      "vendor": "Okta",
+      "categoryKeys": [
+        "identity_access"
+      ],
+      "summary": "Identity lifecycle, groups, authentication and access events.",
+      "roleFit": [
+        "cio"
+      ],
+      "capabilityTags": [
+        "identity",
+        "sso",
+        "lifecycle",
+        "access_events"
+      ],
+      "connectionMode": "oauth_or_api_token_vault",
+      "dataDirection": "read_write_scoped",
+      "status": "catalog_candidate",
+      "commercialNote": "Use a dedicated integration account and least-privilege scopes; vault credentials server-side."
+    },
+    {
+      "connectorKey": "microsoft_intune",
+      "name": "Microsoft Intune",
+      "vendor": "Microsoft",
+      "categoryKeys": [
+        "identity_access",
+        "security_operations"
+      ],
+      "summary": "Managed endpoint inventory, compliance state and device actions where authorized.",
+      "roleFit": [
+        "cio"
+      ],
+      "capabilityTags": [
+        "endpoint_management",
+        "device_inventory",
+        "compliance_state"
+      ],
+      "connectionMode": "oauth",
+      "dataDirection": "read_write_scoped",
+      "status": "catalog_candidate",
+      "commercialNote": "Remote device actions require explicit elevated permissions, confirmation and audit."
+    },
+    {
+      "connectorKey": "microsoft_sentinel",
+      "name": "Microsoft Sentinel",
+      "vendor": "Microsoft",
+      "categoryKeys": [
+        "security_operations",
+        "observability"
+      ],
+      "summary": "Security incidents, alerts, analytics and investigation context.",
+      "roleFit": [
+        "cio"
+      ],
+      "capabilityTags": [
+        "siem",
+        "security_incidents",
+        "alert_triage"
+      ],
+      "connectionMode": "oauth",
+      "dataDirection": "read_scoped",
+      "status": "catalog_candidate",
+      "commercialNote": "Requires workspace permissions and clear boundaries for incident response actions."
+    },
+    {
+      "connectorKey": "crowdstrike",
+      "name": "CrowdStrike Falcon",
+      "vendor": "CrowdStrike",
+      "categoryKeys": [
+        "security_operations"
+      ],
+      "summary": "Endpoint detections, host context and response actions where separately approved.",
+      "roleFit": [
+        "cio"
+      ],
+      "capabilityTags": [
+        "edr",
+        "detections",
+        "endpoint_response"
+      ],
+      "connectionMode": "oauth_or_api_client",
+      "dataDirection": "read_write_scoped",
+      "status": "catalog_candidate",
+      "commercialNote": "Endpoint isolation or response actions must use separate permissions and confirmation gates."
+    },
+    {
+      "connectorKey": "datadog",
+      "name": "Datadog",
+      "vendor": "Datadog",
+      "categoryKeys": [
+        "observability",
+        "cloud_infrastructure"
+      ],
+      "summary": "Infrastructure metrics, logs, traces, monitors and service health.",
+      "roleFit": [
+        "cio"
+      ],
+      "capabilityTags": [
+        "observability",
+        "logs",
+        "metrics",
+        "traces"
+      ],
+      "connectionMode": "oauth_or_api_key_vault",
+      "dataDirection": "read_scoped",
+      "status": "catalog_candidate",
+      "commercialNote": "Store API/application keys in a managed server-side secret vault; define retention and ingestion costs."
+    },
+    {
+      "connectorKey": "servicenow",
+      "name": "ServiceNow",
+      "vendor": "ServiceNow",
+      "categoryKeys": [
+        "it_service_management"
+      ],
+      "summary": "Incidents, changes, service requests, CMDB and operational workflows.",
+      "roleFit": [
+        "cio"
+      ],
+      "capabilityTags": [
+        "itsm",
+        "cmdb",
+        "change_management"
+      ],
+      "connectionMode": "oauth_or_vendor_app",
+      "dataDirection": "read_write_scoped",
+      "status": "catalog_candidate",
+      "commercialNote": "Use scoped integration user/roles and map tenant, assignment and record ACL boundaries."
+    },
+    {
+      "connectorKey": "asana",
+      "name": "Asana",
+      "vendor": "Asana",
+      "categoryKeys": [
+        "work_management",
+        "executive_reporting"
+      ],
+      "summary": "Strategic initiatives, project ownership, milestones and execution status.",
+      "roleFit": [
+        "ceo"
+      ],
+      "capabilityTags": [
+        "portfolio",
+        "initiatives",
+        "milestones"
+      ],
+      "connectionMode": "oauth",
+      "dataDirection": "read_write_scoped",
+      "status": "catalog_candidate",
+      "commercialNote": "Requires authorized workspace and project access."
+    },
+    {
+      "connectorKey": "monday_com",
+      "name": "monday.com",
+      "vendor": "monday.com",
+      "categoryKeys": [
+        "work_management",
+        "executive_reporting"
+      ],
+      "summary": "Cross-functional initiatives, operating plans, ownership and status.",
+      "roleFit": [
+        "ceo"
+      ],
+      "capabilityTags": [
+        "portfolio",
+        "operating_plans",
+        "work_management"
+      ],
+      "connectionMode": "oauth",
+      "dataDirection": "read_write_scoped",
+      "status": "catalog_candidate",
+      "commercialNote": "Requires authorized account/workspace and board permissions."
+    },
+    {
+      "connectorKey": "atlassian_jira",
+      "name": "Atlassian Jira",
+      "vendor": "Atlassian",
+      "categoryKeys": [
+        "work_management",
+        "engineering_devops"
+      ],
+      "summary": "Strategic programs, delivery roadmaps, project status and engineering work.",
+      "roleFit": [
+        "ceo",
+        "cio"
+      ],
+      "capabilityTags": [
+        "roadmaps",
+        "project_delivery",
+        "engineering_work"
+      ],
+      "connectionMode": "oauth_or_vendor_app",
+      "dataDirection": "read_write_scoped",
+      "status": "catalog_candidate",
+      "commercialNote": "Scopes should be restricted to selected sites/projects and mapped to tenant access."
+    }
+  ],
+  "connectionLifecycle": [
+    "not_connected",
+    "authorization_pending",
+    "connected",
+    "degraded",
+    "reauthorization_required",
+    "disconnected",
+    "error"
+  ],
+  "commercialRules": {
+    "connectorPricing": "Connector subscription, usage, API, and vendor license fees must be disclosed separately from IntelliStack package pricing.",
+    "packageEntitlements": "Packages may include connector slots, categories, governance capabilities, or support levels; exact quantities remain proposed until approved.",
+    "addOns": "A connector may be offered as a standalone add-on or bundle only after dependency, readiness, and entitlement checks.",
+    "tierIndependence": "Role recommendation must not silently upgrade a subscription or grant a paid entitlement.",
+    "noPriceAssumptions": true
+  },
+  "securityContract": {
+    "oauthPreferred": true,
+    "secretsStoredServerSide": true,
+    "leastPrivilege": true,
+    "tenantScopedConnections": true,
+    "perActionAuthorization": true,
+    "auditConnectDisconnectAndDataActions": true,
+    "supportCredentialRotationAndRevocation": true,
+    "noCrossTenantDataAccess": true,
+    "writeActionsRequireExplicitScopesAndConfirmation": true
+  }
+}
