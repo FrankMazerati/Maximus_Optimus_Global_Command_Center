@@ -264,3 +264,7 @@
 
 ## Operational acceptance rule
 Only label a product **Operational verified** after its real user flow, persistence, server-side authorization, cross-tenant denial tests, error handling, audit behavior, and deployment smoke test have passed. Menu visibility alone is not an acceptance test.
+
+
+## Marketplace connector ecosystem extension
+The IntelliStack Marketplace is intended to become a full product and connector ecosystem, not just a package picker. Role-aware collections include CFO finance/revenue tools (Salesforce, QuickBooks Online, Xero, NetSuite, Stripe, Power BI/Tableau), CIO engineering/infrastructure/identity/security tools (GitHub, GitLab, Azure, AWS, Google Cloud, Entra ID, Okta, Intune, Sentinel, CrowdStrike, Datadog, ServiceNow, Jira), and CEO executive reporting/strategic operations tools (Power BI, Tableau, Salesforce, NetSuite, Asana, monday.com, Jira). These are recommendations only; authorization, connector entitlements, tenant scopes and provider connections remain separate. See [the detailed connector ecosystem specification](ROLE_AWARE_MARKETPLACE_CONNECTOR_ECOSYSTEM.md) and [canonical JSON catalog](../marketplace/role-connector-catalog.json).
