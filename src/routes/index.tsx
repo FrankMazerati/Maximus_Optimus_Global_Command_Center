@@ -18,7 +18,7 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Maximus Optimus — Global Command Center" },
-      { name: "description", content: "IntelliStack Systems Maximus Optimus Global Command Center dashboard." },
+      { name: "description", content: "IntelliStack Systems Global Command Center dashboard." },
       { property: "og:title", content: "Maximus Optimus — Global Command Center" },
       { property: "og:description", content: "IntelliStack Systems global command center dashboard." },
       { property: "og:type", content: "website" },
@@ -56,7 +56,7 @@ const kews = [
   { tag: "Compliance", h: "New Compliance Models Streamline Review", m: "Compliance • 1h ago" },
 ];
 const news = [
-  { tag: "AI News", h: "AI-Driven Insights Accelerate Global Edge", m: "Diamond Carter • Nov 3, 2025" },
+  { tag: "AI News", h: "AI-Driven Insights Accelerate Global Edge", m: "Frank Mazerati • Nov 3, 2025" },
   { tag: "Network News", h: "Quantum Network Achieves 99.9% Uptime", m: "Network Ops • Nov 3, 2025" },
   { tag: "Singapore", h: "AR/VR Collaboration Boosts Global Edge", m: "AR/VR Labs • Nov 2, 2025" },
   { tag: "BioTech", h: "BioTech Breakthrough in Tech Innovation", m: "AR/VR Labs • Nov 2, 2025" },
