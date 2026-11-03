@@ -23,7 +23,7 @@ export type Widget =
 
 export type Placed = Widget & { span?: string };
 
-function Head({ title, icon: Icon, action, search }: { title: string; icon?: LucideIcon; action?: string; search?: boolean }) {
+function Head({ title, icon: Icon, action, search }: { title: string; icon?: LucideIcon | undefined; action?: string | undefined; search?: boolean | undefined }) {
   return (
     <div className="mb-2 flex items-center justify-between gap-2">
       <div className="flex items-center gap-2 text-sm font-semibold">{Icon && <Icon className="h-4 w-4 text-primary" />}{title}</div>
@@ -35,7 +35,7 @@ function Head({ title, icon: Icon, action, search }: { title: string; icon?: Luc
   );
 }
 
-function Donut({ legend, center, centerSub }: { legend: { pct: number; tone: Tone }[]; center: string; centerSub?: string }) {
+function Donut({ legend, center, centerSub }: { legend: { pct: number; tone: Tone }[]; center: string; centerSub?: string | undefined }) {
   let acc = 0;
   const stops = legend.map((l) => { const s = `${toneVar[l.tone]} ${acc}% ${acc + l.pct}%`; acc += l.pct; return s; }).join(",");
   return (
@@ -47,7 +47,7 @@ function Donut({ legend, center, centerSub }: { legend: { pct: number; tone: Ton
   );
 }
 
-function Chart({ type, points, labels }: { type: "line" | "bars"; points: number[]; labels?: string[] }) {
+function Chart({ type, points, labels }: { type: "line" | "bars"; points: number[]; labels?: string[] | undefined }) {
   const max = Math.max(...points);
   if (type === "bars") return (
     <div>
