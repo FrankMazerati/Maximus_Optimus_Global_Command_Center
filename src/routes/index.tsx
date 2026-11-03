@@ -86,7 +86,7 @@ function Label({ children }: { children: React.ReactNode }) {
 
 function Index() {
   const [status, setStatus] = useState("Available");
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   const [active, setActive] = useState("Dashboard");
   const [greeting, setGreeting] = useState("Good Morning");
   const [drawer, setDrawer] = useState(false);
@@ -137,7 +137,7 @@ function Index() {
         <div className="px-16 py-1 text-[9px] text-muted-foreground">Our Intelligent Network, Control Everything Centrally, Oversee Everything Globally, Powered by Intelligence</div>
 
         {/* HERO */}
-        <section className="panel relative mt-1 overflow-hidden">
+        <section className="panel relative z-30 mt-1">
           <img src={bg} alt="" className="absolute inset-0 h-full w-full object-cover opacity-60" />
           <div className="absolute inset-0 bg-gradient-to-r from-background via-background/70 to-transparent" />
           <div className="relative grid grid-cols-[220px_1fr_200px_1fr_200px] items-start gap-4 p-4">
