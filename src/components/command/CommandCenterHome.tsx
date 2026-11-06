@@ -3,8 +3,7 @@ import { Link } from "@tanstack/react-router";
 import {
   Menu, X, ShieldCheck, Bell, Mail, MessageSquare, ChevronDown, ChevronRight,
   Home, Search, Globe2, Newspaper, TrendingUp, Megaphone, BriefcaseBusiness,
-  CalendarDays, Activity, ListChecks, Zap, BrainCircuit, Plug, CircleCheck,
-  CirclePlus, UserRound, MapPin, Phone, Camera, Image as ImageIcon, Settings,
+  BrainCircuit, Plug, CirclePlus, UserRound, Camera, Image as ImageIcon, Settings,
   LogOut, Clock3, ArrowUpRight, Send,
 } from "lucide-react";
 import portraitAsset from "@/assets/frank-mazerati.jpg.asset.json";
@@ -204,7 +203,7 @@ export function CommandCenterHome() {
       </div>
 
       <footer className="command-footer">
-        <div className="command-footer-columns">{footerGroups.map((group) => <section key={group.title}><h3>{group.title}</h3>{group.links.map((label) => <Link key={label} to={label === "Home" ? "/" : "/section/$slug"} params={label === "Home" ? undefined : {slug: label === "IntelliDesk" ? "intellidesk" : label === "Marketplace" ? "intellimarketplace" : "administration-settings-support"}}>{label}</Link>)}</section>)}</div>
+        <div className="command-footer-columns">{footerGroups.map((group) => <section key={group.title}><h3>{group.title}</h3>{group.links.map((label) => label === "Home" ? <Link key={label} to="/">{label}</Link> : <Link key={label} to="/section/$slug" params={{slug: label === "IntelliDesk" ? "intellidesk" : label === "Marketplace" ? "intellimarketplace" : "administration-settings-support"}}>{label}</Link>)}</section>)}</div>
         <div className="command-footer-legal"><strong>IntelliStack Systems™</strong><strong>Maximus Optimus Global Command Center™</strong><span>© 2026 IntelliStack Systems. All rights reserved.</span></div>
       </footer>
     </div>
