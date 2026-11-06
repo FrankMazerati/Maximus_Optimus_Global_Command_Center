@@ -410,3 +410,5 @@
   .command-navigation { max-height:600px; }
   .command-assistant-column { overflow:visible; }
 }
+
+.command-help-notice { padding:4px 2px 0; color:#8197ad; font-size:8px; line-height:1.35; }
