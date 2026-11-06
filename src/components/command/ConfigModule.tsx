@@ -1,6 +1,7 @@
 import { useState, type ReactNode } from "react";
 import { ChevronDown, Minus, Plus, GripVertical, X, ArrowUp, ArrowDown } from "lucide-react";
 import { MODULE_MAX, clampCount } from "@/lib/home-config";
+import { Button } from '@/components/ui/button';
 
 export type ModuleItem = { id: string; label: string; detail?: string };
 
@@ -15,10 +16,10 @@ export function ConfigModule<T extends ModuleItem>({
   const active = order.slice(0, count);
 
   const move = (from: number, to: number) => {
-    if (to < 0 || to >= order.length || from === to) return;
-    const next = [...order]; const [x] = next.splice(from, 1); next.splice(to, 0, x); setOrder(next);
+    if (from < 0 || from >= order.length || to < 0 || to >= order.length || from === to) return;
+    const next = [...order]; const [x] = next.splice(from, 1); if (!x) return; next.splice(to, 0, x); setOrder(next);
   };
-  const remove = (i: number) => { if (count <= 1) return; const next = [...order]; const [x] = next.splice(i, 1); next.push(x); setOrder(next); setCount(count - 1); };
+  const remove = (i: number) => { if (count <= 1 || i < 0 || i >= count) return; const next = [...order]; const [x] = next.splice(i, 1); if (!x) return; next.push(x); setOrder(next); setCount(count - 1); };
   const add = (i: number) => { if (count >= MODULE_MAX) return; move(i, count); setCount(count + 1); };
   const dragProps = (i: number) => ({
     draggable: true,
