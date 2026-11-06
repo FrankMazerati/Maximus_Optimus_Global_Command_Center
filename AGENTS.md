@@ -13,3 +13,4 @@
 - Interactive demo records live in a root React provider, preserving edits across navigation without representing them as saved or connected production data.
 - Section routes resolve reference dashboards before generic menu sections; the shared menu and homepage both use the dashboard catalog so identity-only pages remain reachable.
 - Compact custom controls use the Button plain variant to preserve the reference styling without duplicating control primitives.
+- Full-page pinch zoom uses a lazily loaded react-zoom-pan-pinch surface; fit-to-screen measures the rendered page while nested scrolling and interactive controls retain their normal behavior.

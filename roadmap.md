@@ -4,3 +4,4 @@
 - [ ] Match page-specific layouts and artwork with interactive, editable demo records
 - [ ] Verify navigation, editing, filtering, actions, and phone layouts
 - [ ] Resolve preview errors and finish the requested profile order and inline contact details
+- [ ] Add two-finger zoom, zoom controls, and fit-to-screen so the whole page can be viewed at once

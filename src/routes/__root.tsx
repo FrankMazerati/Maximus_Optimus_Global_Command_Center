@@ -6,13 +6,15 @@ import {
   useRouter,
   HeadContent,
   Scripts,
+  ClientOnly,
   type ErrorComponentProps,
 } from "@tanstack/react-router";
-import { useEffect, type ReactNode } from "react";
+import { lazy, Suspense, useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { DemoProvider } from '@/components/command/DemoProvider';
+const PageZoom = lazy(()=>import('@/components/command/PageZoom'));
 
 function NotFoundComponent() {
   return (
@@ -123,7 +125,7 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <DemoProvider><Outlet /></DemoProvider>
+      <DemoProvider><ClientOnly fallback={<Outlet/>}><Suspense fallback={<Outlet/>}><PageZoom><Outlet/></PageZoom></Suspense></ClientOnly></DemoProvider>
     </QueryClientProvider>
   );
 }
