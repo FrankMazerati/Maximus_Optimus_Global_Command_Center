@@ -11,3 +11,5 @@
 
 - Reference dashboard definitions live in a shared browser-safe catalog; menu links resolve through that catalog so every reference page has a stable URL.
 - Interactive demo records live in a root React provider, preserving edits across navigation without representing them as saved or connected production data.
+- Section routes resolve reference dashboards before generic menu sections; the shared menu and homepage both use the dashboard catalog so identity-only pages remain reachable.
+- Compact custom controls use the Button plain variant to preserve the reference styling without duplicating control primitives.
