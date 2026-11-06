@@ -169,7 +169,7 @@ export function CommandCenterHome() {
         <section className="command-work-column" aria-label="Bring the Work to You">
           <div className="command-column-heading"><div><BriefcaseBusiness size={16}/><h2>Bring the Work to You</h2></div><span>{workSections.length} workstreams</span></div>
           <div className="command-work-scroll">
-            <div className="command-work-summary"><span>YOUR WORKSPACE</span><strong>Today's work, priorities and commitments</strong></div>
+            <div className="command-work-summary"><span>YOUR WORKSPACE · SAMPLE DATA</span><strong>Today's work, priorities and commitments</strong></div>
             {workSections.map((section) => <div className="command-work-card" key={section.title}>
               <button onClick={() => setOpenWork(openWork === section.title ? null : section.title)} aria-expanded={openWork === section.title}>
                 <span>{section.title}</span><span className="command-count">{section.items.length}</span><ChevronDown size={13} className={openWork === section.title ? "is-open" : ""}/>
