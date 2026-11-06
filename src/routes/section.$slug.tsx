@@ -1,6 +1,5 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
 import { AppShell } from "@/components/command/AppShell";
-import { WidgetCard } from "@/components/command/widgets";
 import { menu } from "@/lib/menu";
 import { getDashboardPage, resolveMenuItem } from '@/lib/dashboard-pages';
 import { ReferenceDashboard } from '@/components/command/ReferenceDashboard';
