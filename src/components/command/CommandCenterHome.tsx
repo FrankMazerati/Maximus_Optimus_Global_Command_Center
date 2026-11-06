@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, type ChangeEvent, type FormEvent } from "react";
 import { Link } from "@tanstack/react-router";
 import {
   Menu, X, ShieldCheck, Bell, Mail, MessageSquare, ChevronDown, ChevronRight,
@@ -50,6 +50,7 @@ export function CommandCenterHome() {
   const [managerOpen, setManagerOpen] = useState(false);
   const [profileMenu, setProfileMenu] = useState(false);
   const [helpMessage, setHelpMessage] = useState("");
+  const [helpNotice, setHelpNotice] = useState("");
 
   useEffect(() => {
     const timer = window.setInterval(() => setNow(new Date()), 15000);
@@ -68,7 +69,7 @@ export function CommandCenterHome() {
   const greeting = greetingMessages[dayPart(hour)];
   const visibleMenu = useMemo(() => menu.filter((item) => JSON.stringify(item).toLowerCase().includes(menuQuery.toLowerCase())), [menuQuery]);
 
-  const chooseImage = (setter: (value: string) => void) => (event: React.ChangeEvent<HTMLInputElement>) => {
+  const chooseImage = (setter: (value: string) => void) => (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file) setter(URL.createObjectURL(file));
   };
@@ -188,10 +189,11 @@ export function CommandCenterHome() {
                 {openHelp === item.title && <ul>{item.items.map((line) => <li key={line}>{line}</li>)}</ul>}
               </div>)}
             </div>
-            <form className="command-help-input" onSubmit={(event) => {event.preventDefault(); setHelpMessage("");}}>
+            <form className="command-help-input" onSubmit={(event) => {event.preventDefault(); if (helpMessage.trim()) setHelpNotice("Help Buddy AI service will be connected during the integration phase.");}}>
               <input value={helpMessage} onChange={(event) => setHelpMessage(event.target.value)} placeholder="Ask Help Buddy..." aria-label="Ask Help Buddy" />
               <button type="submit" aria-label="Send message" disabled={!helpMessage.trim()}><Send size={14}/></button>
             </form>
+            {helpNotice && <div className="command-help-notice" role="status">{helpNotice}</div>}
             <div className="command-workflow-label"><BrainCircuit size={13}/> WORKFLOW COMPANION</div>
           </section>
 
