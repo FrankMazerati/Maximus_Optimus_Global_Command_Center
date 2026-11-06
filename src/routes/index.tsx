@@ -7,7 +7,7 @@ import {
 } from "lucide-react";
 import portraitAsset from "@/assets/frank-mazerati.jpg.asset.json";
 import shieldAsset from "@/assets/intellistack-shield.jpg.asset.json";
-import commandBg from "@/assets/command-center.jpg";
+import commandBg from "@/assets/command-center-bg.jpg";
 import buddy from "@/assets/help-buddy.png";
 import { ConfigModule } from "@/components/command/ConfigModule";
 import { menu } from "@/lib/menu";
@@ -77,13 +77,13 @@ function Index() {
   const filteredMenu = menu.filter((m) => JSON.stringify(m).toLowerCase().includes(menuQuery.toLowerCase()));
 
   return (
-    <div className="relative min-h-screen bg-background text-foreground">
-      <img src={bg} alt="" className="pointer-events-none fixed inset-0 h-full w-full object-cover opacity-30" />
-      <div className="pointer-events-none fixed inset-0 bg-gradient-to-b from-background/80 via-background/50 to-background/90" />
+    <div className="command-home relative min-h-screen text-foreground">
+      <img src={bg} alt="" className="command-background pointer-events-none fixed inset-0 h-full w-full object-cover" />
+      <div className="command-wash pointer-events-none fixed inset-0" />
 
-      <div className="relative mx-auto max-w-[1600px] p-3">
+      <div className="command-content relative mx-auto w-full max-w-none p-2 sm:p-3">
         {/* PRIMARY BAR */}
-        <header className="relative z-40 flex items-center gap-3 rounded-lg border border-border bg-header/80 px-3 py-1.5 backdrop-blur">
+        <header className="relative z-40 flex items-center gap-3 rounded-lg border border-white/25 bg-slate-100/15 px-3 py-1 backdrop-blur-xl">
           <Button variant="plain" size="plain" onClick={() => setDrawer(!drawer)} className="glass-btn !h-8 !w-8" aria-label="Menu" aria-expanded={drawer}>{drawer ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}</Button>
           <div className="flex items-center gap-2">
             <img src={shieldAsset.url} alt="IntelliStack Systems shield" className="h-10 w-10 object-contain" />
@@ -134,14 +134,14 @@ function Index() {
         </header>
 
         {/* SECOND BAR — slogan */}
-        <div className="mt-1 rounded-md border border-border/50 bg-header/50 px-3 py-1.5 text-center backdrop-blur">
+        <div className="mt-1 rounded-md border border-white/20 bg-slate-100/10 px-2 py-1 text-center backdrop-blur-xl">
           <p className="font-display text-[11px] font-bold tracking-[0.12em] sm:text-sm ">See everything locally. Connect everything globally. Powered by Intelligence.</p>
         </div>
 
         {/* PROFILE + STATUS */}
-        <section className="relative z-30 border-b border-border mt-2 grid gap-4 p-3 md:grid-cols-[170px_minmax(0,1fr)_auto]">
+        <section className="glass-surface relative z-30 mt-2 grid gap-2 rounded-xl p-2 md:grid-cols-[82px_minmax(0,1fr)_auto]">
           <div className="profile-compact flex flex-col items-center gap-1 md:items-start">
-            <div className="hex-glow"><div className="hex-clip bg-primary p-[2px]"><img src={photo} alt="Frank Mazerati" className="hex-clip h-[150px] w-[150px] object-cover" /></div></div>
+            <div className="hex-glow"><div className="hex-clip bg-primary p-[2px]"><img src={photo} alt="Frank Mazerati" className="hex-clip h-[64px] w-[64px] object-cover" /></div></div>
             <div className="relative w-[135px]">
               <Button variant="plain" size="plain" onClick={() => setStatusOpen(!statusOpen)} aria-label="Availability" className="flex w-full items-center justify-between rounded border border-border bg-popover/70 px-2 py-0.5 text-[9px]">
                 <span className="flex items-center gap-1"><span className={`h-1.5 w-1.5 rounded-full ${status === "Available" ? "bg-success" : status === "Away" ? "bg-muted-foreground" : "bg-warning"}`} />{status}</span><ChevronDown className="h-2.5 w-2.5" />
@@ -163,27 +163,27 @@ function Index() {
           </div>
 
           <div className="min-w-0">
-            <h1 className="text-xl font-light sm:text-2xl">{greet.title}, Frank Mazerati.</h1>
-            <p className="mb-3 text-[11px] text-primary">{greet.message}</p>
-            <ul className="grid gap-1.5 text-[11px]">
-              <li className="flex items-center gap-2"><User className="h-3 w-3 shrink-0 text-primary" />Founder &amp; Chief Global Architect</li>
-              <li className="flex items-center gap-2"><IdCard className="h-3 w-3 text-primary" />Global User ID: IntelliStackID-144674</li>
-              <li className="flex items-center gap-2"><Building2 className="h-3 w-3 text-primary" />Company ID: IntelliStackSystems-144674</li>
+            <h1 className="text-base font-light sm:text-lg">{greet.title}, Frank Mazerati.</h1>
+            <p className="mb-1 text-[10px] text-primary">{greet.message}</p>
+            <ul className="flex flex-wrap gap-x-3 gap-y-1 text-[9px]">
+              <li className="flex items-center gap-1"><User className="h-3 w-3 shrink-0 text-primary" />Chief Principal Architect • Founder</li>
+              <li className="flex items-center gap-1"><IdCard className="h-3 w-3 text-primary" />User ID: 001</li>
+              <li className="flex items-center gap-1"><Building2 className="h-3 w-3 text-primary" />Company ID: IntelliStack Systems</li>
               <li className="flex items-center gap-2"><Mail className="h-3 w-3 shrink-0 text-primary" /><span className="inline-contact">Email: <a href="mailto:Frank.Mazerati@IntellistackSystems.com">Frank.Mazerati@IntellistackSystems.com</a></span></li>
               <li className="flex items-center gap-2"><Phone className="h-3 w-3 shrink-0 text-primary" /><span>Phone: <a href="tel:7738240056">773-824-0056</a></span></li>
               <li className="flex items-center gap-2"><MapPin className="h-3 w-3 shrink-0 text-primary" /><span>Work Location: Chicago Corporate Business Center</span></li>
             </ul>
           </div>
 
-          <div className="flex flex-wrap gap-2 md:flex-col">
-            <div className="glass-module min-w-[150px] px-3 py-1.5"><div className="text-[8px] uppercase tracking-[0.2em] text-muted-foreground">Current Time</div><div className="font-display text-xl tabular-nums">{fmt(now, CHI, { hour: "numeric", minute: "2-digit" })} <span className="text-[9px] text-primary">CST</span></div></div>
-            <div className="glass-module min-w-[150px] px-3 py-1"><div className="text-[8px] uppercase tracking-[0.2em] text-muted-foreground">Current Date</div><div className="font-display text-xs">{fmt(now, CHI, { weekday: "short", month: "short", day: "numeric", year: "numeric" })}</div></div>
-            <div className="glass-module flex min-w-[150px] items-center gap-2 px-3 py-1"><CloudSun className="h-4 w-4 text-primary" /><div><div className="font-display text-xs">72°F</div><div className="text-[8px] text-muted-foreground">Chicago • Partly Cloudy</div></div></div>
+          <div className="flex flex-wrap items-center justify-end gap-x-3 gap-y-1 text-right">
+            <div className="text-[9px] leading-tight"><span className="text-muted-foreground">LOCAL </span><span className="font-display text-sm tabular-nums">{fmt(now, CHI, { hour: "numeric", minute: "2-digit" })}</span><span className="text-[8px] text-primary"> CT</span></div>
+            <div className="text-[9px] leading-tight text-muted-foreground">{fmt(now, CHI, { weekday: "short", month: "short", day: "numeric" })}</div>
+            <div className="flex items-center gap-1 text-[9px] leading-tight"><CloudSun className="h-3 w-3 text-primary" /><span>72°F • Chicago</span></div>
           </div>
         </section>
 
         {/* STANDARDIZED MODULES */}
-        <div className="mt-2 space-y-2">
+        <div className="mt-2 grid grid-cols-1 gap-1.5 sm:grid-cols-2 xl:grid-cols-5">
           <ConfigModule title="Global Clock" icon={<Clock className="h-3 w-3" />} catalog={clockCatalog} initial={5} render={(c) => (
             <div><div className="text-[8px] uppercase tracking-wider text-muted-foreground">{c.label}</div><div className="font-display text-sm tabular-nums">{fmt(now, c.tz, { hour: "numeric", minute: "2-digit" })}</div><div className="text-[8px] text-muted-foreground">{fmt(now, c.tz, { month: "short", day: "numeric" })}</div></div>
           )} />
@@ -202,15 +202,15 @@ function Index() {
         </div>
 
         {/* SEARCH */}
-        <div className="mx-auto mt-3 flex max-w-xl items-center gap-2 rounded-xl border border-primary/60 bg-secondary/40 px-4 py-2 shadow-[var(--glow)] backdrop-blur">
+        <div className="glass-surface mx-auto mt-2 flex max-w-xl items-center gap-2 rounded-lg px-3 py-1.5 backdrop-blur-xl">
           <Search className="h-4 w-4 text-primary" />
           <input placeholder="Search knowledge, teams, workflows, entities, globally..." className="min-w-0 flex-1 bg-transparent text-xs outline-none placeholder:text-muted-foreground" />
           <Mic className="h-4 w-4 text-primary" />
         </div>
 
         {/* WORK AREA */}
-        <div className="mt-3 grid gap-3 lg:grid-cols-2">
-          <section className="flex h-[420px] flex-col p-2" aria-label="Bring the Work to You">
+        <div className="mt-2 grid gap-2 xl:grid-cols-[minmax(0,1.35fr)_minmax(280px,1fr)]">
+          <section className="glass-surface flex h-[min(52vh,520px)] min-h-[300px] flex-col rounded-xl p-2" aria-label="Bring the Work to You">
             <div className="mb-2 flex items-center gap-1 text-[9px] font-semibold uppercase tracking-[0.22em] text-primary"><Hexagon className="h-3 w-3" />Bring the Work to You<span className="ml-auto text-muted-foreground">{workSections.length} modules</span></div>
             <div className="scroll-blue grid flex-1 content-start gap-1.5 sm:grid-cols-2">
               {workSections.map((w) => (
@@ -246,7 +246,7 @@ function Index() {
           </section>
         </div>
 
-        <footer className="mt-3 flex flex-wrap justify-between gap-2 px-2 text-[8px] text-muted-foreground">
+        <footer className="mt-2 flex flex-wrap justify-between gap-2 rounded-lg border border-white/15 bg-slate-100/10 px-2 py-1 text-[8px] text-white/80 backdrop-blur-md">
           <span className="flex items-center gap-1"><Globe className="h-3 w-3" />All Systems Online | Platform v2.0.0 | © 2026 IntelliStack Systems</span>
           <span className="flex gap-3">{["Privacy Policy", "Terms of Use", "Security", "Compliance", "Help Desk"].map((l) => <a key={l} href="#">{l}</a>)}</span>
         </footer>
