@@ -1,10 +1,10 @@
 import { useEffect, useMemo, useState, type ChangeEvent, type FormEvent } from "react";
 import { Link } from "@tanstack/react-router";
 import {
-  Menu, X, ShieldCheck, Bell, Mail, MessageSquare, ChevronDown, ChevronRight,
+  Menu, X, Bell, Mail, MessageSquare, ChevronDown, ChevronRight,
   Home, Search, Globe2, Newspaper, TrendingUp, Megaphone, BriefcaseBusiness,
   BrainCircuit, Plug, CirclePlus, UserRound, Camera, Image as ImageIcon, Settings,
-  LogOut, Clock3, ArrowUpRight, Send,
+  LogOut, ArrowUpRight, Send,
 } from "lucide-react";
 import portraitAsset from "@/assets/frank-mazerati.jpg.asset.json";
 import shieldAsset from "@/assets/intellistack-shield.jpg.asset.json";
