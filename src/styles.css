@@ -160,3 +160,33 @@
 @keyframes marquee { from { transform: translateX(0) } to { transform: translateX(-50%) } }
 @utility spin-slow { animation: spin 40s linear infinite; }
 @layer base { body { font-family: var(--font-sans); } }
+
+/* Reference dashboards retain their three-column command layout on wide screens. */
+.reference-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; }
+.reference-grid > div { min-width: 0; }
+.command-scene { aspect-ratio: 1.5; }
+.command-scene > img { height: 100%; }
+.reference-dashboard .panel { border-radius: 8px; }
+.reference-dashboard .panel:has(.font-display.text-2xl) .font-display { font-size: 18px; }
+.reference-dashboard .panel:has(.font-display.text-2xl) .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.inline-contact { white-space: nowrap; font-size: 10px; }
+.zoom-page { width: 100%; height: 100dvh; overflow: hidden; }
+.page-zoom-viewport { width: 100% !important; height: 100% !important; }
+.page-zoom-content { align-items: flex-start; }
+.compact-module .module-heading { padding-top: 3px; }
+.compact-module .module-items { padding: 4px 6px; gap: 4px; }
+.compact-module .module-items > div { padding-top: 2px; padding-bottom: 2px; }
+.compact-module .font-display.text-sm { font-size: 11px; }
+.compact-module .module-items .text-\[10px\] { font-size: 9px; }
+.profile-compact > div > button { min-height: 18px; font-size: 8px; padding: 1px 5px; }
+.profile-compact > div > button svg { width: 10px; height: 10px; }
+@media (min-width: 1100px) {
+  .reference-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr) minmax(0, 1fr); }
+}
+@media (max-width: 767px) {
+  .reference-dashboard h1 { font-size: 22px; }
+  .inline-contact { font-size: 9px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
