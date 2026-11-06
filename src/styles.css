@@ -173,6 +173,13 @@
 .zoom-page { width: 100%; height: 100dvh; overflow: hidden; }
 .page-zoom-viewport { width: 100% !important; height: 100% !important; }
 .page-zoom-content { align-items: flex-start; }
+.compact-module .module-heading { padding-top: 3px; }
+.compact-module .module-items { padding: 4px 6px; gap: 4px; }
+.compact-module .module-items > div { padding-top: 2px; padding-bottom: 2px; }
+.compact-module .font-display.text-sm { font-size: 11px; }
+.compact-module .module-items .text-\[10px\] { font-size: 9px; }
+.profile-compact > div > button { min-height: 18px; font-size: 8px; padding: 1px 5px; }
+.profile-compact > div > button svg { width: 10px; height: 10px; }
 @media (min-width: 1100px) {
   .reference-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr) minmax(0, 1fr); }
 }

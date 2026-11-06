@@ -9,7 +9,7 @@ export default function PageZoom({children}:{children:ReactNode}) {
   const frame = useRef<HTMLDivElement>(null);
   const [width,setWidth] = useState(1280);
   const [scale,setScale] = useState(1);
-  const [fitted,setFitted] = useState(false);
+  const [fitted,setFitted] = useState(true);
   const fit = () => {
     const el=content.current; const box=frame.current; const api=transform.current;
     if(!el || !box || !api) return;
@@ -25,13 +25,14 @@ export default function PageZoom({children}:{children:ReactNode}) {
   useEffect(()=>{
     const el=content.current; if(!el) return;
     const observer=new ResizeObserver(()=>{if(fitted) fit();});
-    observer.observe(el); return ()=>observer.disconnect();
+    observer.observe(el); const timer=window.setTimeout(()=>{if(fitted) fit();},100);
+    return ()=>{observer.disconnect();window.clearTimeout(timer);};
   },[fitted,width]);
   return <div ref={frame} className="zoom-page bg-background">
     <TransformWrapper ref={transform} minScale={0.1} maxScale={3} limitToBounds={false}
       wheel={{activationKeys:['Control','Meta'],step:0.002}}
       panning={{excluded:['input','select','textarea','button','a','scroll-blue']}}
-      doubleClick={{disabled:true}} onTransformed={(_,state)=>setScale(state.scale)}>
+      doubleClick={{disabled:true}} onTransform={(_,state)=>setScale(state.scale)}>
       <TransformComponent wrapperClass="page-zoom-viewport" contentClass="page-zoom-content">
         <div ref={content} style={{width}}>{children}</div>
       </TransformComponent>

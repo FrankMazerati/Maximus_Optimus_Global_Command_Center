@@ -29,8 +29,8 @@ export function ConfigModule<T extends ModuleItem>({
   });
 
   return (
-    <section className="glass-module" aria-label={title}>
-      <div className="flex items-center gap-2 px-2.5 pt-1.5">
+    <section className={`glass-module ${['Global Clock','Global News','Quick Picks'].includes(title)?'compact-module':''}`} aria-label={title}>
+      <div className="module-heading flex items-center gap-2 px-2.5 pt-1.5">
         <span className="flex items-center gap-1.5 text-[9px] font-semibold uppercase tracking-[0.22em] text-primary">{icon}{title}</span>
         <div className="ml-auto flex items-center gap-1">
           <Button variant="plain" size="plain" className="mini-btn" aria-label={`Fewer ${title} items`} disabled={count <= 1} onClick={() => setCount(clampCount(count - 1))}><Minus className="h-3 w-3" /></Button>
@@ -39,7 +39,7 @@ export function ConfigModule<T extends ModuleItem>({
           <Button variant="plain" size="plain" className="mini-btn" aria-label={`Configure ${title}`} aria-expanded={open} onClick={() => setOpen(!open)}><ChevronDown className={`h-3 w-3 transition ${open ? "rotate-180" : ""}`} /></Button>
         </div>
       </div>
-      <div className="grid gap-1.5 p-2 [grid-template-columns:repeat(auto-fit,minmax(150px,1fr))] lg:[grid-template-columns:repeat(var(--cols),minmax(0,1fr))]" style={{ ["--cols" as string]: Math.min(count, 5) }}>
+      <div className="module-items grid gap-1.5 p-2 [grid-template-columns:repeat(auto-fit,minmax(150px,1fr))] lg:[grid-template-columns:repeat(var(--cols),minmax(0,1fr))]" style={{ ["--cols" as string]: Math.min(count, 5) }}>
         {active.map((it, i) => (
           <div key={it.id} {...dragProps(i)} className={`cursor-grab rounded-md border border-border/60 bg-secondary/25 px-2 py-1 ${drag === i ? "opacity-50" : ""}`}>{render(it)}</div>
         ))}

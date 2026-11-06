@@ -140,9 +140,9 @@ function Index() {
 
         {/* PROFILE + STATUS */}
         <section className="relative z-30 border-b border-border mt-2 grid gap-4 p-3 md:grid-cols-[170px_minmax(0,1fr)_auto]">
-          <div className="flex flex-col items-center gap-1.5 md:items-start">
+          <div className="profile-compact flex flex-col items-center gap-1 md:items-start">
             <div className="hex-glow"><div className="hex-clip bg-primary p-[2px]"><img src={photo} alt="Frank Mazerati" className="hex-clip h-[150px] w-[150px] object-cover" /></div></div>
-            <div className="relative w-[150px]">
+            <div className="relative w-[135px]">
               <Button variant="plain" size="plain" onClick={() => setStatusOpen(!statusOpen)} aria-label="Availability" className="flex w-full items-center justify-between rounded border border-border bg-popover/70 px-2 py-0.5 text-[9px]">
                 <span className="flex items-center gap-1"><span className={`h-1.5 w-1.5 rounded-full ${status === "Available" ? "bg-success" : status === "Away" ? "bg-muted-foreground" : "bg-warning"}`} />{status}</span><ChevronDown className="h-2.5 w-2.5" />
               </Button>
@@ -152,10 +152,10 @@ function Index() {
                 </ul>
               )}
             </div>
-            <div className="relative w-[150px]">
+            <div className="relative w-[135px]">
               <Button variant="plain" size="plain" onClick={() => setMgrOpen(!mgrOpen)} aria-label="Manager's Quick Access" className="flex w-full items-center justify-between rounded border border-border bg-popover/70 px-2 py-0.5 text-[9px]"><span className="flex items-center gap-1"><Users className="h-2.5 w-2.5 text-primary" />Manager's Quick Access</span><ChevronDown className="h-2.5 w-2.5" /></Button>
               {mgrOpen && (
-                <ul className="absolute left-0 z-40 mt-1 w-[260px] space-y-1 rounded border border-primary/50 bg-popover p-2 text-[10px] shadow-[var(--glow)]">
+                <ul className="absolute left-0 z-40 mt-1 w-[230px] space-y-1 rounded border border-primary/50 bg-popover p-1.5 text-[9px] shadow-[var(--glow)]">
                   {managers.map((m) => <li key={m.name} className="rounded border border-border/60 bg-secondary/30 p-1.5"><div className="font-semibold">{m.name}</div><div className="text-[9px] text-primary">{m.title}</div><a href={`mailto:${m.email}`} className="flex items-center gap-1 hover:text-primary"><Mail className="h-2.5 w-2.5" />{m.email}</a><a href={`tel:${m.phone}`} className="flex items-center gap-1 hover:text-primary"><Phone className="h-2.5 w-2.5" />{m.phone}</a></li>)}
                 </ul>
               )}
