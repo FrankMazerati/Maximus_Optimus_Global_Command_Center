@@ -398,3 +398,15 @@
 @media (prefers-reduced-motion: reduce) {
   .command-home *, .command-home *::before, .command-home *::after { transition:none !important; animation:none !important; }
 }
+
+/* Independent scroll regions: navigation, central work, and the full assistant rail. */
+.command-navigation { overflow-y:auto; scrollbar-width:thin; scrollbar-color:#8ab4df transparent; }
+.command-work-column { overflow:hidden; }
+.command-assistant-column { overflow-y:auto; scrollbar-width:thin; scrollbar-color:#8ab4df transparent; }
+.command-help-card { flex:none; min-height:300px; }
+.command-help-scroll { max-height:150px; }
+.command-connectors-card { flex:none; }
+@media (max-width:1150px) {
+  .command-navigation { max-height:600px; }
+  .command-assistant-column { overflow:visible; }
+}
