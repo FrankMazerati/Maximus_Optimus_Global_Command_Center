@@ -201,3 +201,12 @@
 .command-home .module-items > div { background: oklch(0.92 0.02 235 / 0.10); border-color: oklch(0.96 0.015 235 / 0.20); }
 .command-home header, .command-home nav { box-shadow: 0 8px 24px oklch(0.12 0.025 250 / 0.12); }
 @media (max-width: 767px) { .command-content { padding: 6px; } .command-home section[aria-label] { min-height: 260px; height: auto; } }
+
+/* The work split is consistent for every role and orientation:
+   Bring the Work to You receives 60%; Help Buddy receives 40%. */
+.work-area-layout { height: min(76vh, 760px); min-height: 560px; grid-template-rows: minmax(0, 3fr) minmax(0, 2fr); }
+.work-area-primary, .work-area-assistant { min-width: 0; min-height: 0; overflow: hidden; }
+.work-area-primary > .scroll-blue, .work-area-assistant > .scroll-blue { min-height: 0; }
+@media (min-width: 768px) {
+  .work-area-layout { grid-template-columns: minmax(0, 1.5fr) minmax(280px, 1fr); grid-template-rows: minmax(0, 1fr); }
+}
