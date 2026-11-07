@@ -182,13 +182,13 @@ function Index() {
           </div>
         </section>
 
-        {/* STANDARDIZED MODULES */}
+        {/* STANDARDIZED MODULES — news stays in the top information band */}
         <div className="mt-2 grid grid-cols-1 gap-1.5 sm:grid-cols-2 xl:grid-cols-5">
-          <ConfigModule title="Global Clock" icon={<Clock className="h-3 w-3" />} catalog={clockCatalog} initial={5} render={(c) => (
-            <div><div className="text-[8px] uppercase tracking-wider text-muted-foreground">{c.label}</div><div className="font-display text-sm tabular-nums">{fmt(now, c.tz, { hour: "numeric", minute: "2-digit" })}</div><div className="text-[8px] text-muted-foreground">{fmt(now, c.tz, { month: "short", day: "numeric" })}</div></div>
-          )} />
           <ConfigModule title="Global News" icon={<Newspaper className="h-3 w-3" />} catalog={newsCatalog} initial={5} render={(n) => (
             <div><div className="text-[8px] uppercase tracking-wider text-primary">{n.label}</div><div className="truncate text-[10px]">{n.detail}</div></div>
+          )} />
+          <ConfigModule title="Global Clock" icon={<Clock className="h-3 w-3" />} catalog={clockCatalog} initial={5} render={(c) => (
+            <div><div className="text-[8px] uppercase tracking-wider text-muted-foreground">{c.label}</div><div className="font-display text-[10px] tabular-nums">{fmt(now, c.tz, { hour: "numeric", minute: "2-digit" })}</div><div className="text-[8px] text-muted-foreground">{fmt(now, c.tz, { month: "short", day: "numeric" })}</div></div>
           )} />
           <ConfigModule title="Stock Market" icon={<BarChart3 className="h-3 w-3" />} catalog={marketCatalog} initial={5} render={(s) => (
             <div><div className="text-[8px] uppercase tracking-wider text-muted-foreground">{s.label}</div><div className="flex items-center justify-between gap-1"><span className="font-display text-xs">{s.detail}</span><Change c={s.change} /></div></div>
@@ -209,8 +209,8 @@ function Index() {
         </div>
 
         {/* WORK AREA */}
-        <div className="mt-2 grid gap-2 xl:grid-cols-[minmax(0,1.35fr)_minmax(280px,1fr)]">
-          <section className="glass-surface flex h-[min(52vh,520px)] min-h-[300px] flex-col rounded-xl p-2" aria-label="Bring the Work to You">
+        <div className="work-area-layout mt-2 grid gap-2">
+          <section className="work-area-primary glass-surface flex min-h-0 flex-col rounded-xl p-2" aria-label="Bring the Work to You">
             <div className="mb-2 flex items-center gap-1 text-[9px] font-semibold uppercase tracking-[0.22em] text-primary"><Hexagon className="h-3 w-3" />Bring the Work to You<span className="ml-auto text-muted-foreground">{workSections.length} modules</span></div>
             <div className="scroll-blue grid flex-1 content-start gap-1.5 sm:grid-cols-2">
               {workSections.map((w) => (
@@ -224,7 +224,7 @@ function Index() {
             </div>
           </section>
 
-          <section className="flex h-[420px] flex-col p-2" aria-label="Help Buddy">
+          <section className="work-area-assistant flex min-h-0 flex-col p-2" aria-label="Help Buddy">
             <div className="mb-2 flex items-center gap-2">
               <img src={buddy} alt="Help Buddy robot" className="h-10 w-10 object-contain" />
               <div className="flex items-center gap-1 text-[9px] font-semibold uppercase tracking-[0.22em] text-primary"><HelpCircle className="h-3 w-3" />Help Buddy</div>
