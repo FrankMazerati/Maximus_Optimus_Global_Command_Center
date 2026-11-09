@@ -3,7 +3,7 @@ name: Verify and Build Maximus Optimus
 on:
   push:
     branches:
-      - main
+      - "**"
   pull_request:
     branches:
       - main
