@@ -29,7 +29,7 @@ import {
 import portraitAsset from "@/assets/frank-mazerati.jpg.asset.json";
 import shieldAsset from "@/assets/intellistack-shield.jpg.asset.json";
 import commandBg from "@/assets/command-center-bg.jpg";
-import buddy from "@/assets/help-buddy.png";
+import buddy from "@/assets/help-buddy-character.png";
 import { menu } from "@/lib/menu";
 import { dashboardPages, resolveMenuItem } from "@/lib/dashboard-pages";
 import {
@@ -48,6 +48,7 @@ import {
   workSummary,
   type WorkItem,
 } from "@/lib/domain/selectors";
+import { CommandMenu } from "./CommandMenu";
 import { Chip } from "@/components/command/ui";
 import { WorkQueue } from "@/components/command/home/WorkQueue";
 import { WorkSurface } from "@/components/command/home/WorkSurface";
@@ -376,72 +377,7 @@ export function CommandCenterHome() {
       </section>
 
       <div className={`command-workspace ${drawer ? "has-navigation" : ""}`}>
-        {drawer && (
-          <aside className="command-navigation" aria-label="Main navigation">
-            <div className="command-navigation-heading">
-              <strong>COMMAND MENU</strong>
-              <button onClick={() => setDrawer(false)} aria-label="Close menu">
-                <X size={15} />
-              </button>
-            </div>
-            <div className="command-navigation-search">
-              <Search size={13} />
-              <input
-                value={menuQuery}
-                onChange={(event) => setMenuQuery(event.target.value)}
-                placeholder="Find a module..."
-              />
-            </div>
-            <Link className="command-nav-link" to="/" onClick={() => setDrawer(false)}>
-              <Home size={14} /> Home
-            </Link>
-            <div className="command-nav-section">COMMAND PAGES</div>
-            {dashboardPages
-              .filter((page) => page.title.toLowerCase().includes(menuQuery.toLowerCase()))
-              .map((page) => (
-                <Link
-                  className="command-nav-link"
-                  key={page.slug}
-                  to="/section/$slug"
-                  params={{ slug: page.slug }}
-                  onClick={() => setDrawer(false)}
-                >
-                  <ChevronRight size={13} />
-                  {page.title}
-                </Link>
-              ))}
-            <div className="command-nav-section">APPLICATIONS & SERVICES</div>
-            {visibleMenu.map((item, index) => (
-              <details className="command-nav-group" key={item.slug}>
-                <summary>
-                  {index + 1}. {item.title}
-                  <ChevronDown size={12} />
-                </summary>
-                {item.groups.map((group) => (
-                  <div key={group.name}>
-                    <span>{group.name}</span>
-                    {group.items.map((child) => (
-                      <Link
-                        key={child}
-                        to="/section/$slug"
-                        params={{ slug: resolveMenuItem(child, item.slug) }}
-                        onClick={() => setDrawer(false)}
-                      >
-                        {child}
-                      </Link>
-                    ))}
-                  </div>
-                ))}
-              </details>
-            ))}
-            <div className="command-navigation-bottom">
-              <Link to="/section/$slug" params={{ slug: "administration-settings-support" }}>
-                Settings & Administration
-              </Link>
-              <button onClick={() => setDrawer(false)}>Sign out</button>
-            </div>
-          </aside>
-        )}
+        {drawer && <CommandMenu onClose={() => setDrawer(false)} />}
 
         <section className="command-work-column" aria-label="Bring the Work to You">
           <div className="command-column-heading">
@@ -500,6 +436,18 @@ export function CommandCenterHome() {
               <Link to="/help-buddy">
                 Open <ArrowUpRight size={10} />
               </Link>
+            </div>
+            <div className="command-buddy-strip">
+              <img src={buddy} alt="Help Buddy, your intelligent assistant" />
+              <div>
+                <strong>{character?.name ?? "Help Buddy"}</strong>
+                <span>
+                  {summary.newCount + summary.approvals > 0
+                    ? `${summary.newCount + summary.approvals} things are waiting on you`
+                    : "Nothing is waiting on you"}
+                </span>
+                <em>Ask. Find. Connect. Get it done.</em>
+              </div>
             </div>
             <div className="command-help-intro">
               {character?.name ?? "Help Buddy"} · {user.title}. Answers are grounded in records you

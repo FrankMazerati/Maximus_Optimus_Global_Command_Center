@@ -2,6 +2,8 @@ import { createFileRoute, notFound } from "@tanstack/react-router";
 import { AppShell } from "@/components/command/AppShell";
 import { menu } from "@/lib/menu";
 import { getDashboardPage, resolveMenuItem } from "@/lib/dashboard-pages";
+import { findDestination } from "@/lib/menu-spec";
+import { DestinationPage } from "@/components/command/menu/DestinationPage";
 import { ReferenceDashboard } from "@/components/command/ReferenceDashboard";
 import { Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
@@ -29,10 +31,27 @@ export const Route = createFileRoute("/section/$slug")({
   loader: ({ params }) => {
     const page = getDashboardPage(params.slug);
     if (page)
-      return { title: page.title, slug: page.slug, description: page.subtitle, groups: [], page };
+      return {
+        title: page.title,
+        slug: page.slug,
+        description: page.subtitle,
+        groups: [],
+        page,
+        destination: null,
+      };
+    const destination = findDestination(params.slug);
+    if (destination)
+      return {
+        title: destination.label,
+        slug: destination.slug,
+        description: destination.summary,
+        groups: [],
+        page: null,
+        destination: destination.slug,
+      };
     const s = [...menu, extra].find((m) => m.slug === params.slug);
     if (!s) throw notFound();
-    return { ...s, page: null };
+    return { ...s, page: null, destination: null };
   },
   head: ({ loaderData }) => {
     const t = loaderData
@@ -62,6 +81,9 @@ export const Route = createFileRoute("/section/$slug")({
 
 function SectionPage() {
   const s = Route.useLoaderData();
+  if (s.destination) {
+    return <DestinationPage slug={s.destination} />;
+  }
   if (s.page)
     return (
       <AppShell active={s.slug}>

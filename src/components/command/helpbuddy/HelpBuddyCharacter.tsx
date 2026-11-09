@@ -1,4 +1,4 @@
-import buddyArt from "@/assets/help-buddy.png";
+import buddyArt from "@/assets/help-buddy-character.png";
 import type { CharacterProfile, CharacterState } from "@/lib/domain/types";
 
 const STATE_LABEL: Record<CharacterState, string> = {

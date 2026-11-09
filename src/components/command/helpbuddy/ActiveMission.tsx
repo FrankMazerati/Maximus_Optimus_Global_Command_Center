@@ -38,7 +38,7 @@ import { useAction, useCommandState, useDraft } from "@/lib/domain/store";
 import { activeUser, recognitionSummary } from "@/lib/domain/selectors";
 import { checkpointBlockers } from "@/lib/domain/reducer";
 import { Chip, Empty, Field, Note, Progress, type Tone } from "@/components/command/ui";
-import buddyArt from "@/assets/help-buddy.png";
+import buddyArt from "@/assets/help-buddy-face.png";
 
 function BuddyAvatar({ mood }: { mood: "welcoming" | "waiting" | "celebrating" | "focused" }) {
   return (

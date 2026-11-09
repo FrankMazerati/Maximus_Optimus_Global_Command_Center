@@ -2917,8 +2917,8 @@ export const modules: ModuleDefinition[] = [
 export const characters: CommandState["characters"] = [
   {
     id: "char-noah",
-    name: "Noah",
-    roleLabel: "Workflow companion",
+    name: "Help Buddy",
+    roleLabel: "Your Intelligent Assistant",
     avatarPreset: "noah",
     outfit: "blue-hoodie",
     voice: "Friendly male",

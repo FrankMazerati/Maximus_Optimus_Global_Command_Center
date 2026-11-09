@@ -117,7 +117,28 @@ Interaction checks exercised in a real browser: dashboard accept flow with persi
 
 ---
 
-## 9. Running it
+## 9. Master Command Menu
+
+The hamburger menu is driven by `src/lib/menu-spec.ts`, which encodes the published specification rather than a hand-written list:
+
+- **13 native sections** — My Business Center, Command Center, New Active Directory, Productivity, Communication, Collaboration, Knowledge Base, AI Systems, Network Operations Center, Security, Governance, Audit, Settings — plus a **separate External Connectors block**.
+- **230 destinations**, each with a unique address (`/section/<slug>`), an owning application and its own page. Merging, duplicating or hiding functions inside generic entries is prevented by the data model.
+- **Every destination renders** an ownership panel, the twelve shared platform services, live shared-record counts, real recorded activity for that area, sibling destinations, and a direct link when a bespoke workspace exists (Help Buddy, Mission Control, Connectors, IntelliSync, Character Studio).
+- **Search** across labels, groups, sections and owners; **drag-to-reorder** native sections with the order persisted; **Settings stays last** even after a drag; external connectors stay visually and structurally separate, labelled "Third-party applications — not IntelliStack products".
+- **Role filtering**: My Business Center and Governance require manager or administrator, and the menu states how many sections are restricted for the signed-in role.
+- **Tenant Desk rule**: tenant tickets, service requests, work queues, escalations, support history and activity exist only inside IntelliDesk › Tenant Desk; tenant business and knowledge records stay with their owning applications.
+
+The menu is reachable from every screen: the dashboard header, every workspace shell and every section page.
+
+## 10. Help Buddy character
+
+The mascot is generated from the supplied brand reference and shipped as two assets: [`help-buddy-character.png`](src/assets/help-buddy-character.png) (full body, transparent) and `help-buddy-face.png` (avatar crop). He wears the royal-blue zip hoodie with white trim, the `I` shield on the chest, and the white-and-blue headset with boom microphone.
+
+- Help Buddy workspace: full-body stage with the nine interaction states (idle, listening, thinking, speaking, working, responding, success, concerned, escalation), state badge, halo and name plate.
+- Mission window and dashboard: face avatar and a character strip that names the current workload ("8 things are waiting on you") and the product line "Ask. Find. Connect. Get it done."
+- The dashboard portrait and shield were also repaired: the Lovable-hosted asset URLs 404'd locally, so the founder portrait and the IntelliStack shield are now bundled (`public/brand/frank.jpg`, `public/brand/shield.svg`).
+
+## 11. Running it
 
 ```sh
 npm install

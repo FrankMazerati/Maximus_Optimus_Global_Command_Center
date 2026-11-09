@@ -22,6 +22,8 @@ Help Buddy guides the work, IntelliDesk holds the mission, and IntelliSync conne
 - **Authorization is separate from work.** A technician can complete physical setup but cannot mark administrator work complete. Restricted steps complete only through a named approver's decision, recorded with their identity.
 - **Assigned tasks do not move ownership.** A checklist item can be assigned to another person or department; only that person records its outcome, and the mission owner keeps the mission.
 - **Unconfigured integrations are labelled.** Directory writes, email delivery, calendar invitations and MDM actions show the exact missing configuration instead of a simulated success.
+- **One authoritative home per application.** The Command Menu encodes ownership (IntelliDrive owns files, IntelliDocs owns documents, IntelliDesk owns missions) so a module links to an application instead of duplicating its data. Every destination has its own address and its own page.
+- **Help Buddy is a character, not an icon.** The mascot in `src/assets/help-buddy-character.png` wears the blue hoodie, white trim and `I` shield from the brand reference, and carries a headset for voice states.
 - **Tablet first.** Dense layouts, 8–11px label type and internal scrolling are deliberate; the workspace fits 1024×768 and 768×1024 without horizontal scrolling.
 
 ## Development

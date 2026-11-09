@@ -1,6 +1,7 @@
-import type { ComponentType, CSSProperties, ReactNode } from "react";
+import { useState, type ComponentType, type CSSProperties, type ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
-import { ArrowLeft, ShieldCheck } from "lucide-react";
+import { ArrowLeft, Menu, ShieldCheck } from "lucide-react";
+import { CommandMenu } from "./CommandMenu";
 import commandBg from "@/assets/command-center-bg.jpg";
 import shieldAsset from "@/assets/intellistack-shield.jpg.asset.json";
 
@@ -161,6 +162,7 @@ export function WorkspaceShell({
   children: ReactNode;
   moduleLinks?: boolean;
 }) {
+  const [menuOpen, setMenuOpen] = useState(false);
   const modules = [
     { label: "Help Buddy", to: "/help-buddy" },
     { label: "Mission Control", to: "/mission-control" },
@@ -176,8 +178,18 @@ export function WorkspaceShell({
         backgroundImage: `linear-gradient(115deg, rgba(247, 251, 255, 0.97), rgba(240, 247, 254, 0.94)), url(${commandBg})`,
       }}
     >
+      {menuOpen ? <CommandMenu onClose={() => setMenuOpen(false)} /> : null}
       <header className="mx-topbar">
         <div className="mx-topbar-main">
+          <button
+            type="button"
+            className="mx-menu-trigger"
+            aria-label="Open menu"
+            aria-expanded={menuOpen}
+            onClick={() => setMenuOpen(true)}
+          >
+            <Menu aria-hidden />
+          </button>
           <Link to="/" className="mx-back" aria-label="Return to the Command Center">
             <ArrowLeft style={{ width: 12, height: 12 }} /> Command Center
           </Link>
