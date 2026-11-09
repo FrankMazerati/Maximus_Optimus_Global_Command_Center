@@ -131,6 +131,10 @@ export function CommandCenterHome() {
             <button className="command-select" onClick={() => setManagerOpen((value) => !value)}>Manager <ChevronDown size={12}/></button>
             {managerOpen && <div className="command-popover command-manager-popover"><strong>Manager directory</strong><span>Manager details are provided by your organization.</span></div>}
           </div>
+          <div className="command-local-meta" aria-label="Local date and time">
+            <strong>{timeLabel(now, "America/Chicago")}</strong>
+            <span>{new Intl.DateTimeFormat("en-US", { timeZone: "America/Chicago", weekday: "long", month: "short", day: "numeric" }).format(now)}</span>
+          </div>
         </div>
       </section>
 
