@@ -2730,12 +2730,52 @@
 
 @media (max-height: 940px) {
   .mx-mission-window {
-    max-height: 34dvh;
+    max-height: 38dvh;
   }
 }
 
 @media (max-height: 800px) {
   .mx-mission-window {
-    max-height: 30dvh;
+    max-height: 32dvh;
+  }
+}
+
+@media (max-width: 1120px) {
+  .mx-topbar {
+    grid-template-columns: minmax(0, 1fr);
+    align-items: start;
+  }
+  .mx-topbar-actions {
+    justify-content: flex-start;
+  }
+  .mx-heading {
+    min-width: 0;
+  }
+  .mx-title {
+    white-space: normal;
+  }
+  .mx-sub {
+    max-width: 62ch;
+  }
+}
+
+@media (max-height: 840px) {
+  .mx-character {
+    padding: 6px 8px;
+    gap: 4px;
+  }
+  .mx-character-stage {
+    width: clamp(84px, 10vw, 112px);
+  }
+  .mx-character-name {
+    font-size: 10px;
+  }
+}
+
+/* At tablet widths the chat keeps its character rail instead of stacking, which
+   would push the composer out of a 768px-tall viewport. */
+@media (max-width: 1180px) and (min-width: 901px) {
+  .mx-split-row--chat {
+    grid-template-columns: minmax(150px, 0.52fr) minmax(0, 1.7fr);
   }
 }

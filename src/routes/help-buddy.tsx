@@ -67,7 +67,9 @@ export const Route = createFileRoute("/help-buddy")({
 function HelpBuddyPage() {
   const state = useCommandState();
   const [active, setActive] = useState("conversation");
-  const [missionCollapsed, setMissionCollapsed] = useState(false);
+  const [missionCollapsed, setMissionCollapsed] = useState(
+    () => typeof window !== "undefined" && window.innerHeight < 840,
+  );
   const [missionId, setMissionId] = useState<string | null>(null);
   const userId = state.activeUserId;
   const user = state.users.find((item) => item.id === userId);
