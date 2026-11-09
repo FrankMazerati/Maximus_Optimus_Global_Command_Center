@@ -46,5 +46,6 @@ jobs:
         with:
           name: maximus-optimus-production-build
           path: .output/
+          include-hidden-files: true
           if-no-files-found: error
           retention-days: 14
