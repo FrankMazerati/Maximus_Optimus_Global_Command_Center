@@ -96,8 +96,8 @@ Eight provider adapters declare capability plus the exact configuration they nee
 | Check               | Result                                                                      |
 | ------------------- | --------------------------------------------------------------------------- |
 | `npx tsc --noEmit`  | 0 errors (strict, `noUncheckedIndexedAccess`, `exactOptionalPropertyTypes`) |
-| `npm run lint`      | 0 errors, 18 `react-refresh` warnings from hook exports                     |
-| `npm test -- --run` | 40 tests passing in 4 files                                                 |
+| `npm run lint`      | 0 errors, 19 warnings                                                        |
+| `npm test -- --run` | 47 tests passing                                                            |
 | `npm run build`     | Production build succeeds (client + server)                                 |
 | Browser checks      | No uncaught errors; zero horizontal overflow at 1440, 1024 and 768          |
 
@@ -147,4 +147,4 @@ npm test -- --run
 npm run build
 ```
 
-The build is compatible with the existing CI workflows (`verify-build.yml`, `verify-and-deploy.yml`): install, lint, test, build.
+The Vercel Nitro preset emits `.vercel/output` using Vercel's Build Output API. GitHub Actions runs install, lint, tests and the production build, then uploads the output as an artifact; it does not create a live deployment. Branch preview URLs require the repository to be connected to the Vercel project under Project Settings → Git, with Vercel Git deployments enabled. The project ID alone does not establish this connection.

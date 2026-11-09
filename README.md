@@ -31,12 +31,16 @@ Help Buddy guides the work, IntelliDesk holds the mission, and IntelliSync conne
 ```sh
 npm install
 npm run dev          # http://localhost:8080
-npm test -- --run    # 40 domain tests
+npm test -- --run     # 47 tests
 npm run build        # production build
 npx tsc --noEmit     # strict type check
 ```
 
 Screenshots of every surface live in `docs/screenshots/`. The IntelliSync standard and the exact configuration gaps are documented in [`docs/INTELLISYNC.md`](docs/INTELLISYNC.md); the relational target is in [`supabase/schema.sql`](supabase/schema.sql).
+
+## Vercel branch previews
+
+The build pins Nitro to Vercel's Build Output API (`.vercel/output`). GitHub Actions runs lint, tests and a production build and uploads that output as an artifact; it does **not** deploy the site. To get a preview link on each pull request, connect this GitHub repository to the Vercel project under **Vercel → Project Settings → Git** and enable Vercel's Git integration for the repository. Vercel then creates the preview deployment and adds its URL/check to the pull request. A Vercel project ID by itself does not connect the repository or deploy it.
 
 ## Sample documents
 

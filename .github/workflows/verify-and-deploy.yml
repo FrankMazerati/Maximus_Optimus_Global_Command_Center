@@ -1,4 +1,4 @@
-name: Verify and Deploy
+name: Verify and Package
 
 on:
   push:
@@ -13,7 +13,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: verify-deploy-${{ github.ref }}
+  group: verify-package-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -44,8 +44,8 @@ jobs:
       - name: Upload production build
         uses: actions/upload-artifact@v4
         with:
-          name: maximus-optimus-production-build
-          path: .output/
+          name: maximus-optimus-vercel-build
+          path: .vercel/output/
           include-hidden-files: true
           if-no-files-found: error
           retention-days: 14
