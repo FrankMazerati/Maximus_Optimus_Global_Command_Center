@@ -10,11 +10,41 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CharacterStudioRouteImport } from './routes/character-studio'
+import { Route as ConnectorsRouteImport } from './routes/connectors'
+import { Route as HelpBuddyRouteImport } from './routes/help-buddy'
+import { Route as IntellisyncRouteImport } from './routes/intellisync'
+import { Route as MissionControlRouteImport } from './routes/mission-control'
 import { Route as SectionSlugRouteImport } from './routes/section.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CharacterStudioRoute = CharacterStudioRouteImport.update({
+  id: '/character-studio',
+  path: '/character-studio',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConnectorsRoute = ConnectorsRouteImport.update({
+  id: '/connectors',
+  path: '/connectors',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HelpBuddyRoute = HelpBuddyRouteImport.update({
+  id: '/help-buddy',
+  path: '/help-buddy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IntellisyncRoute = IntellisyncRouteImport.update({
+  id: '/intellisync',
+  path: '/intellisync',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MissionControlRoute = MissionControlRouteImport.update({
+  id: '/mission-control',
+  path: '/mission-control',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SectionSlugRoute = SectionSlugRouteImport.update({
@@ -25,27 +55,69 @@ const SectionSlugRoute = SectionSlugRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/character-studio': typeof CharacterStudioRoute
+  '/connectors': typeof ConnectorsRoute
+  '/help-buddy': typeof HelpBuddyRoute
+  '/intellisync': typeof IntellisyncRoute
+  '/mission-control': typeof MissionControlRoute
   '/section/$slug': typeof SectionSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/character-studio': typeof CharacterStudioRoute
+  '/connectors': typeof ConnectorsRoute
+  '/help-buddy': typeof HelpBuddyRoute
+  '/intellisync': typeof IntellisyncRoute
+  '/mission-control': typeof MissionControlRoute
   '/section/$slug': typeof SectionSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/character-studio': typeof CharacterStudioRoute
+  '/connectors': typeof ConnectorsRoute
+  '/help-buddy': typeof HelpBuddyRoute
+  '/intellisync': typeof IntellisyncRoute
+  '/mission-control': typeof MissionControlRoute
   '/section/$slug': typeof SectionSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/section/$slug'
+  fullPaths:
+    | '/'
+    | '/character-studio'
+    | '/connectors'
+    | '/help-buddy'
+    | '/intellisync'
+    | '/mission-control'
+    | '/section/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/section/$slug'
-  id: '__root__' | '/' | '/section/$slug'
+  to:
+    | '/'
+    | '/character-studio'
+    | '/connectors'
+    | '/help-buddy'
+    | '/intellisync'
+    | '/mission-control'
+    | '/section/$slug'
+  id:
+    | '__root__'
+    | '/'
+    | '/character-studio'
+    | '/connectors'
+    | '/help-buddy'
+    | '/intellisync'
+    | '/mission-control'
+    | '/section/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CharacterStudioRoute: typeof CharacterStudioRoute
+  ConnectorsRoute: typeof ConnectorsRoute
+  HelpBuddyRoute: typeof HelpBuddyRoute
+  IntellisyncRoute: typeof IntellisyncRoute
+  MissionControlRoute: typeof MissionControlRoute
   SectionSlugRoute: typeof SectionSlugRoute
 }
 
@@ -56,6 +128,41 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/character-studio': {
+      id: '/character-studio'
+      path: '/character-studio'
+      fullPath: '/character-studio'
+      preLoaderRoute: typeof CharacterStudioRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/connectors': {
+      id: '/connectors'
+      path: '/connectors'
+      fullPath: '/connectors'
+      preLoaderRoute: typeof ConnectorsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/help-buddy': {
+      id: '/help-buddy'
+      path: '/help-buddy'
+      fullPath: '/help-buddy'
+      preLoaderRoute: typeof HelpBuddyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/intellisync': {
+      id: '/intellisync'
+      path: '/intellisync'
+      fullPath: '/intellisync'
+      preLoaderRoute: typeof IntellisyncRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mission-control': {
+      id: '/mission-control'
+      path: '/mission-control'
+      fullPath: '/mission-control'
+      preLoaderRoute: typeof MissionControlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/section/$slug': {
@@ -70,6 +177,11 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CharacterStudioRoute: CharacterStudioRoute,
+  ConnectorsRoute: ConnectorsRoute,
+  HelpBuddyRoute: HelpBuddyRoute,
+  IntellisyncRoute: IntellisyncRoute,
+  MissionControlRoute: MissionControlRoute,
   SectionSlugRoute: SectionSlugRoute,
 }
 export const routeTree = rootRouteImport

@@ -13,8 +13,10 @@ import { lazy, Suspense, useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
-import { DemoProvider } from '@/components/command/DemoProvider';
-const PageZoom = lazy(()=>import('@/components/command/PageZoom'));
+import { DemoProvider } from "@/components/command/DemoProvider";
+import { CommandProvider } from "@/lib/domain/store";
+import { Toaster } from "sonner";
+const PageZoom = lazy(() => import("@/components/command/PageZoom"));
 
 function NotFoundComponent() {
   return (
@@ -95,7 +97,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: appCss,
       },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Exo+2:wght@300;400;500;600&display=swap" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Exo+2:wght@300;400;500;600&display=swap",
+      },
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
     ],
   }),
@@ -125,7 +130,24 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <DemoProvider><ClientOnly fallback={<Outlet/>}><Suspense fallback={<Outlet/>}><PageZoom><Outlet/></PageZoom></Suspense></ClientOnly></DemoProvider>
+      <DemoProvider>
+        <CommandProvider>
+          <ClientOnly fallback={<Outlet />}>
+            <Suspense fallback={<Outlet />}>
+              <PageZoom>
+                <Outlet />
+              </PageZoom>
+            </Suspense>
+          </ClientOnly>
+          <Toaster
+            position="bottom-right"
+            theme="light"
+            richColors
+            closeButton
+            toastOptions={{ style: { fontSize: "12px" } }}
+          />
+        </CommandProvider>
+      </DemoProvider>
     </QueryClientProvider>
   );
 }

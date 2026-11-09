@@ -1,26 +1,45 @@
-# Reference Image Page Match
+# Maximus Optimus Global Command Center
 
-Implement exactly the screenshot and nothing else
+IntelliStack Systems' operational environment: one Command Center, one connected intelligence, one audit trail.
+Help Buddy guides the work, IntelliDesk holds the mission, and IntelliSync connects the engines that serve both.
 
-This project was built with [Lovable](https://lovable.dev).
+## What lives here
 
-**Live app**: https://reference-image-page-match.lovable.app
+| Surface             | Route                  | What it does                                                                                                                                                                                                                                                                                                           |
+| ------------------- | ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Command Center      | `/`                    | The operational dashboard: live work queue, real connector cards, grounded Help Buddy answers and inline mission handling.                                                                                                                                                                                             |
+| Help Buddy          | `/help-buddy`          | The live mission window (16-step deployment workflow, character, progress, team, records, controls) plus fifteen folder workspaces: conversation, checklists, knowledge, approvals, attachments, notes, recognition, activity, connectors, signatures, ticket trail, playbooks, tasks, contacts and module activation. |
+| Mission Control     | `/mission-control`     | Admission control, checkpoints, pending, escalation, resolution, completion and the ticket trail — every stage recorded separately.                                                                                                                                                                                    |
+| Platform Connectors | `/connectors`          | The integration catalog, per-connector workspace, real DOCX/XLSX/PPTX/PDF previews, and link/import/attach actions written to state.                                                                                                                                                                                   |
+| IntelliSync         | `/intellisync`         | The backbone: six engines with per-service state, provider adapters and their requirements, the event stream, retries, duplicates and integration health.                                                                                                                                                              |
+| Character Studio    | `/character-studio`    | The Help Buddy character: nine interaction states, appearance presets, voice and mission-aware messaging.                                                                                                                                                                                                              |
+| Module catalog      | command menu → modules | Entitlement-aware module activation, including modules surfaced inside Help Buddy.                                                                                                                                                                                                                                     |
 
-## Build with Lovable
+## Design rules the build follows
 
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/0319ffd0-690a-44dd-8e53-c970cdc7b585).
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
+- **Nothing is decorative.** Every control dispatches a reducer action that changes state, writes a trail and, where relevant, the recognition ledger.
+- **Admission is not acceptance, acceptance is not work, work is not accomplishment.** Viewing, accepting, starting, recording a checkpoint, resolving and completing are separate, timestamped events.
+- **Authorization is separate from work.** A technician can complete physical setup but cannot mark administrator work complete. Restricted steps complete only through a named approver's decision, recorded with their identity.
+- **Assigned tasks do not move ownership.** A checklist item can be assigned to another person or department; only that person records its outcome, and the mission owner keeps the mission.
+- **Unconfigured integrations are labelled.** Directory writes, email delivery, calendar invitations and MDM actions show the exact missing configuration instead of a simulated success.
+- **Tablet first.** Dense layouts, 8–11px label type and internal scrolling are deliberate; the workspace fits 1024×768 and 768×1024 without horizontal scrolling.
 
 ## Development
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
-
 ```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
-npm run dev
+npm install
+npm run dev          # http://localhost:8080
+npm test -- --run    # 40 domain tests
+npm run build        # production build
+npx tsc --noEmit     # strict type check
 ```
+
+Screenshots of every surface live in `docs/screenshots/`. The IntelliSync standard and the exact configuration gaps are documented in [`docs/INTELLISYNC.md`](docs/INTELLISYNC.md); the relational target is in [`supabase/schema.sql`](supabase/schema.sql).
+
+## Sample documents
+
+`public/documents/` holds real files generated by `scripts/generate-sample-documents.py` (`python-docx`, `python-pptx`, `openpyxl`, `reportlab`). They are parsed in the browser by a dependency-free ZIP + OOXML reader — no server round trip, no fabricated preview text.
+
+## State
+
+The application runs on a persisted command state (`src/lib/domain/store.tsx` → `localStorage`) with a reducer that owns every transition (`src/lib/domain/reducer.ts`). That state is the development stand-in for the Supabase layer described in `supabase/schema.sql`: the same entities, ids and relationships, ready to move server-side.

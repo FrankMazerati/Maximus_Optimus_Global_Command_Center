@@ -6,7 +6,10 @@ export const MODULE_ROW = 5;
 export type DayPart = "morning" | "afternoon" | "evening";
 export const greetingMessages: Record<DayPart, { title: string; message: string }> = {
   morning: { title: "Good morning", message: "Good morning. Your workday is ready." },
-  afternoon: { title: "Good afternoon", message: "Good afternoon. Here’s what needs your attention." },
+  afternoon: {
+    title: "Good afternoon",
+    message: "Good afternoon. Here’s what needs your attention.",
+  },
   evening: { title: "Good evening", message: "Good evening. Let’s close out the day." },
 };
 export function dayPart(hour: number): DayPart {
@@ -89,35 +92,109 @@ export const quickPickCatalog = [
 ];
 
 export const workSections = [
-  { title: "Today's Priority Work", items: ["Approve Q4 access review", "Finalize vendor contract", "Review security posture"] },
-  { title: "Open Tickets", items: ["#4821 VPN outage — Floor 42", "#4817 Laptop replacement", "#4809 License request"] },
+  {
+    title: "Today's Priority Work",
+    items: ["Approve Q4 access review", "Finalize vendor contract", "Review security posture"],
+  },
+  {
+    title: "Open Tickets",
+    items: ["#4821 VPN outage — Floor 42", "#4817 Laptop replacement", "#4809 License request"],
+  },
   { title: "Tasks Due Today", items: ["Submit budget forecast", "Update onboarding checklist"] },
   { title: "Overdue Tasks", items: ["Policy acknowledgement (2 days)", "Expense report (1 day)"] },
-  { title: "Pending Approvals", items: ["3 access requests", "2 purchase orders", "1 role change"] },
-  { title: "Meetings", items: ["10:00 Leadership sync", "1:30 Vendor review", "4:00 1:1 Angela Brooks"] },
-  { title: "Messages", items: ["Marcus Hill: Board deck ready?", "Renee Alvarez: Offer letter signed"] },
+  {
+    title: "Pending Approvals",
+    items: ["3 access requests", "2 purchase orders", "1 role change"],
+  },
+  {
+    title: "Meetings",
+    items: ["10:00 Leadership sync", "1:30 Vendor review", "4:00 1:1 Angela Brooks"],
+  },
+  {
+    title: "Messages",
+    items: ["Marcus Hill: Board deck ready?", "Renee Alvarez: Offer letter signed"],
+  },
   { title: "Follow-Ups", items: ["Ping finance on PO #2231", "Confirm SSO cutover date"] },
   { title: "Recent Activity", items: ["Role 'Auditor' updated", "12 users synced from AD"] },
   { title: "Work From Previous Days", items: ["Draft DR plan (Mon)", "Asset audit notes (Tue)"] },
   { title: "Escalations", items: ["P1: Payroll integration failing"] },
   { title: "System Alerts", items: ["Certificate expires in 6 days", "Backup job delayed"] },
   { title: "Assigned Work", items: ["Migrate legacy groups", "Review MFA exceptions"] },
-  { title: "Upcoming Work", items: ["Quarterly compliance audit (Nov 14)", "Holiday coverage plan"] },
+  {
+    title: "Upcoming Work",
+    items: ["Quarterly compliance audit (Nov 14)", "Holiday coverage plan"],
+  },
 ];
 
-export const helpBuddySections: { stage: "Today" | "Recent Days" | "Upcoming"; title: string; items: string[] }[] = [
-  { stage: "Today", title: "What do I need to do?", items: ["3 priority items", "2 meetings before noon", "Approve access review first"] },
-  { stage: "Today", title: "Prioritize Today's Tasks", items: ["1. Payroll escalation", "2. Access approvals", "3. Budget forecast"] },
-  { stage: "Today", title: "Suggested Next Actions", items: ["Reply to Marcus Hill", "Close ticket #4817"] },
-  { stage: "Today", title: "Daily Workload", items: ["14 items assigned • 5 done", "Estimated 4.5 hrs remaining"] },
-  { stage: "Today", title: "Important Notifications", items: ["Certificate expiring soon", "New policy published"] },
-  { stage: "Recent Days", title: "What is overdue?", items: ["Policy acknowledgement", "Expense report"] },
-  { stage: "Recent Days", title: "Catch Up on Unfinished Work", items: ["DR plan draft — 60% done", "Asset audit notes"] },
+export const helpBuddySections: {
+  stage: "Today" | "Recent Days" | "Upcoming";
+  title: string;
+  items: string[];
+}[] = [
+  {
+    stage: "Today",
+    title: "What do I need to do?",
+    items: ["3 priority items", "2 meetings before noon", "Approve access review first"],
+  },
+  {
+    stage: "Today",
+    title: "Prioritize Today's Tasks",
+    items: ["1. Payroll escalation", "2. Access approvals", "3. Budget forecast"],
+  },
+  {
+    stage: "Today",
+    title: "Suggested Next Actions",
+    items: ["Reply to Marcus Hill", "Close ticket #4817"],
+  },
+  {
+    stage: "Today",
+    title: "Daily Workload",
+    items: ["14 items assigned • 5 done", "Estimated 4.5 hrs remaining"],
+  },
+  {
+    stage: "Today",
+    title: "Important Notifications",
+    items: ["Certificate expiring soon", "New policy published"],
+  },
+  {
+    stage: "Recent Days",
+    title: "What is overdue?",
+    items: ["Policy acknowledgement", "Expense report"],
+  },
+  {
+    stage: "Recent Days",
+    title: "Catch Up on Unfinished Work",
+    items: ["DR plan draft — 60% done", "Asset audit notes"],
+  },
   { stage: "Recent Days", title: "Blocked Work", items: ["SSO cutover — waiting on vendor"] },
-  { stage: "Recent Days", title: "Follow-Up Reminders", items: ["Finance PO #2231", "HR offer confirmation"] },
-  { stage: "Recent Days", title: "Open Issues", items: ["Backup job delayed", "2 failed sync jobs"] },
-  { stage: "Recent Days", title: "Work Summary", items: ["Last 3 days: 31 items closed", "Avg. response 1.8 hrs"] },
-  { stage: "Upcoming", title: "What can I handle next?", items: ["Review MFA exceptions (20 min)", "Update onboarding checklist"] },
-  { stage: "Upcoming", title: "What is coming up?", items: ["Compliance audit Nov 14", "Holiday coverage plan"] },
-  { stage: "Upcoming", title: "Recent Activity", items: ["12 users synced", "Role 'Auditor' updated"] },
+  {
+    stage: "Recent Days",
+    title: "Follow-Up Reminders",
+    items: ["Finance PO #2231", "HR offer confirmation"],
+  },
+  {
+    stage: "Recent Days",
+    title: "Open Issues",
+    items: ["Backup job delayed", "2 failed sync jobs"],
+  },
+  {
+    stage: "Recent Days",
+    title: "Work Summary",
+    items: ["Last 3 days: 31 items closed", "Avg. response 1.8 hrs"],
+  },
+  {
+    stage: "Upcoming",
+    title: "What can I handle next?",
+    items: ["Review MFA exceptions (20 min)", "Update onboarding checklist"],
+  },
+  {
+    stage: "Upcoming",
+    title: "What is coming up?",
+    items: ["Compliance audit Nov 14", "Holiday coverage plan"],
+  },
+  {
+    stage: "Upcoming",
+    title: "Recent Activity",
+    items: ["12 users synced", "Role 'Auditor' updated"],
+  },
 ];
