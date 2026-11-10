@@ -14,10 +14,6 @@ const dispatchRoles = new Set([
   "super_admin", "global_admin", "organization_admin", "service_desk_manager",
   "help_desk_supervisor", "it_manager", "help_desk_l1", "help_desk_l2", "help_desk_l3",
 ]);
-const supportWorkerRoles = new Set([
-  "help_desk_l1", "help_desk_l2", "help_desk_l3", "service_desk_analyst", "technician",
-]);
-
 function cors(request: Request): HeadersInit {
   const origin = request.headers.get("origin") ?? "*";
   const configured = Deno.env.get("APP_ALLOWED_ORIGINS");
@@ -133,7 +129,7 @@ async function handle(request: Request, service: SupabaseClient, actor: Actor, b
     if (!Number.isInteger(switches) || switches < 0 || switches > 100) {
       return reply(request, 400, { error: "context_switches_30m must be an integer from 0 to 100." });
     }
-    const { data, error } = await service.rpc("dispatch_upsert_presence", {
+    const { error } = await service.rpc("dispatch_upsert_presence", {
       p_profile_id: actor.id,
       p_organization_id: actor.organizationId,
       p_tenant_id: actor.tenantId,
@@ -164,7 +160,7 @@ async function handle(request: Request, service: SupabaseClient, actor: Actor, b
       profile.tenant_id !== person.tenant_id || (actor.tenantId && profile.tenant_id !== actor.tenantId)) {
       return reply(request, 404, { error: "The profile and workforce record must belong to the same authorized organization and tenant." });
     }
-    const { data, error } = await service.rpc("dispatch_link_workforce_profile", {
+    const { error } = await service.rpc("dispatch_link_workforce_profile", {
       p_profile_id: profile.id,
       p_workforce_person_id: person.id,
       p_organization_id: profile.organization_id,
@@ -226,7 +222,7 @@ async function handle(request: Request, service: SupabaseClient, actor: Actor, b
       if (error) throw error;
       if ((skills ?? []).length !== keys.length) return reply(request, 400, { error: "One or more required skill keys are not in the skills catalog." });
     }
-    const { data, error } = await service.rpc("dispatch_set_ticket_requirements", {
+    const { error } = await service.rpc("dispatch_set_ticket_requirements", {
       p_ticket_id: ticket.id,
       p_organization_id: ticket.organization_id,
       p_tenant_id: ticket.tenant_id ?? actor.tenantId,
