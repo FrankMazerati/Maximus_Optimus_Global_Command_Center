@@ -5,7 +5,7 @@
 - Database engine: `public.dispatch_offer_ticket` and `public.dispatch_respond_to_offer`.
 - Operational records: `dispatch.workforce_links`, `dispatch.presence`, `dispatch.profile_skills`, `dispatch.ticket_skill_requirements`, `dispatch.decisions`, and `dispatch.candidate_evaluations`.
 - Existing authoritative records remain in `public.tickets`, `public.ticket_offers`, `public.ticket_lifecycle_events`, `public.ticket_conversation_messages`, and `public.notification_events`.
-- Every offer/response emits `ticket.updated` through `public.intellisync_emit_event`; IntelliSync owns delivery, idempotency, retry and audit records. When the original requester replies to a clarification request, a database trigger resumes the technician-owned mission, reopens the offer, notifies the technician and emits another IntelliSync event. Ticket, offer, conversation, lifecycle and notification tables are added to the Realtime publication when available.
+- Every offer/response emits `ticket.updated` through `public.intellisync_emit_event`; IntelliSync owns event idempotency, delivery records, retry and audit. When the original requester replies to a clarification request, a database trigger resumes the technician-owned mission, reopens the offer, notifies the technician and emits another IntelliSync event. Ticket, offer, conversation, lifecycle and notification tables are added to the Realtime publication when available. The current project has zero active `sync_connection_bindings`, so events enter IntelliSync but no outbound cross-product destination is configured yet; this is intentionally not represented as a completed downstream integration.
 
 ## Edge Function actions
 - `health`: authenticated service check.
