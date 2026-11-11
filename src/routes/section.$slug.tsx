@@ -2,7 +2,8 @@ import { createFileRoute, notFound } from "@tanstack/react-router";
 import { AppShell } from "@/components/command/AppShell";
 import { menu } from "@/lib/menu";
 import { getDashboardPage, resolveMenuItem } from "@/lib/dashboard-pages";
-import { findDestination } from "@/lib/menu-spec";
+import { findDestination, findWorkspace, REFERENCE_ROUTES } from "@/lib/menu-spec";
+import { WorkspaceStructure } from "@/components/command/menu/WorkspaceStructure";
 import { DestinationPage } from "@/components/command/menu/DestinationPage";
 import { ReferenceDashboard } from "@/components/command/ReferenceDashboard";
 import { Link } from "@tanstack/react-router";
@@ -29,7 +30,7 @@ const extra = {
 
 export const Route = createFileRoute("/section/$slug")({
   loader: ({ params }) => {
-    const page = getDashboardPage(params.slug);
+    const page = getDashboardPage(REFERENCE_ROUTES[params.slug] ?? params.slug);
     if (page)
       return {
         title: page.title,
@@ -39,6 +40,8 @@ export const Route = createFileRoute("/section/$slug")({
         page,
         destination: null,
       };
+    const workspace = findWorkspace(params.slug);
+    if (workspace) return { title: workspace.title, slug: workspace.id, description: workspace.description, groups: [], page: null, destination: workspace.id };
     const destination = findDestination(params.slug);
     if (destination)
       return {
@@ -82,7 +85,9 @@ export const Route = createFileRoute("/section/$slug")({
 function SectionPage() {
   const s = Route.useLoaderData();
   if (s.destination) {
-    return <DestinationPage slug={s.destination} />;
+    return findWorkspace(s.destination) || findWorkspace(findDestination(s.destination)?.sectionId ?? "")
+      ? <WorkspaceStructure key={s.destination} slug={s.destination} />
+      : <DestinationPage slug={s.destination} />;
   }
   if (s.page)
     return (

@@ -1,4 +1,6 @@
 # Roadmap
+- [ ] Use the final PDF to build all 30 workspace menus, grouped page destinations, and fixed Settings / Help Center / Logout entries
+- [ ] Verify the PDF structure and preserve existing working screens; real services remain outside this structure-only stage
 - [x] Command Center homepage matching the uploaded reference image exactly
 - [ ] Connect all ten reference pages to the homepage and shared hamburger menu
 - [ ] Match page-specific layouts and artwork with interactive, editable demo records

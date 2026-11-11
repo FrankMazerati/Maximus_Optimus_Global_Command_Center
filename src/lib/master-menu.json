@@ -1,0 +1,2599 @@
+[
+  {
+    "id": "business-center",
+    "number": 1,
+    "title": "My Business Center",
+    "description": "The corporate management and business operations environment.",
+    "owner": "My Business Center",
+    "groups": [
+      {
+        "name": "Business Overview",
+        "items": [
+          "Executive Dashboard",
+          "Business Performance",
+          "Company Profile",
+          "Business Health"
+        ]
+      },
+      {
+        "name": "Executive Office",
+        "items": [
+          "CEO Dashboard",
+          "CEO Talking Points",
+          "Executive Decisions",
+          "Strategic Initiatives"
+        ]
+      },
+      {
+        "name": "Finance & Accounting",
+        "items": [
+          "CFO Dashboard",
+          "CFO Talking Points",
+          "Financial Statements",
+          "Quarterly Financial Records",
+          "Annual Financial Records",
+          "Budgeting and Forecasting",
+          "Accounts Payable",
+          "Accounts Receivable",
+          "General Ledger",
+          "Financial Reconciliation"
+        ]
+      },
+      {
+        "name": "Organizations & Structure",
+        "items": [
+          "Organizations",
+          "Departments",
+          "Organizational Units",
+          "Reporting Structure",
+          "Business Locations"
+        ]
+      },
+      {
+        "name": "Human Resources Management",
+        "items": [
+          "Workforce Overview",
+          "Payroll Administration",
+          "Benefits",
+          "Employee Records",
+          "Performance Management"
+        ]
+      },
+      {
+        "name": "Sales & Customer Management",
+        "items": [
+          "Sales Pipeline",
+          "Customer Directory",
+          "Accounts",
+          "Contracts",
+          "Customer Relationships"
+        ]
+      },
+      {
+        "name": "Marketing & Communications",
+        "items": [
+          "Marketing Dashboard",
+          "Social Media Pages",
+          "Social Media Links",
+          "Campaigns",
+          "Brand Assets",
+          "Publishing Calendar"
+        ]
+      },
+      {
+        "name": "Corporate Administration",
+        "items": [
+          "Corporate Documents",
+          "Business Policies",
+          "Legal Records",
+          "Insurance",
+          "Vendors",
+          "Procurement"
+        ]
+      },
+      {
+        "name": "Business Intelligence",
+        "items": [
+          "Revenue Analytics",
+          "Expense Analytics",
+          "Growth Metrics",
+          "Business Forecasts"
+        ]
+      }
+    ],
+    "actions": [
+      "Create Organization",
+      "Add Department",
+      "Add Organizational Unit",
+      "Create Financial Record",
+      "Upload Statement",
+      "Create Budget",
+      "Record Transaction",
+      "Create Executive Brief",
+      "Add Talking Point",
+      "Create Marketing Campaign",
+      "Add Social Media Page",
+      "Add Social Media Link",
+      "Export Financial Report",
+      "Approve",
+      "Reject",
+      "Submit for Review"
+    ],
+    "connections": "Connect to the corporate organization database, financial ledger, HR records, CRM, document storage, approval engine, calendar, notification service, and Global Reporting & Analytics. Financial records must support reporting periods, currency, account classification, source documents, approvals, and audit trails. IntelliSync may transfer authorized financial and business records between approved connected systems. It must never silently overwrite financial records or treat an unverified import as an approved transaction."
+  },
+  {
+    "id": "my-workspace",
+    "number": 2,
+    "title": "My Workspace",
+    "description": "Each employee's personal work environment.",
+    "owner": "My Workspace",
+    "groups": [
+      {
+        "name": "My Profile",
+        "items": [
+          "Personal Information",
+          "Professional Biography",
+          "Profile Photo",
+          "LinkedIn Biography and Link",
+          "Social Media Links",
+          "Employment Information",
+          "Contact Information"
+        ]
+      },
+      {
+        "name": "My Identity",
+        "items": [
+          "Global ID",
+          "Company ID",
+          "Personal/User ID",
+          "Employee ID",
+          "Tenant Association"
+        ]
+      },
+      {
+        "name": "My Work",
+        "items": [
+          "Assigned Tasks",
+          "Projects",
+          "Work Queue",
+          "My Approvals",
+          "My Requests"
+        ]
+      },
+      {
+        "name": "My Documents",
+        "items": [
+          "Personal Documents",
+          "Work Documents",
+          "Shared Files",
+          "Attachments"
+        ]
+      },
+      {
+        "name": "My Learning",
+        "items": [
+          "Getting Started",
+          "Training Progress",
+          "Certifications",
+          "Achievements",
+          "Star Levels",
+          "Badges",
+          "Leaderboards"
+        ]
+      },
+      {
+        "name": "My Calendar",
+        "items": [
+          "Meetings",
+          "Appointments",
+          "Reminders",
+          "Work Schedule"
+        ]
+      },
+      {
+        "name": "My Favorites",
+        "items": [
+          "Favorite Applications",
+          "Favorite Pages",
+          "Favorite People",
+          "Favorite Documents"
+        ]
+      }
+    ],
+    "actions": [
+      "Edit Profile",
+      "Upload Photo",
+      "Update Biography",
+      "Add LinkedIn Link",
+      "Add Social Link",
+      "Update Contact Information",
+      "Create Task",
+      "Complete Task",
+      "Upload Document",
+      "Share Document",
+      "Add Favorite",
+      "Remove Favorite",
+      "Request Access",
+      "View Training",
+      "Download Certificate"
+    ],
+    "connections": "Connect to the employee directory, Global ID Center, IAM, New Active Directory, IntelliBase, IntelliDrive, calendar, task management, notifications, and workflow services. Employees may edit only their authorized profile fields. Sensitive information must be protected independently from ordinary profile information. IntelliSync handles authorized profile, employment, and directory synchronization. It must preserve the authoritative source for each field."
+  },
+  {
+    "id": "global-id-center",
+    "number": 3,
+    "title": "Global ID Center",
+    "description": "Central management of platform-wide identifiers and identity relationships.",
+    "owner": "Global ID Center",
+    "groups": [
+      {
+        "name": "Identity Dashboard",
+        "items": [
+          "Global Identity Overview",
+          "Identity Statistics"
+        ]
+      },
+      {
+        "name": "Global ID Registry",
+        "items": [
+          "Global ID Records",
+          "Identity Details",
+          "Identity History"
+        ]
+      },
+      {
+        "name": "Company & Tenant IDs",
+        "items": [
+          "Company ID Registry",
+          "Tenant ID Registry",
+          "Organization Associations"
+        ]
+      },
+      {
+        "name": "User & Employee IDs",
+        "items": [
+          "User IDs",
+          "Employee IDs",
+          "Contractor IDs",
+          "Service Account IDs"
+        ]
+      },
+      {
+        "name": "Identity Mapping",
+        "items": [
+          "Identity Relationships",
+          "Duplicate Detection",
+          "Identity Reconciliation",
+          "External Identifier Mapping"
+        ]
+      },
+      {
+        "name": "Identity Lifecycle",
+        "items": [
+          "New Identity",
+          "Identity Changes",
+          "Identity Deactivation",
+          "Identity Merge Review"
+        ]
+      }
+    ],
+    "actions": [
+      "Create Global ID",
+      "Register Identity",
+      "Map Identifier",
+      "Resolve Duplicate",
+      "Merge Identities",
+      "Review History",
+      "Export Registry",
+      "Deactivate Identity"
+    ],
+    "connections": "Connect to IAM, New Active Directory, My Workspace, IntelliStaff, Tenant Desk, Connector Hub, and IntelliSync. Global IDs must be stable and unique. Do not generate duplicate global identities when external systems synchronize the same person. IntelliSync transfers identity references and authorized identity attributes. Global ID Center remains responsible for authoritative ID relationships."
+  },
+  {
+    "id": "identity-access-management",
+    "number": 4,
+    "title": "Identity & Access Management",
+    "description": "Platform-wide authentication, authorization, and security access administration.",
+    "owner": "Identity & Access Management",
+    "groups": [
+      {
+        "name": "IAM Dashboard",
+        "items": [
+          "Access Overview",
+          "Security Posture"
+        ]
+      },
+      {
+        "name": "User Access",
+        "items": [
+          "User Permissions",
+          "Role Assignments",
+          "Group-Based Access"
+        ]
+      },
+      {
+        "name": "Access Requests",
+        "items": [
+          "Submitted Requests",
+          "Pending Requests",
+          "Request History"
+        ]
+      },
+      {
+        "name": "Approvals",
+        "items": [
+          "Manager Approval",
+          "Resource Owner Approval",
+          "Administrative Approval"
+        ]
+      },
+      {
+        "name": "Authentication",
+        "items": [
+          "SSO",
+          "MFA",
+          "Authentication Policies",
+          "Session Management"
+        ]
+      },
+      {
+        "name": "Authorization",
+        "items": [
+          "RBAC",
+          "ABAC",
+          "Permission Policies",
+          "Tenant Restrictions"
+        ]
+      },
+      {
+        "name": "Privileged Access",
+        "items": [
+          "Administrator Access",
+          "Temporary Access",
+          "Emergency Access"
+        ]
+      },
+      {
+        "name": "Access Reviews",
+        "items": [
+          "Periodic Reviews",
+          "Expired Access",
+          "Revocation History"
+        ]
+      }
+    ],
+    "actions": [
+      "Create Role",
+      "Assign Role",
+      "Request Access",
+      "Approve",
+      "Reject",
+      "Grant Temporary Access",
+      "Revoke Access",
+      "Reset Authentication",
+      "Terminate Session",
+      "Review Permissions",
+      "Export Access Report"
+    ],
+    "connections": "Connect to authentication services, Global ID Center, New Active Directory, Tenant Desk, applications, audit, approval workflows, and security monitoring. IAM is the final authority for platform authorization. Directory membership and synchronization do not independently grant application permissions. IntelliSync can synchronize approved identity and group information, but must never independently approve or grant access."
+  },
+  {
+    "id": "new-active-directory",
+    "number": 5,
+    "title": "New Active Directory",
+    "description": "Full directory administration, not merely an employee contact list.",
+    "owner": "New Active Directory",
+    "groups": [
+      {
+        "name": "Directory Dashboard",
+        "items": [
+          "Directory Health",
+          "Directory Statistics"
+        ]
+      },
+      {
+        "name": "People & Accounts",
+        "items": [
+          "Employees",
+          "Contractors",
+          "Administrators",
+          "Service Accounts"
+        ]
+      },
+      {
+        "name": "Groups",
+        "items": [
+          "Security Groups",
+          "Distribution Groups",
+          "Dynamic Groups",
+          "Group Membership"
+        ]
+      },
+      {
+        "name": "Organizational Units",
+        "items": [
+          "Organizational Structure",
+          "OU Administration",
+          "Directory Hierarchy"
+        ]
+      },
+      {
+        "name": "Devices",
+        "items": [
+          "Computers",
+          "Servers",
+          "Mobile Devices",
+          "Registered Devices"
+        ]
+      },
+      {
+        "name": "Directory Objects",
+        "items": [
+          "User Objects",
+          "Group Objects",
+          "Device Objects",
+          "Attributes"
+        ]
+      },
+      {
+        "name": "Directory Policies",
+        "items": [
+          "Password Policies",
+          "Account Policies",
+          "Group Policies"
+        ]
+      },
+      {
+        "name": "Directory Integrations",
+        "items": [
+          "Active Directory DS",
+          "Microsoft Entra ID",
+          "Directory Synchronization",
+          "Directory Health"
+        ]
+      }
+    ],
+    "actions": [
+      "Create User",
+      "Create Group",
+      "Add Member",
+      "Remove Member",
+      "Create OU",
+      "Register Device",
+      "Update Attributes",
+      "Disable Account",
+      "Enable Account",
+      "Synchronize Directory",
+      "View Directory Logs"
+    ],
+    "connections": "Connect to directory providers, Global ID Center, IAM, IntelliStaff, Connector Hub, IntelliSync, and security monitoring. Support real directory APIs and directory-specific permissions. Do not present an external directory as connected unless authentication and connectivity have actually been verified. IntelliSync handles approved directory synchronization and conflict resolution."
+  },
+  {
+    "id": "configuration-center",
+    "number": 6,
+    "title": "IntelliStack Configuration Center",
+    "description": "Platform-wide system administration and operations.",
+    "owner": "IntelliStack Configuration Center",
+    "groups": [
+      {
+        "name": "Configuration Dashboard",
+        "items": [
+          "Platform Overview",
+          "System Status"
+        ]
+      },
+      {
+        "name": "Platform Configuration",
+        "items": [
+          "Global Settings",
+          "System Defaults",
+          "Platform Policies"
+        ]
+      },
+      {
+        "name": "Application Administration",
+        "items": [
+          "Application Configuration",
+          "Module Activation",
+          "Application Settings"
+        ]
+      },
+      {
+        "name": "Environment Management",
+        "items": [
+          "Development",
+          "Testing",
+          "Staging",
+          "Production"
+        ]
+      },
+      {
+        "name": "System Monitoring",
+        "items": [
+          "Platform Health",
+          "Performance",
+          "Errors",
+          "Capacity"
+        ]
+      },
+      {
+        "name": "Release Management",
+        "items": [
+          "Releases",
+          "Deployments",
+          "Rollbacks",
+          "Version History"
+        ]
+      },
+      {
+        "name": "Feature Management",
+        "items": [
+          "Feature Flags",
+          "Feature Rollouts"
+        ]
+      },
+      {
+        "name": "Licensing & Entitlements",
+        "items": [
+          "Licenses",
+          "Subscriptions",
+          "Entitlements"
+        ]
+      },
+      {
+        "name": "Backup & Recovery",
+        "items": [
+          "Backup Policies",
+          "Recovery Operations",
+          "Restoration History"
+        ]
+      },
+      {
+        "name": "Administrative Audit",
+        "items": [
+          "Configuration Changes",
+          "Administrator Activity"
+        ]
+      }
+    ],
+    "actions": [
+      "Update Configuration",
+      "Activate Module",
+      "Deactivate Module",
+      "Create Environment",
+      "Deploy Release",
+      "Roll Back",
+      "Enable Feature",
+      "Disable Feature",
+      "Create Backup",
+      "Restore Backup",
+      "Review Audit History"
+    ],
+    "connections": "Connect to application configuration services, deployment infrastructure, platform monitoring, licensing, feature flags, backup services, IAM, and audit. Only authorized Global Administrators and scoped Platform Administrators may access the appropriate configuration functions. IntelliSync transfers configuration records only when explicitly approved. It must not copy production secrets or privileged credentials into other environments."
+  },
+  {
+    "id": "intellidesk-command-center",
+    "number": 7,
+    "title": "IntelliDesk Command Center",
+    "description": "IT service management and technical service delivery.",
+    "owner": "IntelliDesk Command Center",
+    "groups": [
+      {
+        "name": "Service Desk Dashboard",
+        "items": [
+          "Open Tickets",
+          "Service Performance"
+        ]
+      },
+      {
+        "name": "Tickets",
+        "items": [
+          "Incidents",
+          "Service Requests",
+          "Problems",
+          "Change Requests"
+        ]
+      },
+      {
+        "name": "Technician Workspace",
+        "items": [
+          "Assigned Tickets",
+          "Work Queue",
+          "Escalations"
+        ]
+      },
+      {
+        "name": "Service Catalog",
+        "items": [
+          "Hardware Services",
+          "Software Services",
+          "Account Services",
+          "Access Services"
+        ]
+      },
+      {
+        "name": "Change Management",
+        "items": [
+          "Change Calendar",
+          "Change Approvals",
+          "Change History"
+        ]
+      },
+      {
+        "name": "Service Levels",
+        "items": [
+          "SLA Dashboard",
+          "Response Times",
+          "Resolution Times"
+        ]
+      },
+      {
+        "name": "Knowledge Assistance",
+        "items": [
+          "Suggested Articles",
+          "Troubleshooting",
+          "Related Tickets"
+        ]
+      }
+    ],
+    "actions": [
+      "Create Ticket",
+      "Assign Ticket",
+      "Reassign",
+      "Escalate",
+      "Add Note",
+      "Attach Evidence",
+      "Change Status",
+      "Resolve",
+      "Reopen",
+      "Approve Change",
+      "Close Ticket"
+    ],
+    "connections": "Connect to IntelliBase, Help Buddy, IAM, employee directory, asset records, notification services, calendar, workflow engine, and reporting. IntelliSync may synchronize authorized ticket records with external service-management platforms, maintaining ticket ownership, identifiers, and status mappings."
+  },
+  {
+    "id": "intellibase",
+    "number": 8,
+    "title": "IntelliBase",
+    "description": "Enterprise knowledge, documentation, training, and learning center.",
+    "owner": "IntelliBase",
+    "groups": [
+      {
+        "name": "Knowledge Dashboard",
+        "items": [
+          "Featured Knowledge",
+          "Recently Updated"
+        ]
+      },
+      {
+        "name": "Help Desk Knowledge Base",
+        "items": [
+          "Troubleshooting",
+          "Technical Procedures",
+          "Common Issues"
+        ]
+      },
+      {
+        "name": "Getting Started",
+        "items": [
+          "Welcome",
+          "Platform Overview",
+          "Navigation Training",
+          "Profile Setup",
+          "Identity & Access Training"
+        ]
+      },
+      {
+        "name": "Platform & Service Reference",
+        "items": [
+          "Application Documentation",
+          "Service Documentation",
+          "Integration Guides"
+        ]
+      },
+      {
+        "name": "Business Knowledge",
+        "items": [
+          "Business Procedures",
+          "Financial Procedures",
+          "Department Documentation"
+        ]
+      },
+      {
+        "name": "Idea Ledger",
+        "items": [
+          "Ideas",
+          "Conversation References",
+          "Proposed Features",
+          "Approved Requirements"
+        ]
+      },
+      {
+        "name": "Training & Certification",
+        "items": [
+          "Learning Paths",
+          "Basic Training",
+          "Intermediate Training",
+          "Advanced Training",
+          "Assessments",
+          "Certifications"
+        ]
+      },
+      {
+        "name": "Knowledge Administration",
+        "items": [
+          "Article Editor",
+          "Review Queue",
+          "Publishing",
+          "Revision History"
+        ]
+      }
+    ],
+    "actions": [
+      "Search Knowledge",
+      "Create Article",
+      "Edit Article",
+      "Submit for Review",
+      "Approve",
+      "Publish",
+      "Archive",
+      "Add Attachment",
+      "Start Training",
+      "Take Assessment",
+      "Download Certificate"
+    ],
+    "connections": "Connect to document storage, search, IntelliDesk, Help Buddy, Collaboration & Productivity, employee learning records, notification service, and audit. Star levels must be earned through completed training, assessments, and verified achievements—not simply by opening articles. IntelliSync transfers approved knowledge articles and metadata between authorized repositories, preserving version history and publication status."
+  },
+  {
+    "id": "intellistack-marketplace",
+    "number": 9,
+    "title": "IntelliStack Marketplace",
+    "description": "Discover, evaluate, activate, and manage applications, modules, and extensions.",
+    "owner": "IntelliStack Marketplace",
+    "groups": [
+      {
+        "name": "Marketplace Dashboard",
+        "items": [
+          "Featured Applications",
+          "Recommended Products"
+        ]
+      },
+      {
+        "name": "Applications",
+        "items": [
+          "Business Applications",
+          "Productivity Applications",
+          "Administrative Applications"
+        ]
+      },
+      {
+        "name": "Modules & Extensions",
+        "items": [
+          "Available Modules",
+          "Extensions",
+          "Add-ons"
+        ]
+      },
+      {
+        "name": "Connector Listings",
+        "items": [
+          "Integration Catalog",
+          "Provider Listings"
+        ]
+      },
+      {
+        "name": "Subscriptions",
+        "items": [
+          "Active Subscriptions",
+          "Available Plans",
+          "Renewals"
+        ]
+      },
+      {
+        "name": "Installed Applications",
+        "items": [
+          "Installed Modules",
+          "Application Updates",
+          "Entitlements"
+        ]
+      },
+      {
+        "name": "Marketplace Administration",
+        "items": [
+          "Listings",
+          "Publishing",
+          "Reviews"
+        ]
+      }
+    ],
+    "actions": [
+      "Browse",
+      "View Details",
+      "Install",
+      "Activate",
+      "Request Installation",
+      "Upgrade",
+      "Renew",
+      "Uninstall",
+      "Submit Listing",
+      "Review Application"
+    ],
+    "connections": "Connect to licensing, billing, application registry services, IAM, Connector Hub, Configuration Center, and audit. Marketplace discovery and installation must not automatically authorize access to external data. IntelliSync can synchronize approved marketplace catalog metadata, subscriptions, and installation records. Installation itself remains a controlled application lifecycle operation."
+  },
+  {
+    "id": "help-buddy",
+    "number": 10,
+    "title": "Help Buddy",
+    "description": "Personal AI assistant and work coordination workspace.",
+    "owner": "Help Buddy",
+    "groups": [
+      {
+        "name": "Help Buddy Dashboard",
+        "items": [
+          "Assistant Overview",
+          "Assigned Work"
+        ]
+      },
+      {
+        "name": "Conversations",
+        "items": [
+          "New Conversation",
+          "Conversation History",
+          "Saved Conversations"
+        ]
+      },
+      {
+        "name": "Tasks & Checklists",
+        "items": [
+          "My Tasks",
+          "Team Tasks",
+          "Completed Tasks"
+        ]
+      },
+      {
+        "name": "Notes & Reminders",
+        "items": [
+          "Quick Notes",
+          "Reminders",
+          "Saved Information"
+        ]
+      },
+      {
+        "name": "Knowledge Assistance",
+        "items": [
+          "Knowledge Search",
+          "Article Recommendations"
+        ]
+      },
+      {
+        "name": "Team Coordination",
+        "items": [
+          "Manager Coordination",
+          "Team Assignments",
+          "Escalations"
+        ]
+      },
+      {
+        "name": "Attachments & Voice",
+        "items": [
+          "File Attachments",
+          "Voice Input",
+          "Voice Notes"
+        ]
+      },
+      {
+        "name": "Help Buddy Studio",
+        "items": [
+          "Avatar",
+          "Personality",
+          "Voice",
+          "Greetings",
+          "Knowledge Connections",
+          "Skills & Capabilities",
+          "Workflow Configuration",
+          "Tool Permissions",
+          "Testing & Simulation",
+          "Publishing & Version History"
+        ]
+      }
+    ],
+    "actions": [
+      "Start Conversation",
+      "Send Message",
+      "Upload Attachment",
+      "Record Voice",
+      "Create Note",
+      "Create Task",
+      "Assign Task",
+      "Create Reminder",
+      "Search Knowledge",
+      "Create Ticket",
+      "Escalate",
+      "Open Studio",
+      "Test Assistant",
+      "Publish Configuration"
+    ],
+    "connections": "Connect to AI Systems, IntelliBase, IntelliDesk, employee directory, calendar, task services, workflow engine, notifications, and approved application tools. Help Buddy must act only within the signed-in user's permissions. Studio changes require administrative permissions, versioning, testing, and audit. IntelliSync transfers approved task, note, and conversation metadata where configured. Private conversations must not be exported or replicated without explicit authorization and applicable retention controls."
+  },
+  {
+    "id": "collaboration-productivity",
+    "number": 11,
+    "title": "Collaboration & Productivity",
+    "description": "Internal communication and business productivity applications.",
+    "owner": "Collaboration & Productivity",
+    "groups": [
+      {
+        "name": "IntelliChat",
+        "items": [
+          "Direct Messages",
+          "Group Conversations",
+          "Voice Calls",
+          "Video Meetings",
+          "Team Channels"
+        ]
+      },
+      {
+        "name": "Document Productivity",
+        "items": [
+          "IntelliWord",
+          "IntelliNotes",
+          "IntelliSheets",
+          "IntelliSlides",
+          "IntelliForms"
+        ]
+      },
+      {
+        "name": "Communication",
+        "items": [
+          "IntelliText",
+          "Internal Messaging",
+          "Announcements"
+        ]
+      },
+      {
+        "name": "File Management",
+        "items": [
+          "IntelliDrive",
+          "Shared Files",
+          "Document Collaboration"
+        ]
+      },
+      {
+        "name": "Creative Workspace",
+        "items": [
+          "IntelliStudio",
+          "Templates",
+          "Creative Projects"
+        ]
+      },
+      {
+        "name": "Team Collaboration",
+        "items": [
+          "Shared Workspaces",
+          "Project Collaboration",
+          "Team Calendars"
+        ]
+      }
+    ],
+    "actions": [
+      "New Message",
+      "Create Group",
+      "Start Call",
+      "Start Meeting",
+      "Create Document",
+      "Create Spreadsheet",
+      "Create Presentation",
+      "Create Form",
+      "Upload File",
+      "Share",
+      "Comment",
+      "Collaborate",
+      "Export"
+    ],
+    "connections": "Connect to file storage, messaging services, calendar, employee directory, IAM, notification service, workflow, and search. IntelliSync manages approved file, calendar, and communication metadata synchronization. Document versions, access permissions, and sharing restrictions must be preserved."
+  },
+  {
+    "id": "ai-systems",
+    "number": 12,
+    "title": "AI Systems & Intelligence",
+    "description": "Central operating workspace for the platform's AI systems.",
+    "owner": "AI Systems & Intelligence",
+    "groups": [
+      {
+        "name": "AI Dashboard",
+        "items": [
+          "AI System Overview",
+          "AI Service Health"
+        ]
+      },
+      {
+        "name": "Maximus",
+        "items": [
+          "Executive Intelligence",
+          "Business Analysis",
+          "Strategy & Planning",
+          "War Room Assistance"
+        ]
+      },
+      {
+        "name": "Optimus",
+        "items": [
+          "Technical Intelligence",
+          "Evidence Search",
+          "Platform Analysis",
+          "Troubleshooting"
+        ]
+      },
+      {
+        "name": "AI Assistants",
+        "items": [
+          "Available Assistants",
+          "Assistant Directory"
+        ]
+      },
+      {
+        "name": "AI Knowledge",
+        "items": [
+          "Knowledge Sources",
+          "Approved Data Access"
+        ]
+      },
+      {
+        "name": "AI Actions",
+        "items": [
+          "Proposed Actions",
+          "Pending Approvals",
+          "Completed Actions"
+        ]
+      },
+      {
+        "name": "AI Governance",
+        "items": [
+          "Permissions",
+          "Safety Controls",
+          "AI Activity History"
+        ]
+      }
+    ],
+    "actions": [
+      "Start AI Session",
+      "Ask Maximus",
+      "Ask Optimus",
+      "Search Evidence",
+      "Analyze",
+      "Generate Report",
+      "Propose Action",
+      "Request Approval",
+      "Review AI Activity"
+    ],
+    "connections": "Connect to AI Model & Provider Management, Help Buddy, IntelliBase, Configuration Center, IAM, workflow, audit, and approved application APIs. Maximus and Optimus must operate under scoped permissions. AI recommendations are not automatically approved business or security actions. IntelliSync transfers only authorized AI configuration metadata, approved knowledge indexes, and governed operational records. Never synchronize model secrets or private prompts indiscriminately."
+  },
+  {
+    "id": "intellistaff",
+    "number": 13,
+    "title": "IntelliStaff",
+    "description": "administration.",
+    "owner": "IntelliStaff",
+    "groups": [
+      {
+        "name": "Workforce Dashboard",
+        "items": [
+          "Workforce Overview",
+          "Headcount",
+          "Workforce Analytics"
+        ]
+      },
+      {
+        "name": "IntelliHire",
+        "items": [
+          "Job Requisitions",
+          "Job Listings",
+          "Candidates",
+          "Applicant Tracking",
+          "Interviews",
+          "Offers",
+          "Hiring Approvals"
+        ]
+      },
+      {
+        "name": "IntelliWork",
+        "items": [
+          "Employee Workspace",
+          "Onboarding",
+          "Offboarding",
+          "Assignments",
+          "Performance",
+          "Training"
+        ]
+      },
+      {
+        "name": "Employee Administration",
+        "items": [
+          "Employee Directory",
+          "Contractor Directory",
+          "Employment Records"
+        ]
+      },
+      {
+        "name": "Workforce Scheduling",
+        "items": [
+          "Work Schedules",
+          "Shift Assignments",
+          "Availability"
+        ]
+      },
+      {
+        "name": "Workforce Reporting",
+        "items": [
+          "Hiring Analytics",
+          "Retention",
+          "Training Completion"
+        ]
+      }
+    ],
+    "actions": [
+      "Create Job",
+      "Add Candidate",
+      "Schedule Interview",
+      "Submit Offer",
+      "Approve Hire",
+      "Add Employee",
+      "Start Onboarding",
+      "Assign Training",
+      "Update Employment",
+      "Start Offboarding"
+    ],
+    "connections": "Connect to My Business Center, My Workspace, New Active Directory, Global ID Center, IAM, payroll integrations, calendar, IntelliBase, and reporting. IntelliSync transfers approved employee lifecycle records and recruiting data with privacy and field-level restrictions."
+  },
+  {
+    "id": "network-operations",
+    "number": 14,
+    "title": "NOC — Network Operations Center",
+    "description": "",
+    "owner": "NOC — Network Operations Center",
+    "groups": [
+      {
+        "name": "NOC Dashboard",
+        "items": [
+          "Network Health",
+          "Infrastructure Status"
+        ]
+      },
+      {
+        "name": "Network Monitoring",
+        "items": [
+          "Devices",
+          "Routers",
+          "Switches",
+          "Firewalls",
+          "Connections"
+        ]
+      },
+      {
+        "name": "Network Performance",
+        "items": [
+          "Bandwidth",
+          "Latency",
+          "Availability"
+        ]
+      },
+      {
+        "name": "Network Incidents",
+        "items": [
+          "Outages",
+          "Performance Degradation",
+          "Escalations"
+        ]
+      },
+      {
+        "name": "Infrastructure Inventory",
+        "items": [
+          "Hardware",
+          "Network Assets",
+          "Locations"
+        ]
+      },
+      {
+        "name": "Maintenance",
+        "items": [
+          "Maintenance Windows",
+          "Planned Changes"
+        ]
+      },
+      {
+        "name": "NOC Reporting",
+        "items": [
+          "Availability Reports",
+          "Incident Reports"
+        ]
+      }
+    ],
+    "actions": [
+      "Register Device",
+      "Monitor",
+      "Run Diagnostics",
+      "Create Incident",
+      "Escalate",
+      "Schedule Maintenance",
+      "Acknowledge Alert",
+      "Export Report"
+    ],
+    "connections": "Connect to monitoring systems, network management APIs, asset management, IntelliDesk, SOC, notifications, and Command & Control Center. IntelliSync transfers authorized inventory, monitoring events, and incident metadata. It must not expose network credentials or execute network changes merely because data was synchronized."
+  },
+  {
+    "id": "security-operations",
+    "number": 15,
+    "title": "SOC — Security Operations Center",
+    "description": "",
+    "owner": "SOC — Security Operations Center",
+    "groups": [
+      {
+        "name": "SOC Dashboard",
+        "items": [
+          "Security Posture",
+          "Threat Overview"
+        ]
+      },
+      {
+        "name": "Threat Detection",
+        "items": [
+          "Security Alerts",
+          "Threat Intelligence",
+          "Suspicious Activity"
+        ]
+      },
+      {
+        "name": "Security Incidents",
+        "items": [
+          "Active Incidents",
+          "Investigations",
+          "Incident Evidence"
+        ]
+      },
+      {
+        "name": "Vulnerability Management",
+        "items": [
+          "Vulnerability Inventory",
+          "Risk Assessment",
+          "Remediation"
+        ]
+      },
+      {
+        "name": "Identity Security",
+        "items": [
+          "Suspicious Logins",
+          "Privileged Access Monitoring",
+          "Account Threats"
+        ]
+      },
+      {
+        "name": "Response Operations",
+        "items": [
+          "Response Playbooks",
+          "Containment Requests",
+          "Escalations"
+        ]
+      },
+      {
+        "name": "Security Reporting",
+        "items": [
+          "Incident Reports",
+          "Risk Reports",
+          "Compliance Findings"
+        ]
+      }
+    ],
+    "actions": [
+      "Acknowledge Alert",
+      "Open Investigation",
+      "Attach Evidence",
+      "Assign Analyst",
+      "Escalate",
+      "Request Containment",
+      "Approve Response",
+      "Close Incident",
+      "Export Findings"
+    ],
+    "connections": "Connect to IAM, security monitoring, endpoint protection, SIEM integrations, NOC, IntelliDesk, War Room, and audit. IntelliSync transfers approved security event data and case metadata with integrity, timestamps, evidence references, and classification labels."
+  },
+  {
+    "id": "reports-governance-administration",
+    "number": 16,
+    "title": "Reports, Governance, Audit & Administration",
+    "description": "Enterprise-wide compliance, governance, oversight, and audit administration.",
+    "owner": "Reports, Governance, Audit & Administration",
+    "groups": [
+      {
+        "name": "Governance Dashboard",
+        "items": [
+          "Governance Overview",
+          "Policy Status"
+        ]
+      },
+      {
+        "name": "Policies & Standards",
+        "items": [
+          "Corporate Policies",
+          "Security Standards",
+          "Operational Standards"
+        ]
+      },
+      {
+        "name": "Compliance",
+        "items": [
+          "Compliance Frameworks",
+          "Compliance Assessments",
+          "Control Evidence"
+        ]
+      },
+      {
+        "name": "Audit Management",
+        "items": [
+          "Audit Plans",
+          "Audit Findings",
+          "Evidence Requests",
+          "Remediation Tracking"
+        ]
+      },
+      {
+        "name": "Administrative Oversight",
+        "items": [
+          "Administrator Directory",
+          "Administrative Activity",
+          "Privileged Operations"
+        ]
+      },
+      {
+        "name": "Records Management",
+        "items": [
+          "Retention",
+          "Legal Holds",
+          "Records Classification"
+        ]
+      },
+      {
+        "name": "Governance Reporting",
+        "items": [
+          "Compliance Reports",
+          "Audit Reports",
+          "Risk Reports"
+        ]
+      }
+    ],
+    "actions": [
+      "Create Policy",
+      "Submit Evidence",
+      "Assign Control",
+      "Schedule Audit",
+      "Record Finding",
+      "Assign Remediation",
+      "Approve Policy",
+      "Export Audit Report"
+    ],
+    "connections": "Connect to all platform audit streams, IAM, Configuration Center, Data Management Center, SOC, business records, and Global Reporting & Analytics. IntelliSync can transfer approved compliance evidence and report data. Audit records must remain tamper-evident and preserve provenance."
+  },
+  {
+    "id": "tenant-desk",
+    "number": 17,
+    "title": "Tenant Desk",
+    "description": "Manage companies, tenants, tenant administrators, and tenant-level operations.",
+    "owner": "Tenant Desk",
+    "groups": [
+      {
+        "name": "Tenant Dashboard",
+        "items": [
+          "Tenant Overview",
+          "Tenant Health"
+        ]
+      },
+      {
+        "name": "Tenant Registry",
+        "items": [
+          "Active Tenants",
+          "Pending Tenants",
+          "Tenant History"
+        ]
+      },
+      {
+        "name": "Tenant Administration",
+        "items": [
+          "Tenant Profiles",
+          "Tenant Administrators",
+          "Tenant Settings"
+        ]
+      },
+      {
+        "name": "Tenant Resources",
+        "items": [
+          "Applications",
+          "Services",
+          "Storage",
+          "Licensing"
+        ]
+      },
+      {
+        "name": "Tenant Security",
+        "items": [
+          "Tenant Policies",
+          "Tenant Access",
+          "Security Status"
+        ]
+      },
+      {
+        "name": "Tenant Support",
+        "items": [
+          "Tenant Requests",
+          "Tenant Incidents",
+          "Escalations"
+        ]
+      }
+    ],
+    "actions": [
+      "Create Tenant",
+      "Edit Tenant",
+      "Assign Administrator",
+      "Activate Tenant",
+      "Suspend Tenant",
+      "Configure Resources",
+      "Assign License",
+      "Review Tenant Activity"
+    ],
+    "connections": "Connect to Global ID Center, IAM, Configuration Center, Marketplace, Connector Hub, IntelliSync, and reporting. Tenant isolation must be enforced in the database and server-side authorization layers. Tenant synchronization must never leak records across tenants."
+  },
+  {
+    "id": "connector-hub",
+    "number": 18,
+    "title": "Connector Hub",
+    "description": "Discover, authorize, configure, and manage external application connections.",
+    "owner": "Connector Hub",
+    "groups": [
+      {
+        "name": "Connector Dashboard",
+        "items": [
+          "Connected Services",
+          "Connection Health"
+        ]
+      },
+      {
+        "name": "Connector Marketplace",
+        "items": [
+          "Available Providers",
+          "Connector Catalog"
+        ]
+      },
+      {
+        "name": "Connected Applications",
+        "items": [
+          "Microsoft",
+          "Google",
+          "AWS",
+          "GitHub",
+          "Other Authorized Providers"
+        ]
+      },
+      {
+        "name": "Connector Configuration",
+        "items": [
+          "Connection Settings",
+          "API Configuration",
+          "Scopes & Permissions"
+        ]
+      },
+      {
+        "name": "Authentication",
+        "items": [
+          "OAuth Connections",
+          "Service Accounts",
+          "Credential References"
+        ]
+      },
+      {
+        "name": "Custom Connectors",
+        "items": [
+          "Custom API Connections",
+          "Webhooks",
+          "Connector Development"
+        ]
+      },
+      {
+        "name": "Testing & Monitoring",
+        "items": [
+          "Connection Tests",
+          "Connector Logs",
+          "Failures",
+          "Reconnection"
+        ]
+      },
+      {
+        "name": "Connector Administration",
+        "items": [
+          "Permissions",
+          "Ownership",
+          "Disconnect",
+          "Audit History"
+        ]
+      }
+    ],
+    "actions": [
+      "Add Connector",
+      "Connect",
+      "Authorize",
+      "Test Connection",
+      "Configure",
+      "Reconnect",
+      "Disconnect",
+      "Review Permissions",
+      "View Logs",
+      "Create Custom Connector"
+    ],
+    "connections": "Connect to provider APIs, secure secret storage, IAM, Tenant Desk, IntelliSync, and audit. Connector Hub establishes and manages connections. It does not own the data synchronization process. External credentials must be stored securely, never displayed in logs, and never passed into ordinary client-side code."
+  },
+  {
+    "id": "intellisync",
+    "number": 19,
+    "title": "IntelliSync",
+    "description": "The central data synchronization, exchange, mapping, validation, and transfer engine.",
+    "owner": "IntelliSync",
+    "groups": [
+      {
+        "name": "IntelliSync Dashboard",
+        "items": [
+          "Sync Health",
+          "Transfer Overview"
+        ]
+      },
+      {
+        "name": "Sync Jobs",
+        "items": [
+          "Active Jobs",
+          "Completed Jobs",
+          "Failed Jobs"
+        ]
+      },
+      {
+        "name": "Scheduling",
+        "items": [
+          "Scheduled Sync",
+          "Real-Time Sync",
+          "Event-Triggered Sync"
+        ]
+      },
+      {
+        "name": "Data Mapping",
+        "items": [
+          "Source Mapping",
+          "Destination Mapping",
+          "Field Mapping",
+          "Transformation Rules"
+        ]
+      },
+      {
+        "name": "Data Validation",
+        "items": [
+          "Validation Rules",
+          "Duplicate Detection",
+          "Data Quality"
+        ]
+      },
+      {
+        "name": "Conflict Management",
+        "items": [
+          "Conflict Review",
+          "Resolution Rules",
+          "Manual Resolution"
+        ]
+      },
+      {
+        "name": "Transfer Operations",
+        "items": [
+          "Imports",
+          "Exports",
+          "Data Exchange"
+        ]
+      },
+      {
+        "name": "Recovery",
+        "items": [
+          "Failed Transfers",
+          "Retry",
+          "Recovery",
+          "Reconciliation"
+        ]
+      },
+      {
+        "name": "Sync Monitoring",
+        "items": [
+          "Transfer Logs",
+          "Performance",
+          "Job Status"
+        ]
+      },
+      {
+        "name": "Sync Administration",
+        "items": [
+          "Sync Permissions",
+          "Connector Associations",
+          "Audit History"
+        ]
+      }
+    ],
+    "actions": [
+      "Create Sync Job",
+      "Configure Mapping",
+      "Test Mapping",
+      "Validate Data",
+      "Preview Transfer",
+      "Run Sync",
+      "Schedule Sync",
+      "Pause",
+      "Resume",
+      "Retry Failed Job",
+      "Resolve Conflict",
+      "Cancel Job",
+      "Export Logs",
+      "Reconcile Records"
+    ],
+    "connections": "Connect to Connector Hub, Global ID Center, IAM, New Active Directory, My Business Center, IntelliStaff, IntelliBase, Tenant Desk, Collaboration & Productivity, Data Management Center, and approved external providers. Mandatory IntelliSync transfer lifecycle 1. Identify the authorized source. 2. Identify the authorized destination. 3. Verify connector availability. 4. Verify tenant and user permissions. 5. Confirm data ownership. 6. Select permitted data fields. 7. Map source and destination fields. 8. Apply approved transformation rules. 9. Validate data. 10. Detect duplicates. 11. Preview proposed changes. 12. Obtain required approval. 13. Execute transfer. 14. Record transfer results. 15. Reconcile source and destination. 16. Preserve history and audit records. Required transfer safeguards No unauthorized cross-tenant transfer. No silent overwrite of authoritative records. No synchronization of passwords, tokens, private keys, or secrets. No implicit IAM permission grants. No unapproved financial transaction imports. No loss of source identifiers or timestamps. No deletion without an approved deletion policy. All transfers must be traceable and reversible where technically appropriate."
+  },
+  {
+    "id": "automation-center",
+    "number": 20,
+    "title": "Automation Center",
+    "description": "Create, schedule, manage, and monitor automated tasks.",
+    "owner": "Automation Center",
+    "groups": [
+      {
+        "name": "Automation Dashboard",
+        "items": [
+          "Automation Health",
+          "Active Automations"
+        ]
+      },
+      {
+        "name": "Automation Builder",
+        "items": [
+          "Visual Builder",
+          "Triggers",
+          "Actions"
+        ]
+      },
+      {
+        "name": "Templates",
+        "items": [
+          "Approved Templates",
+          "Custom Templates"
+        ]
+      },
+      {
+        "name": "Scheduled Automation",
+        "items": [
+          "Scheduled Jobs",
+          "Recurring Jobs"
+        ]
+      },
+      {
+        "name": "Event Automation",
+        "items": [
+          "Event Triggers",
+          "Conditional Actions"
+        ]
+      },
+      {
+        "name": "Approval-Based Automation",
+        "items": [
+          "Approval Gates",
+          "Pending Approvals"
+        ]
+      },
+      {
+        "name": "Monitoring",
+        "items": [
+          "Execution History",
+          "Failed Automations",
+          "Recovery"
+        ]
+      }
+    ],
+    "actions": [
+      "Create Automation",
+      "Add Trigger",
+      "Add Action",
+      "Test",
+      "Activate",
+      "Pause",
+      "Resume",
+      "Disable",
+      "Approve",
+      "Retry",
+      "View Logs"
+    ],
+    "connections": "Connect to workflow engine, IntelliSync, Connector Hub, notification service, IAM, API & Developer Center, and audit. IntelliSync may move automation configuration and approved execution records between environments. It must not transfer production credentials or activate unapproved automations."
+  },
+  {
+    "id": "api-developer-center",
+    "number": 21,
+    "title": "API & Developer Center",
+    "description": "Developer tools, API management, application integration, and technical documentation.",
+    "owner": "API & Developer Center",
+    "groups": [
+      {
+        "name": "Developer Dashboard",
+        "items": [
+          "Developer Overview",
+          "API Usage"
+        ]
+      },
+      {
+        "name": "API Registry",
+        "items": [
+          "API Directory",
+          "API Versions"
+        ]
+      },
+      {
+        "name": "Documentation",
+        "items": [
+          "API Reference",
+          "Developer Guides"
+        ]
+      },
+      {
+        "name": "Credentials",
+        "items": [
+          "API Key Management",
+          "OAuth Applications",
+          "Credential References"
+        ]
+      },
+      {
+        "name": "Webhooks",
+        "items": [
+          "Webhook Registry",
+          "Event Subscriptions"
+        ]
+      },
+      {
+        "name": "Developer Applications",
+        "items": [
+          "Application Registration",
+          "Application Ownership"
+        ]
+      },
+      {
+        "name": "Testing",
+        "items": [
+          "Sandbox",
+          "API Testing",
+          "Test Results"
+        ]
+      },
+      {
+        "name": "Monitoring",
+        "items": [
+          "API Performance",
+          "Rate Limits",
+          "Error Logs"
+        ]
+      }
+    ],
+    "actions": [
+      "Register Application",
+      "Create API Key",
+      "Configure Webhook",
+      "Test Endpoint",
+      "View Documentation",
+      "Revoke Credential",
+      "View Usage",
+      "Export Logs"
+    ],
+    "connections": "Connect to API gateway, IAM, Connector Hub, Configuration Center, developer documentation, and audit. IntelliSync can synchronize API metadata, webhook configuration references, and approved usage records. Secrets must never be transferred as ordinary data."
+  },
+  {
+    "id": "data-management-center",
+    "number": 22,
+    "title": "Data Management Center",
+    "description": "Manage enterprise data quality, classification, ownership, retention, and lifecycle.",
+    "owner": "Data Management Center",
+    "groups": [
+      {
+        "name": "Data Dashboard",
+        "items": [
+          "Data Health",
+          "Data Inventory"
+        ]
+      },
+      {
+        "name": "Data Sources",
+        "items": [
+          "Internal Sources",
+          "External Sources"
+        ]
+      },
+      {
+        "name": "Data Catalog",
+        "items": [
+          "Data Assets",
+          "Data Ownership",
+          "Data Lineage"
+        ]
+      },
+      {
+        "name": "Classification",
+        "items": [
+          "Sensitive Data",
+          "Confidential Data",
+          "Public Data"
+        ]
+      },
+      {
+        "name": "Data Quality",
+        "items": [
+          "Validation",
+          "Completeness",
+          "Duplicate Detection"
+        ]
+      },
+      {
+        "name": "Governance",
+        "items": [
+          "Data Policies",
+          "Access Rules",
+          "Retention"
+        ]
+      },
+      {
+        "name": "Data Exchange",
+        "items": [
+          "Imports",
+          "Exports",
+          "Transfer Approvals"
+        ]
+      },
+      {
+        "name": "Recovery",
+        "items": [
+          "Recovery Requests",
+          "Data Restoration"
+        ]
+      }
+    ],
+    "actions": [
+      "Register Data Source",
+      "Classify Data",
+      "Assign Owner",
+      "Validate Dataset",
+      "Request Export",
+      "Approve Transfer",
+      "Apply Retention",
+      "Review Lineage",
+      "Restore Data"
+    ],
+    "connections": "Connect to IntelliSync, Connector Hub, storage, IAM, Global ID Center, audit, and reporting. IntelliSync executes approved transfers; Data Management Center governs data ownership, classification, quality, and permitted use."
+  },
+  {
+    "id": "workflow-center",
+    "number": 23,
+    "title": "Workflow Center",
+    "description": "Design and operate business processes and approval workflows.",
+    "owner": "Workflow Center",
+    "groups": [
+      {
+        "name": "Workflow Dashboard",
+        "items": [
+          "Active Workflows",
+          "Workflow Health"
+        ]
+      },
+      {
+        "name": "Workflow Designer",
+        "items": [
+          "Workflow Builder",
+          "Conditions",
+          "Assignments"
+        ]
+      },
+      {
+        "name": "Templates",
+        "items": [
+          "Business Templates",
+          "Approval Templates"
+        ]
+      },
+      {
+        "name": "Approvals",
+        "items": [
+          "Pending Approvals",
+          "Approval History"
+        ]
+      },
+      {
+        "name": "Active Workflows",
+        "items": [
+          "Running Processes",
+          "Paused Processes"
+        ]
+      },
+      {
+        "name": "Assignments",
+        "items": [
+          "My Assignments",
+          "Team Assignments"
+        ]
+      },
+      {
+        "name": "Monitoring",
+        "items": [
+          "Execution History",
+          "Failed Workflows",
+          "Performance"
+        ]
+      }
+    ],
+    "actions": [
+      "Create Workflow",
+      "Add Step",
+      "Assign Owner",
+      "Add Approval",
+      "Test Workflow",
+      "Publish",
+      "Pause",
+      "Resume",
+      "Cancel",
+      "Retry",
+      "View History"
+    ],
+    "connections": "Connect to IAM, IntelliDesk, My Business Center, IntelliStaff, Automation Center, Help Buddy, notifications, and IntelliSync. IntelliSync synchronizes approved workflow definitions and execution metadata. Workflow approvals remain authoritative in the workflow engine."
+  },
+  {
+    "id": "notification-center",
+    "number": 24,
+    "title": "Notification Center",
+    "description": "Central administration and delivery of platform notifications.",
+    "owner": "Notification Center",
+    "groups": [
+      {
+        "name": "Notification Dashboard",
+        "items": [
+          "Delivery Status",
+          "Notification Overview"
+        ]
+      },
+      {
+        "name": "Announcements",
+        "items": [
+          "Global Announcements",
+          "Company Announcements",
+          "Department Announcements"
+        ]
+      },
+      {
+        "name": "Employee Notifications",
+        "items": [
+          "Personal Alerts",
+          "Work Notifications"
+        ]
+      },
+      {
+        "name": "System Alerts",
+        "items": [
+          "Service Alerts",
+          "Platform Alerts"
+        ]
+      },
+      {
+        "name": "Security Alerts",
+        "items": [
+          "Account Alerts",
+          "Security Events"
+        ]
+      },
+      {
+        "name": "Templates",
+        "items": [
+          "Notification Templates",
+          "Message Templates"
+        ]
+      },
+      {
+        "name": "Delivery Monitoring",
+        "items": [
+          "Sent",
+          "Failed",
+          "Retry History"
+        ]
+      },
+      {
+        "name": "Preferences",
+        "items": [
+          "User Preferences",
+          "Delivery Channels"
+        ]
+      }
+    ],
+    "actions": [
+      "Create Announcement",
+      "Target Audience",
+      "Send",
+      "Schedule",
+      "Edit",
+      "Cancel",
+      "Retry Delivery",
+      "Create Template",
+      "Review Delivery"
+    ],
+    "connections": "Connect to employee directory, tenant records, messaging, email, push notifications, workflow, SOC, and audit. IntelliSync synchronizes approved notification templates, preferences, and delivery metadata. Do not duplicate sensitive notification content into unauthorized systems."
+  },
+  {
+    "id": "command-control-center",
+    "number": 25,
+    "title": "Command & Control Center",
+    "description": "Executive-level operational coordination across the enterprise.",
+    "owner": "Command & Control Center",
+    "groups": [
+      {
+        "name": "Global Operations Dashboard",
+        "items": [
+          "Organization Overview",
+          "Operational Status"
+        ]
+      },
+      {
+        "name": "Cross-Department Operations",
+        "items": [
+          "Department Status",
+          "Coordination"
+        ]
+      },
+      {
+        "name": "Critical Events",
+        "items": [
+          "Critical Event Register",
+          "Active Response"
+        ]
+      },
+      {
+        "name": "Incident Coordination",
+        "items": [
+          "Incident Overview",
+          "Escalations"
+        ]
+      },
+      {
+        "name": "Executive Operations",
+        "items": [
+          "Executive Briefings",
+          "Operational Decisions"
+        ]
+      },
+      {
+        "name": "Command Monitoring",
+        "items": [
+          "System Status",
+          "Business Continuity",
+          "Operational Risks"
+        ]
+      }
+    ],
+    "actions": [
+      "Open Command Session",
+      "Create Critical Event",
+      "Assign Department",
+      "Escalate",
+      "Request Executive Decision",
+      "Issue Approved Announcement",
+      "Generate Situation Report",
+      "Close Event"
+    ],
+    "connections": "Connect to NOC, SOC, War Room, My Business Center, IntelliDesk, AI Systems, notifications, and Global Reporting & Analytics. IntelliSync supplies authorized operational status and incident summaries. Command & Control does not directly override system ownership or security authorization."
+  },
+  {
+    "id": "global-search",
+    "number": 26,
+    "title": "Global Search",
+    "description": "One authorized search interface across the enterprise platform.",
+    "owner": "Global Search",
+    "groups": [
+      {
+        "name": "Search Dashboard",
+        "items": [
+          "Recent Searches",
+          "Suggested Searches"
+        ]
+      },
+      {
+        "name": "People Search",
+        "items": [
+          "Employees",
+          "Contractors",
+          "Administrators"
+        ]
+      },
+      {
+        "name": "Application Search",
+        "items": [
+          "Applications",
+          "Modules",
+          "Services"
+        ]
+      },
+      {
+        "name": "Knowledge Search",
+        "items": [
+          "Articles",
+          "Documentation",
+          "Training"
+        ]
+      },
+      {
+        "name": "Business Search",
+        "items": [
+          "Organizations",
+          "Financial Records",
+          "Business Documents"
+        ]
+      },
+      {
+        "name": "Operations Search",
+        "items": [
+          "Tickets",
+          "Incidents",
+          "Tasks"
+        ]
+      },
+      {
+        "name": "Search Administration",
+        "items": [
+          "Index Health",
+          "Search Configuration"
+        ]
+      }
+    ],
+    "actions": [
+      "Search",
+      "Filter",
+      "Sort",
+      "Save Search",
+      "Open Result",
+      "Export Authorized Results",
+      "Clear History"
+    ],
+    "connections": "Connect to authorized search indexes across My Workspace, IntelliBase, IntelliDesk, business records, applications, and operations. IAM permissions must be checked before returning results and again before opening protected records. IntelliSync maintains approved search indexes and metadata. It must not make restricted content searchable to unauthorized users."
+  },
+  {
+    "id": "calendar-scheduling-center",
+    "number": 27,
+    "title": "Calendar & Scheduling Center",
+    "description": "Central calendar and scheduling management.",
+    "owner": "Calendar & Scheduling Center",
+    "groups": [
+      {
+        "name": "Calendar Dashboard",
+        "items": [
+          "Today's Schedule",
+          "Upcoming Events"
+        ]
+      },
+      {
+        "name": "Personal Calendar",
+        "items": [
+          "Meetings",
+          "Appointments"
+        ]
+      },
+      {
+        "name": "Business Calendar",
+        "items": [
+          "Corporate Events",
+          "Executive Events"
+        ]
+      },
+      {
+        "name": "Department Calendars",
+        "items": [
+          "Team Events",
+          "Shift Schedules"
+        ]
+      },
+      {
+        "name": "Meetings",
+        "items": [
+          "Meeting Rooms",
+          "Video Meetings",
+          "Invitations"
+        ]
+      },
+      {
+        "name": "Resource Scheduling",
+        "items": [
+          "Room Booking",
+          "Equipment Booking"
+        ]
+      },
+      {
+        "name": "Scheduling Administration",
+        "items": [
+          "Calendar Policies",
+          "Availability Rules"
+        ]
+      }
+    ],
+    "actions": [
+      "Create Event",
+      "Invite Participants",
+      "Schedule Meeting",
+      "Accept",
+      "Decline",
+      "Reschedule",
+      "Cancel",
+      "Book Resource",
+      "Share Calendar"
+    ],
+    "connections": "Connect to Collaboration & Productivity, Help Buddy, IntelliStaff, My Workspace, notifications, and external calendar connectors. IntelliSync manages authorized calendar synchronization, event mapping, conflict detection, and update reconciliation."
+  },
+  {
+    "id": "war-room",
+    "number": 28,
+    "title": "War Room & Emergency Operations Center",
+    "description": "Coordinated response to serious operational, security, infrastructure, and business emergencies.",
+    "owner": "War Room & Emergency Operations Center",
+    "groups": [
+      {
+        "name": "War Room Dashboard",
+        "items": [
+          "Active War Rooms",
+          "Emergency Status"
+        ]
+      },
+      {
+        "name": "War Room Management",
+        "items": [
+          "Create War Room",
+          "Active Sessions",
+          "War Room History"
+        ]
+      },
+      {
+        "name": "Emergency Operations",
+        "items": [
+          "Emergency Coordination",
+          "Response Assignments",
+          "Escalations"
+        ]
+      },
+      {
+        "name": "Scenario Simulator",
+        "items": [
+          "Scenario Library",
+          "Custom Scenarios",
+          "Simulation Sessions",
+          "Exercise Results"
+        ]
+      },
+      {
+        "name": "Security Scenarios",
+        "items": [
+          "Password Leak",
+          "Data Breach",
+          "Ransomware",
+          "Cyberattack"
+        ]
+      },
+      {
+        "name": "Infrastructure Scenarios",
+        "items": [
+          "Network Outage",
+          "Cloud Failure",
+          "Application Failure"
+        ]
+      },
+      {
+        "name": "Business Continuity",
+        "items": [
+          "Disaster Recovery",
+          "Continuity Planning",
+          "Recovery Exercises"
+        ]
+      },
+      {
+        "name": "Team Coordination",
+        "items": [
+          "Breakout Rooms",
+          "Team Assignments",
+          "Emergency Communications"
+        ]
+      },
+      {
+        "name": "Incident Evidence",
+        "items": [
+          "Attachments",
+          "Timeline",
+          "Decisions",
+          "Action Items"
+        ]
+      },
+      {
+        "name": "Post-Incident Review",
+        "items": [
+          "After-Action Reports",
+          "Lessons Learned",
+          "Improvement Plans"
+        ]
+      }
+    ],
+    "actions": [
+      "Create War Room",
+      "Invite Team",
+      "Start Simulation",
+      "Pause Simulation",
+      "Resume Simulation",
+      "Assign Task",
+      "Open Breakout Room",
+      "Attach Evidence",
+      "Record Decision",
+      "Escalate",
+      "Generate After-Action Report",
+      "Close War Room"
+    ],
+    "connections": "Connect to SOC, NOC, Command & Control Center, Help Buddy, AI Systems, IntelliDesk, calendar, notifications, workflow, and audit. IntelliSync transfers approved incident metadata, scenario definitions, assignments, and after-action reports. Simulated incidents must be clearly separated from live incidents. Simulation actions must not accidentally execute real production changes."
+  },
+  {
+    "id": "ai-model-provider-management",
+    "number": 29,
+    "title": "AI Model & Provider Management",
+    "description": "Manage AI providers, model availability, configuration, governance, and usage.",
+    "owner": "AI Model & Provider Management",
+    "groups": [
+      {
+        "name": "AI Provider Dashboard",
+        "items": [
+          "Provider Status",
+          "Model Availability"
+        ]
+      },
+      {
+        "name": "Provider Directory",
+        "items": [
+          "Approved Providers",
+          "Provider Connections"
+        ]
+      },
+      {
+        "name": "Model Registry",
+        "items": [
+          "Available Models",
+          "Model Versions"
+        ]
+      },
+      {
+        "name": "Configuration",
+        "items": [
+          "Model Settings",
+          "Routing",
+          "Fallback Policies"
+        ]
+      },
+      {
+        "name": "Access & Security",
+        "items": [
+          "Model Permissions",
+          "Credential References",
+          "Usage Policies"
+        ]
+      },
+      {
+        "name": "Monitoring",
+        "items": [
+          "Performance",
+          "Latency",
+          "Errors"
+        ]
+      },
+      {
+        "name": "Cost Management",
+        "items": [
+          "Usage",
+          "Budgets",
+          "Cost Reports"
+        ]
+      },
+      {
+        "name": "AI Governance",
+        "items": [
+          "Safety Rules",
+          "Evaluation",
+          "Model Approval"
+        ]
+      }
+    ],
+    "actions": [
+      "Add Provider",
+      "Register Model",
+      "Configure Model",
+      "Test Model",
+      "Activate",
+      "Deactivate",
+      "Set Fallback",
+      "Review Usage",
+      "Set Budget",
+      "Approve Model"
+    ],
+    "connections": "Connect to AI Systems, Configuration Center, secure secret storage, API gateway, IAM, billing, and audit. IntelliSync synchronizes approved model metadata, usage summaries, and configuration references. Provider credentials must remain in secure secret storage."
+  },
+  {
+    "id": "global-reporting-analytics",
+    "number": 30,
+    "title": "Global Reporting & Analytics",
+    "description": "Enterprise-wide reporting, measurement, dashboards, and business intelligence.",
+    "owner": "Global Reporting & Analytics",
+    "groups": [
+      {
+        "name": "Analytics Dashboard",
+        "items": [
+          "Global Overview",
+          "Executive Metrics"
+        ]
+      },
+      {
+        "name": "Business Analytics",
+        "items": [
+          "Revenue",
+          "Expenses",
+          "Growth"
+        ]
+      },
+      {
+        "name": "Financial Analytics",
+        "items": [
+          "Quarterly Results",
+          "Annual Results",
+          "Forecasts"
+        ]
+      },
+      {
+        "name": "Workforce Analytics",
+        "items": [
+          "Headcount",
+          "Hiring",
+          "Retention",
+          "Training"
+        ]
+      },
+      {
+        "name": "Operational Analytics",
+        "items": [
+          "Service Desk",
+          "Network Operations",
+          "Security Operations"
+        ]
+      },
+      {
+        "name": "Platform Analytics",
+        "items": [
+          "Application Usage",
+          "Platform Health",
+          "System Performance"
+        ]
+      },
+      {
+        "name": "Custom Reporting",
+        "items": [
+          "Report Builder",
+          "Saved Reports",
+          "Scheduled Reports"
+        ]
+      },
+      {
+        "name": "Data Visualization",
+        "items": [
+          "Charts",
+          "Dashboards",
+          "Exported Reports"
+        ]
+      }
+    ],
+    "actions": [
+      "Create Report",
+      "Build Dashboard",
+      "Add Metric",
+      "Apply Filter",
+      "Save",
+      "Schedule",
+      "Export PDF",
+      "Export CSV",
+      "Share",
+      "Refresh Data"
+    ],
+    "connections": "Connect to business databases, financial systems, IntelliStaff, NOC, SOC, IntelliDesk, Configuration Center, Data Management Center, and approved analytics stores. IntelliSync supplies approved data extracts and governed datasets. Reports must identify data freshness, source, reporting period, and incomplete or unavailable sources. SECTION 4 — FIXED BOTTOM NAVIGATION"
+  },
+  {
+    "id": "settings",
+    "number": 0,
+    "title": "Settings",
+    "description": "Personal, account, platform, and authorized administrative preferences.",
+    "owner": "Settings",
+    "groups": [
+      {
+        "name": "Settings",
+        "items": [
+          "General Settings",
+          "Account Settings",
+          "Profile Settings",
+          "Security Settings",
+          "Privacy Settings",
+          "Authentication Settings",
+          "Notification Settings",
+          "Language & Region",
+          "Time Zone",
+          "Accessibility",
+          "Appearance & Themes",
+          "Dashboard Preferences",
+          "Navigation Preferences",
+          "Favorites",
+          "Connected Accounts",
+          "Application Preferences",
+          "Data & Storage",
+          "Export & Retention",
+          "Billing & Subscription",
+          "Tenant Preferences",
+          "Administrative Configuration"
+        ]
+      }
+    ],
+    "actions": [
+      "Save Settings",
+      "Reset",
+      "Change Password",
+      "Configure MFA",
+      "Manage Sessions",
+      "Manage Devices",
+      "Update Theme",
+      "Change Background",
+      "Set Default Workspace",
+      "Manage Connections",
+      "Export My Data"
+    ],
+    "connections": "Connect to IAM, My Workspace, Configuration Center, Connector Hub, billing, and audit."
+  },
+  {
+    "id": "help-center",
+    "number": 0,
+    "title": "Help Center",
+    "description": "A populated, searchable user support destination.",
+    "owner": "Help Center",
+    "groups": [
+      {
+        "name": "Help Center",
+        "items": [
+          "Getting Started",
+          "Platform Navigation",
+          "How-To Guides",
+          "Frequently Asked Questions",
+          "Troubleshooting",
+          "Account Assistance",
+          "Access Assistance",
+          "Report a Problem",
+          "Report Phishing",
+          "Report Scams",
+          "Report Security Concerns",
+          "Contact Support",
+          "Service Status",
+          "Submit Feedback",
+          "Training Resources",
+          "Emergency Assistance"
+        ]
+      }
+    ],
+    "actions": [
+      "Search Help",
+      "Submit Support Request",
+      "Report Phishing",
+      "Report Scam",
+      "Report Security Issue",
+      "Attach Evidence",
+      "Contact Support",
+      "Check Service Status",
+      "Submit Feedback"
+    ],
+    "connections": "Connect to IntelliBase, IntelliDesk, SOC, Help Buddy, IAM, and notifications."
+  }
+]

@@ -1,12 +1,13 @@
+import masterMenu from "./master-menu.json";
 /**
  * Master hamburger menu for the Maximus Optimus Global Command Center.
  *
  * Rules encoded here:
  *  - every native application has one authoritative home (see `owner`);
  *  - each destination is addressable on its own (`slug`) and renders a real page;
- *  - tenant operational work lives in IntelliDesk › Tenant Desk;
+ *  - final PDF defines the thirty authoritative workspaces;
  *  - External Connectors are a separate, non-native block;
- *  - Settings is the final native destination;
+ *  - Settings and Help Center are fixed destinations outside the workspace list;
  *  - navigation is filtered by role.
  */
 
@@ -39,6 +40,8 @@ export interface MenuSection {
   groups: MenuGroup[];
   external?: boolean;
   minRole?: Role;
+  actions?: string[];
+  connections?: string;
 }
 
 interface SectionSeed {
@@ -80,7 +83,7 @@ const SUMMARIES: Record<string, string> = {
   settings: "Your profile, preferences and connected accounts.",
 };
 
-const SEED: SectionSeed[] = [
+const LEGACY_SEED: SectionSeed[] = [
   {
     id: "business-center",
     number: 1,
@@ -562,9 +565,9 @@ export const REAL_ROUTES: Record<string, string> = {
   "ai-systems-ai-configuration": "/character-studio",
 };
 
-function build(): MenuSection[] {
+function build(seed: SectionSeed[]): MenuSection[] {
   const used = new Set<string>();
-  return SEED.map((section) => {
+  return seed.map((section) => {
     const groups: MenuGroup[] = section.groups.map((group) => {
       const groupId = `${section.id}-${slugify(group.name)}`;
       const destinations: Destination[] = group.items.map((label) => {
@@ -593,6 +596,8 @@ function build(): MenuSection[] {
       number: section.number,
       title: section.title,
       description: section.description,
+      actions: section.actions ?? [],
+      connections: section.connections ?? "",
       groups,
       ...(section.external ? { external: true } : {}),
       ...(section.minRole ? { minRole: section.minRole } : {}),
@@ -600,9 +605,12 @@ function build(): MenuSection[] {
   });
 }
 
-export const menuSections: MenuSection[] = build();
+export const menuSections: MenuSection[] = build(masterMenu);
+const legacySections = build(LEGACY_SEED);
+export const fixedSections = menuSections.filter((section) => section.number === 0);
+export const findWorkspace = (slug: string) => menuSections.find((section) => section.id === slug);
 
-export const nativeSections = menuSections.filter((section) => !section.external);
+export const nativeSections = menuSections.filter((section) => section.number > 0);
 
 export const externalSections = menuSections.filter((section) => section.external);
 
@@ -610,7 +618,8 @@ export const allDestinations: Destination[] = menuSections.flatMap((section) =>
   section.groups.flatMap((group) => group.destinations),
 );
 
-const bySlug = new Map(allDestinations.map((destination) => [destination.slug, destination]));
+const bySlug = new Map(legacySections.flatMap((section) => section.groups.flatMap((group) => group.destinations)).map((destination) => [destination.slug, destination]));
+for (const destination of allDestinations) bySlug.set(destination.slug, destination);
 
 export const findDestination = (slug: string): Destination | undefined => bySlug.get(slug);
 
@@ -648,20 +657,32 @@ export function searchDestinations(query: string): Destination[] {
     .slice(0, 24);
 }
 
-/** Native sections end with Settings; external connectors stay after them. */
+/** Preserve the PDF's default order; explicit customization affects only workspaces. */
 export function orderedSections(order: string[]): MenuSection[] {
   const rank = (section: MenuSection) => {
     const index = order.indexOf(section.id);
     return index === -1 ? Number.MAX_SAFE_INTEGER : index;
   };
-  const native = [...nativeSections].sort((a, b) => rank(a) - rank(b) || a.number - b.number);
-  const settingsIndex = native.findIndex((section) => section.id === "settings");
-  if (settingsIndex !== -1 && settingsIndex !== native.length - 1) {
-    const [settings] = native.splice(settingsIndex, 1);
-    if (settings) native.push(settings);
-  }
-  return [...native, ...externalSections];
+  return [...nativeSections].sort((a, b) => rank(a) - rank(b) || a.number - b.number);
 }
 
+export const REFERENCE_ROUTES: Record<string, string> = {
+  "global-id-center-company-id-registry": "global-company-id",
+  "global-id-center-user-ids": "global-user-id",
+  "new-active-directory-directory-statistics": "intellidirectory",
+  "identity-access-management-role-assignments": "user-role-administration",
+  "intellistack-marketplace-featured-applications": "intellimarketplace",
+  "intellistaff-workforce-overview": "people-workforce",
+  "intellidesk-command-center-open-tickets": "intellidesk",
+  "network-operations-network-assets": "assets-resources",
+  "configuration-center-platform-overview": "administration-settings-support",
+  "reports-governance-administration-administrative-activity": "global-administration",
+};
+export const WORKSPACE_ROUTES: Record<string, string> = {
+  "help-buddy": "/help-buddy",
+  "intellidesk-command-center": "/mission-control",
+  "connector-hub": "/connectors",
+  intellisync: "/intellisync",
+};
 export const MENU_ORDER_KEY = "maximus.menu.order";
 export const MENU_COLLAPSED_KEY = "maximus.menu.collapsed";

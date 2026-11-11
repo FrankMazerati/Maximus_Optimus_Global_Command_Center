@@ -8,13 +8,17 @@ import {
   Home,
   Lock,
   Search,
-  Sparkles,
+  Settings,
+  CircleHelp,
+  LogOut,
   X,
 } from "lucide-react";
 import { useCommandState } from "@/lib/domain/store";
+import { Button } from "@/components/ui/button";
 import { Chip } from "@/components/command/ui";
 import {
   allDestinations,
+  nativeSections,
   canRoleSee,
   findDestination,
   MENU_ORDER_KEY,
@@ -24,14 +28,6 @@ import {
   type Role,
 } from "@/lib/menu-spec";
 
-const PINNED = [
-  { to: "/", label: "Command Center" },
-  { to: "/help-buddy", label: "Help Buddy" },
-  { to: "/mission-control", label: "Mission Control" },
-  { to: "/connectors", label: "Connectors" },
-  { to: "/intellisync", label: "IntelliSync" },
-  { to: "/character-studio", label: "Character Studio" },
-];
 
 function readOrder(): string[] {
   if (typeof window === "undefined") return [];
@@ -51,9 +47,10 @@ export function CommandMenu({ active, onClose }: { active?: string; onClose: () 
   const role = state.users.find((user) => user.id === state.activeUserId)?.role as Role | undefined;
   const activeDestination = active ? findDestination(active) : undefined;
 
-  const [order, setOrder] = useState<string[]>(readOrder);
+  const [order, setOrder] = useState<string[]>([]);
+  useEffect(() => setOrder(readOrder()), []);
   const [expanded, setExpanded] = useState<string>(
-    activeDestination?.sectionId ?? "command-center",
+    activeDestination?.sectionId ?? active ?? "",
   );
   const [query, setQuery] = useState("");
   const [dragging, setDragging] = useState<string | null>(null);
@@ -77,7 +74,10 @@ export function CommandMenu({ active, onClose }: { active?: string; onClose: () 
   }, [order]);
 
   const sections = useMemo(() => orderedSections(order), [order]);
-  const results = useMemo(() => searchDestinations(query), [query]);
+  const results = useMemo(() => searchDestinations(query).filter((destination) => {
+    const section = nativeSections.find((item) => item.id === destination.sectionId);
+    return !section || canRoleSee(section, role);
+  }), [query, role]);
   const visibleCount = sections.filter((section) => canRoleSee(section, role)).length;
   const hiddenCount = sections.length - visibleCount;
 
@@ -101,9 +101,9 @@ export function CommandMenu({ active, onClose }: { active?: string; onClose: () 
             <span className="mx-menu-eyebrow">IntelliStack Systems</span>
             <strong>Command Menu</strong>
           </div>
-          <button type="button" className="mx-menu-close" aria-label="Close menu" onClick={onClose}>
+          <Button variant="plain" size="plain" className="mx-menu-close" aria-label="Close menu" onClick={onClose}>
             <X aria-hidden />
-          </button>
+          </Button>
         </header>
 
         <div className="mx-menu-search">
@@ -116,9 +116,9 @@ export function CommandMenu({ active, onClose }: { active?: string; onClose: () 
             onChange={(event) => setQuery(event.target.value)}
           />
           {query ? (
-            <button type="button" onClick={() => setQuery("")} aria-label="Clear search">
+            <Button variant="plain" size="plain" onClick={() => setQuery("")} aria-label="Clear search">
               <X aria-hidden />
-            </button>
+            </Button>
           ) : null}
         </div>
 
@@ -146,18 +146,8 @@ export function CommandMenu({ active, onClose }: { active?: string; onClose: () 
             </div>
           ) : (
             <>
-              <div className="mx-menu-pinned">
-                {PINNED.map((item) => (
-                  <Link key={item.to} to={item.to} className="mx-menu-pin" onClick={onClose}>
-                    {item.to === "/" ? <Home aria-hidden /> : <Sparkles aria-hidden />}
-                    {item.label}
-                  </Link>
-                ))}
-              </div>
-
-              <div className="mx-menu-label">
-                {visibleCount} native sections accessible · {allDestinations.length} destinations
-              </div>
+              <Link to="/" className="mx-menu-pin" onClick={onClose}><Home aria-hidden /> Command Center</Link>
+              <div className="mx-menu-label">{nativeSections.length} workspaces · {allDestinations.length} pages</div>
 
               {sections
                 .filter((section) => !section.external)
@@ -177,41 +167,18 @@ export function CommandMenu({ active, onClose }: { active?: string; onClose: () 
                       setDragging(null);
                     }}
                     onClose={onClose}
-                    draggable
+                    draggable={role === "administrator" || role === "manager"}
                   />
                 ))}
 
-              <div className="mx-menu-external">
-                <div className="mx-menu-external-head">
-                  <ExternalLink aria-hidden />
-                  <div>
-                    <strong>External Connectors</strong>
-                    <small>Third-party applications — not IntelliStack products</small>
-                  </div>
-                </div>
-                {sections
-                  .filter((section) => section.external)
-                  .map((section) => (
-                    <MenuSectionRow
-                      key={section.id}
-                      section={{ ...section, title: "Authorize third-party apps" }}
-                      role={role}
-                      expanded={expanded === section.id}
-                      activeSlug={active}
-                      dragging={false}
-                      onToggle={() => setExpanded(expanded === section.id ? "" : section.id)}
-                      onDragStart={() => undefined}
-                      onDragEnd={() => undefined}
-                      onDrop={() => undefined}
-                      onClose={onClose}
-                    />
-                  ))}
-              </div>
             </>
           )}
         </div>
 
         <footer className="mx-menu-foot">
+          <Link to="/section/$slug" params={{ slug: "settings" }} className="mx-menu-pin" onClick={onClose}><Settings aria-hidden />Settings</Link>
+          <Link to="/section/$slug" params={{ slug: "help-center" }} className="mx-menu-pin" onClick={onClose}><CircleHelp aria-hidden />Help Center</Link>
+          <Button variant="plain" size="plain" className="mx-menu-pin" disabled title="No authenticated session is connected"><LogOut aria-hidden />Logout</Button>
           <span>{`Signed in as ${state.users.find((user) => user.id === state.activeUserId)?.name ?? "guest"} · ${role ?? "no role"}`}</span>
           {hiddenCount > 0 ? (
             <span>
@@ -221,7 +188,7 @@ export function CommandMenu({ active, onClose }: { active?: string; onClose: () 
           ) : null}
         </footer>
       </nav>
-      <button type="button" className="mx-menu-scrim" aria-label="Dismiss menu" onClick={onClose} />
+      <Button variant="plain" size="plain" className="mx-menu-scrim" aria-label="Dismiss menu" onClick={onClose} />
     </div>
   );
 }
@@ -285,8 +252,9 @@ function MenuSectionRow({
             <GripVertical aria-hidden />
           </span>
         ) : null}
-        <button
-          type="button"
+        <Button
+          variant="plain"
+          size="plain"
           className="mx-menu-section-toggle"
           aria-expanded={expanded}
           onClick={() => permitted && onToggle()}
@@ -305,12 +273,12 @@ function MenuSectionRow({
             </Chip>
           )}
           {expanded ? <ChevronDown aria-hidden /> : <ChevronRight aria-hidden />}
-        </button>
+        </Button>
       </div>
 
       {expanded && permitted ? (
         <div className="mx-menu-section-body">
-          <p className="mx-menu-section-desc">{section.description}</p>
+          <Link to="/section/$slug" params={{ slug: section.id }} onClick={onClose} className="mx-menu-link">Open {section.title} <ChevronRight aria-hidden /></Link>
           {section.groups.map((group) => (
             <div className="mx-menu-group" key={group.id}>
               <div className="mx-menu-group-name">{group.name}</div>
